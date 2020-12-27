@@ -31,7 +31,7 @@
 <meta property="og:description" content="SSH连接的建立方式ssh可以通过密码和密钥（更加安全）这两种方式建立起客户端与 服务端的连接。 SSH连接的实现过程（假设通过密钥的方式连接） 当客户端发起一个ssh连接请求时，它首先会告诉服务端需要使用的公钥； 然后服务端会检查它的~&#x2F;authorized_keys文件，这个文件中包含了所有已经保存的客户端公钥，一个公钥占据一行，这些公钥所对应的客户端可以实现免验证登录。 服务端如果在文件中找">
 <meta property="og:locale" content="zh_CN">
 <meta property="article:published_time" content="2020-12-26T16:38:29.000Z">
-<meta property="article:modified_time" content="2020-12-27T06:04:33.551Z">
+<meta property="article:modified_time" content="2020-12-27T16:25:09.950Z">
 <meta property="article:author" content="彭凯">
 <meta property="article:tag" content="ssh">
 <meta property="article:tag" content="linux">
@@ -180,7 +180,7 @@
       <div class="sidebar-panel-container">
         <!--noindex-->
         <section class="post-toc-wrap sidebar-panel">
-            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#SSH%E8%BF%9E%E6%8E%A5%E7%9A%84%E5%BB%BA%E7%AB%8B%E6%96%B9%E5%BC%8F"><span class="nav-number">1.</span> <span class="nav-text">SSH连接的建立方式</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#SSH%E8%BF%9E%E6%8E%A5%E7%9A%84%E5%AE%9E%E7%8E%B0%E8%BF%87%E7%A8%8B%EF%BC%88%E5%81%87%E8%AE%BE%E9%80%9A%E8%BF%87%E5%AF%86%E9%92%A5%E7%9A%84%E6%96%B9%E5%BC%8F%E8%BF%9E%E6%8E%A5%EF%BC%89"><span class="nav-number">2.</span> <span class="nav-text">SSH连接的实现过程（假设通过密钥的方式连接）</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%94%9F%E6%88%90SSH%E5%AF%86%E7%A0%81%E5%AF%B9"><span class="nav-number">3.</span> <span class="nav-text">生成SSH密码对</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%BD%BF%E7%94%A8%E6%9B%B4%E9%95%BF%E7%9A%84%E4%BD%8D%E6%95%B0%E7%94%9F%E6%88%90%E4%BD%A0%E7%9A%84%E5%AF%86%E9%92%A5%E5%AF%B9"><span class="nav-number">4.</span> <span class="nav-text">使用更长的位数生成你的密钥对</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%A7%BB%E9%99%A4%E6%88%96%E8%80%85%E4%BF%AE%E6%94%B9%E7%A7%81%E9%92%A5%E7%9A%84%E5%AF%86%E7%A0%81%E7%9F%AD%E8%AF%AD-passphase"><span class="nav-number">5.</span> <span class="nav-text">移除或者修改私钥的密码短语(passphase)</span></a></li></ol></div>
+            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#SSH%E8%BF%9E%E6%8E%A5%E7%9A%84%E5%BB%BA%E7%AB%8B%E6%96%B9%E5%BC%8F"><span class="nav-number">1.</span> <span class="nav-text">SSH连接的建立方式</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#SSH%E8%BF%9E%E6%8E%A5%E7%9A%84%E5%AE%9E%E7%8E%B0%E8%BF%87%E7%A8%8B%EF%BC%88%E5%81%87%E8%AE%BE%E9%80%9A%E8%BF%87%E5%AF%86%E9%92%A5%E7%9A%84%E6%96%B9%E5%BC%8F%E8%BF%9E%E6%8E%A5%EF%BC%89"><span class="nav-number">2.</span> <span class="nav-text">SSH连接的实现过程（假设通过密钥的方式连接）</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%94%9F%E6%88%90SSH%E5%AF%86%E7%A0%81%E5%AF%B9"><span class="nav-number">3.</span> <span class="nav-text">生成SSH密码对</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%BD%BF%E7%94%A8%E6%9B%B4%E9%95%BF%E7%9A%84%E4%BD%8D%E6%95%B0%E7%94%9F%E6%88%90%E4%BD%A0%E7%9A%84%E5%AF%86%E9%92%A5%E5%AF%B9"><span class="nav-number">4.</span> <span class="nav-text">使用更长的位数生成你的密钥对</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%A7%BB%E9%99%A4%E6%88%96%E8%80%85%E4%BF%AE%E6%94%B9%E7%A7%81%E9%92%A5%E7%9A%84%E5%AF%86%E7%A0%81%E7%9F%AD%E8%AF%AD-passphase"><span class="nav-number">5.</span> <span class="nav-text">移除或者修改私钥的密码短语(passphase)</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%B1%95%E7%A4%BASSH%E5%AF%86%E9%92%A5%E7%9A%84%E6%89%8B%E5%8D%B0%EF%BC%88Fingerprint%EF%BC%89"><span class="nav-number">6.</span> <span class="nav-text">展示SSH密钥的手印（Fingerprint）</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%BD%BF%E7%94%A8SSH-Copy-ID%E5%A4%8D%E5%88%B6%E5%85%AC%E9%92%A5%E5%88%B0%E6%9C%8D%E5%8A%A1%E5%99%A8"><span class="nav-number">7.</span> <span class="nav-text">使用SSH-Copy-ID复制公钥到服务器</span></a></li></ol></div>
         </section>
         <!--/noindex-->
 
@@ -269,10 +269,16 @@
         <i class="far fa-calendar"></i>
       </span>
       <span class="post-meta-item-text">发表于</span>
-      
 
-      <time title="创建时间：2020-12-27 00:38:29 / 修改时间：14:04:33" itemprop="dateCreated datePublished" datetime="2020-12-27T00:38:29+08:00">2020-12-27</time>
+      <time title="创建时间：2020-12-27 00:38:29" itemprop="dateCreated datePublished" datetime="2020-12-27T00:38:29+08:00">2020-12-27</time>
     </span>
+      <span class="post-meta-item">
+        <span class="post-meta-item-icon">
+          <i class="far fa-calendar-check"></i>
+        </span>
+        <span class="post-meta-item-text">更新于</span>
+        <time title="修改时间：2020-12-28 00:25:09" itemprop="dateModified" datetime="2020-12-28T00:25:09+08:00">2020-12-28</time>
+      </span>
     <span class="post-meta-item">
       <span class="post-meta-item-icon">
         <i class="far fa-folder"></i>
@@ -315,10 +321,14 @@
 如果你之前已经生成过一个密钥对，那么这里会提示你是否需要覆盖你之前的键：<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">Overrite(Y/n)?</span><br></pre></td></tr></table></figure>
 如果你选择是，那你之前的文件会被覆写，导致你再也无法使用之前的密钥登录到之前的服务器，因此，一定要小心之前的密钥是否需要保留。<h2 id="移除或者修改私钥的密码短语-passphase"><a href="#移除或者修改私钥的密码短语-passphase" class="headerlink" title="移除或者修改私钥的密码短语(passphase)"></a>移除或者修改私钥的密码短语(passphase)</h2>如果你已经为你的私钥指定了一个密码短语，该怎么修改或者直接删除这个密码短语呢？<div class="note info"><p>为了修改或移除密码短语，你必须知道原来的密码短语。如果你忘记了原来的密码短语，你将无法再次使用该密钥，必须重新生成新的密钥。</p>
 </div>
-
-
-
-</li>
+通过下面的命令：<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ ssh-keygen -p</span><br></pre></td></tr></table></figure>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">Enter file <span class="keyword">in</span> <span class="built_in">which</span> the key is (/root/.ssh/id_rsa):</span><br></pre></td></tr></table></figure>
+你可以指定密钥的位置，或者直接按<code>Enter</code>接受默认的位置。<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">Enter old passphrase:</span><br></pre></td></tr></table></figure>
+输入你希望修改的旧密码，然后你会被提示输入一个新的密码短语：<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">Enter new passphrase (empty <span class="keyword">for</span> no passphrase):</span><br><span class="line">Enter same passphrase again:</span><br></pre></td></tr></table></figure>
+至此，输入你的新密码短语或者按<code>Enter</code>来移除密码短语。<h2 id="展示SSH密钥的手印（Fingerprint）"><a href="#展示SSH密钥的手印（Fingerprint）" class="headerlink" title="展示SSH密钥的手印（Fingerprint）"></a>展示SSH密钥的手印（Fingerprint）</h2>每个SSH密钥对共享一个密码形式的“手印”，它可以被用来唯一标识密钥对。这在有些情况下会很有用。<br>为了查看现有的密钥对，你可以执行：<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ ssh-keygen -l</span><br></pre></td></tr></table></figure>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">Enter file <span class="keyword">in</span> <span class="built_in">which</span> the key is (/root/.ssh/id_rsa):</span><br></pre></td></tr></table></figure>
+你可以直接按<code>Enter</code>选择默认的密钥的位置，或者输入你期望的位置。之后你会得到包含了密钥的位长、手印和帐号以及所选主机和使用的算法的字符串：<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">4096 8e:c4:82:47:87:c2:26:4b:68:ff:96:1a:39:62:9e:4e  demo@<span class="built_in">test</span> (RSA)</span><br></pre></td></tr></table></figure>
+<h2 id="使用SSH-Copy-ID复制公钥到服务器"><a href="#使用SSH-Copy-ID复制公钥到服务器" class="headerlink" title="使用SSH-Copy-ID复制公钥到服务器"></a>使用SSH-Copy-ID复制公钥到服务器</h2></li>
 </ul>
 
     </div>
