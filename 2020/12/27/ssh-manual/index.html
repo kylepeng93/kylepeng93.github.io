@@ -31,7 +31,7 @@
 <meta property="og:description" content="SSH连接的建立方式ssh可以通过密码和密钥（更加安全）这两种方式建立起客户端与 服务端的连接。 SSH连接的实现过程（假设通过密钥的方式连接） 当客户端发起一个ssh连接请求时，它首先会告诉服务端需要使用的公钥； 然后服务端会检查它的~&#x2F;authorized_keys文件，这个文件中包含了所有已经保存的客户端公钥，一个公钥占据一行，这些公钥所对应的客户端可以实现免验证登录。 服务端如果在文件中找">
 <meta property="og:locale" content="zh_CN">
 <meta property="article:published_time" content="2020-12-26T16:38:29.000Z">
-<meta property="article:modified_time" content="2020-12-27T16:25:09.950Z">
+<meta property="article:modified_time" content="2020-12-31T03:21:19.190Z">
 <meta property="article:author" content="彭凯">
 <meta property="article:tag" content="ssh">
 <meta property="article:tag" content="linux">
@@ -137,17 +137,17 @@
   </li>
         <li class="menu-item menu-item-tags">
 
-    <a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>标签<span class="badge">4</span></a>
+    <a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>标签<span class="badge">5</span></a>
 
   </li>
         <li class="menu-item menu-item-categories">
 
-    <a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>分类<span class="badge">2</span></a>
+    <a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>分类<span class="badge">3</span></a>
 
   </li>
         <li class="menu-item menu-item-archives">
 
-    <a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档<span class="badge">2</span></a>
+    <a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档<span class="badge">3</span></a>
 
   </li>
   </ul>
@@ -180,7 +180,7 @@
       <div class="sidebar-panel-container">
         <!--noindex-->
         <section class="post-toc-wrap sidebar-panel">
-            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#SSH%E8%BF%9E%E6%8E%A5%E7%9A%84%E5%BB%BA%E7%AB%8B%E6%96%B9%E5%BC%8F"><span class="nav-number">1.</span> <span class="nav-text">SSH连接的建立方式</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#SSH%E8%BF%9E%E6%8E%A5%E7%9A%84%E5%AE%9E%E7%8E%B0%E8%BF%87%E7%A8%8B%EF%BC%88%E5%81%87%E8%AE%BE%E9%80%9A%E8%BF%87%E5%AF%86%E9%92%A5%E7%9A%84%E6%96%B9%E5%BC%8F%E8%BF%9E%E6%8E%A5%EF%BC%89"><span class="nav-number">2.</span> <span class="nav-text">SSH连接的实现过程（假设通过密钥的方式连接）</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%94%9F%E6%88%90SSH%E5%AF%86%E7%A0%81%E5%AF%B9"><span class="nav-number">3.</span> <span class="nav-text">生成SSH密码对</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%BD%BF%E7%94%A8%E6%9B%B4%E9%95%BF%E7%9A%84%E4%BD%8D%E6%95%B0%E7%94%9F%E6%88%90%E4%BD%A0%E7%9A%84%E5%AF%86%E9%92%A5%E5%AF%B9"><span class="nav-number">4.</span> <span class="nav-text">使用更长的位数生成你的密钥对</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%A7%BB%E9%99%A4%E6%88%96%E8%80%85%E4%BF%AE%E6%94%B9%E7%A7%81%E9%92%A5%E7%9A%84%E5%AF%86%E7%A0%81%E7%9F%AD%E8%AF%AD-passphase"><span class="nav-number">5.</span> <span class="nav-text">移除或者修改私钥的密码短语(passphase)</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%B1%95%E7%A4%BASSH%E5%AF%86%E9%92%A5%E7%9A%84%E6%89%8B%E5%8D%B0%EF%BC%88Fingerprint%EF%BC%89"><span class="nav-number">6.</span> <span class="nav-text">展示SSH密钥的手印（Fingerprint）</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%BD%BF%E7%94%A8SSH-Copy-ID%E5%A4%8D%E5%88%B6%E5%85%AC%E9%92%A5%E5%88%B0%E6%9C%8D%E5%8A%A1%E5%99%A8"><span class="nav-number">7.</span> <span class="nav-text">使用SSH-Copy-ID复制公钥到服务器</span></a></li></ol></div>
+            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#SSH%E8%BF%9E%E6%8E%A5%E7%9A%84%E5%BB%BA%E7%AB%8B%E6%96%B9%E5%BC%8F"><span class="nav-number">1.</span> <span class="nav-text">SSH连接的建立方式</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#SSH%E8%BF%9E%E6%8E%A5%E7%9A%84%E5%AE%9E%E7%8E%B0%E8%BF%87%E7%A8%8B%EF%BC%88%E5%81%87%E8%AE%BE%E9%80%9A%E8%BF%87%E5%AF%86%E9%92%A5%E7%9A%84%E6%96%B9%E5%BC%8F%E8%BF%9E%E6%8E%A5%EF%BC%89"><span class="nav-number">2.</span> <span class="nav-text">SSH连接的实现过程（假设通过密钥的方式连接）</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%94%9F%E6%88%90SSH%E5%AF%86%E7%A0%81%E5%AF%B9"><span class="nav-number">3.</span> <span class="nav-text">生成SSH密码对</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%BD%BF%E7%94%A8%E6%9B%B4%E9%95%BF%E7%9A%84%E4%BD%8D%E6%95%B0%E7%94%9F%E6%88%90%E4%BD%A0%E7%9A%84%E5%AF%86%E9%92%A5%E5%AF%B9"><span class="nav-number">4.</span> <span class="nav-text">使用更长的位数生成你的密钥对</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%A7%BB%E9%99%A4%E6%88%96%E8%80%85%E4%BF%AE%E6%94%B9%E7%A7%81%E9%92%A5%E7%9A%84%E5%AF%86%E7%A0%81%E7%9F%AD%E8%AF%AD-passphase"><span class="nav-number">5.</span> <span class="nav-text">移除或者修改私钥的密码短语(passphase)</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%B1%95%E7%A4%BASSH%E5%AF%86%E9%92%A5%E7%9A%84%E6%89%8B%E5%8D%B0%EF%BC%88Fingerprint%EF%BC%89"><span class="nav-number">6.</span> <span class="nav-text">展示SSH密钥的手印（Fingerprint）</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%BD%BF%E7%94%A8SSH-Copy-ID%E5%A4%8D%E5%88%B6%E5%85%AC%E9%92%A5%E5%88%B0%E6%9C%8D%E5%8A%A1%E5%99%A8"><span class="nav-number">7.</span> <span class="nav-text">使用SSH-Copy-ID复制公钥到服务器</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%B8%8D%E9%80%9A%E8%BF%87ssh-copy-id%E5%91%BD%E4%BB%A4%E5%B0%86%E5%85%AC%E9%92%A5%E6%B7%BB%E5%8A%A0%E5%88%B0%E8%BF%9C%E7%A8%8B%E6%9C%8D%E5%8A%A1%E5%99%A8"><span class="nav-number">8.</span> <span class="nav-text">不通过ssh-copy-id命令将公钥添加到远程服务器</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%89%8B%E5%8A%A8%E5%B0%86%E4%BD%A0%E7%9A%84%E5%AF%86%E9%92%A5%E5%A4%8D%E5%88%B6%E5%88%B0%E6%9C%8D%E5%8A%A1%E5%99%A8"><span class="nav-number">9.</span> <span class="nav-text">手动将你的密钥复制到服务器</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%9F%BA%E6%9C%AC%E7%9A%84%E8%BF%9E%E6%8E%A5%E6%8C%87%E4%BB%A4"><span class="nav-number">10.</span> <span class="nav-text">基本的连接指令</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E8%BF%9E%E6%8E%A5%E5%88%B0%E6%8C%87%E5%AE%9A%E7%9A%84%E8%BF%9C%E7%A8%8B%E6%9C%8D%E5%8A%A1%E5%99%A8"><span class="nav-number">10.1.</span> <span class="nav-text">连接到指定的远程服务器</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%9C%A8%E8%BF%9C%E7%A8%8B%E6%9C%8D%E5%8A%A1%E5%99%A8%E4%B8%8A%E6%89%A7%E8%A1%8C%E5%8D%95%E6%AC%A1%E5%91%BD%E4%BB%A4"><span class="nav-number">11.</span> <span class="nav-text">在远程服务器上执行单次命令</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%BD%BF%E7%94%A8%E9%85%8D%E7%BD%AE%E6%96%87%E4%BB%B6%E7%AE%80%E5%8C%96%E8%BF%9E%E6%8E%A5%E8%BE%93%E5%85%A5"><span class="nav-number">12.</span> <span class="nav-text">使用配置文件简化连接输入</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%BD%BF%E7%94%A8SSH-Agent%E4%BF%9D%E5%AD%98%E5%AF%86%E7%A0%81%E7%9F%AD%E8%AF%AD%EF%BC%8C%E9%81%BF%E5%85%8D%E9%87%8D%E5%A4%8D%E8%BE%93%E5%85%A5"><span class="nav-number">13.</span> <span class="nav-text">使用SSH Agent保存密码短语，避免重复输入</span></a></li></ol></div>
         </section>
         <!--/noindex-->
 
@@ -194,20 +194,20 @@
       <div class="site-state-item site-state-posts">
           <a href="/archives/">
         
-          <span class="site-state-item-count">2</span>
+          <span class="site-state-item-count">3</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
       <div class="site-state-item site-state-categories">
             <a href="/categories/">
           
-        <span class="site-state-item-count">2</span>
+        <span class="site-state-item-count">3</span>
         <span class="site-state-item-name">分类</span></a>
       </div>
       <div class="site-state-item site-state-tags">
             <a href="/tags/">
           
-        <span class="site-state-item-count">4</span>
+        <span class="site-state-item-count">5</span>
         <span class="site-state-item-name">标签</span></a>
       </div>
   </nav>
@@ -277,7 +277,7 @@
           <i class="far fa-calendar-check"></i>
         </span>
         <span class="post-meta-item-text">更新于</span>
-        <time title="修改时间：2020-12-28 00:25:09" itemprop="dateModified" datetime="2020-12-28T00:25:09+08:00">2020-12-28</time>
+        <time title="修改时间：2020-12-31 11:21:19" itemprop="dateModified" datetime="2020-12-31T11:21:19+08:00">2020-12-31</time>
       </span>
     <span class="post-meta-item">
       <span class="post-meta-item-icon">
@@ -285,7 +285,7 @@
       </span>
       <span class="post-meta-item-text">分类于</span>
         <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-          <a href="/categories/%E7%94%9F%E6%B6%AF/" itemprop="url" rel="index"><span itemprop="name">生涯</span></a>
+          <a href="/categories/%E7%94%9F%E6%B6%AF-SSH%E8%BF%9E%E6%8E%A5%E7%9A%84%E5%BB%BA%E7%AB%8B%E6%96%B9%E5%BC%8F/" itemprop="url" rel="index"><span itemprop="name">生涯 SSH连接的建立方式</span></a>
         </span>
     </span>
 
@@ -326,10 +326,34 @@
 你可以指定密钥的位置，或者直接按<code>Enter</code>接受默认的位置。<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">Enter old passphrase:</span><br></pre></td></tr></table></figure>
 输入你希望修改的旧密码，然后你会被提示输入一个新的密码短语：<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">Enter new passphrase (empty <span class="keyword">for</span> no passphrase):</span><br><span class="line">Enter same passphrase again:</span><br></pre></td></tr></table></figure>
 至此，输入你的新密码短语或者按<code>Enter</code>来移除密码短语。<h2 id="展示SSH密钥的手印（Fingerprint）"><a href="#展示SSH密钥的手印（Fingerprint）" class="headerlink" title="展示SSH密钥的手印（Fingerprint）"></a>展示SSH密钥的手印（Fingerprint）</h2>每个SSH密钥对共享一个密码形式的“手印”，它可以被用来唯一标识密钥对。这在有些情况下会很有用。<br>为了查看现有的密钥对，你可以执行：<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ ssh-keygen -l</span><br></pre></td></tr></table></figure>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">Enter file <span class="keyword">in</span> <span class="built_in">which</span> the key is (/root/.ssh/id_rsa):</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">Enter file in which the key is (&#x2F;root&#x2F;.ssh&#x2F;id_rsa):</span><br></pre></td></tr></table></figure>
 你可以直接按<code>Enter</code>选择默认的密钥的位置，或者输入你期望的位置。之后你会得到包含了密钥的位长、手印和帐号以及所选主机和使用的算法的字符串：<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">4096 8e:c4:82:47:87:c2:26:4b:68:ff:96:1a:39:62:9e:4e  demo@<span class="built_in">test</span> (RSA)</span><br></pre></td></tr></table></figure>
-<h2 id="使用SSH-Copy-ID复制公钥到服务器"><a href="#使用SSH-Copy-ID复制公钥到服务器" class="headerlink" title="使用SSH-Copy-ID复制公钥到服务器"></a>使用SSH-Copy-ID复制公钥到服务器</h2></li>
+<h2 id="使用SSH-Copy-ID复制公钥到服务器"><a href="#使用SSH-Copy-ID复制公钥到服务器" class="headerlink" title="使用SSH-Copy-ID复制公钥到服务器"></a>使用SSH-Copy-ID复制公钥到服务器</h2>通过将你的公钥复制到服务器，可以让你不用输入密码就可以通过认证，有很多方法可以实现这一点。<br>如果你当前有一个基于密码的SSH远程服务器访问方式，并且你已经安装了ssh-copy-id工具，那么你就可以很容易的实现这一点。而且ssh-copy-id已经预装到了大多数的linux发行版中。<br>通过下面的命令可以实现这一点：<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ ssh-copy-id username@remote_host</span><br></pre></td></tr></table></figure>
+随后会提示你输入当前用户在远程服务器上的密码，正确输入之后，你本地的公钥就会被添加到服务器用户的<code>~/.ssh/authorized_keys</code>文件中，之后，你就可以不用输入密码也能登录到远程服务器了。<h2 id="不通过ssh-copy-id命令将公钥添加到远程服务器"><a href="#不通过ssh-copy-id命令将公钥添加到远程服务器" class="headerlink" title="不通过ssh-copy-id命令将公钥添加到远程服务器"></a>不通过ssh-copy-id命令将公钥添加到远程服务器</h2>如果你没有安装ssh-copy-id命令行工具，那你应该怎么样将你的公钥上传到远程服务器呢？通过linux中的管道命令，我们可以实现这一点。</li>
 </ul>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ cat ~/.ssh/id_rsa.pub | ssh username@remote_host <span class="string">&quot;mkdir -p ~/.ssh &amp;&amp; ~/.ssh/authorized_keys&quot;</span></span><br></pre></td></tr></table></figure>
+<p>随后根据提示输入远程主机的用户名密码：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">The authenticity of host <span class="string">&#x27;111.111.11.111 (111.111.11.111)&#x27;</span> can<span class="string">&#x27;t be established.</span></span><br><span class="line"><span class="string">ECDSA key fingerprint is fd:fd:d4:f9:77:fe:73:84:e1:55:00:ad:d6:6d:22:fe.</span></span><br><span class="line"><span class="string">Are you sure you want to continue connecting (yes/no)? yes</span></span><br><span class="line"><span class="string">demo@111.111.11.111&#x27;</span>s password:</span><br></pre></td></tr></table></figure>
+<p>如果添加成功，你之后的登录将无需再次输入密码，而是简单的通过如下命令：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ ssh username@remote_ip_host</span><br></pre></td></tr></table></figure>
+<h2 id="手动将你的密钥复制到服务器"><a href="#手动将你的密钥复制到服务器" class="headerlink" title="手动将你的密钥复制到服务器"></a>手动将你的密钥复制到服务器</h2><p>如果你没有可用的基于密码访问的SSH连接，你将必须手动将你的公钥复制到远程服务器。<br>打开你的本地终端，输入下面的命令：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ cat ~/.ssh/id_rsa.pub</span><br></pre></td></tr></table></figure>
+<p>将输出到屏幕上的公钥复制到剪贴板，然后通过工具（一般是服务器供应商提供的web面板）连接到远程服务器，并在远程服务器的<code>~/.ssh/</code>（如果不存在就新建）目录下面创建<code>authorized_keys</code>文件。最后将你复制的公钥粘贴到该文件中，并保存。</p>
+<h2 id="基本的连接指令"><a href="#基本的连接指令" class="headerlink" title="基本的连接指令"></a>基本的连接指令</h2><p>接下来是针对SSH中一些比较常用的命令做个说明。</p>
+<h3 id="连接到指定的远程服务器"><a href="#连接到指定的远程服务器" class="headerlink" title="连接到指定的远程服务器"></a>连接到指定的远程服务器</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ ssh remote_host</span><br></pre></td></tr></table></figure>
+<p>这个命令会假设你当前机器的本地用户名和远程服务器上的用户名是一致的。如果不一致，请使用下面的命令。</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ ssh username@remote_host</span><br></pre></td></tr></table></figure>
+<p>这个命令会假设你要连接的远程服务器的端口号是22（ssh默认的端口号）。如果不是，请使用<code>-p your_port</code>指定你的自定义端口号。<br>如果服务器正常开启了ssh服务以及对应的监听端口，那么你会看到如下信息：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">The authenticity of host <span class="string">&#x27;111.111.11.111 (111.111.11.111)&#x27;</span> can<span class="string">&#x27;t be established.</span></span><br><span class="line"><span class="string">ECDSA key fingerprint is fd:fd:d4:f9:77:fe:73:84:e1:55:00:ad:d6:6d:22:fe.</span></span><br><span class="line"><span class="string">Are you sure you want to continue connecting (yes/no)? yes</span></span><br></pre></td></tr></table></figure>
+<p>输入”yes”即可接受来自远程服务器的验证。<br>如果你使用了密码验证，那么你会被要求输入密码，如果你使用了公钥免登录，且设置了密码短语，那么你将同样被要求输入密码短语，否则，你将自动登录成功。</p>
+<h2 id="在远程服务器上执行单次命令"><a href="#在远程服务器上执行单次命令" class="headerlink" title="在远程服务器上执行单次命令"></a>在远程服务器上执行单次命令</h2><p>如果你只是想在远程服务器上执行单个命令，并不想开启一次远程会话。那么你可以通过下面的命令来完成：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ ssh username@remote_host commander_to_run</span><br></pre></td></tr></table></figure>
+<p>这个命令会在连接上远程服务器之后立即执行后面的命令，随后便会关闭连接。</p>
+<h2 id="使用配置文件简化连接输入"><a href="#使用配置文件简化连接输入" class="headerlink" title="使用配置文件简化连接输入"></a>使用配置文件简化连接输入</h2><p>在<code>~/.ssh</code>目录下新建<code>config</code>文件（如果不存在的话），并输入如下内容：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">Host remote_aliss <span class="comment"># 远程主机别名</span></span><br><span class="line">    HostName remote_host <span class="comment">#远程主机</span></span><br><span class="line">    Port port_num <span class="comment"># 端口号</span></span><br><span class="line">    User your_user <span class="comment"># 登录用户</span></span><br><span class="line">    IdentityFile ~/.ssh/id_rsa <span class="comment"># 要使用的密钥</span></span><br></pre></td></tr></table></figure>
+<p>配置完成之后，之后的连接只需要通过输入如下命令即可：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ ssh remote_alias</span><br></pre></td></tr></table></figure>
+<h2 id="使用SSH-Agent保存密码短语，避免重复输入"><a href="#使用SSH-Agent保存密码短语，避免重复输入" class="headerlink" title="使用SSH Agent保存密码短语，避免重复输入"></a>使用SSH Agent保存密码短语，避免重复输入</h2><p>如果你对密钥使用了密码短语进行加密，那么你在每次建立SSH连接会话之前都会要求输入密码短语，为了简化连接过程，避免每次都要重复输入，你可以使用SSH Agent来保存你的密码短语。</p>
 
     </div>
 
@@ -394,7 +418,7 @@
 
 <div class="copyright">
   &copy; 
-  <span itemprop="copyrightYear">2020</span>
+  <span itemprop="copyrightYear">2021</span>
   <span class="with-love">
     <i class="fa fa-heart"></i>
   </span>

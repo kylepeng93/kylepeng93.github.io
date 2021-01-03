@@ -23,16 +23,21 @@
     var NexT = window.NexT || {};
     var CONFIG = {"hostname":"kylepeng93.github.io","root":"/","images":"/images","scheme":"Pisces","version":"8.1.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12},"copycode":false,"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"prism":false,"i18n":{"placeholder":"搜索...","empty":"没有找到任何搜索结果：${query}","hits_time":"找到 ${hits} 个搜索结果（用时 ${time} 毫秒）","hits":"找到 ${hits} 个搜索结果"}};
   </script>
-<meta property="og:type" content="website">
-<meta property="og:title" content="成长日记">
-<meta property="og:url" content="http://kylepeng93.github.io/tags/git/index.html">
+<meta name="description" content="redis存储string类型的值 存值： 1set key value 取值： 1get key 返回key中的部分字符串: 1getrange key start end start从0开始，且返回的内容中包含索引为end的字符。   取出旧值并返回新值： 1getset key new_value 取出key对应的值，并返回指定偏移量上的位(bit)： 1getbit key offset">
+<meta property="og:type" content="article">
+<meta property="og:title" content="redis命令学习">
+<meta property="og:url" content="http://kylepeng93.github.io/2021/01/03/redis-commander-study/index.html">
 <meta property="og:site_name" content="成长日记">
+<meta property="og:description" content="redis存储string类型的值 存值： 1set key value 取值： 1get key 返回key中的部分字符串: 1getrange key start end start从0开始，且返回的内容中包含索引为end的字符。   取出旧值并返回新值： 1getset key new_value 取出key对应的值，并返回指定偏移量上的位(bit)： 1getbit key offset">
 <meta property="og:locale" content="zh_CN">
+<meta property="article:published_time" content="2021-01-03T14:29:48.000Z">
+<meta property="article:modified_time" content="2021-01-03T14:50:54.146Z">
 <meta property="article:author" content="彭凯">
+<meta property="article:tag" content="redis">
 <meta name="twitter:card" content="summary">
 
 
-<link rel="canonical" href="http://kylepeng93.github.io/tags/git/">
+<link rel="canonical" href="http://kylepeng93.github.io/2021/01/03/redis-commander-study/">
 
 
 <script class="page-configurations">
@@ -40,11 +45,11 @@
   CONFIG.page = {
     sidebar: "",
     isHome : false,
-    isPost : false,
+    isPost : true,
     lang   : 'zh-CN'
   };
 </script>
-<title>标签: git | 成长日记</title>
+<title>redis命令学习 | 成长日记</title>
   
 
 
@@ -161,7 +166,7 @@
 
   <aside class="sidebar">
 
-    <div class="sidebar-inner sidebar-overview-active">
+    <div class="sidebar-inner sidebar-nav-active sidebar-toc-active">
       <ul class="sidebar-nav">
         <li class="sidebar-nav-toc">
           文章目录
@@ -174,6 +179,7 @@
       <div class="sidebar-panel-container">
         <!--noindex-->
         <section class="post-toc-wrap sidebar-panel">
+            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#redis%E5%AD%98%E5%82%A8string%E7%B1%BB%E5%9E%8B%E7%9A%84%E5%80%BC"><span class="nav-number">1.</span> <span class="nav-text">redis存储string类型的值</span></a></li></ol></div>
         </section>
         <!--/noindex-->
 
@@ -228,50 +234,115 @@
 </noscript>
 
 
-    <div class="main-inner tag posts-collapse">
+    <div class="main-inner post posts-expand">
 
 
   
-  
-  
-  <div class="post-block">
-    <div class="post-content">
-      <div class="collection-title">
-        <h2 class="collection-header">git
-          <small>标签</small>
-        </h2>
-      </div>
 
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://kylepeng93.github.io/2021/01/03/redis-commander-study/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="彭凯">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="成长日记">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          redis命令学习
+        </h1>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">发表于</span>
       
-    <div class="collection-year">
-      <span class="collection-header">2020</span>
+
+      <time title="创建时间：2021-01-03 22:29:48 / 修改时间：22:50:54" itemprop="dateCreated datePublished" datetime="2021-01-03T22:29:48+08:00">2021-01-03</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">分类于</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/%E6%95%B0%E6%8D%AE%E5%BA%93/" itemprop="url" rel="index"><span itemprop="name">数据库</span></a>
+        </span>
+    </span>
+
+  
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+        <h2 id="redis存储string类型的值"><a href="#redis存储string类型的值" class="headerlink" title="redis存储string类型的值"></a>redis存储string类型的值</h2><ol>
+<li><p>存值：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">set</span> key value</span><br></pre></td></tr></table></figure></li>
+<li><p>取值：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">get key</span><br></pre></td></tr></table></figure></li>
+<li><p>返回key中的部分字符串:</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">getrange key start end</span><br></pre></td></tr></table></figure>
+<div class="note info"><p>start从0开始，且返回的内容中包含索引为end的字符。</p>
+</div>
+</li>
+<li><p>取出旧值并返回新值：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">getset key new_value</span><br></pre></td></tr></table></figure></li>
+<li><p>取出key对应的值，并返回指定偏移量上的位(bit)：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">getbit key offset</span><br></pre></td></tr></table></figure></li>
+<li><p>一次性取出多个值</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">mget key1 key2 ...</span><br></pre></td></tr></table></figure></li>
+<li><p>当key不存在时才设值：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">setnx key value</span><br></pre></td></tr></table></figure>
+</li>
+</ol>
+
     </div>
 
-  <article itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
-      <div class="post-meta-container">
-        <time itemprop="dateCreated"
-              datetime="2020-12-29T21:45:24+08:00"
-              content="2020-12-29">
-          12-29
-        </time>
-      </div>
+    
+    
+    
 
-      <div class="post-title">
-          <a class="post-title-link" href="/2020/12/29/how-to-set-up-a-private-git-server-on-your-vps/" itemprop="url">
-            <span itemprop="name">如何vps上搭建自己的git服务器</span>
-          </a>
-      </div>
+    <footer class="post-footer">
+          <div class="post-tags">
+              <a href="/tags/redis/" rel="tag"># redis</a>
+          </div>
 
-      
-    </header>
+        
+
+          <div class="post-nav">
+            <div class="post-nav-item">
+                <a href="/2020/12/29/how-to-set-up-a-private-git-server-on-your-vps/" rel="prev" title="如何vps上搭建自己的git服务器">
+                  <i class="fa fa-chevron-left"></i> 如何vps上搭建自己的git服务器
+                </a>
+            </div>
+            <div class="post-nav-item">
+            </div>
+          </div>
+    </footer>
   </article>
+</div>
 
-    </div>
-  </div>
-  
-  
-  
+
+
+
+
 
 
 <script>
