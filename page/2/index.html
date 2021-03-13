@@ -131,17 +131,17 @@
   </li>
         <li class="menu-item menu-item-tags">
 
-    <a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>标签<span class="badge">20</span></a>
+    <a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>标签<span class="badge">22</span></a>
 
   </li>
         <li class="menu-item menu-item-categories">
 
-    <a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>分类<span class="badge">10</span></a>
+    <a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>分类<span class="badge">11</span></a>
 
   </li>
         <li class="menu-item menu-item-archives">
 
-    <a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档<span class="badge">14</span></a>
+    <a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档<span class="badge">16</span></a>
 
   </li>
   </ul>
@@ -187,20 +187,20 @@
       <div class="site-state-item site-state-posts">
           <a href="/archives/">
         
-          <span class="site-state-item-count">14</span>
+          <span class="site-state-item-count">16</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
       <div class="site-state-item site-state-categories">
             <a href="/categories/">
           
-        <span class="site-state-item-count">10</span>
+        <span class="site-state-item-count">11</span>
         <span class="site-state-item-name">分类</span></a>
       </div>
       <div class="site-state-item site-state-tags">
             <a href="/tags/">
           
-        <span class="site-state-item-count">20</span>
+        <span class="site-state-item-count">22</span>
         <span class="site-state-item-name">标签</span></a>
       </div>
   </nav>
@@ -229,6 +229,213 @@
 
 
     <div class="main-inner index posts-expand">
+
+    
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://kylepeng93.github.io/2021/01/08/curl-command-usage/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="彭凯">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="成长日记">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          <a href="/2021/01/08/curl-command-usage/" class="post-title-link" itemprop="url">curl命令常见用法</a>
+        </h2>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">发表于</span>
+      
+
+      <time title="创建时间：2021-01-08 20:13:31 / 修改时间：20:30:51" itemprop="dateCreated datePublished" datetime="2021-01-08T20:13:31+08:00">2021-01-08</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">分类于</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/linux%E5%91%BD%E4%BB%A4/" itemprop="url" rel="index"><span itemprop="name">linux命令</span></a>
+        </span>
+    </span>
+
+  
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+          <h2 id="发送post请求"><a href="#发送post请求" class="headerlink" title="发送post请求"></a>发送post请求</h2><ul>
+<li>参数类型为<code>application/json</code></li>
+</ul>
+<ol>
+<li><p>常规用法：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">curl -d <span class="string">&#x27;&#123;&quot;key1&quot;:&quot;value1&quot;, &quot;key2&quot;: &quot;value2&quot;&#125;&#x27;</span> -H <span class="string">&quot;Content-Type: application/json&quot;</span> -X POST http://localhost:8080/your_interface_name</span><br></pre></td></tr></table></figure></li>
+<li><p>使用json文件：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">curl -d <span class="string">&quot;@data.json&quot;</span> -X POST http://localhost:8080/your_interface_name</span><br></pre></td></tr></table></figure>
+<blockquote>
+<p><strong>data.json</strong></p>
+<hr>
+<figure class="highlight json"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">&#123;</span><br><span class="line">    <span class="attr">&quot;key1&quot;</span>: <span class="string">&quot;value1&quot;</span>,</span><br><span class="line">    <span class="attr">&quot;key2&quot;</span>: <span class="string">&quot;value2&quot;</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></blockquote>
+</li>
+</ol>
+<ul>
+<li>参数类型为<code>application/x-www-form-urlencoded</code></li>
+</ul>
+<ol>
+<li><p>常规用法：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">curl -d <span class="string">&quot;param1=value1&amp;param2=value2&quot;</span> -X POST http://localhost:8080/your_interface_name</span><br></pre></td></tr></table></figure></li>
+<li><p>使用data文件：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">curl -d <span class="string">&quot;@data.txt&quot;</span> -X POST http://localhost/your_interface_name</span><br></pre></td></tr></table></figure>
+<blockquote>
+<p><strong>data.txt</strong></p>
+<hr>
+<p>param1=value1&amp;param2=value2</p>
+</blockquote>
+</li>
+</ol>
+
+      
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+</div>
+
+
+
+
+    
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://kylepeng93.github.io/2021/01/07/java-point/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="彭凯">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="成长日记">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          <a href="/2021/01/07/java-point/" class="post-title-link" itemprop="url">java知识点速记</a>
+        </h2>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">发表于</span>
+
+      <time title="创建时间：2021-01-07 23:37:05" itemprop="dateCreated datePublished" datetime="2021-01-07T23:37:05+08:00">2021-01-07</time>
+    </span>
+      <span class="post-meta-item">
+        <span class="post-meta-item-icon">
+          <i class="far fa-calendar-check"></i>
+        </span>
+        <span class="post-meta-item-text">更新于</span>
+        <time title="修改时间：2021-01-08 00:16:55" itemprop="dateModified" datetime="2021-01-08T00:16:55+08:00">2021-01-08</time>
+      </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">分类于</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/java%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/" itemprop="url" rel="index"><span itemprop="name">java学习笔记</span></a>
+        </span>
+    </span>
+
+  
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+          <h2 id="java-bean和pojo的区别"><a href="#java-bean和pojo的区别" class="headerlink" title="java bean和pojo的区别"></a>java bean和pojo的区别</h2><p>一、 定义</p>
+<ul>
+<li><p><code>POJO</code>是<code>Plain Old Java Object</code>的缩写，它主要用来强调某个对象是一个普通的Java对象，而不是一个特殊的对象，尤其不是一个EJB。</p>
+<p>这个术语以其简单易懂的特性被广泛接受并使用，并用来区别那些复杂的对象框架。</p>
+</li>
+<li><p>一个<code>JavaBean</code>是一个可以被序列化的<code>POJO</code>。有一个默认的无参构造器，并允许使用Getter和Setter方法访问属性。</p>
+<p>对于EJB来说，<code>JavaBean</code>并不是一个单独的类，而是整个组件模型。</p>
+<p>JavaBean是java构建程序中可重用的软件组件，实际开发过程中，它们是使用java语言编写并符合某个约定的类。它们被用来封装一些对象到单个对象（也就是bean）中。</p>
+</li>
+</ul>
+<p>二、 用法</p>
+<ul>
+<li><code>POJO</code>主要被用来表明一个java对象不需要跟随任何java对象模型、约定或者框架。最理想的情况，一个<code>POJO</code>应该是一个不和任何框架绑定的java对象，并遵循以下原则：<ol>
+<li>不应该继承某个指定的类，比如HttpServlet；</li>
+<li>不应该实现指定的接口，比如EntityBean；</li>
+<li>不应该包含某些框架的注解。</li>
+</ol>
+</li>
+<li>JavaBean应该遵循以下原则：<ol>
+<li>必须有一个公共的默认构造器，便于实例化；</li>
+<li>属性必须可以通过Getter和Setter或者其他的可以访问并修改的方法进行控制，并遵循标准的命名规范，以便于框架对其进行自动化管理和状态的更新；</li>
+<li>必须可以被序列化，以便于应用和框架以一种独立于VM和操作系统的方式对其进行可靠的保存、存储以及恢复bean的状态。</li>
+</ol>
+</li>
+</ul>
+<p>对于业务程序员来说，这两种类型的java对象其实可以等同，或者说POJO更多强调的是一种业务概念，而JavaBean则属于java编程语言的特性。</p>
+
+      
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+</div>
+
+
+
 
     
 
