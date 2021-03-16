@@ -131,17 +131,17 @@
   </li>
         <li class="menu-item menu-item-tags">
 
-    <a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>标签<span class="badge">26</span></a>
+    <a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>标签<span class="badge">27</span></a>
 
   </li>
         <li class="menu-item menu-item-categories">
 
-    <a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>分类<span class="badge">11</span></a>
+    <a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>分类<span class="badge">12</span></a>
 
   </li>
         <li class="menu-item menu-item-archives">
 
-    <a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档<span class="badge">19</span></a>
+    <a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档<span class="badge">20</span></a>
 
   </li>
   </ul>
@@ -187,20 +187,20 @@
       <div class="site-state-item site-state-posts">
           <a href="/archives/">
         
-          <span class="site-state-item-count">19</span>
+          <span class="site-state-item-count">20</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
       <div class="site-state-item site-state-categories">
             <a href="/categories/">
           
-        <span class="site-state-item-count">11</span>
+        <span class="site-state-item-count">12</span>
         <span class="site-state-item-name">分类</span></a>
       </div>
       <div class="site-state-item site-state-tags">
             <a href="/tags/">
           
-        <span class="site-state-item-count">26</span>
+        <span class="site-state-item-count">27</span>
         <span class="site-state-item-name">标签</span></a>
       </div>
   </nav>
@@ -229,6 +229,119 @@
 
 
     <div class="main-inner index posts-expand">
+
+    
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://kylepeng93.github.io/2021/01/10/spring-mvc-annotation/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="彭凯">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="成长日记">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          <a href="/2021/01/10/spring-mvc-annotation/" class="post-title-link" itemprop="url">springmvc注解学习</a>
+        </h2>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">发表于</span>
+      
+
+      <time title="创建时间：2021-01-10 12:40:33 / 修改时间：14:59:21" itemprop="dateCreated datePublished" datetime="2021-01-10T12:40:33+08:00">2021-01-10</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">分类于</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/spring%E6%A1%86%E6%9E%B6/" itemprop="url" rel="index"><span itemprop="name">spring框架</span></a>
+        </span>
+    </span>
+
+  
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+          <h2 id="annotation-driven"><a href="#annotation-driven" class="headerlink" title="annotation-driven"></a>annotation-driven</h2><p>配置注解驱动的Spring MVC控制器编程模型。</p>
+<p>可选参数：</p>
+<ul>
+<li>conversion-service：指定字段转换服务</li>
+<li>validator：指定自定义的校验类，用来校验控制器中的model对象，默认使用<code>JSR-303</code>校验</li>
+</ul>
+<h2 id="resources"><a href="#resources" class="headerlink" title="resources"></a>resources</h2><p>配置静态资源的处理器，比如说图片、js、css，通过对缓存头进行优化，提升浏览器的加载速度。允许Spring资源处理器能够识别任何指定路径下的静态资源。</p>
+<p>可选参数：</p>
+<ul>
+<li>mapping：必须，指定URL的映射方式，基于当前的Servlet上下文，比如<code>/resources/**</code>则表示需要在url中加上resources，然后追加静态资源相对于根路经的目录结构路径。</li>
+<li>location：必须，指定静态资源的物理路径，多个路径可以使用逗号隔开，放在前面的会被优先读取（如果有两个同名的文件，会优先读取放在前面的路径下的文件），例如：<code>/,classpath:/META-INF/public-web-resources/</code>，将会读取位于web应用根路径下的静态资源以及类路径下的所有Jar包中<code>/META-INF/public-web-resources</code>目录下的文件，而web应用根路径下的文件优先级更高。</li>
+<li>cache-period：可选，指定静态资源的缓存策略。以秒为单位。默认情况下不会发送任何缓存头，而是取决于文件上次修改的时间戳。如果将该属性的值设为0,则会发送值为<code>prevent-cacheing</code>的缓存头。如果是大于0的值，则会发送<code>max-age</code>为该值的缓存头。</li>
+<li>order：可选，指定资源处理器的顺序。</li>
+</ul>
+<h2 id="default-servlet-handler"><a href="#default-servlet-handler" class="headerlink" title="default-servlet-handler"></a>default-servlet-handler</h2><p>用来配置处理静态资源的处理器（handler），通过将请求重定向到容器默认的servlet。使用这个处理器允许<code>/</code>映射与<code>DispatcherServlet</code>一起使用，同时仍利用Servlet容器提供静态资源服务。</p>
+<p>可用属性：</p>
+<ul>
+<li><p>default-servlet-name：可以重定向客户端静态资源请求的默认Servlet。默认的处理器在启动时会自动检测容器默认的Servlet（通过一个预定义的名字列表）。只有在默认但Servlet无法被检测到的情况下，才需要明确指定默认Servlet的名字。</p>
+</li>
+<li><p>interceptors：注册自定义的拦截器（父标签）</p>
+<ul>
+<li><p>interceptor：自定义拦截器必须继承HandlerInterceptor类或者实现WebRequestInterceptor接口。</p>
+<p>可用属性</p>
+<ul>
+<li>mapping：<ul>
+<li>path：指定被拦截的url路径，例如<code>/myPath</code>或者<code>/myPath/**</code></li>
+<li>ref：指定bean的引用。</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<h2 id="view-controller"><a href="#view-controller" class="headerlink" title="view-controller"></a>view-controller</h2><p>用来定义渲染返回视图的简单控制器</p>
+<p>可用属性：</p>
+<ul>
+<li>path：必须。被映射的URL路径。</li>
+<li>view-name：可选。被渲染的视图名，如果不指定，则通过当前HttpServletRequest对应的DispatcherServlet的RequestToViewNameTranslator来决定。</li>
+</ul>
+
+      
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+</div>
+
+
+
 
     
 
