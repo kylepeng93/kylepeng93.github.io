@@ -597,4 +597,12 @@ dict是客户端，dictd是dict的后台服务器。默认安装之后是不带�
         <tag>模式</tag>
       </tags>
   </entry>
+  <entry>
+    <title>jenkins学习笔记</title>
+    <url>/2021/03/30/jenkins-study-notes/</url>
+    <content><![CDATA[<h2 id=""><a href="#" class="headerlink" title=""></a></h2>]]></content>
+      <tags>
+        <tag>jenkins</tag>
+      </tags>
+  </entry>
 </search>
