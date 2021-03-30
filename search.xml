@@ -1,0 +1,600 @@
+<?xml version="1.0" encoding="utf-8"?>
+<search>
+  <entry>
+    <title>curl命令常见用法</title>
+    <url>/2021/01/08/curl-command-usage/</url>
+    <content><![CDATA[<h2 id="发送post请求"><a href="#发送post请求" class="headerlink" title="发送post请求"></a>发送post请求</h2><ul>
+<li>参数类型为<code>application/json</code></li>
+</ul>
+<ol>
+<li><p>常规用法：</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">curl -d <span class="string">&#x27;&#123;&quot;key1&quot;:&quot;value1&quot;, &quot;key2&quot;: &quot;value2&quot;&#125;&#x27;</span> -H <span class="string">&quot;Content-Type: application/json&quot;</span> -X POST http://localhost:8080/your_interface_name</span><br></pre></td></tr></table></figure></li>
+<li><p>使用json文件：</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">curl -d <span class="string">&quot;@data.json&quot;</span> -X POST http://localhost:8080/your_interface_name</span><br></pre></td></tr></table></figure>
+<blockquote>
+<p><strong>data.json</strong></p>
+<hr>
+<figure class="highlight json"><table><tr><td class="code"><pre><span class="line">&#123;</span><br><span class="line">    <span class="attr">&quot;key1&quot;</span>: <span class="string">&quot;value1&quot;</span>,</span><br><span class="line">    <span class="attr">&quot;key2&quot;</span>: <span class="string">&quot;value2&quot;</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></blockquote>
+</li>
+</ol>
+<ul>
+<li>参数类型为<code>application/x-www-form-urlencoded</code></li>
+</ul>
+<ol>
+<li><p>常规用法：</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">curl -d <span class="string">&quot;param1=value1&amp;param2=value2&quot;</span> -X POST http://localhost:8080/your_interface_name</span><br></pre></td></tr></table></figure></li>
+<li><p>使用data文件：</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">curl -d <span class="string">&quot;@data.txt&quot;</span> -X POST http://localhost/your_interface_name</span><br></pre></td></tr></table></figure>
+<blockquote>
+<p><strong>data.txt</strong></p>
+<hr>
+<p>param1=value1&amp;param2=value2</p>
+</blockquote>
+</li>
+</ol>
+]]></content>
+      <categories>
+        <category>linux命令</category>
+      </categories>
+      <tags>
+        <tag>linux</tag>
+        <tag>curl</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>如何vps上搭建自己的git服务器</title>
+    <url>/2020/12/29/how-to-set-up-a-private-git-server-on-your-vps/</url>
+    <content><![CDATA[<h2 id="介绍"><a href="#介绍" class="headerlink" title="介绍"></a>介绍</h2>]]></content>
+      <categories>
+        <category>linux</category>
+      </categories>
+      <tags>
+        <tag>git</tag>
+        <tag>vps</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>FormattingConversionService类的使用</title>
+    <url>/2021/01/10/formattingConversionService/</url>
+    <content><![CDATA[<h2 id="它是什么"><a href="#它是什么" class="headerlink" title="它是什么"></a>它是什么</h2><p>Spring MVC框架中用来解析方法参数的service类。</p>
+<h2 id="它有什么用"><a href="#它有什么用" class="headerlink" title="它有什么用"></a>它有什么用</h2><p>当我们在Spring的配置文件中添加<code><mvc:annotation-driven /></code>时，如果我们没有明确指定<code>conversion-service</code>属性的值，那么Spring MVC框架会自动使用默认的FormattingConversionService类，它包含了常用的转换方法，将字段转换成标准的JDK类型，另外，如果我们需要<code>date/time</code>的转换器，可以在类路径下引入<code>Joda Time</code>的时间库，它会被默认识别。</p>
+<h2 id="使用场合"><a href="#使用场合" class="headerlink" title="使用场合"></a>使用场合</h2><p>如果我们不需要在字段绑定期间使用自定义的类型转换器，那么我们完全可以使用默认的类。</p>
+<p>如果我们需要自定义格式转换器类的话，我们可以继承该类，并将<code><mvc:annotation /></code>注解中<code>conversion-service</code>属性的值设为我们自己的类（使用类路径引入）。</p>
+<p>如果使用的是SpringBoot自动装配的话，则需要在自定义的类上加上<code>@Configuration</code>注解，并使用<code>DateTimeFormatterRegistrar</code>注册器注册我们自定义的日期解析器。然后使用<code>@Autowired</code>添加到Spring容器中。</p>
+]]></content>
+      <categories>
+        <category>spring原理</category>
+      </categories>
+      <tags>
+        <tag>springmvc</tag>
+        <tag>util</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>java知识点速记</title>
+    <url>/2021/01/07/java-point/</url>
+    <content><![CDATA[<h2 id="java-bean和pojo的区别"><a href="#java-bean和pojo的区别" class="headerlink" title="java bean和pojo的区别"></a>java bean和pojo的区别</h2><p>一、 定义</p>
+<ul>
+<li><p><code>POJO</code>是<code>Plain Old Java Object</code>的缩写，它主要用来强调某个对象是一个普通的Java对象，而不是一个特殊的对象，尤其不是一个EJB。</p>
+<p>这个术语以其简单易懂的特性被广泛接受并使用，并用来区别那些复杂的对象框架。</p>
+</li>
+<li><p>一个<code>JavaBean</code>是一个可以被序列化的<code>POJO</code>。有一个默认的无参构造器，并允许使用Getter和Setter方法访问属性。</p>
+<p>对于EJB来说，<code>JavaBean</code>并不是一个单独的类，而是整个组件模型。</p>
+<p>JavaBean是java构建程序中可重用的软件组件，实际开发过程中，它们是使用java语言编写并符合某个约定的类。它们被用来封装一些对象到单个对象（也就是bean）中。</p>
+</li>
+</ul>
+<p>二、 用法</p>
+<ul>
+<li><code>POJO</code>主要被用来表明一个java对象不需要跟随任何java对象模型、约定或者框架。最理想的情况，一个<code>POJO</code>应该是一个不和任何框架绑定的java对象，并遵循以下原则：<ol>
+<li>不应该继承某个指定的类，比如HttpServlet；</li>
+<li>不应该实现指定的接口，比如EntityBean；</li>
+<li>不应该包含某些框架的注解。</li>
+</ol>
+</li>
+<li>JavaBean应该遵循以下原则：<ol>
+<li>必须有一个公共的默认构造器，便于实例化；</li>
+<li>属性必须可以通过Getter和Setter或者其他的可以访问并修改的方法进行控制，并遵循标准的命名规范，以便于框架对其进行自动化管理和状态的更新；</li>
+<li>必须可以被序列化，以便于应用和框架以一种独立于VM和操作系统的方式对其进行可靠的保存、存储以及恢复bean的状态。</li>
+</ol>
+</li>
+</ul>
+<p>对于业务程序员来说，这两种类型的java对象其实可以等同，或者说POJO更多强调的是一种业务概念，而JavaBean则属于java编程语言的特性。</p>
+]]></content>
+      <categories>
+        <category>java学习笔记</category>
+      </categories>
+      <tags>
+        <tag>java</tag>
+        <tag>概念</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>jsp-tag-usage-1</title>
+    <url>/2021/01/08/jsp-tag-usage-1/</url>
+    <content><![CDATA[]]></content>
+  </entry>
+  <entry>
+    <title>mybatis原理学习笔记</title>
+    <url>/2021/01/04/mybatis-theory-interview/</url>
+    <content><![CDATA[<h2 id="mybatis的执行原理："><a href="#mybatis的执行原理：" class="headerlink" title="mybatis的执行原理："></a>mybatis的执行原理：</h2><p>通常一个Mapper接口对应一个xml文件，Mapper接口中的方法名对应xml中的标签id，而xml中的每一个标签都会被解析为MapperStatement对象。通过xml中定义的namespace属性，可以和接口方法的执行路径相对应。而这个路径应该具有唯一性，<strong>所以Mapper接口中的方法不能被重载</strong>。Mapper接口的工作原理是JDK动态代理，Mybatis运行时会使用JDK动态代理为Mapper接口生成代理对象，代理对象会拦截接口方法，转而执行MapperStatement所代表的sql语句，然后将执行结果返回。</p>
+<h2 id="mybatis的分页原理："><a href="#mybatis的分页原理：" class="headerlink" title="mybatis的分页原理："></a>mybatis的分页原理：</h2><p>Mybatis使用RowBounds对象进行分页，它是针对ResultSet结果集执行的内容分页，而非物理分页。</p>
+<h2 id="mybatis-pagehelper插件的实现原理："><a href="#mybatis-pagehelper插件的实现原理：" class="headerlink" title="mybatis-pagehelper插件的实现原理："></a>mybatis-pagehelper插件的实现原理：</h2><p>使用mybatis提供的插件接口，实现自定义插件，在插件内拦截待执行的sql,然后重写sql,根据dialect方言，添加对应的物理分页语句和物理分页参数。</p>
+<h2 id=""><a href="#" class="headerlink" title=""></a></h2>]]></content>
+      <categories>
+        <category>数据库</category>
+      </categories>
+      <tags>
+        <tag>java</tag>
+        <tag>mybatis</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>netty高性能web服务器介绍</title>
+    <url>/2021/01/09/netty-intro/</url>
+    <content><![CDATA[<h2 id="1-什么是netty"><a href="#1-什么是netty" class="headerlink" title="1. 什么是netty"></a>1. 什么是netty</h2><p>Netty是一个异步的事件驱动网络应用框架。</p>
+<p>它的主要用途是构建高性能协议服务器，并通过基于隔离和松耦合的网络和业务逻辑组件的NIO（非阻塞输入输出）技术实现这一点。它可以实现广为人知的Http协议或者我们自定义的协议。</p>
+<h2 id="2-netty的核心概念"><a href="#2-netty的核心概念" class="headerlink" title="2. netty的核心概念"></a>2. netty的核心概念</h2><p>netty是一个非阻塞式框架，和阻塞式IO相比，它拥有更高的吞吐量。理解非阻塞式IO是掌握Netty的核心组件以及他们之间的关系的关键所在。</p>
+<h3 id="2-1-Channel（通道）"><a href="#2-1-Channel（通道）" class="headerlink" title="2.1 Channel（通道）"></a>2.1 Channel（通道）</h3><p>Channel是NIO的基石，它代表了一个拥有IO（读和写）处理能力的开放连接。</p>
+<h3 id="2-2-Future"><a href="#2-2-Future" class="headerlink" title="2.2 Future"></a>2.2 Future</h3><p><strong>对于Netty来说，Channel中的每一个连接都是非阻塞的。</strong></p>
+<p>这意味着每个操作在调用之后都会立刻返回。标准Java库中有一个Future的接口，但是它并不能方便的完成Netty的意图，因为我们只能通过这个接口去查询操作是否已完成或者阻塞当前线程直到操作完成。</p>
+<p>基于上面的原因，Netty实现了自己的ChannelFuture接口。我们可以通过回调函数告诉ChannelFuture，一旦操作完成，将要执行的操作。</p>
+<h3 id="2-3-事件和处理器"><a href="#2-3-事件和处理器" class="headerlink" title="2.3 事件和处理器"></a>2.3 事件和处理器</h3><p>Netty使用了基于事件驱动的应用模式，因此数据处理的管道（pipeline）本质上是贯穿处理器（handler）的一连串事件的链（chain）。事件和处理器类似于数据的流入以及流出。流入事件可以是下面的几种：</p>
+<ul>
+<li>通道的激活和失活</li>
+<li>读事件</li>
+<li>异常事件</li>
+<li>用户事件</li>
+</ul>
+<p>流出事件则比较简单，一般类似于打开或者关闭连接以及写入数据。</p>
+<p>Netty应用包含了几个网络和应用的逻辑事件以及他们对应的处理器。channel事件处理器可以使用的基础接口分别是ChannelHandler和它的祖先ChannelOutboundHandler和ChannelInboundHandler。</p>
+<p>Netty提供了大量的ChannelHandler接口的实现类。值得注意的是，适配器只是空的实现，例如ChannelInboundHandlerAdapter和ChannelOutboundHandlerAdapter。我们可以继承这些适配器当我们只需要处理所有事件集合中的子集。</p>
+<p>同样，Netty包含了某些指定协议的具体实现，比如Http。HttpRequestDecoder，HttpResponseEncoder，HttpObjectAggregator。你可以通过Netty的javaDoc去了解他们的用法。</p>
+<h3 id="2-4-编码器和解码器"><a href="#2-4-编码器和解码器" class="headerlink" title="2.4 编码器和解码器"></a>2.4 编码器和解码器</h3><p>当我们使用网络协议时，我们需要对数据进行序列化和反序列化。出于这个目的，Netty引进了一个特殊的解码拓展类ChannelInboundHandler，它可以对进来的数据进行解码。大多数解码器的基类是ByteToMessageDecoder。</p>
+<p>为了编码出去的数据，Netty也提供了一个特殊的编码实现类ChannelOutboundHandler。MessageToByteEncoder是大多数编码实现类的基类。通过编码器和解码器，我们可以将信息从字节序列转换成java对象，反之亦然。</p>
+]]></content>
+      <categories>
+        <category>javaweb</category>
+      </categories>
+      <tags>
+        <tag>netty</tag>
+        <tag>server</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>redis命令学习</title>
+    <url>/2021/01/03/redis-commander-study/</url>
+    <content><![CDATA[<h2 id="redis存储string类型的值"><a href="#redis存储string类型的值" class="headerlink" title="redis存储string类型的值"></a>redis存储string类型的值</h2><ol>
+<li><p>存值：</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="built_in">set</span> key value</span><br></pre></td></tr></table></figure></li>
+<li><p>取值：</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">get key</span><br></pre></td></tr></table></figure></li>
+<li><p>返回key中的部分字符串:</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">getrange key start end</span><br></pre></td></tr></table></figure>
+<div class="note info"><p>start从0开始，且返回的内容中包含索引为end的字符。</p>
+</div>
+</li>
+<li><p>取出旧值并返回新值：</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">getset key new_value</span><br></pre></td></tr></table></figure></li>
+<li><p>取出key对应的值，并返回指定偏移量上的位(bit)：</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">getbit key offset</span><br></pre></td></tr></table></figure></li>
+<li><p>一次性取出多个值</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">mget key1 key2 ...</span><br></pre></td></tr></table></figure></li>
+<li><p>当key不存在时才设值：</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">setnx key value</span><br></pre></td></tr></table></figure>
+</li>
+</ol>
+]]></content>
+      <categories>
+        <category>数据库</category>
+      </categories>
+      <tags>
+        <tag>redis</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>Spring框架中的异常处理方式</title>
+    <url>/2021/01/09/spring-exception-handle/</url>
+    <content><![CDATA[<h2 id="1-在控制层验证参数"><a href="#1-在控制层验证参数" class="headerlink" title="1. 在控制层验证参数"></a>1. 在控制层验证参数</h2><p>@RequestParam(“arg”)可以用来限制调用方只能使用arg作为参数名来调用接口。</p>
+]]></content>
+      <categories>
+        <category>spring框架</category>
+      </categories>
+      <tags>
+        <tag>spring</tag>
+        <tag>exception</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>springmvc注解学习</title>
+    <url>/2021/01/10/spring-mvc-annotation/</url>
+    <content><![CDATA[<h2 id="annotation-driven"><a href="#annotation-driven" class="headerlink" title="annotation-driven"></a>annotation-driven</h2><p>配置注解驱动的Spring MVC控制器编程模型。</p>
+<p>可选参数：</p>
+<ul>
+<li>conversion-service：指定字段转换服务</li>
+<li>validator：指定自定义的校验类，用来校验控制器中的model对象，默认使用<code>JSR-303</code>校验</li>
+</ul>
+<h2 id="resources"><a href="#resources" class="headerlink" title="resources"></a>resources</h2><p>配置静态资源的处理器，比如说图片、js、css，通过对缓存头进行优化，提升浏览器的加载速度。允许Spring资源处理器能够识别任何指定路径下的静态资源。</p>
+<p>可选参数：</p>
+<ul>
+<li>mapping：必须，指定URL的映射方式，基于当前的Servlet上下文，比如<code>/resources/**</code>则表示需要在url中加上resources，然后追加静态资源相对于根路经的目录结构路径。</li>
+<li>location：必须，指定静态资源的物理路径，多个路径可以使用逗号隔开，放在前面的会被优先读取（如果有两个同名的文件，会优先读取放在前面的路径下的文件），例如：<code>/,classpath:/META-INF/public-web-resources/</code>，将会读取位于web应用根路径下的静态资源以及类路径下的所有Jar包中<code>/META-INF/public-web-resources</code>目录下的文件，而web应用根路径下的文件优先级更高。</li>
+<li>cache-period：可选，指定静态资源的缓存策略。以秒为单位。默认情况下不会发送任何缓存头，而是取决于文件上次修改的时间戳。如果将该属性的值设为0,则会发送值为<code>prevent-cacheing</code>的缓存头。如果是大于0的值，则会发送<code>max-age</code>为该值的缓存头。</li>
+<li>order：可选，指定资源处理器的顺序。</li>
+</ul>
+<h2 id="default-servlet-handler"><a href="#default-servlet-handler" class="headerlink" title="default-servlet-handler"></a>default-servlet-handler</h2><p>用来配置处理静态资源的处理器（handler），通过将请求重定向到容器默认的servlet。使用这个处理器允许<code>/</code>映射与<code>DispatcherServlet</code>一起使用，同时仍利用Servlet容器提供静态资源服务。</p>
+<p>可用属性：</p>
+<ul>
+<li><p>default-servlet-name：可以重定向客户端静态资源请求的默认Servlet。默认的处理器在启动时会自动检测容器默认的Servlet（通过一个预定义的名字列表）。只有在默认但Servlet无法被检测到的情况下，才需要明确指定默认Servlet的名字。</p>
+</li>
+<li><p>interceptors：注册自定义的拦截器（父标签）</p>
+<ul>
+<li><p>interceptor：自定义拦截器必须继承HandlerInterceptor类或者实现WebRequestInterceptor接口。</p>
+<p>可用属性</p>
+<ul>
+<li>mapping：<ul>
+<li>path：指定被拦截的url路径，例如<code>/myPath</code>或者<code>/myPath/**</code></li>
+<li>ref：指定bean的引用。</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<h2 id="view-controller"><a href="#view-controller" class="headerlink" title="view-controller"></a>view-controller</h2><p>用来定义渲染返回视图的简单控制器</p>
+<p>可用属性：</p>
+<ul>
+<li>path：必须。被映射的URL路径。</li>
+<li>view-name：可选。被渲染的视图名，如果不指定，则通过当前HttpServletRequest对应的DispatcherServlet的RequestToViewNameTranslator来决定。</li>
+</ul>
+]]></content>
+      <categories>
+        <category>spring框架</category>
+      </categories>
+      <tags>
+        <tag>springmvc</tag>
+        <tag>annotation</tag>
+        <tag>javaweb</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>在docker中使用mysql</title>
+    <url>/2021/01/12/use-mysql-inside-docker/</url>
+    <content><![CDATA[<h2 id="什么是容器"><a href="#什么是容器" class="headerlink" title="什么是容器"></a>什么是容器</h2><p>容器是一种标准化的软件单元，它允许开发者将他们的应用的执行环境和机器环境隔离开来，可以解决类似”它在我机器上工作的好好的“的抱怨。而Docker是目前容器领域的实际标准。</p>
+<p>Docker的另外一个重要的用途是开发者可以下载并运行任何容器化的应用，而不用在他们的本地安装。因此很多应用都实现了容器化版本。</p>
+]]></content>
+      <categories>
+        <category>容器技术</category>
+      </categories>
+      <tags>
+        <tag>docker</tag>
+        <tag>mysql</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>如何使用openssh进行远程连接</title>
+    <url>/2020/12/27/ssh-manual/</url>
+    <content><![CDATA[<h2 id="SSH连接的建立方式"><a href="#SSH连接的建立方式" class="headerlink" title="SSH连接的建立方式"></a>SSH连接的建立方式</h2><p>ssh可以通过密码和密钥（更加安全）这两种方式建立起客户端与 服务端的连接。</p>
+<h2 id="SSH连接的实现过程（假设通过密钥的方式连接）"><a href="#SSH连接的实现过程（假设通过密钥的方式连接）" class="headerlink" title="SSH连接的实现过程（假设通过密钥的方式连接）"></a>SSH连接的实现过程（假设通过密钥的方式连接）</h2><ol>
+<li>当客户端发起一个ssh连接请求时，它首先会告诉服务端需要使用的公钥；</li>
+<li>然后服务端会检查它的<code>~/authorized_keys</code>文件，这个文件中包含了所有已经保存的客户端公钥，一个公钥占据一行，这些公钥所对应的客户端可以实现免验证登录。</li>
+<li>服务端如果在文件中找到了请求客户端所对应的公钥，就会生成一个随机字符串，并使用找到的公钥进行加密。这个加密后的信息只能被请求客户端的私钥所解密，然后服务端将这个加密后的字符串发送给请求客户端，以此来验证该客户端是否拥有私钥。</li>
+<li>客户端收到来自服务端的加密字符串之后，会立即使用自己的私钥进行解密，并将解密后的随机字符串与之前协商好的会话id结合，生成一个md5加密的hash值，并回传给服务端。</li>
+<li>由于服务端已经知道加密之前的随机字符串和会话id，因此，服务端会在本地将这个随机字符串和会话id进行hash，然后和客户端传过来的值进行比较，如果一致，则表示请求客户端确实拥有私钥，并允许建立连接。<a id="more"></a>
+<h2 id="生成SSH密码对"><a href="#生成SSH密码对" class="headerlink" title="生成SSH密码对"></a>生成SSH密码对</h2>有几种加密算法可以用来生成SSH密钥，例如RSA、DSA、ECDSA，默认情况下使用RSA加密算法。<br>使用如下命令可以生成一个默认的密钥：</li>
+</ol>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ ssh-keygen</span><br></pre></td></tr></table></figure>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">Generating public/private rsa key pair.</span><br><span class="line">Enter file <span class="keyword">in</span> <span class="built_in">which</span> to save the key (/home/demo/.ssh/id_rsa):</span><br></pre></td></tr></table></figure>
+<p>这里可以指定密钥文件的保存位置。默认是<code>~/.ssh/id_rsa</code>。<br>点击<code>enter</code>进入下一步：</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">Enter passphrase (empty <span class="keyword">for</span> no passphrase):</span><br><span class="line">Enter same passphrase again:</span><br></pre></td></tr></table></figure>
+<p>这里可以指定密钥的密码短语，即在密码之上再加一层密码验证，增强密钥的安全性。<br>点击<code>enter</code>进入下一步：</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">Your identification has been saved <span class="keyword">in</span> /root/.ssh/id_rsa.</span><br><span class="line">Your public key has been saved <span class="keyword">in</span> /root/.ssh/id_rsa.pub.</span><br><span class="line">The key fingerprint is:</span><br><span class="line">8c:e9:7c:fa:bf:c4:e5:9c:c9:b8:60:1f:fe:1c:d3:8a root@here</span><br><span class="line">The key<span class="string">&#x27;s randomart image is:</span></span><br><span class="line"><span class="string">+--[ RSA 2048]----+</span></span><br><span class="line"><span class="string">|                 |</span></span><br><span class="line"><span class="string">|                 |</span></span><br><span class="line"><span class="string">|                 |</span></span><br><span class="line"><span class="string">|       +         |</span></span><br><span class="line"><span class="string">|      o S   .    |</span></span><br><span class="line"><span class="string">|     o   . * +   |</span></span><br><span class="line"><span class="string">|      o + = O .  |</span></span><br><span class="line"><span class="string">|       + = = +   |</span></span><br><span class="line"><span class="string">|      ....Eo+    |</span></span><br><span class="line"><span class="string">+-----------------+</span></span><br></pre></td></tr></table></figure>
+<p>这时，你的密钥对就算生成成功了。生成的文件如下：</p>
+<ul>
+<li><code>~/.ssh/id_rsa</code>:存放你的私钥。<strong>只能你自己知道</strong>。</li>
+<li><code>~/.ssh/id_rsa.pub</code>:存放你的公钥，可以让其他人知道。<h2 id="使用更长的位数生成你的密钥对"><a href="#使用更长的位数生成你的密钥对" class="headerlink" title="使用更长的位数生成你的密钥对"></a>使用更长的位数生成你的密钥对</h2>默认情况下，ssh-keyken使用2048的位长度生成密钥对。这一默认值大多数场合已经足够安全，但是，我们在某些特殊场景下仍然可以使用更大的位长度来增强我们服务器的安全性。<br>为了做到这一点，我们可以使用<code>-b</code>参数来指定我们需要的位长度。<br>比如：<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ ssh-keygen -b 4096</span><br></pre></td></tr></table></figure>
+如果你之前已经生成过一个密钥对，那么这里会提示你是否需要覆盖你之前的键：<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">Overrite(Y/n)?</span><br></pre></td></tr></table></figure>
+如果你选择是，那你之前的文件会被覆写，导致你再也无法使用之前的密钥登录到之前的服务器，因此，一定要小心之前的密钥是否需要保留。<h2 id="移除或者修改私钥的密码短语-passphase"><a href="#移除或者修改私钥的密码短语-passphase" class="headerlink" title="移除或者修改私钥的密码短语(passphase)"></a>移除或者修改私钥的密码短语(passphase)</h2>如果你已经为你的私钥指定了一个密码短语，该怎么修改或者直接删除这个密码短语呢？<div class="note info"><p>为了修改或移除密码短语，你必须知道原来的密码短语。如果你忘记了原来的密码短语，你将无法再次使用该密钥，必须重新生成新的密钥。</p>
+</div>
+通过下面的命令：<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ ssh-keygen -p</span><br></pre></td></tr></table></figure>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">Enter file <span class="keyword">in</span> <span class="built_in">which</span> the key is (/root/.ssh/id_rsa):</span><br></pre></td></tr></table></figure>
+你可以指定密钥的位置，或者直接按<code>Enter</code>接受默认的位置。<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">Enter old passphrase:</span><br></pre></td></tr></table></figure>
+输入你希望修改的旧密码，然后你会被提示输入一个新的密码短语：<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">Enter new passphrase (empty <span class="keyword">for</span> no passphrase):</span><br><span class="line">Enter same passphrase again:</span><br></pre></td></tr></table></figure>
+至此，输入你的新密码短语或者按<code>Enter</code>来移除密码短语。<h2 id="展示SSH密钥的手印（Fingerprint）"><a href="#展示SSH密钥的手印（Fingerprint）" class="headerlink" title="展示SSH密钥的手印（Fingerprint）"></a>展示SSH密钥的手印（Fingerprint）</h2>每个SSH密钥对共享一个密码形式的“手印”，它可以被用来唯一标识密钥对。这在有些情况下会很有用。<br>为了查看现有的密钥对，你可以执行：<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ ssh-keygen -l</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">Enter file in which the key is (&#x2F;root&#x2F;.ssh&#x2F;id_rsa):</span><br></pre></td></tr></table></figure>
+你可以直接按<code>Enter</code>选择默认的密钥的位置，或者输入你期望的位置。之后你会得到包含了密钥的位长、手印和帐号以及所选主机和使用的算法的字符串：<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">4096 8e:c4:82:47:87:c2:26:4b:68:ff:96:1a:39:62:9e:4e  demo@<span class="built_in">test</span> (RSA)</span><br></pre></td></tr></table></figure>
+<h2 id="使用SSH-Copy-ID复制公钥到服务器"><a href="#使用SSH-Copy-ID复制公钥到服务器" class="headerlink" title="使用SSH-Copy-ID复制公钥到服务器"></a>使用SSH-Copy-ID复制公钥到服务器</h2>通过将你的公钥复制到服务器，可以让你不用输入密码就可以通过认证，有很多方法可以实现这一点。<br>如果你当前有一个基于密码的SSH远程服务器访问方式，并且你已经安装了ssh-copy-id工具，那么你就可以很容易的实现这一点。而且ssh-copy-id已经预装到了大多数的linux发行版中。<br>通过下面的命令可以实现这一点：<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ ssh-copy-id username@remote_host</span><br></pre></td></tr></table></figure>
+随后会提示你输入当前用户在远程服务器上的密码，正确输入之后，你本地的公钥就会被添加到服务器用户的<code>~/.ssh/authorized_keys</code>文件中，之后，你就可以不用输入密码也能登录到远程服务器了。<h2 id="不通过ssh-copy-id命令将公钥添加到远程服务器"><a href="#不通过ssh-copy-id命令将公钥添加到远程服务器" class="headerlink" title="不通过ssh-copy-id命令将公钥添加到远程服务器"></a>不通过ssh-copy-id命令将公钥添加到远程服务器</h2>如果你没有安装ssh-copy-id命令行工具，那你应该怎么样将你的公钥上传到远程服务器呢？通过linux中的管道命令，我们可以实现这一点。</li>
+</ul>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ cat ~/.ssh/id_rsa.pub | ssh username@remote_host <span class="string">&quot;mkdir -p ~/.ssh &amp;&amp; ~/.ssh/authorized_keys&quot;</span></span><br></pre></td></tr></table></figure>
+<p>随后根据提示输入远程主机的用户名密码：</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">The authenticity of host <span class="string">&#x27;111.111.11.111 (111.111.11.111)&#x27;</span> can<span class="string">&#x27;t be established.</span></span><br><span class="line"><span class="string">ECDSA key fingerprint is fd:fd:d4:f9:77:fe:73:84:e1:55:00:ad:d6:6d:22:fe.</span></span><br><span class="line"><span class="string">Are you sure you want to continue connecting (yes/no)? yes</span></span><br><span class="line"><span class="string">demo@111.111.11.111&#x27;</span>s password:</span><br></pre></td></tr></table></figure>
+<p>如果添加成功，你之后的登录将无需再次输入密码，而是简单的通过如下命令：</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ ssh username@remote_ip_host</span><br></pre></td></tr></table></figure>
+<h2 id="手动将你的密钥复制到服务器"><a href="#手动将你的密钥复制到服务器" class="headerlink" title="手动将你的密钥复制到服务器"></a>手动将你的密钥复制到服务器</h2><p>如果你没有可用的基于密码访问的SSH连接，你将必须手动将你的公钥复制到远程服务器。<br>打开你的本地终端，输入下面的命令：</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ cat ~/.ssh/id_rsa.pub</span><br></pre></td></tr></table></figure>
+<p>将输出到屏幕上的公钥复制到剪贴板，然后通过工具（一般是服务器供应商提供的web面板）连接到远程服务器，并在远程服务器的<code>~/.ssh/</code>（如果不存在就新建）目录下面创建<code>authorized_keys</code>文件。最后将你复制的公钥粘贴到该文件中，并保存。</p>
+<h2 id="基本的连接指令"><a href="#基本的连接指令" class="headerlink" title="基本的连接指令"></a>基本的连接指令</h2><p>接下来是针对SSH中一些比较常用的命令做个说明。</p>
+<h3 id="连接到指定的远程服务器"><a href="#连接到指定的远程服务器" class="headerlink" title="连接到指定的远程服务器"></a>连接到指定的远程服务器</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ ssh remote_host</span><br></pre></td></tr></table></figure>
+<p>这个命令会假设你当前机器的本地用户名和远程服务器上的用户名是一致的。如果不一致，请使用下面的命令。</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ ssh username@remote_host</span><br></pre></td></tr></table></figure>
+<p>这个命令会假设你要连接的远程服务器的端口号是22（ssh默认的端口号）。如果不是，请使用<code>-p your_port</code>指定你的自定义端口号。<br>如果服务器正常开启了ssh服务以及对应的监听端口，那么你会看到如下信息：</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">The authenticity of host <span class="string">&#x27;111.111.11.111 (111.111.11.111)&#x27;</span> can<span class="string">&#x27;t be established.</span></span><br><span class="line"><span class="string">ECDSA key fingerprint is fd:fd:d4:f9:77:fe:73:84:e1:55:00:ad:d6:6d:22:fe.</span></span><br><span class="line"><span class="string">Are you sure you want to continue connecting (yes/no)? yes</span></span><br></pre></td></tr></table></figure>
+<p>输入”yes”即可接受来自远程服务器的验证。<br>如果你使用了密码验证，那么你会被要求输入密码，如果你使用了公钥免登录，且设置了密码短语，那么你将同样被要求输入密码短语，否则，你将自动登录成功。</p>
+<h2 id="在远程服务器上执行单次命令"><a href="#在远程服务器上执行单次命令" class="headerlink" title="在远程服务器上执行单次命令"></a>在远程服务器上执行单次命令</h2><p>如果你只是想在远程服务器上执行单个命令，并不想开启一次远程会话。那么你可以通过下面的命令来完成：</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ ssh username@remote_host commander_to_run</span><br></pre></td></tr></table></figure>
+<p>这个命令会在连接上远程服务器之后立即执行后面的命令，随后便会关闭连接。</p>
+<h2 id="使用配置文件简化连接输入"><a href="#使用配置文件简化连接输入" class="headerlink" title="使用配置文件简化连接输入"></a>使用配置文件简化连接输入</h2><p>在<code>~/.ssh</code>目录下新建<code>config</code>文件（如果不存在的话），并输入如下内容：</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">Host remote_aliss <span class="comment"># 远程主机别名</span></span><br><span class="line">    HostName remote_host <span class="comment">#远程主机</span></span><br><span class="line">    Port port_num <span class="comment"># 端口号</span></span><br><span class="line">    User your_user <span class="comment"># 登录用户</span></span><br><span class="line">    IdentityFile ~/.ssh/id_rsa <span class="comment"># 要使用的密钥</span></span><br></pre></td></tr></table></figure>
+<p>配置完成之后，之后的连接只需要通过输入如下命令即可：</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ ssh remote_alias</span><br></pre></td></tr></table></figure>
+<h2 id="使用SSH-Agent保存密码短语，避免重复输入"><a href="#使用SSH-Agent保存密码短语，避免重复输入" class="headerlink" title="使用SSH Agent保存密码短语，避免重复输入"></a>使用SSH Agent保存密码短语，避免重复输入</h2><p>如果你对密钥使用了密码短语进行加密，那么你在每次建立SSH连接会话之前都会要求输入密码短语，为了简化连接过程，避免每次都要重复输入，你可以使用SSH Agent来保存你的密码短语。</p>
+]]></content>
+      <categories>
+        <category>生涯 SSH连接的建立方式</category>
+      </categories>
+      <tags>
+        <tag>linux</tag>
+        <tag>ssh</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>linux下使用crontab工具设置定时任务</title>
+    <url>/2021/03/04/cron-manual/</url>
+    <content><![CDATA[<h2 id="使用crontab添加定时任务"><a href="#使用crontab添加定时任务" class="headerlink" title="使用crontab添加定时任务"></a>使用crontab添加定时任务</h2><p>crontab -e</p>
+<h2 id="cron的格式说明"><a href="#cron的格式说明" class="headerlink" title="cron的格式说明"></a>cron的格式说明</h2><p>分钟 小时 月中日 月份 周中日 你的自动化脚本<br>取值范围：<br>分钟：0-59<br>小时：0-23<br>月中日：1-31<br>月份：1-12<br>周中日：0-6</p>
+<h2 id="在指定的时间点调度"><a href="#在指定的时间点调度" class="headerlink" title="在指定的时间点调度"></a>在指定的时间点调度</h2><p>30 08 10 12 * /home/pengkai/myjob.sh<br>上面的调度器会在12月10号的上午8点30分执行myjob.sh脚本。<br>注意，上面最后一个位置使用了*号来表示一周中的每一天。因为已经指定了具体的月日，所以不必再限制那一天是星期几。</p>
+<h2 id="查看当前用户下的所有调度任务"><a href="#查看当前用户下的所有调度任务" class="headerlink" title="查看当前用户下的所有调度任务"></a>查看当前用户下的所有调度任务</h2><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ crontab -l</span><br></pre></td></tr></table></figure>
+<p>或者以root用户查看其他用户的任务</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="comment"># crontab -u kyle -l</span></span><br></pre></td></tr></table></figure>
+<h2 id="每分钟执行一次调度"><a href="#每分钟执行一次调度" class="headerlink" title="每分钟执行一次调度"></a>每分钟执行一次调度</h2><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">* * * * * 你的脚本</span><br></pre></td></tr></table></figure>
+<h2 id="一天执行两次"><a href="#一天执行两次" class="headerlink" title="一天执行两次"></a>一天执行两次</h2><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">* 12,20 * * * 你的脚本</span><br></pre></td></tr></table></figure>
+<p>上面的命令会分别在中午12点晚上8点执行你的脚本</p>
+<h2 id="指定起止时间并按照固定间隔执行"><a href="#指定起止时间并按照固定间隔执行" class="headerlink" title="指定起止时间并按照固定间隔执行"></a>指定起止时间并按照固定间隔执行</h2><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">08-20 * * * 你的脚本</span><br></pre></td></tr></table></figure>
+<p>上面的命令会从8点开始执行，然后间隔一个小时再次执行，最后一直到晚上8点截止。</p>
+<h2 id="只在工作日的工作时间内执行"><a href="#只在工作日的工作时间内执行" class="headerlink" title="只在工作日的工作时间内执行"></a>只在工作日的工作时间内执行</h2><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">00 09-18 * * 1-5 你的脚本</span><br></pre></td></tr></table></figure>
+<p>从周一开始，每天从上午9点开始执行，然后每隔一个小时再次执行，最后一直到下午6点截止。如此往复到周五晚上6点停止执行。下周继续。</p>
+<h2 id="每隔10分钟执行一次"><a href="#每隔10分钟执行一次" class="headerlink" title="每隔10分钟执行一次"></a>每隔10分钟执行一次</h2><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">*/10 * * * * 你的脚本</span><br></pre></td></tr></table></figure>
+<h2 id="使用特殊字符指定调度周期"><a href="#使用特殊字符指定调度周期" class="headerlink" title="使用特殊字符指定调度周期"></a>使用特殊字符指定调度周期</h2><p>cron支持的特殊字符<br>@yearly = 0 0 1 1 * ：每年的1月1日执行<br>@daily = 0 0 * * * ： 每天的0点执行<br>@monthly = 0 0 1 * * ：每个月的1号的0点执行<br>@hourly = 0 * * * * ：每个小时执行一次<br>@reboot = 计算器启动时执行</p>
+]]></content>
+      <categories>
+        <category>linux</category>
+      </categories>
+      <tags>
+        <tag>linux</tag>
+        <tag>crontab</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>docker使用手冊</title>
+    <url>/2021/03/12/docker-manual/</url>
+    <content><![CDATA[<h2 id="启动docker实例"><a href="#启动docker实例" class="headerlink" title="启动docker实例"></a>启动docker实例</h2><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">sudo docker start 你的镜像名称</span><br></pre></td></tr></table></figure>
+<h2 id="关闭docker实例"><a href="#关闭docker实例" class="headerlink" title="关闭docker实例"></a>关闭docker实例</h2><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">sudo docker stop 你的镜像名称</span><br></pre></td></tr></table></figure>
+<h2 id="查看所有的本地镜像"><a href="#查看所有的本地镜像" class="headerlink" title="查看所有的本地镜像"></a>查看所有的本地镜像</h2><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">sudo docker ps -a</span><br></pre></td></tr></table></figure>
+<p>或者带上选项<code>q</code>则只会列出容器id（类似369a959e3402）</p>
+<h2 id="查看指定命令的帮助手册（有哪些可用选项）"><a href="#查看指定命令的帮助手册（有哪些可用选项）" class="headerlink" title="查看指定命令的帮助手册（有哪些可用选项）"></a>查看指定命令的帮助手册（有哪些可用选项）</h2><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">docker 你的命令 --<span class="built_in">help</span></span><br></pre></td></tr></table></figure>
+<h2 id="安装镜像"><a href="#安装镜像" class="headerlink" title="安装镜像"></a>安装镜像</h2><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">docker pull 镜像名</span><br></pre></td></tr></table></figure>
+<h2 id="安装并启动镜像"><a href="#安装并启动镜像" class="headerlink" title="安装并启动镜像"></a>安装并启动镜像</h2><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">docker run -it --name &lt;容器名称&gt; --hostname &lt;容器主机名&gt; -p 15672:15672 -p 5672:5672 镜像名称</span><br></pre></td></tr></table></figure>
+<p>注意，该命令会先在本地查找镜像是否已经存在，如果不存在，则从远程仓库下载，并创建该镜像的一个实例。其中，–name用来指定被创建容器的名称，–hostname被用来指定被创建容器的主机名，-p被用来映射容器端口和本地运行环境端口，最后的镜像名称为远程仓库中已存在的镜像名；-it,其中的i表示交互式运行，t表示开启一个伪终端。</p>
+<h2 id="删除指定的容器实例"><a href="#删除指定的容器实例" class="headerlink" title="删除指定的容器实例"></a>删除指定的容器实例</h2><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">docker rm 容器名称或者容器id</span><br></pre></td></tr></table></figure>
+<h2 id="挂载本地目录，并映射到容器内的存储目录"><a href="#挂载本地目录，并映射到容器内的存储目录" class="headerlink" title="挂载本地目录，并映射到容器内的存储目录"></a>挂载本地目录，并映射到容器内的存储目录</h2><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">docker run -it --name mongo -v /mongodb/data/db:/data/db -p 27017:27017 -d mongo:latest</span><br></pre></td></tr></table></figure>
+<p>该命令使用<code>-v</code>选项（volumn）将本地目录<code>/mongodb/data/db</code>挂载到容器内的目录<code>/data/db</code>，并使用<code>-d</code>选项将容器实例以后台进程的形式运行。</p>
+<h2 id="进入容器实例内部"><a href="#进入容器实例内部" class="headerlink" title="进入容器实例内部"></a>进入容器实例内部</h2><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">docker <span class="built_in">exec</span> -it mongodb bash</span><br></pre></td></tr></table></figure>
+<p>该命令会开启一个新的bash shell,而该bash shell对应的是容器内的环境。</p>
+]]></content>
+      <categories>
+        <category>docker</category>
+      </categories>
+      <tags>
+        <tag>linux</tag>
+        <tag>docker</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>设计模式学习手册</title>
+    <url>/2021/03/12/design-pattern-tutorial/</url>
+    <content><![CDATA[<h2 id="设计模式的类别"><a href="#设计模式的类别" class="headerlink" title="设计模式的类别"></a>设计模式的类别</h2><ul>
+<li>创造性模式（creational）<blockquote>
+<p>创造型模式控制了对象的创建和类的实例化；</p>
+</blockquote>
+</li>
+<li>结构性模式（structural）<blockquote>
+<p>结构型设计模式控制了类和对象之间的关系</p>
+</blockquote>
+</li>
+<li>表现型模式（behavioral)<blockquote>
+<p>表现型设计模式控制了对象之间的交流和交互</p>
+</blockquote>
+<h2 id="设计模式带来的影响范围——确定了解决方案的关注点"><a href="#设计模式带来的影响范围——确定了解决方案的关注点" class="headerlink" title="设计模式带来的影响范围——确定了解决方案的关注点"></a>设计模式带来的影响范围——确定了解决方案的关注点</h2></li>
+<li>对象层面的影响范围——解决对象关系的问题<br>作用于运行期间，对象拥有动态的行为</li>
+<li>类层面的影响范围——解决类关系的问题<br>作用于编译期间，类拥有静态的行为<h2 id=""><a href="#" class="headerlink" title=""></a></h2></li>
+</ul>
+]]></content>
+      <categories>
+        <category>java</category>
+      </categories>
+      <tags>
+        <tag>design pattern</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>gzip操作手册</title>
+    <url>/2021/03/13/gzip-manual/</url>
+    <content><![CDATA[<h2 id="gzip工具"><a href="#gzip工具" class="headerlink" title="gzip工具"></a>gzip工具</h2><p>gzip采用了最流行的压缩算法，可以让你缩小文件的大小，并且保留原始的文件模式，属主和时间戳。<br>使用gzip工具压缩的文件一般使用.gz的文件名后缀，并且gzip也可以用来解压缩文件。</p>
+<h2 id="命令格式以及说明"><a href="#命令格式以及说明" class="headerlink" title="命令格式以及说明"></a>命令格式以及说明</h2><p>通常的语法格式如下：</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">gzip [可选项] ... [文件]...</span><br></pre></td></tr></table></figure>
+<p>gzip只能压缩单个文件，并为给定的文件创建一个压缩之后的文件。根据惯例，压缩之后的文件的命令一把使用<code>.gz</code>或者<code>.z</code>。<br>如果你想将多个文件或者目录压缩到一个文件中，首先你需要创建一个tar包，然后对这个tar包进行压缩。这样的文件一般会使用<code>.tar.gz</code>或者<code>.tgz</code>作为后缀来表明这个文件是使用了gzip压缩之后的tar包。<br>gzip最常用作压缩文本文件，tar包或者网页，尽量不要使用gzip去压缩图片，音频，pdf文档或者其他的二进制文件，因为他们已经被压缩过了。<br>gzip只能压缩常规文件，符号链接文件会被忽略。</p>
+<h2 id="使用gzip压缩文件"><a href="#使用gzip压缩文件" class="headerlink" title="使用gzip压缩文件"></a>使用gzip压缩文件</h2><ul>
+<li>不带任何参数的压缩<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">gzip 你的文件</span><br></pre></td></tr></table></figure>
+该命令将会创建一个<code>你的文件.gz</code>文件，然后删除原始文件。<br>默认情况下，gzip会保留原始文件的时间戳，模式，属主和文件名。</li>
+<li>保留原始文件<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">gzip -k 你的文件</span><br></pre></td></tr></table></figure>
+另外一种保留原始文件的方法是使用<code>-c</code>选项，告诉gzip将原始文件写入到标准输出，然后重定向到指定的文件<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">gzip -c 你的文件 &gt; 你的文件.gz</span><br></pre></td></tr></table></figure></li>
+<li>查看冗余信息<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">gzip -v 你的文件</span><br></pre></td></tr></table></figure>
+该命令将会输出压缩进度信息</li>
+<li>压缩多个文件<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">gzip 文件1 文件2 文件3</span><br></pre></td></tr></table></figure>
+该命令将会生成<code>文件1.gz</code>、<code>文件2.gz</code>、<code>文件3.gz</code>这3个文件。</li>
+<li>压缩目录<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">gzip -r 你的目录</span><br></pre></td></tr></table></figure>
+该命令会递归压缩你的目录下的所有文件，分别生成<code>.gz</code>文件。</li>
+<li>改变压缩等级<br>gzip允许我们指定文件的压缩等级，范围是1-9，而<code>-1</code>或者<code>--fast</code>则代表使用最小的压缩率以达到最快的压缩速度；而<code>-9</code>或者<code>--best</code>则代表使用最高的压缩率，相应的，也会有最慢的压缩速度。默认的压缩级别是6；<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">gzip -9 你的文件</span><br></pre></td></tr></table></figure>
+压缩是CPU密集型的任务，压缩等级越高，压缩过程越长。</li>
+<li>使用标准输入<br>为了从标准输入创建<code>.gz</code>文件，使用管道命令重定向到gzip。<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">mysqldump database_name | gzip -c &gt; database_name.sql.gz</span><br></pre></td></tr></table></figure>
+该命令将会把<code>mysqldump</code>的输出内容作为输入传递给gzip。</li>
+</ul>
+<h2 id="使用gzip解压缩"><a href="#使用gzip解压缩" class="headerlink" title="使用gzip解压缩"></a>使用gzip解压缩</h2><ul>
+<li>使用-d作为解压缩选项<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">gzip -d 你的文件.gz</span><br></pre></td></tr></table></figure>
+另一个可以用于解压缩的命令是gunzip，它可以算作是gzip -d的别名。<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">gunzip 你的文件.gz</span><br></pre></td></tr></table></figure></li>
+<li>保留原始压缩文件<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">gzip -dk 你的文件.gz</span><br></pre></td></tr></table></figure></li>
+<li>解压缩多个文件<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">gzip -d 你的文件1.gz 你的文件2.gz 你的文件3.gz</span><br></pre></td></tr></table></figure></li>
+<li>解压缩目录下的所有压缩文件<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">gzip -dr 你的目录</span><br></pre></td></tr></table></figure></li>
+<li>查看压缩文件的内容<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">gzip -l 你的文件</span><br></pre></td></tr></table></figure>
+使用<code>-v</code>可以得到更加详细的信息。</li>
+</ul>
+]]></content>
+      <categories>
+        <category>linux</category>
+      </categories>
+      <tags>
+        <tag>gzip</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>bash中的常用快捷方式</title>
+    <url>/2021/03/14/bash-shortcut-manual/</url>
+    <content><![CDATA[<h2 id="以alt为辅助键的快捷键"><a href="#以alt为辅助键的快捷键" class="headerlink" title="以alt为辅助键的快捷键"></a>以<code>alt</code>为辅助键的快捷键</h2><ol>
+<li>alt+A 跳转到行首</li>
+<li>alt+B 跳转到光标后面一个单词长度的位置</li>
+<li>alt+C 中断bash中正在执行的任务</li>
+<li>alt+D 删除位于光标后面的所有字符</li>
+<li>alt+F 移动到光标前面一个单词长度的位置</li>
+<li>alt+T 交换光标位置前后的两个单词的位置</li>
+<li>alt+U 将位于光标位置后面的第一个单词全部转换成大写字母</li>
+<li>alt+L 和alt+U相反，将位于光标位置后面的第一个单词全部转换成小写字母</li>
+<li>alt+R 撤销当前命令所有的改变（等同于清空当前所有手动输入过的字符）</li>
+<li>alt+. 使用上一个命令的最后一个单词（以空格来区分）</li>
+</ol>
+<h2 id="以ctrl为辅助键的快捷键"><a href="#以ctrl为辅助键的快捷键" class="headerlink" title="以ctrl为辅助键的快捷键"></a>以<code>ctrl</code>为辅助键的快捷键</h2><ol>
+<li>ctrl+A 移动到行首</li>
+<li>ctrl+B 向光标后面移动一个字符</li>
+<li>ctrl+C 终止正在执行的任务</li>
+<li>ctrl+D 向光标后面删除一个字符</li>
+<li>ctrl+E 移动到行尾</li>
+<li>ctrl+H 删除光标前面的一个字符，相当于退格键</li>
+<li>ctrl+J 相当于<code>enter</code>键</li>
+<li>ctrl+K 删除所有位于光标后面的字符</li>
+<li>ctrl+L 清空屏幕</li>
+<li>ctrl+R 查询历史命令</li>
+<li>ctrl+O 执行ctrl+R查询出来的命令</li>
+<li>ctrl+T 交换最后两个字符</li>
+<li>ctrl+U 删除位于光标位置前的字符</li>
+<li>ctrl+W 删除光标位置前的一个单词</li>
+</ol>
+<h2 id="其他"><a href="#其他" class="headerlink" title="其他"></a>其他</h2><ol>
+<li>!! 重复执行上一条命令</li>
+<li>ESC+T 交换最后两个单词的位置</li>
+</ol>
+]]></content>
+      <categories>
+        <category>linux</category>
+      </categories>
+      <tags>
+        <tag>bash</tag>
+        <tag>shortcut</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>使用aliyun的maven仓库初始化gradle</title>
+    <url>/2021/03/16/aliyun-gradle-config/</url>
+    <content><![CDATA[<h2 id="在linux中使用gradle命令行构建程序时，使用国内镜像可以大大加快我们的构建过程，节约我们的时间，下面就如何配置aliyun仓库作为gradle的默认仓库作出说明。"><a href="#在linux中使用gradle命令行构建程序时，使用国内镜像可以大大加快我们的构建过程，节约我们的时间，下面就如何配置aliyun仓库作为gradle的默认仓库作出说明。" class="headerlink" title="在linux中使用gradle命令行构建程序时，使用国内镜像可以大大加快我们的构建过程，节约我们的时间，下面就如何配置aliyun仓库作为gradle的默认仓库作出说明。"></a>在linux中使用gradle命令行构建程序时，使用国内镜像可以大大加快我们的构建过程，节约我们的时间，下面就如何配置aliyun仓库作为gradle的默认仓库作出说明。</h2><ol>
+<li>如果只想对单个项目生效，那么可以在项目的<code>build.gradle</code>中添加如下配置：<figure class="highlight properties"><table><tr><td class="code"><pre><span class="line"><span class="attr">buildscript</span> <span class="string">&#123;</span></span><br><span class="line">    <span class="attr">repositories</span> <span class="string">&#123;</span></span><br><span class="line">        <span class="attr">maven</span> <span class="string">&#123;url &#x27;https://maven.aliyun.com/repository/google/&#x27;&#125;</span></span><br><span class="line">        <span class="attr">maven</span> <span class="string">&#123;url &#x27;https://maven.aliyun.com/repository/jcenter/&#x27;&#125;</span></span><br><span class="line">    <span class="attr">&#125;</span></span><br><span class="line">    <span class="attr">dependencies</span> <span class="string">&#123;</span></span><br><span class="line">        <span class="attr">classpath</span>: <span class="string">&#x27;com.android.tools.build:gradle:2.2.3&#x27;</span></span><br><span class="line"></span><br><span class="line">    <span class="attr">&#125;</span></span><br><span class="line"><span class="attr">&#125;</span></span><br><span class="line"><span class="attr">allprojects</span> <span class="string">&#123;</span></span><br><span class="line">    <span class="attr">repositories</span> <span class="string">&#123;</span></span><br><span class="line">         <span class="attr">maven</span> <span class="string">&#123; url &#x27;https://maven.aliyun.com/repository/google/&#x27; &#125;</span></span><br><span class="line">         <span class="attr">maven</span> <span class="string">&#123; url &#x27;https://maven.aliyun.com/repository/jcenter/&#x27;&#125; </span></span><br><span class="line">    <span class="attr">&#125;</span></span><br><span class="line"><span class="attr">&#125;</span></span><br></pre></td></tr></table></figure></li>
+<li>如果是对所有项目生效，那么需要在用户的家目录下面的.gradle目录下创建<code>init.gradle</code>文件，内容如下：<figure class="highlight properties"><table><tr><td class="code"><pre><span class="line"><span class="attr">allprojects&#123;</span></span><br><span class="line">    <span class="attr">repositories</span> <span class="string">&#123;</span></span><br><span class="line">        <span class="attr">def</span> <span class="string">ALIYUN_REPOSITORY_URL = &#x27;https://maven.aliyun.com/repository/public/&#x27;</span></span><br><span class="line">        <span class="attr">def</span> <span class="string">ALIYUN_JCENTER_URL = &#x27;https://maven.aliyun.com/repository/jcenter/&#x27;</span></span><br><span class="line">        <span class="attr">def</span> <span class="string">ALIYUN_GOOGLE_URL = &#x27;https://maven.aliyun.com/repository/google/&#x27;</span></span><br><span class="line">        <span class="attr">def</span> <span class="string">ALIYUN_GRADLE_PLUGIN_URL = &#x27;https://maven.aliyun.com/repository/gradle-plugin/&#x27;</span></span><br><span class="line">        <span class="attr">all</span> <span class="string">&#123; ArtifactRepository repo -&gt;</span></span><br><span class="line">            <span class="meta">if(repo</span> <span class="string">instanceof MavenArtifactRepository)&#123;</span></span><br><span class="line">                <span class="attr">def</span> <span class="string">url = repo.url.toString()</span></span><br><span class="line">                <span class="attr">if</span> <span class="string">(url.startsWith(&#x27;https://repo1.maven.org/maven2/&#x27;)) &#123;</span></span><br><span class="line">                    <span class="meta">project.logger.lifecycle</span> <span class="string">&quot;Repository $&#123;repo.url&#125; replaced by $ALIYUN_REPOSITORY_URL.&quot;</span></span><br><span class="line">                    <span class="attr">remove</span> <span class="string">repo</span></span><br><span class="line">                <span class="attr">&#125;</span></span><br><span class="line">                <span class="attr">if</span> <span class="string">(url.startsWith(&#x27;https://jcenter.bintray.com/&#x27;)) &#123;</span></span><br><span class="line">                    <span class="meta">project.logger.lifecycle</span> <span class="string">&quot;Repository $&#123;repo.url&#125; replaced by $ALIYUN_JCENTER_URL.&quot;</span></span><br><span class="line">                    <span class="attr">remove</span> <span class="string">repo</span></span><br><span class="line">                <span class="attr">&#125;</span></span><br><span class="line">                <span class="attr">if</span> <span class="string">(url.startsWith(&#x27;https://dl.google.com/dl/android/maven2/&#x27;)) &#123;</span></span><br><span class="line">                    <span class="meta">project.logger.lifecycle</span> <span class="string">&quot;Repository $&#123;repo.url&#125; replaced by $ALIYUN_GOOGLE_URL.&quot;</span></span><br><span class="line">                    <span class="attr">remove</span> <span class="string">repo</span></span><br><span class="line">                <span class="attr">&#125;</span></span><br><span class="line">                <span class="attr">if</span> <span class="string">(url.startsWith(&#x27;https://plugins.gradle.org/m2/&#x27;)) &#123;</span></span><br><span class="line">                    <span class="meta">project.logger.lifecycle</span> <span class="string">&quot;Repository $&#123;repo.url&#125; replaced by $ALIYUN_GRADLE_PLUGIN_URL.&quot;</span></span><br><span class="line">                    <span class="attr">remove</span> <span class="string">repo</span></span><br><span class="line">                <span class="attr">&#125;</span></span><br><span class="line">            <span class="attr">&#125;</span></span><br><span class="line">        <span class="attr">&#125;</span></span><br><span class="line">        <span class="attr">maven</span> <span class="string">&#123; url ALIYUN_REPOSITORY_URL &#125;</span></span><br><span class="line">        <span class="attr">maven</span> <span class="string">&#123; url ALIYUN_JCENTER_URL &#125;</span></span><br><span class="line">        <span class="attr">maven</span> <span class="string">&#123; url ALIYUN_GOOGLE_URL &#125;</span></span><br><span class="line">        <span class="attr">maven</span> <span class="string">&#123; url ALIYUN_GRADLE_PLUGIN_URL &#125;</span></span><br><span class="line">    <span class="attr">&#125;</span></span><br><span class="line"><span class="attr">&#125;</span></span><br></pre></td></tr></table></figure></li>
+</ol>
+]]></content>
+      <categories>
+        <category>java</category>
+      </categories>
+      <tags>
+        <tag>gradle</tag>
+        <tag>maven</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>spring实战</title>
+    <url>/2021/03/14/spring-in-action/</url>
+    <content><![CDATA[<h2 id="认识spring框架"><a href="#认识spring框架" class="headerlink" title="认识spring框架"></a>认识spring框架</h2><ol>
+<li>spring框架为开发者做了很多，反过来，它也要求开发者同样对它。</li>
+<li></li>
+</ol>
+]]></content>
+      <categories>
+        <category>spring框架</category>
+      </categories>
+      <tags>
+        <tag>java</tag>
+        <tag>spring</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>linux上的实用软件清单（个人用）</title>
+    <url>/2021/03/16/great-tool-for-linux/</url>
+    <content><![CDATA[<h2 id="为什么要列这个清单"><a href="#为什么要列这个清单" class="headerlink" title="为什么要列这个清单"></a>为什么要列这个清单</h2><p>在使用gnu linux（后面均简称为linux）操作系统的过程当中，总有一些软件让你觉得即使没有windows也能让自己的工作和生活变得更加便利，因此，为了方便后面因为更换发行版或者因为不可控因素导致系统损坏而必须重新安装linux系统，特别将自己平时用的比较多的软件列出来以供后面安装新系统之后能够快速恢复到正常工作和生活状态。个人觉得，对于linux用户来说，相对于windows系统中软件来源的不可控性和零散性，linux系统自带的包管理器绝对是节约我们软件安装时间的一大利器。而且更便于自动化安装和初始化，而作为软件开发者，良好的编程环境更是完胜windows系统。也希望这个清单能让自己在今后的软件开发生涯中更加注重时间的重要性，不要浪费时间在一些无意义的折腾上，毕竟，系统是拿来用的，高效才是操作系统带给我们最终的目的。</p>
+<blockquote>
+<p><strong>以下包管理器均采用archlinux内置的<code>pacman</code></strong></p>
+</blockquote>
+<h2 id="翻译类软件"><a href="#翻译类软件" class="headerlink" title="翻译类软件"></a>翻译类软件</h2><ol>
+<li>带gui的：goldendict、stardict（星际译王）<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">sudo pacman -S goldendict</span><br><span class="line"><span class="comment"># 或者</span></span><br><span class="line">sudo pacman -S stardict</span><br></pre></td></tr></table></figure>
+<a href="http://download.huzheng.org/zh_CN/">字典下载链接</a><a id="more"></a></li>
+<li>不带gui的：dictd（可以离线使用），translate-shell（必须连上网络）</li>
+</ol>
+<ul>
+<li><strong>dictd</strong><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">sudo pacman -S dictd dict</span><br></pre></td></tr></table></figure>
+dict是客户端，dictd是dict的后台服务器。默认安装之后是不带任何字典的，使用网络查询，且只能查询到英文释义。如果想要支持中文字典的话得自行下载对应的词库，但目前来说官网并不提供中文字典，需要自行将goldendict的字典文件转换成dictd可识别的文件格式。<br>目前个人使用的开源转换工具是<a href="https://github.com/ilius/pyglossary">pyglossary</a>，该工具使用python编写，支持的格式也比较多，从github上下载到安装文件之后，需要使用pip工具进行安装：<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="comment"># 先安装pip工具</span></span><br><span class="line">sudo pacman -S python-pip</span><br><span class="line">sudo pip install pyglossary-x.x.x-py3-none-any.whl</span><br></pre></td></tr></table></figure>
+安装完成之后在终端中输入pyglossary启动工具，并在输入文件时选择goldendict的词典文件（一般是以<code>.ifo</code>后缀名结尾。然后输出文件选择以<code>.index</code>作为后缀的文件类型，点击Convert按钮之前记住将<code>/usr/share/dictd</code>的目录权限授予当前用户，否则无法自动复制过去，且控制台会报错。<br><a href="https://www.jianguoyun.com/p/DYQBDsEQiZ6nCRiKr-cD">自用</a></li>
+<li><strong>translate-shell</strong><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">sudo pacman -S translate-shell</span><br></pre></td></tr></table></figure>
+该命令行软件的强大之处在于它集成了目前可用的几大翻译软件，如google翻译、bing翻译（百度翻译待求证）<br>安装完之后，使用如下命令即可翻译英文单词或者句子<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="comment"># 翻译单词（英译汉）</span></span><br><span class="line">trans -s en -t zh like</span><br><span class="line"><span class="comment"># -s en 代表输入的语言类型，-t zh 代表输出的语言类型</span></span><br><span class="line"><span class="comment"># 翻译句子</span></span><br><span class="line">trans -s en -t zh <span class="string">&quot;i love you&quot;</span></span><br></pre></td></tr></table></figure>
+或者进入交互模式：<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">trans -s en -t zh -shell -brief</span><br></pre></td></tr></table></figure>
+使用<code>:q</code>退出</li>
+</ul>
+<h2 id="翻墙类软件"><a href="#翻墙类软件" class="headerlink" title="翻墙类软件"></a>翻墙类软件</h2><ol>
+<li>带gui的：qv2ray、v2ray desktop、v2rayA（web管理界面）</li>
+</ol>
+<ul>
+<li>qv2ray<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">sudo pacman -S qv2ray</span><br></pre></td></tr></table></figure>
+该工具只支持基于v2ray内核的传输协议，如vmess，不支持shadowsocks协议；</li>
+<li>v2ray desktop<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="comment"># 要想使用下面的命令安装该软件，需要配置archlinuxcn的软件源或者使用aur包管理器，比如yay。</span></span><br><span class="line">sudo pacman -S v2ray-desktop</span><br></pre></td></tr></table></figure>
+该工具支持shadowsocks协议和基于v2ray内核的vmess协议，而且支持订阅，比较方便，但没有导出功能。相对于qv2ray来说，功能稍显简单，但好在支持的协议比较丰富。</li>
+<li>v2rayA<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">sudo pacman -S v2raya</span><br></pre></td></tr></table></figure>
+该工具的强大之处在于支持的协议更多，而且配置简单，支持订阅以及透明代理（比系统代理更加强大，可以代理全局流量）。另外，它的安装包形式也很多样，除了使用系统自带的包管理器安装之外，还支持docker安装、appImage安装。具体配置见github官网。<a href="https://github.com/v2rayA/v2rayA">v2raya源码以及使用手册</a></li>
+</ul>
+<ol start="2">
+<li>不带gui的：mellow</li>
+</ol>
+]]></content>
+      <categories>
+        <category>系统</category>
+      </categories>
+      <tags>
+        <tag>linux</tag>
+        <tag>工具</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>代码大全读后感</title>
+    <url>/2021/03/18/code-complete-after-reading/</url>
+    <content><![CDATA[<h2 id="利用隐喻对编程进行更加深刻的理解"><a href="#利用隐喻对编程进行更加深刻的理解" class="headerlink" title="利用隐喻对编程进行更加深刻的理解"></a>利用隐喻对编程进行更加深刻的理解</h2><ol>
+<li>公式与启发之间的区别是微妙的，体现在它们与答案之间的直接程度：公式直接给予指令;而启发则告诉你该怎样找到这些指令，或者告诉你到哪里寻找它们。</li>
+<li>隐喻仅仅是启发，而不是公式，因此，它们更倾向于比较随便，无拘无束。<blockquote>
+<p>为每个工作选择合适的工具，是成为一个优秀程序员的首要素质之一。</p>
+</blockquote>
+</li>
+<li></li>
+</ol>
+]]></content>
+      <categories>
+        <category>代码大全</category>
+      </categories>
+      <tags>
+        <tag>编码</tag>
+        <tag>模式</tag>
+      </tags>
+  </entry>
+</search>

@@ -21,7 +21,7 @@
 
 <script class="hexo-configurations">
     var NexT = window.NexT || {};
-    var CONFIG = {"hostname":"kylepeng93.github.io","root":"/","images":"/images","scheme":"Pisces","version":"8.1.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12},"copycode":false,"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"prism":false,"i18n":{"placeholder":"搜索...","empty":"没有找到任何搜索结果：${query}","hits_time":"找到 ${hits} 个搜索结果（用时 ${time} 毫秒）","hits":"找到 ${hits} 个搜索结果"}};
+    var CONFIG = {"hostname":"kylepeng93.github.io","root":"/","images":"/images","scheme":"Pisces","version":"8.1.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12},"copycode":false,"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"prism":false,"i18n":{"placeholder":"搜索...","empty":"没有找到任何搜索结果：${query}","hits_time":"找到 ${hits} 个搜索结果（用时 ${time} 毫秒）","hits":"找到 ${hits} 个搜索结果"},"path":"/search.xml","localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false}};
   </script>
 <meta name="description" content="为什么要列这个清单在使用gnu linux（后面均简称为linux）操作系统的过程当中，总有一些软件让你觉得即使没有windows也能让自己的工作和生活变得更加便利，因此，为了方便后面因为更换发行版或者因为不可控因素导致系统损坏而必须重新安装linux系统，特别将自己平时用的比较多的软件列出来以供后面安装新系统之后能够快速恢复到正常工作和生活状态。个人觉得，对于linux用户来说，相对于windo">
 <meta property="og:type" content="article">
@@ -31,7 +31,7 @@
 <meta property="og:description" content="为什么要列这个清单在使用gnu linux（后面均简称为linux）操作系统的过程当中，总有一些软件让你觉得即使没有windows也能让自己的工作和生活变得更加便利，因此，为了方便后面因为更换发行版或者因为不可控因素导致系统损坏而必须重新安装linux系统，特别将自己平时用的比较多的软件列出来以供后面安装新系统之后能够快速恢复到正常工作和生活状态。个人觉得，对于linux用户来说，相对于windo">
 <meta property="og:locale" content="zh_CN">
 <meta property="article:published_time" content="2021-03-16T15:37:01.000Z">
-<meta property="article:modified_time" content="2021-03-16T17:10:07.265Z">
+<meta property="article:modified_time" content="2021-03-17T16:22:30.238Z">
 <meta property="article:author" content="彭凯">
 <meta property="article:tag" content="linux">
 <meta property="article:tag" content="工具">
@@ -117,6 +117,7 @@
 
   <div class="site-nav-right">
     <div class="toggle popup-trigger">
+        <i class="fa fa-search fa-fw fa-lg"></i>
     </div>
   </div>
 </div>
@@ -137,24 +138,50 @@
   </li>
         <li class="menu-item menu-item-tags">
 
-    <a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>标签<span class="badge">27</span></a>
+    <a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>标签<span class="badge">29</span></a>
 
   </li>
         <li class="menu-item menu-item-categories">
 
-    <a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>分类<span class="badge">12</span></a>
+    <a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>分类<span class="badge">13</span></a>
 
   </li>
         <li class="menu-item menu-item-archives">
 
-    <a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档<span class="badge">20</span></a>
+    <a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档<span class="badge">21</span></a>
 
   </li>
+      <li class="menu-item menu-item-search">
+        <a role="button" class="popup-trigger"><i class="fa fa-search fa-fw"></i>搜索
+        </a>
+      </li>
   </ul>
 </nav>
 
 
 
+  <div class="search-pop-overlay">
+    <div class="popup search-popup"><div class="search-header">
+  <span class="search-icon">
+    <i class="fa fa-search"></i>
+  </span>
+  <div class="search-input-container">
+    <input autocomplete="off" autocapitalize="off" maxlength="80"
+           placeholder="搜索..." spellcheck="false"
+           type="search" class="search-input">
+  </div>
+  <span class="popup-btn-close">
+    <i class="fa fa-times-circle"></i>
+  </span>
+</div>
+<div class="search-result-container no-result">
+  <div class="search-result-icon">
+    <i class="fa fa-spinner fa-pulse fa-5x"></i>
+  </div>
+</div>
+
+    </div>
+  </div>
 
 </div>
         
@@ -180,7 +207,7 @@
       <div class="sidebar-panel-container">
         <!--noindex-->
         <section class="post-toc-wrap sidebar-panel">
-            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%B8%BA%E4%BB%80%E4%B9%88%E8%A6%81%E5%88%97%E8%BF%99%E4%B8%AA%E6%B8%85%E5%8D%95"><span class="nav-number">1.</span> <span class="nav-text">为什么要列这个清单</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%BF%BB%E8%AF%91%E7%B1%BB%E8%BD%AF%E4%BB%B6"><span class="nav-number">2.</span> <span class="nav-text">翻译类软件</span></a></li></ol></div>
+            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%B8%BA%E4%BB%80%E4%B9%88%E8%A6%81%E5%88%97%E8%BF%99%E4%B8%AA%E6%B8%85%E5%8D%95"><span class="nav-number">1.</span> <span class="nav-text">为什么要列这个清单</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%BF%BB%E8%AF%91%E7%B1%BB%E8%BD%AF%E4%BB%B6"><span class="nav-number">2.</span> <span class="nav-text">翻译类软件</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%BF%BB%E5%A2%99%E7%B1%BB%E8%BD%AF%E4%BB%B6"><span class="nav-number">3.</span> <span class="nav-text">翻墙类软件</span></a></li></ol></div>
         </section>
         <!--/noindex-->
 
@@ -194,20 +221,20 @@
       <div class="site-state-item site-state-posts">
           <a href="/archives/">
         
-          <span class="site-state-item-count">20</span>
+          <span class="site-state-item-count">21</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
       <div class="site-state-item site-state-categories">
             <a href="/categories/">
           
-        <span class="site-state-item-count">12</span>
+        <span class="site-state-item-count">13</span>
         <span class="site-state-item-name">分类</span></a>
       </div>
       <div class="site-state-item site-state-tags">
             <a href="/tags/">
           
-        <span class="site-state-item-count">27</span>
+        <span class="site-state-item-count">29</span>
         <span class="site-state-item-name">标签</span></a>
       </div>
   </nav>
@@ -277,7 +304,7 @@
           <i class="far fa-calendar-check"></i>
         </span>
         <span class="post-meta-item-text">更新于</span>
-        <time title="修改时间：2021-03-17 01:10:07" itemprop="dateModified" datetime="2021-03-17T01:10:07+08:00">2021-03-17</time>
+        <time title="修改时间：2021-03-18 00:22:30" itemprop="dateModified" datetime="2021-03-18T00:22:30+08:00">2021-03-18</time>
       </span>
     <span class="post-meta-item">
       <span class="post-meta-item-icon">
@@ -317,6 +344,20 @@ dict是客户端，dictd是dict的后台服务器。默认安装之后是不带�
 或者进入交互模式：<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">trans -s en -t zh -shell -brief</span><br></pre></td></tr></table></figure>
 使用<code>:q</code>退出</li>
 </ul>
+<h2 id="翻墙类软件"><a href="#翻墙类软件" class="headerlink" title="翻墙类软件"></a>翻墙类软件</h2><ol>
+<li>带gui的：qv2ray、v2ray desktop、v2rayA（web管理界面）</li>
+</ol>
+<ul>
+<li>qv2ray<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo pacman -S qv2ray</span><br></pre></td></tr></table></figure>
+该工具只支持基于v2ray内核的传输协议，如vmess，不支持shadowsocks协议；</li>
+<li>v2ray desktop<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 要想使用下面的命令安装该软件，需要配置archlinuxcn的软件源或者使用aur包管理器，比如yay。</span></span><br><span class="line">sudo pacman -S v2ray-desktop</span><br></pre></td></tr></table></figure>
+该工具支持shadowsocks协议和基于v2ray内核的vmess协议，而且支持订阅，比较方便，但没有导出功能。相对于qv2ray来说，功能稍显简单，但好在支持的协议比较丰富。</li>
+<li>v2rayA<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo pacman -S v2raya</span><br></pre></td></tr></table></figure>
+该工具的强大之处在于支持的协议更多，而且配置简单，支持订阅以及透明代理（比系统代理更加强大，可以代理全局流量）。另外，它的安装包形式也很多样，除了使用系统自带的包管理器安装之外，还支持docker安装、appImage安装。具体配置见github官网。<a target="_blank" rel="noopener" href="https://github.com/v2rayA/v2rayA">v2raya源码以及使用手册</a></li>
+</ul>
+<ol start="2">
+<li>不带gui的：mellow</li>
+</ol>
 
     </div>
 
@@ -339,6 +380,9 @@ dict是客户端，dictd是dict的后台服务器。默认安装之后是不带�
                 </a>
             </div>
             <div class="post-nav-item">
+                <a href="/2021/03/18/code-complete-after-reading/" rel="next" title="代码大全读后感">
+                  代码大全读后感 <i class="fa fa-chevron-right"></i>
+                </a>
             </div>
           </div>
     </footer>
@@ -399,6 +443,7 @@ dict是客户端，dictd是dict的后台服务器。默认安装之后是不带�
 
   
 
+<script src="/js/local-search.js"></script>
 
 
 
