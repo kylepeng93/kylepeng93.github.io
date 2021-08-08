@@ -605,4 +605,112 @@ dict是客户端，dictd是dict的后台服务器。默认安装之后是不带�
         <tag>jenkins</tag>
       </tags>
   </entry>
+  <entry>
+    <title>下载神器aria2使用手册</title>
+    <url>/2021/04/01/aria2-manual/</url>
+    <content><![CDATA[<h2 id="aria2是什么东西"><a href="#aria2是什么东西" class="headerlink" title="aria2是什么东西"></a>aria2是什么东西</h2>]]></content>
+      <categories>
+        <category>工具</category>
+      </categories>
+      <tags>
+        <tag>aria2</tag>
+        <tag>神器</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>spring-framework-core-thinking-1</title>
+    <url>/2021/08/08/spring-framework-core-thinking-1/</url>
+    <content><![CDATA[<h2 id="spring框架进阶—Aware接口的原理和使用"><a href="#spring框架进阶—Aware接口的原理和使用" class="headerlink" title="spring框架进阶—Aware接口的原理和使用"></a>spring框架进阶—Aware接口的原理和使用</h2>]]></content>
+      <categories>
+        <category>spring框架</category>
+      </categories>
+      <tags>
+        <tag>spring</tag>
+        <tag>aware</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>string-in-file-search</title>
+    <url>/2021/08/08/string-in-file-search/</url>
+    <content><![CDATA[<h2 id="在指定目下寻找包含指定字符串的文件："><a href="#在指定目下寻找包含指定字符串的文件：" class="headerlink" title="在指定目下寻找包含指定字符串的文件："></a>在指定目下寻找包含指定字符串的文件：</h2><ol>
+<li>输出文件名和内容</li>
+</ol>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">grep mysqli_connect ./</span><br></pre></td></tr></table></figure>
+<p>其中，，</p>
+<ul>
+<li><p>加入<code>-r</code>可以递归搜索</p>
+</li>
+<li><p>加入<code>-l</code>可以只打印匹配的文件名</p>
+</li>
+<li><p>加入参数<code>-e</code>可以支持正则表达式</p>
+</li>
+<li><p>加入参数<code>-i</code>可以不区分大小写</p>
+</li>
+<li><p>加入参数<code>-c</code>可以指定匹配的行数</p>
+</li>
+<li><p>加入<code>-v</code>可以查出不匹配指定字符串的行数</p>
+</li>
+</ul>
+<ol start="2">
+<li><p>替换上述匹配命令中的匹配字符串</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">sed -i <span class="string">&quot;s/mysqli_connect/mysql_connect/g&quot;</span> `grep mysqli_connect -rl ./`</span><br></pre></td></tr></table></figure>
+<p>其中，<code>-i</code>表示替换立即生效</p>
+</li>
+</ol>
+]]></content>
+      <categories>
+        <category>字符串处理</category>
+      </categories>
+      <tags>
+        <tag>grep</tag>
+        <tag>sed</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>在windows 10中访问wsl（linux子系统）的方式（反过来又如何）</title>
+    <url>/2021/04/01/the-way-of-accessing-wsl-file-system-in-windows/</url>
+    <content><![CDATA[<h2 id="在windows文件管理器中访问wsl（windows-subsystem-for-linux）文件系统"><a href="#在windows文件管理器中访问wsl（windows-subsystem-for-linux）文件系统" class="headerlink" title="在windows文件管理器中访问wsl（windows subsystem for linux）文件系统"></a>在windows文件管理器中访问wsl（windows subsystem for linux）文件系统</h2><ol>
+<li>进入安装好的wsl终端，输入如下命令： <figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ explorer.exe .</span><br></pre></td></tr></table></figure>
+ 其中，<code>explorer.exe</code>为文件管理器的可执行文件，<code>.</code>代表当前目录（家目录）。<h2 id="在wsl中访问windows的本地文件"><a href="#在wsl中访问windows的本地文件" class="headerlink" title="在wsl中访问windows的本地文件"></a>在wsl中访问windows的本地文件</h2></li>
+<li>默认情况下，windows的各个分区以盘符作为挂载点，在wsl中可以通过目录<code>/mnt/c</code>进行访问，其中<code>c</code>代表C盘，其他分区依次类推。 <figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ <span class="built_in">cd</span> /mnt/c</span><br></pre></td></tr></table></figure>
+<blockquote>
+<p>在linux哲学中，一切皆是文件。</p>
+</blockquote>
+</li>
+</ol>
+]]></content>
+      <categories>
+        <category>notes</category>
+      </categories>
+      <tags>
+        <tag>wsl</tag>
+        <tag>windows</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>win10企业版激活方法</title>
+    <url>/2021/04/01/win10-activate/</url>
+    <content><![CDATA[<h2 id="本文主要介绍如何通过kms服务器实现Windows-10专业版和企业版激活。"><a href="#本文主要介绍如何通过kms服务器实现Windows-10专业版和企业版激活。" class="headerlink" title="本文主要介绍如何通过kms服务器实现Windows 10专业版和企业版激活。"></a>本文主要介绍如何通过kms服务器实现Windows 10专业版和企业版激活。</h2><ul>
+<li><p>安装完系统之后，按住<code>Win+X</code>键，选择<code>Windows PowerShell（管理员）</code>,在弹出的窗口中输入下列命令：</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="comment"># win10专业版用户</span></span><br><span class="line">slmgr /ipk W269N-WFGWX-YVC9B-4J6C9-T83GX</span><br><span class="line">slmgr /skms kms.03k.org</span><br><span class="line">slmgr /ato</span><br><span class="line"><span class="comment"># win10企业版用户</span></span><br><span class="line">slmgr /ipk NPPR9-FWDCX-D2C8J-H872K-2YT43</span><br><span class="line">slmgr /skms kms.03k.org</span><br><span class="line">slmgr /ato</span><br></pre></td></tr></table></figure></li>
+<li><p>考虑到一般笔记本厂商会预装win10家庭版，所以，在使用上面的办法之前需要先升级到win10专业版。步骤如下：</p>
+<ol>
+<li><p>打开<code>设置</code>页面，选择<code>更新和安全</code>，继续选择<code>激活</code>，点击<code>更改产品密钥</code>，输入：</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">J7QT3-3GCPG-9GVWT-CH2XR-GMRJM</span><br></pre></td></tr></table></figure>
+<p>点击下一步</p>
+</li>
+<li><p>在提示页面点击更新即可。</p>
+</li>
+</ol>
+</li>
+</ul>
+]]></content>
+      <categories>
+        <category>工具</category>
+      </categories>
+      <tags>
+        <tag>windows</tag>
+        <tag>激活</tag>
+      </tags>
+  </entry>
 </search>
