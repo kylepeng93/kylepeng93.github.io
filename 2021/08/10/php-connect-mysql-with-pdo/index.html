@@ -23,21 +23,22 @@
     var NexT = window.NexT || {};
     var CONFIG = {"hostname":"kylepeng93.github.io","root":"/","images":"/images","scheme":"Pisces","version":"8.1.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12},"copycode":false,"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"prism":false,"i18n":{"placeholder":"搜索...","empty":"没有找到任何搜索结果：${query}","hits_time":"找到 ${hits} 个搜索结果（用时 ${time} 毫秒）","hits":"找到 ${hits} 个搜索结果"},"path":"/search.xml","localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false}};
   </script>
-<meta name="description" content="gzip工具gzip采用了最流行的压缩算法，可以让你缩小文件的大小，并且保留原始的文件模式，属主和时间戳。使用gzip工具压缩的文件一般使用.gz的文件名后缀，并且gzip也可以用来解压缩文件。 命令格式以及说明通常的语法格式如下： 1gzip [可选项] ... [文件]... gzip只能压缩单个文件，并为给定的文件创建一个压缩之后的文件。根据惯例，压缩之后的文件的命令一把使用.gz或者.z。">
+<meta name="description" content="PDO是什么PDO（PHP Data Objects）拓展是一个轻量级、而且统一的接口，用来在PHP中访问数据库。 PDO提供了一个数据访问抽象层，这意味着，不管你使用的是什么数据库，你都可以使用相同的函数去执行查询并获取数据。 PDO不提供数据库抽象，无法消除不同数据库之间的语法差异，如果你想要做到做到这一点，你必须使用另外的抽象层去实现。 PDO连接MySQL数据库12345678910111">
 <meta property="og:type" content="article">
-<meta property="og:title" content="gzip操作手册">
-<meta property="og:url" content="http://kylepeng93.github.io/2021/03/13/gzip-manual/index.html">
+<meta property="og:title" content="php——使用pdo连接mysql数据库">
+<meta property="og:url" content="http://kylepeng93.github.io/2021/08/10/php-connect-mysql-with-pdo/index.html">
 <meta property="og:site_name" content="成长日记">
-<meta property="og:description" content="gzip工具gzip采用了最流行的压缩算法，可以让你缩小文件的大小，并且保留原始的文件模式，属主和时间戳。使用gzip工具压缩的文件一般使用.gz的文件名后缀，并且gzip也可以用来解压缩文件。 命令格式以及说明通常的语法格式如下： 1gzip [可选项] ... [文件]... gzip只能压缩单个文件，并为给定的文件创建一个压缩之后的文件。根据惯例，压缩之后的文件的命令一把使用.gz或者.z。">
+<meta property="og:description" content="PDO是什么PDO（PHP Data Objects）拓展是一个轻量级、而且统一的接口，用来在PHP中访问数据库。 PDO提供了一个数据访问抽象层，这意味着，不管你使用的是什么数据库，你都可以使用相同的函数去执行查询并获取数据。 PDO不提供数据库抽象，无法消除不同数据库之间的语法差异，如果你想要做到做到这一点，你必须使用另外的抽象层去实现。 PDO连接MySQL数据库12345678910111">
 <meta property="og:locale" content="zh_CN">
-<meta property="article:published_time" content="2021-03-13T06:12:50.000Z">
-<meta property="article:modified_time" content="2021-03-13T08:23:01.474Z">
+<meta property="article:published_time" content="2021-08-10T14:38:10.000Z">
+<meta property="article:modified_time" content="2021-08-10T14:57:10.275Z">
 <meta property="article:author" content="彭凯">
-<meta property="article:tag" content="gzip">
+<meta property="article:tag" content="mysql">
+<meta property="article:tag" content="pdo">
 <meta name="twitter:card" content="summary">
 
 
-<link rel="canonical" href="http://kylepeng93.github.io/2021/03/13/gzip-manual/">
+<link rel="canonical" href="http://kylepeng93.github.io/2021/08/10/php-connect-mysql-with-pdo/">
 
 
 <script class="page-configurations">
@@ -49,7 +50,7 @@
     lang   : 'zh-CN'
   };
 </script>
-<title>gzip操作手册 | 成长日记</title>
+<title>php——使用pdo连接mysql数据库 | 成长日记</title>
   
 
 
@@ -206,7 +207,7 @@
       <div class="sidebar-panel-container">
         <!--noindex-->
         <section class="post-toc-wrap sidebar-panel">
-            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#gzip%E5%B7%A5%E5%85%B7"><span class="nav-number">1.</span> <span class="nav-text">gzip工具</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%91%BD%E4%BB%A4%E6%A0%BC%E5%BC%8F%E4%BB%A5%E5%8F%8A%E8%AF%B4%E6%98%8E"><span class="nav-number">2.</span> <span class="nav-text">命令格式以及说明</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%BD%BF%E7%94%A8gzip%E5%8E%8B%E7%BC%A9%E6%96%87%E4%BB%B6"><span class="nav-number">3.</span> <span class="nav-text">使用gzip压缩文件</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%BD%BF%E7%94%A8gzip%E8%A7%A3%E5%8E%8B%E7%BC%A9"><span class="nav-number">4.</span> <span class="nav-text">使用gzip解压缩</span></a></li></ol></div>
+            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#PDO%E6%98%AF%E4%BB%80%E4%B9%88"><span class="nav-number">1.</span> <span class="nav-text">PDO是什么</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#PDO%E8%BF%9E%E6%8E%A5MySQL%E6%95%B0%E6%8D%AE%E5%BA%93"><span class="nav-number">2.</span> <span class="nav-text">PDO连接MySQL数据库</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%BD%BF%E7%94%A8pdo%E8%BF%9E%E6%8E%A5%E5%AF%B9%E8%B1%A1%E6%89%A7%E8%A1%8C%E6%8F%92%E5%85%A5%E3%80%81%E6%9B%B4%E6%96%B0%E6%88%96%E8%80%85%E5%88%A0%E9%99%A4"><span class="nav-number">3.</span> <span class="nav-text">使用pdo连接对象执行插入、更新或者删除</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%BD%BF%E7%94%A8pdo%E8%BF%9E%E6%8E%A5%E5%AF%B9%E8%B1%A1%E6%89%A7%E8%A1%8C%E6%9F%A5%E8%AF%A2"><span class="nav-number">4.</span> <span class="nav-text">使用pdo连接对象执行查询</span></a></li></ol></div>
         </section>
         <!--/noindex-->
 
@@ -272,7 +273,7 @@
   
 
   <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="http://kylepeng93.github.io/2021/03/13/gzip-manual/">
+    <link itemprop="mainEntityOfPage" href="http://kylepeng93.github.io/2021/08/10/php-connect-mysql-with-pdo/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="image" content="/images/avatar.gif">
@@ -285,7 +286,7 @@
     </span>
       <header class="post-header">
         <h1 class="post-title" itemprop="name headline">
-          gzip操作手册
+          php——使用pdo连接mysql数据库
         </h1>
 
         <div class="post-meta-container">
@@ -297,7 +298,7 @@
       <span class="post-meta-item-text">发表于</span>
       
 
-      <time title="创建时间：2021-03-13 14:12:50 / 修改时间：16:23:01" itemprop="dateCreated datePublished" datetime="2021-03-13T14:12:50+08:00">2021-03-13</time>
+      <time title="创建时间：2021-08-10 22:38:10 / 修改时间：22:57:10" itemprop="dateCreated datePublished" datetime="2021-08-10T22:38:10+08:00">2021-08-10</time>
     </span>
     <span class="post-meta-item">
       <span class="post-meta-item-icon">
@@ -305,7 +306,7 @@
       </span>
       <span class="post-meta-item-text">分类于</span>
         <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-          <a href="/categories/linux/" itemprop="url" rel="index"><span itemprop="name">linux</span></a>
+          <a href="/categories/php/" itemprop="url" rel="index"><span itemprop="name">php</span></a>
         </span>
     </span>
 
@@ -319,35 +320,13 @@
     
     
     <div class="post-body" itemprop="articleBody">
-        <h2 id="gzip工具"><a href="#gzip工具" class="headerlink" title="gzip工具"></a>gzip工具</h2><p>gzip采用了最流行的压缩算法，可以让你缩小文件的大小，并且保留原始的文件模式，属主和时间戳。<br>使用gzip工具压缩的文件一般使用.gz的文件名后缀，并且gzip也可以用来解压缩文件。</p>
-<h2 id="命令格式以及说明"><a href="#命令格式以及说明" class="headerlink" title="命令格式以及说明"></a>命令格式以及说明</h2><p>通常的语法格式如下：</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">gzip [可选项] ... [文件]...</span><br></pre></td></tr></table></figure>
-<p>gzip只能压缩单个文件，并为给定的文件创建一个压缩之后的文件。根据惯例，压缩之后的文件的命令一把使用<code>.gz</code>或者<code>.z</code>。<br>如果你想将多个文件或者目录压缩到一个文件中，首先你需要创建一个tar包，然后对这个tar包进行压缩。这样的文件一般会使用<code>.tar.gz</code>或者<code>.tgz</code>作为后缀来表明这个文件是使用了gzip压缩之后的tar包。<br>gzip最常用作压缩文本文件，tar包或者网页，尽量不要使用gzip去压缩图片，音频，pdf文档或者其他的二进制文件，因为他们已经被压缩过了。<br>gzip只能压缩常规文件，符号链接文件会被忽略。</p>
-<h2 id="使用gzip压缩文件"><a href="#使用gzip压缩文件" class="headerlink" title="使用gzip压缩文件"></a>使用gzip压缩文件</h2><ul>
-<li>不带任何参数的压缩<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">gzip 你的文件</span><br></pre></td></tr></table></figure>
-该命令将会创建一个<code>你的文件.gz</code>文件，然后删除原始文件。<br>默认情况下，gzip会保留原始文件的时间戳，模式，属主和文件名。</li>
-<li>保留原始文件<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">gzip -k 你的文件</span><br></pre></td></tr></table></figure>
-另外一种保留原始文件的方法是使用<code>-c</code>选项，告诉gzip将原始文件写入到标准输出，然后重定向到指定的文件<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">gzip -c 你的文件 &gt; 你的文件.gz</span><br></pre></td></tr></table></figure></li>
-<li>查看冗余信息<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">gzip -v 你的文件</span><br></pre></td></tr></table></figure>
-该命令将会输出压缩进度信息</li>
-<li>压缩多个文件<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">gzip 文件1 文件2 文件3</span><br></pre></td></tr></table></figure>
-该命令将会生成<code>文件1.gz</code>、<code>文件2.gz</code>、<code>文件3.gz</code>这3个文件。</li>
-<li>压缩目录<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">gzip -r 你的目录</span><br></pre></td></tr></table></figure>
-该命令会递归压缩你的目录下的所有文件，分别生成<code>.gz</code>文件。</li>
-<li>改变压缩等级<br>gzip允许我们指定文件的压缩等级，范围是1-9，而<code>-1</code>或者<code>--fast</code>则代表使用最小的压缩率以达到最快的压缩速度；而<code>-9</code>或者<code>--best</code>则代表使用最高的压缩率，相应的，也会有最慢的压缩速度。默认的压缩级别是6；<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">gzip -9 你的文件</span><br></pre></td></tr></table></figure>
-压缩是CPU密集型的任务，压缩等级越高，压缩过程越长。</li>
-<li>使用标准输入<br>为了从标准输入创建<code>.gz</code>文件，使用管道命令重定向到gzip。<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">mysqldump database_name | gzip -c &gt; database_name.sql.gz</span><br></pre></td></tr></table></figure>
-该命令将会把<code>mysqldump</code>的输出内容作为输入传递给gzip。</li>
-</ul>
-<h2 id="使用gzip解压缩"><a href="#使用gzip解压缩" class="headerlink" title="使用gzip解压缩"></a>使用gzip解压缩</h2><ul>
-<li>使用-d作为解压缩选项<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">gzip -d 你的文件.gz</span><br></pre></td></tr></table></figure>
-另一个可以用于解压缩的命令是gunzip，它可以算作是gzip -d的别名。<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">gunzip 你的文件.gz</span><br></pre></td></tr></table></figure></li>
-<li>保留原始压缩文件<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">gzip -dk 你的文件.gz</span><br></pre></td></tr></table></figure></li>
-<li>解压缩多个文件<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">gzip -d 你的文件1.gz 你的文件2.gz 你的文件3.gz</span><br></pre></td></tr></table></figure></li>
-<li>解压缩目录下的所有压缩文件<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">gzip -dr 你的目录</span><br></pre></td></tr></table></figure></li>
-<li>查看压缩文件的内容<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">gzip -l 你的文件</span><br></pre></td></tr></table></figure>
-使用<code>-v</code>可以得到更加详细的信息。</li>
-</ul>
+        <h2 id="PDO是什么"><a href="#PDO是什么" class="headerlink" title="PDO是什么"></a>PDO是什么</h2><p>PDO（PHP Data Objects）拓展是一个轻量级、而且统一的接口，用来在PHP中访问数据库。</p>
+<p>PDO提供了一个数据访问抽象层，这意味着，不管你使用的是什么数据库，你都可以使用相同的函数去执行查询并获取数据。</p>
+<p>PDO不提供数据库抽象，无法消除不同数据库之间的语法差异，如果你想要做到做到这一点，你必须使用另外的抽象层去实现。</p>
+<h2 id="PDO连接MySQL数据库"><a href="#PDO连接MySQL数据库" class="headerlink" title="PDO连接MySQL数据库"></a>PDO连接MySQL数据库</h2><figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 数据库主机地址</span></span><br><span class="line"><span class="keyword">const</span> DB_HOST = <span class="string">&#x27;mysqldb&#x27;</span>;</span><br><span class="line"><span class="comment">// 数据库名称</span></span><br><span class="line"><span class="keyword">const</span> DB_NAME = <span class="string">&#x27;default&#x27;</span>;</span><br><span class="line"><span class="comment">// 数据库用户名</span></span><br><span class="line"><span class="keyword">const</span> DB_USER = <span class="string">&#x27;root&#x27;</span>;</span><br><span class="line"><span class="comment">// 数据库密码</span></span><br><span class="line"><span class="keyword">const</span> DB_PASSWORD = <span class="string">&#x27;devstack&#x27;</span>;</span><br><span class="line"><span class="comment">// 连接对象</span></span><br><span class="line"><span class="keyword">private</span> <span class="variable">$pdo</span> = <span class="literal">null</span>;</span><br><span class="line"><span class="comment">// 格式化连接字符串</span></span><br><span class="line"><span class="variable">$conStr</span> =  sprintf(<span class="string">&quot;mysql:host=%s;dbname=%s&quot;</span>, <span class="built_in">self</span>::DB_HOST, <span class="built_in">self</span>::DB_NAME);</span><br><span class="line"><span class="keyword">try</span> &#123;</span><br><span class="line">    <span class="keyword">$this</span> -&gt; pdo = <span class="keyword">new</span> PDO(<span class="variable">$conStr</span>, <span class="built_in">self</span>::DB_USER, <span class="built_in">self</span>::DB_PASSWORD);</span><br><span class="line">&#125; <span class="keyword">catch</span> (PDOException <span class="variable">$e</span>) &#123;</span><br><span class="line">    <span class="keyword">echo</span> <span class="variable">$e</span> -&gt; getMessage();</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h2 id="使用pdo连接对象执行插入、更新或者删除"><a href="#使用pdo连接对象执行插入、更新或者删除" class="headerlink" title="使用pdo连接对象执行插入、更新或者删除"></a>使用pdo连接对象执行插入、更新或者删除</h2><figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="variable">$sql</span> = <span class="string">&quot;insert into tasks (subject, start_date, end_date, description)</span></span><br><span class="line"><span class="string">                    values (&#x27;%s&#x27;, &#x27;%s&#x27;, &#x27;%s&#x27;, &#x27;%s&#x27;);&quot;</span>;</span><br><span class="line"><span class="variable">$insertStatement</span> = <span class="string">&quot;&quot;</span>;</span><br><span class="line"><span class="comment">// 构造插入语句</span></span><br><span class="line"><span class="comment">// date(&quot;Y-m-d H:i:s&quot;)的输出格式为yyyy-mm-dd hh:mm:ss</span></span><br><span class="line"><span class="keyword">for</span> (<span class="variable">$i</span> = <span class="number">0</span>; <span class="variable">$i</span> &lt; <span class="number">10</span>; <span class="variable">$i</span>++) &#123;</span><br><span class="line">    <span class="variable">$insertStatement</span> .= sprintf(<span class="variable">$sql</span>, <span class="string">&quot;睡觉&quot;</span>, date(<span class="string">&quot;Y-m-d H:i:s&quot;</span>), date(<span class="string">&quot;Y-m-d H:i:s&quot;</span>), <span class="string">&quot;测试&quot;</span>);</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">// 使用exec方法执行插入</span></span><br><span class="line"><span class="keyword">$this</span> -&gt; pdo -&gt; exec(<span class="variable">$insertStatement</span>);</span><br><span class="line"><span class="comment">// 更新和删除都可以使用exec()，返回值为表的影响条数</span></span><br></pre></td></tr></table></figure>
+<h2 id="使用pdo连接对象执行查询"><a href="#使用pdo连接对象执行查询" class="headerlink" title="使用pdo连接对象执行查询"></a>使用pdo连接对象执行查询</h2><figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="variable">$sql</span> = <span class="string">&quot;select * from tasks&quot;</span>;</span><br><span class="line"><span class="keyword">foreach</span> (<span class="keyword">$this</span> -&gt; pdo -&gt; query(<span class="variable">$sql</span>) <span class="keyword">as</span> <span class="variable">$row</span>) &#123;</span><br><span class="line">    <span class="keyword">print</span> <span class="variable">$row</span>[<span class="string">&#x27;subject&#x27;</span>] . <span class="string">&quot;\t&quot;</span>;</span><br><span class="line">    <span class="keyword">print</span> <span class="variable">$row</span>[<span class="string">&#x27;start_date&#x27;</span>] . <span class="string">&quot;\t&quot;</span>;</span><br><span class="line">    <span class="keyword">print</span> <span class="variable">$row</span>[<span class="string">&#x27;end_date&#x27;</span>] . <span class="string">&quot;\n&quot;</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>使用query方法可以执行查询操作。通过<code>foreach</code>遍历查询结果。</p>
 
     </div>
 
@@ -357,21 +336,19 @@
 
     <footer class="post-footer">
           <div class="post-tags">
-              <a href="/tags/gzip/" rel="tag"># gzip</a>
+              <a href="/tags/mysql/" rel="tag"># mysql</a>
+              <a href="/tags/pdo/" rel="tag"># pdo</a>
           </div>
 
         
 
           <div class="post-nav">
             <div class="post-nav-item">
-                <a href="/2021/03/12/design-pattern-tutorial/" rel="prev" title="设计模式学习手册">
-                  <i class="fa fa-chevron-left"></i> 设计模式学习手册
+                <a href="/2021/08/09/spring-bean-post-processor/" rel="prev" title="Spring框架中bean的前置处理和后置处理">
+                  <i class="fa fa-chevron-left"></i> Spring框架中bean的前置处理和后置处理
                 </a>
             </div>
             <div class="post-nav-item">
-                <a href="/2021/03/14/bash-shortcut-manual/" rel="next" title="bash中的常用快捷方式">
-                  bash中的常用快捷方式 <i class="fa fa-chevron-right"></i>
-                </a>
             </div>
           </div>
     </footer>
