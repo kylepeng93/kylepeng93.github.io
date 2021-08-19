@@ -944,4 +944,24 @@ dict是客户端，dictd是dict的后台服务器。默认安装之后是不带�
         <tag>搜索引擎</tag>
       </tags>
   </entry>
+  <entry>
+    <title>学习资源汇总</title>
+    <url>/2021/08/20/study-resource-collection/</url>
+    <content><![CDATA[<ol>
+<li>分布式搜索引擎elasticsearch学习教程——<a href="https://www.tutorialspoint.com/elasticsearch/elasticsearch_populate.htm">https://www.tutorialspoint.com/elasticsearch/elasticsearch_populate.htm</a></li>
+<li>java权限认证框架shiro——<a href="https://shiro.apache.org/authentication.html">https://shiro.apache.org/authentication.html</a></li>
+<li>vue+bootstrap4学习——<a href="https://www.remotestack.io/build-vue-login-signup-ui-auth-template-with-bootstrap/">https://www.remotestack.io/build-vue-login-signup-ui-auth-template-with-bootstrap/</a></li>
+<li>druid学习资源——<a href="https://druid.apache.org/docs/latest/configuration/index.html">https://druid.apache.org/docs/latest/configuration/index.html</a></li>
+<li>java日志框架logback——<a href="https://dennis-xlc.gitbooks.io/the-logback-manual/content/en/chapter-4-appenders/logback-core/rollingfileappender/size-and-time-based-rolling-policy.html">https://dennis-xlc.gitbooks.io/the-logback-manual/content/en/chapter-4-appenders/logback-core/rollingfileappender/size-and-time-based-rolling-policy.html</a></li>
+<li>springboot官方文档——<a href="https://docs.spring.io/spring-boot/docs/current/reference/htmlsingle/#legal">https://docs.spring.io/spring-boot/docs/current/reference/htmlsingle/#legal</a></li>
+</ol>
+]]></content>
+      <categories>
+        <category>自学</category>
+      </categories>
+      <tags>
+        <tag>study</tag>
+        <tag>汇总</tag>
+      </tags>
+  </entry>
 </search>
