@@ -1,0 +1,469 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+<meta name="generator" content="Hexo 5.3.0">
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+
+<link rel="stylesheet" href="//cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@5.15.1/css/all.min.css">
+  <link rel="stylesheet" href="//cdn.jsdelivr.net/npm/animate.css@3.1.1/animate.min.css">
+
+<script class="hexo-configurations">
+    var NexT = window.NexT || {};
+    var CONFIG = {"hostname":"kylepeng93.github.io","root":"/","images":"/images","scheme":"Pisces","version":"8.1.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12},"copycode":false,"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":"utterances","storage":true,"lazyload":false,"nav":null,"activeClass":"utterances"},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"prism":false,"i18n":{"placeholder":"搜索...","empty":"没有找到任何搜索结果：${query}","hits_time":"找到 ${hits} 个搜索结果（用时 ${time} 毫秒）","hits":"找到 ${hits} 个搜索结果"},"path":"/search.xml","localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false}};
+  </script>
+<meta name="description" content="什么是树莓派树莓派（Raspberry Pi）是一款只有巴掌大小的微型计算机开发板，别看它体积小，但它确实是一个功能完备的计算机，可以做绝大部分我们个人电脑（PC）可以做的事情。而且功耗更小。 树莓派支持的系统目前除了官方主推的Raspberry Pi OS ，还有其他第三方系统，比如基于ubuntu和debian的arm发行版，理论上可以安装微软的Windows，但不推荐，毕竟Windows是">
+<meta property="og:type" content="article">
+<meta property="og:title" content="怎么在不开机的情况下让树莓派自动连接上wifi">
+<meta property="og:url" content="http://kylepeng93.github.io/2021/09/26/how-raspberry-pi-connect-to-wifi-without-boot/index.html">
+<meta property="og:site_name" content="成长日记">
+<meta property="og:description" content="什么是树莓派树莓派（Raspberry Pi）是一款只有巴掌大小的微型计算机开发板，别看它体积小，但它确实是一个功能完备的计算机，可以做绝大部分我们个人电脑（PC）可以做的事情。而且功耗更小。 树莓派支持的系统目前除了官方主推的Raspberry Pi OS ，还有其他第三方系统，比如基于ubuntu和debian的arm发行版，理论上可以安装微软的Windows，但不推荐，毕竟Windows是">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="http://kylepeng93.github.io/assets/raspberry_pi.jpg">
+<meta property="article:published_time" content="2021-09-26T13:47:07.000Z">
+<meta property="article:modified_time" content="2021-09-26T14:46:16.864Z">
+<meta property="article:author" content="彭凯">
+<meta property="article:tag" content="ssh">
+<meta property="article:tag" content="raspberry pi">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="http://kylepeng93.github.io/assets/raspberry_pi.jpg">
+
+
+<link rel="canonical" href="http://kylepeng93.github.io/2021/09/26/how-raspberry-pi-connect-to-wifi-without-boot/">
+
+
+<script class="page-configurations">
+  // https://hexo.io/docs/variables.html
+  CONFIG.page = {
+    sidebar: "",
+    isHome : false,
+    isPost : true,
+    lang   : 'zh-CN'
+  };
+</script>
+<title>怎么在不开机的情况下让树莓派自动连接上wifi | 成长日记</title>
+  
+
+
+
+  <noscript>
+  <style>
+  body { margin-top: 2rem; }
+
+  .use-motion .menu-item,
+  .use-motion .sidebar,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-header {
+    visibility: visible;
+  }
+
+  .use-motion .header,
+  .use-motion .site-brand-container .toggle,
+  .use-motion .footer { opacity: initial; }
+
+  .use-motion .site-title,
+  .use-motion .site-subtitle,
+  .use-motion .custom-logo-image {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line {
+    transform: scaleX(1);
+  }
+
+  .search-pop-overlay, .sidebar-nav { display: none; }
+  .sidebar-panel { display: block; }
+  </style>
+</noscript>
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" class="use-motion">
+  <div class="headband"></div>
+
+  <main class="main">
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切换导航栏">
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <i class="logo-line"></i>
+      <h1 class="site-title">成长日记</h1>
+      <i class="logo-line"></i>
+    </a>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+        <i class="fa fa-search fa-fw fa-lg"></i>
+    </div>
+  </div>
+</div>
+
+
+
+<nav class="site-nav">
+  <ul class="main-menu menu">
+        <li class="menu-item menu-item-home">
+
+    <a href="/" rel="section"><i class="fa fa-home fa-fw"></i>首页</a>
+
+  </li>
+        <li class="menu-item menu-item-about">
+
+    <a href="/about/" rel="section"><i class="fa fa-user fa-fw"></i>关于</a>
+
+  </li>
+        <li class="menu-item menu-item-tags">
+
+    <a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>标签<span class="badge">59</span></a>
+
+  </li>
+        <li class="menu-item menu-item-categories">
+
+    <a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>分类<span class="badge">28</span></a>
+
+  </li>
+        <li class="menu-item menu-item-archives">
+
+    <a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档<span class="badge">43</span></a>
+
+  </li>
+      <li class="menu-item menu-item-search">
+        <a role="button" class="popup-trigger"><i class="fa fa-search fa-fw"></i>搜索
+        </a>
+      </li>
+  </ul>
+</nav>
+
+
+
+  <div class="search-pop-overlay">
+    <div class="popup search-popup"><div class="search-header">
+  <span class="search-icon">
+    <i class="fa fa-search"></i>
+  </span>
+  <div class="search-input-container">
+    <input autocomplete="off" autocapitalize="off" maxlength="80"
+           placeholder="搜索..." spellcheck="false"
+           type="search" class="search-input">
+  </div>
+  <span class="popup-btn-close">
+    <i class="fa fa-times-circle"></i>
+  </span>
+</div>
+<div class="search-result-container no-result">
+  <div class="search-result-icon">
+    <i class="fa fa-spinner fa-pulse fa-5x"></i>
+  </div>
+</div>
+
+    </div>
+  </div>
+
+</div>
+        
+  
+  <div class="toggle sidebar-toggle">
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+  </div>
+
+  <aside class="sidebar">
+
+    <div class="sidebar-inner sidebar-nav-active sidebar-toc-active">
+      <ul class="sidebar-nav">
+        <li class="sidebar-nav-toc">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview">
+          站点概览
+        </li>
+      </ul>
+
+      <div class="sidebar-panel-container">
+        <!--noindex-->
+        <section class="post-toc-wrap sidebar-panel">
+            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%BB%80%E4%B9%88%E6%98%AF%E6%A0%91%E8%8E%93%E6%B4%BE"><span class="nav-number">1.</span> <span class="nav-text">什么是树莓派</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%A0%91%E8%8E%93%E6%B4%BE%E6%94%AF%E6%8C%81%E7%9A%84%E7%B3%BB%E7%BB%9F"><span class="nav-number">2.</span> <span class="nav-text">树莓派支持的系统</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%A0%91%E8%8E%93%E6%B4%BE%E6%80%8E%E4%B9%88%E8%81%94%E7%BD%91"><span class="nav-number">3.</span> <span class="nav-text">树莓派怎么联网</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%AE%89%E8%A3%85%E7%B3%BB%E7%BB%9F"><span class="nav-number">3.1.</span> <span class="nav-text">安装系统</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%88%B6%E4%BD%9C%E5%90%AF%E5%8A%A8%E7%9B%98"><span class="nav-number">3.2.</span> <span class="nav-text">制作启动盘</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%86%99%E5%85%A5wifi%E9%85%8D%E7%BD%AE"><span class="nav-number">3.3.</span> <span class="nav-text">写入wifi配置</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%85%81%E8%AE%B8ssh%E8%AE%BF%E9%97%AE"><span class="nav-number">3.4.</span> <span class="nav-text">允许ssh访问</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%BD%BF%E7%94%A8%E9%9D%99%E6%80%81ip%E5%9C%B0%E5%9D%80"><span class="nav-number">4.</span> <span class="nav-text">使用静态ip地址</span></a></li></ol></div>
+        </section>
+        <!--/noindex-->
+
+        <section class="site-overview-wrap sidebar-panel">
+          <div class="site-author site-overview-item animated" itemprop="author" itemscope itemtype="http://schema.org/Person">
+  <p class="site-author-name" itemprop="name">彭凯</p>
+  <div class="site-description" itemprop="description"></div>
+</div>
+<div class="site-state-wrap site-overview-item animated">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+          <a href="/archives/">
+        
+          <span class="site-state-item-count">43</span>
+          <span class="site-state-item-name">日志</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+            <a href="/categories/">
+          
+        <span class="site-state-item-count">28</span>
+        <span class="site-state-item-name">分类</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+            <a href="/tags/">
+          
+        <span class="site-state-item-count">59</span>
+        <span class="site-state-item-name">标签</span></a>
+      </div>
+  </nav>
+</div>
+
+
+
+        </section>
+      </div>
+    </div>
+  </aside>
+  <div class="sidebar-dimmer"></div>
+
+
+    </header>
+
+    
+  <div class="back-to-top">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
+
+<noscript>
+  <div class="noscript-warning">Theme NexT works best with JavaScript enabled</div>
+</noscript>
+
+
+    <div class="main-inner post posts-expand">
+
+
+  
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://kylepeng93.github.io/2021/09/26/how-raspberry-pi-connect-to-wifi-without-boot/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="彭凯">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="成长日记">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          怎么在不开机的情况下让树莓派自动连接上wifi
+        </h1>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">发表于</span>
+      
+
+      <time title="创建时间：2021-09-26 21:47:07 / 修改时间：22:46:16" itemprop="dateCreated datePublished" datetime="2021-09-26T21:47:07+08:00">2021-09-26</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">分类于</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/raspberry-pi/" itemprop="url" rel="index"><span itemprop="name">raspberry pi</span></a>
+        </span>
+    </span>
+
+  
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+        <p><img src="/assets/raspberry_pi.jpg" alt="树莓派"></p>
+<h2 id="什么是树莓派"><a href="#什么是树莓派" class="headerlink" title="什么是树莓派"></a>什么是树莓派</h2><p>树莓派（Raspberry Pi）是一款只有巴掌大小的微型计算机开发板，别看它体积小，但它确实是一个功能完备的计算机，可以做绝大部分我们个人电脑（PC）可以做的事情。而且功耗更小。</p>
+<h2 id="树莓派支持的系统"><a href="#树莓派支持的系统" class="headerlink" title="树莓派支持的系统"></a>树莓派支持的系统</h2><p>目前除了官方主推的Raspberry Pi OS ，还有其他第三方系统，比如基于ubuntu和debian的arm发行版，理论上可以安装微软的Windows，但不推荐，毕竟Windows是收费软件，而且对系统资源相较于linux有更高的要求，作为一款主打轻量级的开发版，Windows显然太重了。</p>
+<h2 id="树莓派怎么联网"><a href="#树莓派怎么联网" class="headerlink" title="树莓派怎么联网"></a>树莓派怎么联网</h2><ol>
+<li>树莓派自带支持802.11n的以太网网卡，因此可以直接使用支持RJ45的标准网口连接上网；</li>
+<li>从Model 3开始，树莓派自带支持802.11n的无线网卡，对于无法通过网线直连的场合，wifi变成了我们唯一的途径。</li>
+</ol>
+<p>下面具体就怎么在不开机的情况下配置无线连接做个介绍，方便大家在无线环境中使用树莓派。</p>
+<blockquote>
+<p>不得不说，树莓派自带的无线网卡的性能确实很弱，对于大流量的场景不推荐使用，最好自备外接无线网卡。</p>
+</blockquote>
+<h3 id="安装系统"><a href="#安装系统" class="headerlink" title="安装系统"></a>安装系统</h3><p>本教程基于Raspberry Pi OS，其他发行版系统可能不适用。下载地址：<a target="_blank" rel="noopener" href="https://downloads.raspberrypi.org/raspios_armhf/images/raspios_armhf-2021-05-28/2021-05-07-raspios-buster-armhf.zip%E3%80%82">https://downloads.raspberrypi.org/raspios_armhf/images/raspios_armhf-2021-05-28/2021-05-07-raspios-buster-armhf.zip。</a></p>
+<h3 id="制作启动盘"><a href="#制作启动盘" class="headerlink" title="制作启动盘"></a>制作启动盘</h3><p>在linux下面可以使用如下命令</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo dd <span class="keyword">if</span>=/home/your_home/raspberryOS.iso of=/dev/sd&#123;x&#125; bs=4MB status=progress</span><br></pre></td></tr></table></figure>
+<p>注意，使用上面的命令时必须确保of参数对应的值是你要写入的SD卡，一般以sd开头，if参数对应的是你下载解压后的原始镜像地址。</p>
+<blockquote>
+<p>windows上的启动盘制作请自行百度</p>
+</blockquote>
+<h3 id="写入wifi配置"><a href="#写入wifi配置" class="headerlink" title="写入wifi配置"></a>写入wifi配置</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">country=CN <span class="comment">#这里是我们位于的国家的缩写</span></span><br><span class="line">ctrl_interface=DIR=/var/run/wpa_supplicant GROUP=netdev</span><br><span class="line">update_config=1 <span class="comment">#更新现有配置</span></span><br><span class="line">network=&#123;</span><br><span class="line">  ssid=<span class="string">&quot;你的wifi名称&quot;</span></span><br><span class="line">  scan_ssid=1</span><br><span class="line">  psk=<span class="string">&quot;你的wifi密码&quot;</span></span><br><span class="line">  key_mgmt=WPA-PSK</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>将该文件命名为<code>wpa_supplicant.conf</code>，并将其保存到制作好的启动盘的最外层的boot目录下。</p>
+<h3 id="允许ssh访问"><a href="#允许ssh访问" class="headerlink" title="允许ssh访问"></a>允许ssh访问</h3><p>在启动盘的最外层的boot目录下创建ssh文件，不需要向里面写入内容。</p>
+<p><strong>最后将制作好的sd卡插入到树莓派中启动即可自动连接wifi,然后我们在路由器管理页面查看已连接设备中就能看到带有raspberry pi标签的设备了，找出其ip地址，尝试下使用ssh连接并管理树莓派，如果一切顺利的话，你将可以通过远程访问来管理你的树莓派设备了。</strong></p>
+<h2 id="使用静态ip地址"><a href="#使用静态ip地址" class="headerlink" title="使用静态ip地址"></a>使用静态ip地址</h2><p>由于树莓派内置了DHCP服务，所以，当我们每次连接上wifi时可能会被分配到不同的ip地址，这显然不利于配置外部对于树莓派后台服务的访问，因此，我们在连接上wifi之后，可以给树莓派配置一个静态ip。</p>
+<p>打开<code>/etc/dhcpcd.conf</code>文件，向里面追加如下配置</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">interface wlan0</span><br><span class="line">static ip_address=192.168.0.193/24</span><br><span class="line">static routers=192.168.0.1</span><br><span class="line">static domain_name_servers=192.168.0.1 192.168.1.1</span><br></pre></td></tr></table></figure>
+<p>其中<code>wlan0</code>是我们无线网卡的系统名称，后面的<code>ip_address</code>则是我们自定义的ip地址，<code>routers</code>是我们的路由，<code>domain_name_server</code>是我们的DNS地址，多个DNS的场合使用空格隔开。</p>
+
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+          <div class="post-tags">
+              <a href="/tags/ssh/" rel="tag"># ssh</a>
+              <a href="/tags/raspberry-pi/" rel="tag"># raspberry pi</a>
+          </div>
+
+        
+
+          <div class="post-nav">
+            <div class="post-nav-item">
+                <a href="/2021/09/03/shiro-permission-guide/" rel="prev" title="shiro的权限管理之访问许可（permission）">
+                  <i class="fa fa-chevron-left"></i> shiro的权限管理之访问许可（permission）
+                </a>
+            </div>
+            <div class="post-nav-item">
+                <a href="/2021/09/26/why-we-like-ultraman-tiga/" rel="next" title="我们为什么喜欢迪迦奥特曼——迪迦被禁播后的感想">
+                  我们为什么喜欢迪迦奥特曼——迪迦被禁播后的感想 <i class="fa fa-chevron-right"></i>
+                </a>
+            </div>
+          </div>
+    </footer>
+  </article>
+</div>
+
+
+
+
+
+
+    
+  <div class="comments">
+    <div id="utterances-container"></div>
+  </div>
+  
+
+<script>
+  window.addEventListener('tabs:register', () => {
+    let { activeClass } = CONFIG.comments;
+    if (CONFIG.comments.storage) {
+      activeClass = localStorage.getItem('comments_active') || activeClass;
+    }
+    if (activeClass) {
+      const activeTab = document.querySelector(`a[href="#comment-${activeClass}"]`);
+      if (activeTab) {
+        activeTab.click();
+      }
+    }
+  });
+  if (CONFIG.comments.storage) {
+    window.addEventListener('tabs:click', event => {
+      if (!event.target.matches('.tabs-comment .tab-content .tab-pane')) return;
+      const commentClass = event.target.classList[1];
+      localStorage.setItem('comments_active', commentClass);
+    });
+  }
+</script>
+</div>
+  </main>
+
+  <footer class="footer">
+    <div class="footer-inner">
+
+
+<div class="copyright">
+  &copy; 
+  <span itemprop="copyrightYear">2021</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">彭凯</span>
+</div>
+  <div class="powered-by">由 <a href="https://hexo.io/" class="theme-link" rel="noopener" target="_blank">Hexo</a> & <a href="https://theme-next.js.org/pisces/" class="theme-link" rel="noopener" target="_blank">NexT.Pisces</a> 强力驱动
+  </div>
+
+    </div>
+  </footer>
+
+  
+  <script src="//cdn.jsdelivr.net/npm/animejs@3.2.1/lib/anime.min.js"></script>
+<script src="/js/utils.js"></script><script src="/js/motion.js"></script><script src="/js/next-boot.js"></script>
+
+  
+
+<script src="/js/local-search.js"></script>
+
+
+
+
+
+
+  
+
+
+
+
+
+
+<script>
+NexT.utils.loadComments('#utterances-container', () => {
+  const script = document.createElement('script');
+  script.src = 'https://utteranc.es/client.js';
+  script.setAttribute('repo', "https://github.com/kylepeng93/kylepeng93.github.io");
+  script.setAttribute('issue-term', "pathname");
+  script.setAttribute('theme', "github-light");
+  script.crossOrigin = 'anonymous';
+  script.async = true;
+  document.querySelector('#utterances-container').appendChild(script);
+});
+</script>
+
+</body>
+</html>

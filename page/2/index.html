@@ -21,7 +21,7 @@
 
 <script class="hexo-configurations">
     var NexT = window.NexT || {};
-    var CONFIG = {"hostname":"kylepeng93.github.io","root":"/","images":"/images","scheme":"Pisces","version":"8.1.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12},"copycode":false,"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"prism":false,"i18n":{"placeholder":"搜索...","empty":"没有找到任何搜索结果：${query}","hits_time":"找到 ${hits} 个搜索结果（用时 ${time} 毫秒）","hits":"找到 ${hits} 个搜索结果"},"path":"/search.xml","localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false}};
+    var CONFIG = {"hostname":"kylepeng93.github.io","root":"/","images":"/images","scheme":"Pisces","version":"8.1.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12},"copycode":false,"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":"utterances","storage":true,"lazyload":false,"nav":null,"activeClass":"utterances"},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"prism":false,"i18n":{"placeholder":"搜索...","empty":"没有找到任何搜索结果：${query}","hits_time":"找到 ${hits} 个搜索结果（用时 ${time} 毫秒）","hits":"找到 ${hits} 个搜索结果"},"path":"/search.xml","localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false}};
   </script>
 <meta property="og:type" content="website">
 <meta property="og:title" content="成长日记">
@@ -132,17 +132,17 @@
   </li>
         <li class="menu-item menu-item-tags">
 
-    <a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>标签<span class="badge">49</span></a>
+    <a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>标签<span class="badge">59</span></a>
 
   </li>
         <li class="menu-item menu-item-categories">
 
-    <a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>分类<span class="badge">22</span></a>
+    <a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>分类<span class="badge">28</span></a>
 
   </li>
         <li class="menu-item menu-item-archives">
 
-    <a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档<span class="badge">34</span></a>
+    <a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档<span class="badge">43</span></a>
 
   </li>
       <li class="menu-item menu-item-search">
@@ -214,20 +214,20 @@
       <div class="site-state-item site-state-posts">
           <a href="/archives/">
         
-          <span class="site-state-item-count">34</span>
+          <span class="site-state-item-count">43</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
       <div class="site-state-item site-state-categories">
             <a href="/categories/">
           
-        <span class="site-state-item-count">22</span>
+        <span class="site-state-item-count">28</span>
         <span class="site-state-item-name">分类</span></a>
       </div>
       <div class="site-state-item site-state-tags">
             <a href="/tags/">
           
-        <span class="site-state-item-count">49</span>
+        <span class="site-state-item-count">59</span>
         <span class="site-state-item-name">标签</span></a>
       </div>
   </nav>
@@ -256,6 +256,862 @@
 
 
     <div class="main-inner index posts-expand">
+
+    
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://kylepeng93.github.io/2021/08/20/elasticsearch-tutorial/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="彭凯">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="成长日记">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          <a href="/2021/08/20/elasticsearch-tutorial/" class="post-title-link" itemprop="url">分布式搜索引擎-elasticsearch</a>
+        </h2>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">发表于</span>
+      
+
+      <time title="创建时间：2021-08-20 00:03:36 / 修改时间：00:07:35" itemprop="dateCreated datePublished" datetime="2021-08-20T00:03:36+08:00">2021-08-20</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">分类于</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/elasticsearch/" itemprop="url" rel="index"><span itemprop="name">elasticsearch</span></a>
+        </span>
+    </span>
+
+  
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+          <h2 id="1-elatsticsearch（简写为es）是什么"><a href="#1-elatsticsearch（简写为es）是什么" class="headerlink" title="1. elatsticsearch（简写为es）是什么"></a>1. elatsticsearch（简写为es）是什么</h2><p>它是一个实时的分布式、开源的全文本查询和分析引擎，基于java语言开发。</p>
+<h2 id="2-es可以做什么"><a href="#2-es可以做什么" class="headerlink" title="2. es可以做什么"></a>2. es可以做什么</h2><p>它可以在SPA（single page application-单页应用）中被使用，为用户提供高速的数据查询和分析。且原生支持java应用。</p>
+<h2 id="3-主要特性"><a href="#3-主要特性" class="headerlink" title="3. 主要特性"></a>3. 主要特性</h2><p>它有如下几个主要特性：</p>
+<ul>
+<li>可拓展性强，支持高达千兆字节（GB）的数据（不管是结构性的还是非结构性的）；</li>
+<li>可以作为类似MongoDB和RavenDB等文档存储数据库的替代品；</li>
+<li>使用非规范化来提高搜索性能；</li>
+<li>企业级的搜索引擎，被大型公司广泛使用；</li>
+<li>开源工具，且使用Apache许可证。</li>
+</ul>
+<h2 id="4-关键性的概念"><a href="#4-关键性的概念" class="headerlink" title="4. 关键性的概念"></a>4. 关键性的概念</h2><ul>
+<li>节点：表示单个运行的es实例，es可以在单台服务器上运行多个实例，这完全取决于服务器的物理内存和处理器能力；</li>
+<li>集群：一个或者多个节点的集合，在逻辑上提供了集中的数据索引和查询能力，通常表现在横跨多个节点获取完整数据的能力。</li>
+<li>索引：不同类型的文档和他们的属性的集合。在关系型数据库中，索引一般用于提升查询性能。</li>
+<li>文档：一个使用JSON格式定义的字段集合，而这些字段定义了数据查询的规则。每个文档都属于一种类型并驻留在索引中，每个文档都与一个称为 UID 的唯一标识符相关联。</li>
+<li>分片：索引被横向拆分成不同的分片，这意味着每个分片包含了所有的文档属性，但包含的 JSON 对象数量少于索引。水平分离使分片成为一个独立的节点，且可以存储在任何节点，主分片是索引的原始水平部分，然后将这些主分片复制到副本分片中。</li>
+<li>副本：es允许用户创建索引和分片的副本。复制不仅有助于在发生故障时提高数据的可用性，而且通过在这些副本中执行并行搜索操作来提高搜索性能。</li>
+</ul>
+<h2 id="5-es的优势"><a href="#5-es的优势" class="headerlink" title="5. es的优势"></a>5. es的优势</h2><ul>
+<li>es 是基于 Java 开发的，这使得它几乎可以兼容所有平台；</li>
+<li>es 是实时的，也就是说一秒后添加的文档就可以在这个引擎中搜索了；</li>
+<li>es 是分布式的，这使得它可以轻松地在任何大型组织中扩展和集成。</li>
+<li>使用 es 中的网关概念可以轻松创建完整备份。</li>
+<li>与 Apache Solr 相比，在 es 中处理多租户非常容易。</li>
+<li>es 使用 JSON 对象作为响应，这使得使用大量不同的编程语言调用 es 服务器成为可能。</li>
+<li>es 支持几乎所有文档类型，除了那些不支持文本渲染的文档类型。</li>
+</ul>
+<h2 id="6-es的缺点"><a href="#6-es的缺点" class="headerlink" title="6. es的缺点"></a>6. es的缺点</h2><ul>
+<li>与 Apache Solr 不同，es 在处理请求和响应数据方面没有多语言支持（仅支持JSON），而Apache Solr 可以支持 CSV、XML 和 JSON 格式。</li>
+<li>偶尔，es 会出现**<em>脑裂（Split brain）**</em>的问题。（什么是脑裂）</li>
+</ul>
+<h2 id="7-es和关系数据库之间的区别"><a href="#7-es和关系数据库之间的区别" class="headerlink" title="7. es和关系数据库之间的区别"></a>7. es和关系数据库之间的区别</h2><p>在 es 中，索引类似于 RDBMS（关系数据库管理系统）中的表。 每个表都是行的集合，就像 es 中的每个索引都是文档的集合一样。<br>下表给出了这些术语之间的直接比较 -</p>
+<table>
+<thead>
+<tr>
+<th>es</th>
+<th>RDBMS</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>集群</td>
+<td>数据库</td>
+</tr>
+<tr>
+<td>分片</td>
+<td>分片</td>
+</tr>
+<tr>
+<td>索引</td>
+<td>表</td>
+</tr>
+<tr>
+<td>字段</td>
+<td>列</td>
+</tr>
+<tr>
+<td>文档</td>
+<td>行</td>
+</tr>
+</tbody></table>
+
+      
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+</div>
+
+
+
+
+    
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://kylepeng93.github.io/2021/08/10/php-connect-mysql-with-pdo/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="彭凯">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="成长日记">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          <a href="/2021/08/10/php-connect-mysql-with-pdo/" class="post-title-link" itemprop="url">php——使用pdo连接mysql数据库</a>
+        </h2>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">发表于</span>
+      
+
+      <time title="创建时间：2021-08-10 22:38:10 / 修改时间：22:57:10" itemprop="dateCreated datePublished" datetime="2021-08-10T22:38:10+08:00">2021-08-10</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">分类于</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/php/" itemprop="url" rel="index"><span itemprop="name">php</span></a>
+        </span>
+    </span>
+
+  
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+          <h2 id="PDO是什么"><a href="#PDO是什么" class="headerlink" title="PDO是什么"></a>PDO是什么</h2><p>PDO（PHP Data Objects）拓展是一个轻量级、而且统一的接口，用来在PHP中访问数据库。</p>
+<p>PDO提供了一个数据访问抽象层，这意味着，不管你使用的是什么数据库，你都可以使用相同的函数去执行查询并获取数据。</p>
+<p>PDO不提供数据库抽象，无法消除不同数据库之间的语法差异，如果你想要做到做到这一点，你必须使用另外的抽象层去实现。</p>
+<h2 id="PDO连接MySQL数据库"><a href="#PDO连接MySQL数据库" class="headerlink" title="PDO连接MySQL数据库"></a>PDO连接MySQL数据库</h2><figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 数据库主机地址</span></span><br><span class="line"><span class="keyword">const</span> DB_HOST = <span class="string">&#x27;mysqldb&#x27;</span>;</span><br><span class="line"><span class="comment">// 数据库名称</span></span><br><span class="line"><span class="keyword">const</span> DB_NAME = <span class="string">&#x27;default&#x27;</span>;</span><br><span class="line"><span class="comment">// 数据库用户名</span></span><br><span class="line"><span class="keyword">const</span> DB_USER = <span class="string">&#x27;root&#x27;</span>;</span><br><span class="line"><span class="comment">// 数据库密码</span></span><br><span class="line"><span class="keyword">const</span> DB_PASSWORD = <span class="string">&#x27;devstack&#x27;</span>;</span><br><span class="line"><span class="comment">// 连接对象</span></span><br><span class="line"><span class="keyword">private</span> <span class="variable">$pdo</span> = <span class="literal">null</span>;</span><br><span class="line"><span class="comment">// 格式化连接字符串</span></span><br><span class="line"><span class="variable">$conStr</span> =  sprintf(<span class="string">&quot;mysql:host=%s;dbname=%s&quot;</span>, <span class="built_in">self</span>::DB_HOST, <span class="built_in">self</span>::DB_NAME);</span><br><span class="line"><span class="keyword">try</span> &#123;</span><br><span class="line">    <span class="keyword">$this</span> -&gt; pdo = <span class="keyword">new</span> PDO(<span class="variable">$conStr</span>, <span class="built_in">self</span>::DB_USER, <span class="built_in">self</span>::DB_PASSWORD);</span><br><span class="line">&#125; <span class="keyword">catch</span> (PDOException <span class="variable">$e</span>) &#123;</span><br><span class="line">    <span class="keyword">echo</span> <span class="variable">$e</span> -&gt; getMessage();</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h2 id="使用pdo连接对象执行插入、更新或者删除"><a href="#使用pdo连接对象执行插入、更新或者删除" class="headerlink" title="使用pdo连接对象执行插入、更新或者删除"></a>使用pdo连接对象执行插入、更新或者删除</h2><figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="variable">$sql</span> = <span class="string">&quot;insert into tasks (subject, start_date, end_date, description)</span></span><br><span class="line"><span class="string">                    values (&#x27;%s&#x27;, &#x27;%s&#x27;, &#x27;%s&#x27;, &#x27;%s&#x27;);&quot;</span>;</span><br><span class="line"><span class="variable">$insertStatement</span> = <span class="string">&quot;&quot;</span>;</span><br><span class="line"><span class="comment">// 构造插入语句</span></span><br><span class="line"><span class="comment">// date(&quot;Y-m-d H:i:s&quot;)的输出格式为yyyy-mm-dd hh:mm:ss</span></span><br><span class="line"><span class="keyword">for</span> (<span class="variable">$i</span> = <span class="number">0</span>; <span class="variable">$i</span> &lt; <span class="number">10</span>; <span class="variable">$i</span>++) &#123;</span><br><span class="line">    <span class="variable">$insertStatement</span> .= sprintf(<span class="variable">$sql</span>, <span class="string">&quot;睡觉&quot;</span>, date(<span class="string">&quot;Y-m-d H:i:s&quot;</span>), date(<span class="string">&quot;Y-m-d H:i:s&quot;</span>), <span class="string">&quot;测试&quot;</span>);</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">// 使用exec方法执行插入</span></span><br><span class="line"><span class="keyword">$this</span> -&gt; pdo -&gt; exec(<span class="variable">$insertStatement</span>);</span><br><span class="line"><span class="comment">// 更新和删除都可以使用exec()，返回值为表的影响条数</span></span><br></pre></td></tr></table></figure>
+<h2 id="使用pdo连接对象执行查询"><a href="#使用pdo连接对象执行查询" class="headerlink" title="使用pdo连接对象执行查询"></a>使用pdo连接对象执行查询</h2><figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="variable">$sql</span> = <span class="string">&quot;select * from tasks&quot;</span>;</span><br><span class="line"><span class="keyword">foreach</span> (<span class="keyword">$this</span> -&gt; pdo -&gt; query(<span class="variable">$sql</span>) <span class="keyword">as</span> <span class="variable">$row</span>) &#123;</span><br><span class="line">    <span class="keyword">print</span> <span class="variable">$row</span>[<span class="string">&#x27;subject&#x27;</span>] . <span class="string">&quot;\t&quot;</span>;</span><br><span class="line">    <span class="keyword">print</span> <span class="variable">$row</span>[<span class="string">&#x27;start_date&#x27;</span>] . <span class="string">&quot;\t&quot;</span>;</span><br><span class="line">    <span class="keyword">print</span> <span class="variable">$row</span>[<span class="string">&#x27;end_date&#x27;</span>] . <span class="string">&quot;\n&quot;</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>使用query方法可以执行查询操作。通过<code>foreach</code>遍历查询结果。</p>
+
+      
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+</div>
+
+
+
+
+    
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://kylepeng93.github.io/2021/08/09/spring-bean-post-processor/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="彭凯">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="成长日记">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          <a href="/2021/08/09/spring-bean-post-processor/" class="post-title-link" itemprop="url">Spring框架中bean的前置处理和后置处理</a>
+        </h2>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">发表于</span>
+
+      <time title="创建时间：2021-08-09 22:36:30" itemprop="dateCreated datePublished" datetime="2021-08-09T22:36:30+08:00">2021-08-09</time>
+    </span>
+      <span class="post-meta-item">
+        <span class="post-meta-item-icon">
+          <i class="far fa-calendar-check"></i>
+        </span>
+        <span class="post-meta-item-text">更新于</span>
+        <time title="修改时间：2021-08-10 00:03:13" itemprop="dateModified" datetime="2021-08-10T00:03:13+08:00">2021-08-10</time>
+      </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">分类于</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/spring-framework/" itemprop="url" rel="index"><span itemprop="name">spring framework</span></a>
+        </span>
+    </span>
+
+  
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+          <h2 id="Spring框架中Bean的创建过程如下："><a href="#Spring框架中Bean的创建过程如下：" class="headerlink" title="Spring框架中Bean的创建过程如下："></a>Spring框架中Bean的创建过程如下：</h2><p><img src="https://springframework.guru/wp-content/uploads/2019/05/aware_interfaces_callbacks_in_bean_lifecycle-1024x545.png" alt="Aware interfaces Callbacks in Bean Lifecycle"></p>
+<p>其中BeanPostProcessor接口包含两个执行过程，分别是在bean执行init方法之前和执行init方法之后执行。代码如下：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@Configuration</span></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">MyBeanPostProcessor</span> <span class="keyword">implements</span> <span class="title">BeanPostProcessor</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> Object <span class="title">postProcessBeforeInitialization</span><span class="params">(Object bean, String beanName)</span> <span class="keyword">throws</span> BeansException </span>&#123;</span><br><span class="line">        System.out.println(<span class="string">&quot;我在bean初始化前执行&quot;</span>);</span><br><span class="line">        <span class="keyword">return</span> BeanPostProcessor.<span class="keyword">super</span>.postProcessBeforeInitialization(bean, beanName);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> Object <span class="title">postProcessAfterInitialization</span><span class="params">(Object bean, String beanName)</span> <span class="keyword">throws</span> BeansException </span>&#123;</span><br><span class="line">        System.out.println(<span class="string">&quot;我在bean初始化之后执行&quot;</span>);</span><br><span class="line">        <span class="keyword">return</span> BeanPostProcessor.<span class="keyword">super</span>.postProcessAfterInitialization(bean, beanName);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Bean(name = &quot;DBConnection&quot;, initMethod = &quot;init&quot;, destroyMethod = &quot;destroy&quot;)</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> DatabaseConfig <span class="title">mysqlConnection</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        Properties properties = System.getProperties();</span><br><span class="line">        String url = properties.getProperty(<span class="string">&quot;url&quot;</span>);</span><br><span class="line">        String driverName = properties.getProperty(<span class="string">&quot;driverName&quot;</span>);</span><br><span class="line">        String userName = properties.getProperty(<span class="string">&quot;userName&quot;</span>);</span><br><span class="line">        String password = properties.getProperty(<span class="string">&quot;password&quot;</span>);</span><br><span class="line">        <span class="keyword">return</span> <span class="keyword">new</span> DatabaseConfig(driverName, url, userName, password);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>上述代码新建了自定义的<code>MyBeanPostProcessor</code>,并实现了接口<code>BeanPostProcessor</code>中的两个接口（自带default方法），同时，还定义了一个名为<code>DBConnection</code>的bean，指定了初始化方法和销毁前执行的方法。</p>
+<p>其中，<code>DatabaseConfig</code>的定义如下：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@Data</span></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">DatabaseConfig</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">static</span> Connection connection;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">private</span> String driverName;</span><br><span class="line">    <span class="keyword">private</span> String url;</span><br><span class="line">    <span class="keyword">private</span> String userName;</span><br><span class="line">    <span class="keyword">private</span> String password;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="title">DatabaseConfig</span><span class="params">(String driverName, String url, String userName, String password)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">this</span>.driverName = driverName;</span><br><span class="line">        <span class="keyword">this</span>.url = url;</span><br><span class="line">        <span class="keyword">this</span>.userName = userName;</span><br><span class="line">        <span class="keyword">this</span>.password = password;</span><br><span class="line">        System.out.println(<span class="string">&quot;构造连接参数...&quot;</span>);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">init</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        System.out.println(<span class="string">&quot;初始化数据库连接&quot;</span>);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">destroy</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        System.out.println(<span class="string">&quot;销毁数据库连接&quot;</span>);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+<p>为了方便识别执行阶段，分别在构造器和<code>init</code>以及<code>destroy</code>方法中加入了文字说明。</p>
+<p>最后的执行结果如下：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">构造连接参数...</span><br><span class="line">我在bean初始化前执行</span><br><span class="line">初始化数据库连接</span><br><span class="line">我在bean初始化之后执行</span><br><span class="line">...</span><br><span class="line">销毁数据库连接</span><br></pre></td></tr></table></figure>
+<p>由此可见，构造器内的代码是最先执行的，属于填充属性阶段（即<code>Populate properties</code>），接着执行<code>MyBeanPostProcessor#postProcessBeforeInitialization</code>方法，然后执行<code>init方法</code>，之后执行<code>MyBeanPostProcessor#postProcessBeforeInitialization</code>，最后在关闭应用时执行<code>destroy</code>方法。</p>
+
+      
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+</div>
+
+
+
+
+    
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://kylepeng93.github.io/2021/08/09/spring-bean-init-and-destroy/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="彭凯">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="成长日记">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          <a href="/2021/08/09/spring-bean-init-and-destroy/" class="post-title-link" itemprop="url">Spring框架中bean的生命周期</a>
+        </h2>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">发表于</span>
+      
+
+      <time title="创建时间：2021-08-09 22:23:53 / 修改时间：22:35:31" itemprop="dateCreated datePublished" datetime="2021-08-09T22:23:53+08:00">2021-08-09</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">分类于</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/spring-framework/" itemprop="url" rel="index"><span itemprop="name">spring framework</span></a>
+        </span>
+    </span>
+
+  
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+          <h2 id="使用-PostConstruct和-PreDestroy注解在同一个配置类中执行bean的初始化前和销毁前的配置"><a href="#使用-PostConstruct和-PreDestroy注解在同一个配置类中执行bean的初始化前和销毁前的配置" class="headerlink" title="使用@PostConstruct和@PreDestroy注解在同一个配置类中执行bean的初始化前和销毁前的配置"></a>使用<code>@PostConstruct</code>和<code>@PreDestroy</code>注解在同一个配置类中执行bean的初始化前和销毁前的配置</h2><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@Configuration</span></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">MyBeanPostProcessor</span> </span>&#123;</span><br><span class="line">    <span class="meta">@Bean</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> String <span class="title">helloWorld</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="string">&quot;hello world&quot;</span>;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@PostConstruct</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">init</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        System.out.println(<span class="string">&quot;我是初始化前执行的方法&quot;</span>);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@PreDestroy</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">destroy</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        System.out.println(<span class="string">&quot;我是销毁前执行的方法&quot;</span>);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>上面的配置类中只定义了一个bean，且是字符串类型（方便举例），大部分情况下应该是返回一个对象。</p>
+<h2 id="使用-Bean-initMethod-quot-init-quot-destroyMethod-quot-destroy-quot-注解执行bean初始化前和销毁前的配置"><a href="#使用-Bean-initMethod-quot-init-quot-destroyMethod-quot-destroy-quot-注解执行bean初始化前和销毁前的配置" class="headerlink" title="使用@Bean(initMethod = &quot;init&quot;, destroyMethod = &quot;destroy&quot;)注解执行bean初始化前和销毁前的配置"></a>使用<code>@Bean(initMethod = &quot;init&quot;, destroyMethod = &quot;destroy&quot;)</code>注解执行bean初始化前和销毁前的配置</h2><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@Configuration</span></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">ConfigTest</span> </span>&#123;</span><br><span class="line">    <span class="meta">@Bean(initMethod = &quot;init&quot;, destroyMethod = &quot;destroy&quot;)</span></span><br><span class="line">    <span class="function">Test1 <span class="title">test1</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="keyword">new</span> Test1(); <span class="comment">// 使用默认的无参构造器</span></span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">// 定义Bean的内容，本质上是一个普通的java类</span></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Test1</span> </span>&#123;</span><br><span class="line">    <span class="comment">// 初始化前的执行方法</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">init</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        System.out.println(<span class="string">&quot;this is init method&quot;</span>);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="comment">// 销毁前的执行方法</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">destroy</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        System.out.println(<span class="string">&quot;this is destroy method&quot;</span>);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+      
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+</div>
+
+
+
+
+    
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://kylepeng93.github.io/2021/08/08/samba-server-tutorial/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="彭凯">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="成长日记">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          <a href="/2021/08/08/samba-server-tutorial/" class="post-title-link" itemprop="url">在ubuntu上创建自己的samba服务器</a>
+        </h2>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">发表于</span>
+      
+
+      <time title="创建时间：2021-08-08 19:23:12 / 修改时间：21:51:03" itemprop="dateCreated datePublished" datetime="2021-08-08T19:23:12+08:00">2021-08-08</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">分类于</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/%E6%96%87%E4%BB%B6%E5%85%B1%E4%BA%AB%E6%9C%8D%E5%8A%A1/" itemprop="url" rel="index"><span itemprop="name">文件共享服务</span></a>
+        </span>
+    </span>
+
+  
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+          <h2 id="samba"><a href="#samba" class="headerlink" title="samba"></a>samba</h2><p>类Unix（Gnu/Linux）操作系统上用来和标准Windows文件系统互相通信的一种程序套件；Samba允许类Unix系统和Windows系统共享文件和打印机，忽略两个系统间的差异性，从而实现共存。</p>
+<h2 id="在ubuntu上安装Samba"><a href="#在ubuntu上安装Samba" class="headerlink" title="在ubuntu上安装Samba"></a>在ubuntu上安装Samba</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo apt update &amp;&amp; sudo apt install -y samba</span><br></pre></td></tr></table></figure>
+<h2 id="修改配置文件，设置共享目录"><a href="#修改配置文件，设置共享目录" class="headerlink" title="修改配置文件，设置共享目录"></a>修改配置文件，设置共享目录</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 创建共享目录</span></span><br><span class="line">$ mkdir /tmp/share</span><br></pre></td></tr></table></figure>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 将共享目录添加到配置文件中</span></span><br><span class="line">$ sudo vim /etc/samba/smb.conf</span><br></pre></td></tr></table></figure>
+<p>将下面的内容追加到文件末尾：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">[share]</span><br><span class="line">	comment &#x3D; Samba share directory # 共享目录说明</span><br><span class="line">	path &#x3D; &#x2F;tmp&#x2F;share # 共享目录的系统路径</span><br><span class="line">	read only &#x3D; yes # 是否只读 </span><br><span class="line">    browsable &#x3D; yes # 是否可浏览</span><br></pre></td></tr></table></figure>
+<h2 id="修改默认端口（适用于公网访问的场景，内网访问可以不用修改）"><a href="#修改默认端口（适用于公网访问的场景，内网访问可以不用修改）" class="headerlink" title="修改默认端口（适用于公网访问的场景，内网访问可以不用修改）"></a>修改默认端口（适用于公网访问的场景，内网访问可以不用修改）</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ sudo vim /etc/samba/smb.conf</span><br></pre></td></tr></table></figure>
+<p>将下面的内容追加到<code>[global]</code>部分的末尾（如果端口配置已存在，则直接修改端口号）</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">[global]</span><br><span class="line">	...</span><br><span class="line">	smb ports &#x3D; 4450 1390 #想要指定的端口号，原本为445 139</span><br></pre></td></tr></table></figure>
+<h2 id="重启smbd守护进程"><a href="#重启smbd守护进程" class="headerlink" title="重启smbd守护进程"></a>重启smbd守护进程</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ sudo systemctl restart smbd</span><br></pre></td></tr></table></figure>
+<h2 id="查看修改后的端口号是否生效"><a href="#查看修改后的端口号是否生效" class="headerlink" title="查看修改后的端口号是否生效"></a>查看修改后的端口号是否生效</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">$ ss -nltp | grep 4450</span><br><span class="line">$ ss -nltp | grep 1390</span><br></pre></td></tr></table></figure>
+<h2 id="配置防火墙ufw"><a href="#配置防火墙ufw" class="headerlink" title="配置防火墙ufw"></a>配置防火墙ufw</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 如果开启了ufw,则需要将samba服务添加到允许访问服务列表中</span></span><br><span class="line">sudo ufw allow samba</span><br><span class="line"><span class="comment"># 如果重新配置了端口，则需要指定允许访问的端口号</span></span><br><span class="line">sudo ufw allow [port] <span class="comment"># 可以在端口号后面加上tcp或者udp,如1390/tcp、1390/udp</span></span><br></pre></td></tr></table></figure>
+<h2 id="创建samba用户账户"><a href="#创建samba用户账户" class="headerlink" title="创建samba用户账户"></a>创建samba用户账户</h2><p>samba默认不使用系统账户，因此，我们需要为共享目录设置一个用户名和密码：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">sudo smbpasswd -a <span class="variable">$USER</span></span><br><span class="line"><span class="comment"># 该命令会将当前用户加入到samba的用户中，并提示设置该用户对应的密码</span></span><br></pre></td></tr></table></figure>
+<h2 id="验证samba服务的可用性"><a href="#验证samba服务的可用性" class="headerlink" title="验证samba服务的可用性"></a>验证samba服务的可用性</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">sudo apt install smbclient</span><br><span class="line"><span class="comment"># 验证可用的samba共享目录</span></span><br><span class="line">smbclient -L samba_server_ip</span><br><span class="line"><span class="comment"># 如果修改了默认端口号，还需要手动指定端口号</span></span><br><span class="line">smbclient -p 1390 -L samba_server_ip</span><br></pre></td></tr></table></figure>
+<p>如果服务正常的话，会出现如下内容：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">Enter WORKGROUP\pengkai<span class="string">&#x27;s password: </span></span><br><span class="line"><span class="string"></span></span><br><span class="line"><span class="string">	Sharename       Type      Comment</span></span><br><span class="line"><span class="string">	---------       ----      -------</span></span><br><span class="line"><span class="string">	sambashare      Disk      Samba And linux</span></span><br><span class="line"><span class="string">	www-data        Disk      apache web root</span></span><br><span class="line"><span class="string">	print$          Disk      Printer Drivers</span></span><br><span class="line"><span class="string">	IPC$            IPC       IPC Service (kyleVps server (Samba, Ubuntu))</span></span><br><span class="line"><span class="string">SMB1 disabled -- no workgroup available</span></span><br></pre></td></tr></table></figure>
+<h2 id="在终端中连接samba共享目录"><a href="#在终端中连接samba共享目录" class="headerlink" title="在终端中连接samba共享目录"></a>在终端中连接samba共享目录</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">smbclient -U [user] [-p port] //[samba_ip]/[share_directory] </span><br><span class="line"><span class="comment"># 上述命令需要指定登陆用户和samba服务器ip以及共享目录，随后系统会提示输入密码</span></span><br><span class="line"><span class="comment"># 密码验证通过之后会进入smb的命令行交互界面：</span></span><br><span class="line">Try <span class="string">&quot;help&quot;</span> to get a list of possible commands.</span><br><span class="line">smb: \&gt; ls</span><br><span class="line">  .                                   D        0  Sun Feb 21 18:42:49 2021</span><br><span class="line">  ..                                  D        0  Sun Feb 21 18:42:18 2021</span><br><span class="line">  Test File                           N       20  Sun Feb 21 18:42:49 2021</span><br><span class="line"> </span><br><span class="line">        971515904 blocks of size 1024. 843676384 blocks available</span><br><span class="line">smb: \&gt; </span><br></pre></td></tr></table></figure>
+<h2 id="将samba挂载至指定目录下"><a href="#将samba挂载至指定目录下" class="headerlink" title="将samba挂载至指定目录下"></a>将samba挂载至指定目录下</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">未完待续</span><br></pre></td></tr></table></figure>
+
+
+<p>至此，samba的安装、配置和使用就说完了。</p>
+
+      
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+</div>
+
+
+
+
+    
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://kylepeng93.github.io/2021/08/08/namp-command-tutorial/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="彭凯">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="成长日记">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          <a href="/2021/08/08/namp-command-tutorial/" class="post-title-link" itemprop="url">nmap命令使用教程</a>
+        </h2>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">发表于</span>
+      
+
+      <time title="创建时间：2021-08-08 16:19:00 / 修改时间：17:20:43" itemprop="dateCreated datePublished" datetime="2021-08-08T16:19:00+08:00">2021-08-08</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">分类于</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/nmap/" itemprop="url" rel="index"><span itemprop="name">nmap</span></a>
+        </span>
+    </span>
+
+  
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+          <ol>
+<li><p>扫描单个目标地址：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">nmap 192.168.0.100</span><br></pre></td></tr></table></figure></li>
+<li><p>扫描多个目标地址</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">nmap 192.168.0.100 192.168.0.105</span><br></pre></td></tr></table></figure></li>
+<li><p>扫描一个范围内的目标地址</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">nmap 192.168.0.100-200</span><br></pre></td></tr></table></figure></li>
+<li><p>扫描目标地址所在的某个网段：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">nmap 192.168.0.100/24</span><br></pre></td></tr></table></figure></li>
+<li><p>扫描主机列表targets.txt文件中的所有目标地址</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">nmap -iL ~/targets.txt</span><br></pre></td></tr></table></figure></li>
+<li><p>扫描除某一个目标地址之外的所有目标地址</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">nmap 192.168.0.100/24 -exclude 192.168.0.105</span><br></pre></td></tr></table></figure></li>
+<li><p>扫描除某一文件中的目标地址之外的目标地址</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">nmap 192.168.0.100/24 -exceludefile ~/targets.txt</span><br></pre></td></tr></table></figure></li>
+<li><p>扫描某一目标地址的21、22、23、80端口</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">nmap 192.168.0.100 -p 21,22,23,80</span><br></pre></td></tr></table></figure></li>
+<li><p>对目标地址进行路由跟踪</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">nmap --traceroute 192.168.0.100</span><br></pre></td></tr></table></figure></li>
+<li><p>扫描目标地址所在C段的在线状况</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">nmap -sP 192.168.0.100/24</span><br></pre></td></tr></table></figure></li>
+<li><p>目标地址的操作系统指纹识别</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">nmap -O 192.168.0.100</span><br></pre></td></tr></table></figure></li>
+<li><p>目标地址提供的服务版本检测</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">nmap -sV 192.168.0.105</span><br></pre></td></tr></table></figure></li>
+<li><p>探测防火墙状态</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">nmap -sF -T4 192.168.0.100</span><br></pre></td></tr></table></figure>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</li>
+</ol>
+
+      
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+</div>
+
+
+
+
+    
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://kylepeng93.github.io/2021/08/08/string-in-file-search/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="彭凯">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="成长日记">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          <a href="/2021/08/08/string-in-file-search/" class="post-title-link" itemprop="url">string-in-file-search</a>
+        </h2>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">发表于</span>
+      
+
+      <time title="创建时间：2021-08-08 12:03:14 / 修改时间：16:11:00" itemprop="dateCreated datePublished" datetime="2021-08-08T12:03:14+08:00">2021-08-08</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">分类于</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/%E5%AD%97%E7%AC%A6%E4%B8%B2%E5%A4%84%E7%90%86/" itemprop="url" rel="index"><span itemprop="name">字符串处理</span></a>
+        </span>
+    </span>
+
+  
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+          <h2 id="在指定目下寻找包含指定字符串的文件："><a href="#在指定目下寻找包含指定字符串的文件：" class="headerlink" title="在指定目下寻找包含指定字符串的文件："></a>在指定目下寻找包含指定字符串的文件：</h2><ol>
+<li>输出文件名和内容</li>
+</ol>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">grep mysqli_connect ./</span><br></pre></td></tr></table></figure>
+<p>其中，，</p>
+<ul>
+<li><p>加入<code>-r</code>可以递归搜索</p>
+</li>
+<li><p>加入<code>-l</code>可以只打印匹配的文件名</p>
+</li>
+<li><p>加入参数<code>-e</code>可以支持正则表达式</p>
+</li>
+<li><p>加入参数<code>-i</code>可以不区分大小写</p>
+</li>
+<li><p>加入参数<code>-c</code>可以指定匹配的行数</p>
+</li>
+<li><p>加入<code>-v</code>可以查出不匹配指定字符串的行数</p>
+</li>
+</ul>
+<ol start="2">
+<li><p>替换上述匹配命令中的匹配字符串</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sed -i <span class="string">&quot;s/mysqli_connect/mysql_connect/g&quot;</span> `grep mysqli_connect -rl ./`</span><br></pre></td></tr></table></figure>
+<p>其中，<code>-i</code>表示替换立即生效</p>
+</li>
+</ol>
+
+      
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+</div>
+
+
+
+
+    
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://kylepeng93.github.io/2021/08/08/spring-framework-core-thinking-1/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="彭凯">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="成长日记">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          <a href="/2021/08/08/spring-framework-core-thinking-1/" class="post-title-link" itemprop="url">spring-framework-core-thinking-1</a>
+        </h2>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">发表于</span>
+      
+
+      <time title="创建时间：2021-08-08 10:56:16 / 修改时间：12:02:41" itemprop="dateCreated datePublished" datetime="2021-08-08T10:56:16+08:00">2021-08-08</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">分类于</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/spring%E6%A1%86%E6%9E%B6/" itemprop="url" rel="index"><span itemprop="name">spring框架</span></a>
+        </span>
+    </span>
+
+  
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+          <h2 id="spring框架进阶—Aware接口的原理和使用"><a href="#spring框架进阶—Aware接口的原理和使用" class="headerlink" title="spring框架进阶—Aware接口的原理和使用"></a>spring框架进阶—Aware接口的原理和使用</h2>
+      
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+</div>
+
+
+
+
+    
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://kylepeng93.github.io/2021/04/01/the-way-of-accessing-wsl-file-system-in-windows/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="彭凯">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="成长日记">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          <a href="/2021/04/01/the-way-of-accessing-wsl-file-system-in-windows/" class="post-title-link" itemprop="url">在windows 10中访问wsl（linux子系统）的方式（反过来又如何）</a>
+        </h2>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">发表于</span>
+      
+
+      <time title="创建时间：2021-04-01 21:48:19 / 修改时间：22:05:45" itemprop="dateCreated datePublished" datetime="2021-04-01T21:48:19+08:00">2021-04-01</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">分类于</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/notes/" itemprop="url" rel="index"><span itemprop="name">notes</span></a>
+        </span>
+    </span>
+
+  
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+          <h2 id="在windows文件管理器中访问wsl（windows-subsystem-for-linux）文件系统"><a href="#在windows文件管理器中访问wsl（windows-subsystem-for-linux）文件系统" class="headerlink" title="在windows文件管理器中访问wsl（windows subsystem for linux）文件系统"></a>在windows文件管理器中访问wsl（windows subsystem for linux）文件系统</h2><ol>
+<li>进入安装好的wsl终端，输入如下命令： <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ explorer.exe .</span><br></pre></td></tr></table></figure>
+ 其中，<code>explorer.exe</code>为文件管理器的可执行文件，<code>.</code>代表当前目录（家目录）。<h2 id="在wsl中访问windows的本地文件"><a href="#在wsl中访问windows的本地文件" class="headerlink" title="在wsl中访问windows的本地文件"></a>在wsl中访问windows的本地文件</h2></li>
+<li>默认情况下，windows的各个分区以盘符作为挂载点，在wsl中可以通过目录<code>/mnt/c</code>进行访问，其中<code>c</code>代表C盘，其他分区依次类推。 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ <span class="built_in">cd</span> /mnt/c</span><br></pre></td></tr></table></figure>
+<blockquote>
+<p>在linux哲学中，一切皆是文件。</p>
+</blockquote>
+</li>
+</ol>
+
+      
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+</div>
+
+
+
 
     
 
@@ -330,795 +1186,8 @@
 
 
 
-    
-
-
-<div class="post-block">
-  
-  
-
-  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="http://kylepeng93.github.io/2021/04/01/win10-activate/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.gif">
-      <meta itemprop="name" content="彭凯">
-      <meta itemprop="description" content="">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="成长日记">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          <a href="/2021/04/01/win10-activate/" class="post-title-link" itemprop="url">win10企业版激活方法</a>
-        </h2>
-
-        <div class="post-meta-container">
-          <div class="post-meta">
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-calendar"></i>
-      </span>
-      <span class="post-meta-item-text">发表于</span>
-      
-
-      <time title="创建时间：2021-04-01 19:21:47 / 修改时间：19:56:22" itemprop="dateCreated datePublished" datetime="2021-04-01T19:21:47+08:00">2021-04-01</time>
-    </span>
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-folder"></i>
-      </span>
-      <span class="post-meta-item-text">分类于</span>
-        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-          <a href="/categories/%E5%B7%A5%E5%85%B7/" itemprop="url" rel="index"><span itemprop="name">工具</span></a>
-        </span>
-    </span>
-
-  
-</div>
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-          <h2 id="本文主要介绍如何通过kms服务器实现Windows-10专业版和企业版激活。"><a href="#本文主要介绍如何通过kms服务器实现Windows-10专业版和企业版激活。" class="headerlink" title="本文主要介绍如何通过kms服务器实现Windows 10专业版和企业版激活。"></a>本文主要介绍如何通过kms服务器实现Windows 10专业版和企业版激活。</h2><ul>
-<li><p>安装完系统之后，按住<code>Win+X</code>键，选择<code>Windows PowerShell（管理员）</code>,在弹出的窗口中输入下列命令：</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># win10专业版用户</span></span><br><span class="line">slmgr /ipk W269N-WFGWX-YVC9B-4J6C9-T83GX</span><br><span class="line">slmgr /skms kms.03k.org</span><br><span class="line">slmgr /ato</span><br><span class="line"><span class="comment"># win10企业版用户</span></span><br><span class="line">slmgr /ipk NPPR9-FWDCX-D2C8J-H872K-2YT43</span><br><span class="line">slmgr /skms kms.03k.org</span><br><span class="line">slmgr /ato</span><br></pre></td></tr></table></figure></li>
-<li><p>考虑到一般笔记本厂商会预装win10家庭版，所以，在使用上面的办法之前需要先升级到win10专业版。步骤如下：</p>
-<ol>
-<li><p>打开<code>设置</code>页面，选择<code>更新和安全</code>，继续选择<code>激活</code>，点击<code>更改产品密钥</code>，输入：</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">J7QT3-3GCPG-9GVWT-CH2XR-GMRJM</span><br></pre></td></tr></table></figure>
-<p>点击下一步</p>
-</li>
-<li><p>在提示页面点击更新即可。</p>
-</li>
-</ol>
-</li>
-</ul>
-
-      
-    </div>
-
-    
-    
-    
-
-    <footer class="post-footer">
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-</div>
-
-
-
-
-    
-
-
-<div class="post-block">
-  
-  
-
-  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="http://kylepeng93.github.io/2021/03/30/jenkins-study-notes/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.gif">
-      <meta itemprop="name" content="彭凯">
-      <meta itemprop="description" content="">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="成长日记">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          <a href="/2021/03/30/jenkins-study-notes/" class="post-title-link" itemprop="url">jenkins学习笔记</a>
-        </h2>
-
-        <div class="post-meta-container">
-          <div class="post-meta">
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-calendar"></i>
-      </span>
-      <span class="post-meta-item-text">发表于</span>
-      
-
-      <time title="创建时间：2021-03-30 17:05:55 / 修改时间：17:09:23" itemprop="dateCreated datePublished" datetime="2021-03-30T17:05:55+08:00">2021-03-30</time>
-    </span>
-
-  
-</div>
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-          <h2 id=""><a href="#" class="headerlink" title=""></a></h2>
-      
-    </div>
-
-    
-    
-    
-
-    <footer class="post-footer">
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-</div>
-
-
-
-
-    
-
-
-<div class="post-block">
-  
-  
-
-  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="http://kylepeng93.github.io/2021/03/18/code-complete-after-reading/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.gif">
-      <meta itemprop="name" content="彭凯">
-      <meta itemprop="description" content="">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="成长日记">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          <a href="/2021/03/18/code-complete-after-reading/" class="post-title-link" itemprop="url">代码大全读后感</a>
-        </h2>
-
-        <div class="post-meta-container">
-          <div class="post-meta">
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-calendar"></i>
-      </span>
-      <span class="post-meta-item-text">发表于</span>
-      
-
-      <time title="创建时间：2021-03-18 22:30:28 / 修改时间：22:52:44" itemprop="dateCreated datePublished" datetime="2021-03-18T22:30:28+08:00">2021-03-18</time>
-    </span>
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-folder"></i>
-      </span>
-      <span class="post-meta-item-text">分类于</span>
-        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-          <a href="/categories/%E4%BB%A3%E7%A0%81%E5%A4%A7%E5%85%A8/" itemprop="url" rel="index"><span itemprop="name">代码大全</span></a>
-        </span>
-    </span>
-
-  
-</div>
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-          <h2 id="利用隐喻对编程进行更加深刻的理解"><a href="#利用隐喻对编程进行更加深刻的理解" class="headerlink" title="利用隐喻对编程进行更加深刻的理解"></a>利用隐喻对编程进行更加深刻的理解</h2><ol>
-<li>公式与启发之间的区别是微妙的，体现在它们与答案之间的直接程度：公式直接给予指令;而启发则告诉你该怎样找到这些指令，或者告诉你到哪里寻找它们。</li>
-<li>隐喻仅仅是启发，而不是公式，因此，它们更倾向于比较随便，无拘无束。<blockquote>
-<p>为每个工作选择合适的工具，是成为一个优秀程序员的首要素质之一。</p>
-</blockquote>
-</li>
-<li></li>
-</ol>
-
-      
-    </div>
-
-    
-    
-    
-
-    <footer class="post-footer">
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-</div>
-
-
-
-
-    
-
-
-<div class="post-block">
-  
-  
-
-  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="http://kylepeng93.github.io/2021/03/16/great-tool-for-linux/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.gif">
-      <meta itemprop="name" content="彭凯">
-      <meta itemprop="description" content="">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="成长日记">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          <a href="/2021/03/16/great-tool-for-linux/" class="post-title-link" itemprop="url">linux上的实用软件清单（个人用）</a>
-        </h2>
-
-        <div class="post-meta-container">
-          <div class="post-meta">
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-calendar"></i>
-      </span>
-      <span class="post-meta-item-text">发表于</span>
-
-      <time title="创建时间：2021-03-16 23:37:01" itemprop="dateCreated datePublished" datetime="2021-03-16T23:37:01+08:00">2021-03-16</time>
-    </span>
-      <span class="post-meta-item">
-        <span class="post-meta-item-icon">
-          <i class="far fa-calendar-check"></i>
-        </span>
-        <span class="post-meta-item-text">更新于</span>
-        <time title="修改时间：2021-03-18 00:22:30" itemprop="dateModified" datetime="2021-03-18T00:22:30+08:00">2021-03-18</time>
-      </span>
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-folder"></i>
-      </span>
-      <span class="post-meta-item-text">分类于</span>
-        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-          <a href="/categories/%E7%B3%BB%E7%BB%9F/" itemprop="url" rel="index"><span itemprop="name">系统</span></a>
-        </span>
-    </span>
-
-  
-</div>
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-          <h2 id="为什么要列这个清单"><a href="#为什么要列这个清单" class="headerlink" title="为什么要列这个清单"></a>为什么要列这个清单</h2><p>在使用gnu linux（后面均简称为linux）操作系统的过程当中，总有一些软件让你觉得即使没有windows也能让自己的工作和生活变得更加便利，因此，为了方便后面因为更换发行版或者因为不可控因素导致系统损坏而必须重新安装linux系统，特别将自己平时用的比较多的软件列出来以供后面安装新系统之后能够快速恢复到正常工作和生活状态。个人觉得，对于linux用户来说，相对于windows系统中软件来源的不可控性和零散性，linux系统自带的包管理器绝对是节约我们软件安装时间的一大利器。而且更便于自动化安装和初始化，而作为软件开发者，良好的编程环境更是完胜windows系统。也希望这个清单能让自己在今后的软件开发生涯中更加注重时间的重要性，不要浪费时间在一些无意义的折腾上，毕竟，系统是拿来用的，高效才是操作系统带给我们最终的目的。</p>
-<blockquote>
-<p><strong>以下包管理器均采用archlinux内置的<code>pacman</code></strong></p>
-</blockquote>
-<h2 id="翻译类软件"><a href="#翻译类软件" class="headerlink" title="翻译类软件"></a>翻译类软件</h2><ol>
-<li>带gui的：goldendict、stardict（星际译王）<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">sudo pacman -S goldendict</span><br><span class="line"><span class="comment"># 或者</span></span><br><span class="line">sudo pacman -S stardict</span><br></pre></td></tr></table></figure>
-<a target="_blank" rel="noopener" href="http://download.huzheng.org/zh_CN/">字典下载链接</a>
-          <!--noindex-->
-            <div class="post-button">
-              <a class="btn" href="/2021/03/16/great-tool-for-linux/#more" rel="contents">
-                阅读全文 &raquo;
-              </a>
-            </div>
-          <!--/noindex-->
-        
-      
-    </div>
-
-    
-    
-    
-
-    <footer class="post-footer">
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-</div>
-
-
-
-
-    
-
-
-<div class="post-block">
-  
-  
-
-  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="http://kylepeng93.github.io/2021/03/16/aliyun-gradle-config/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.gif">
-      <meta itemprop="name" content="彭凯">
-      <meta itemprop="description" content="">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="成长日记">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          <a href="/2021/03/16/aliyun-gradle-config/" class="post-title-link" itemprop="url">使用aliyun的maven仓库初始化gradle</a>
-        </h2>
-
-        <div class="post-meta-container">
-          <div class="post-meta">
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-calendar"></i>
-      </span>
-      <span class="post-meta-item-text">发表于</span>
-      
-
-      <time title="创建时间：2021-03-16 22:27:37 / 修改时间：22:45:18" itemprop="dateCreated datePublished" datetime="2021-03-16T22:27:37+08:00">2021-03-16</time>
-    </span>
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-folder"></i>
-      </span>
-      <span class="post-meta-item-text">分类于</span>
-        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-          <a href="/categories/java/" itemprop="url" rel="index"><span itemprop="name">java</span></a>
-        </span>
-    </span>
-
-  
-</div>
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-          <h2 id="在linux中使用gradle命令行构建程序时，使用国内镜像可以大大加快我们的构建过程，节约我们的时间，下面就如何配置aliyun仓库作为gradle的默认仓库作出说明。"><a href="#在linux中使用gradle命令行构建程序时，使用国内镜像可以大大加快我们的构建过程，节约我们的时间，下面就如何配置aliyun仓库作为gradle的默认仓库作出说明。" class="headerlink" title="在linux中使用gradle命令行构建程序时，使用国内镜像可以大大加快我们的构建过程，节约我们的时间，下面就如何配置aliyun仓库作为gradle的默认仓库作出说明。"></a>在linux中使用gradle命令行构建程序时，使用国内镜像可以大大加快我们的构建过程，节约我们的时间，下面就如何配置aliyun仓库作为gradle的默认仓库作出说明。</h2><ol>
-<li>如果只想对单个项目生效，那么可以在项目的<code>build.gradle</code>中添加如下配置：<figure class="highlight properties"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="attr">buildscript</span> <span class="string">&#123;</span></span><br><span class="line">    <span class="attr">repositories</span> <span class="string">&#123;</span></span><br><span class="line">        <span class="attr">maven</span> <span class="string">&#123;url &#x27;https://maven.aliyun.com/repository/google/&#x27;&#125;</span></span><br><span class="line">        <span class="attr">maven</span> <span class="string">&#123;url &#x27;https://maven.aliyun.com/repository/jcenter/&#x27;&#125;</span></span><br><span class="line">    <span class="attr">&#125;</span></span><br><span class="line">    <span class="attr">dependencies</span> <span class="string">&#123;</span></span><br><span class="line">        <span class="attr">classpath</span>: <span class="string">&#x27;com.android.tools.build:gradle:2.2.3&#x27;</span></span><br><span class="line"></span><br><span class="line">    <span class="attr">&#125;</span></span><br><span class="line"><span class="attr">&#125;</span></span><br><span class="line"><span class="attr">allprojects</span> <span class="string">&#123;</span></span><br><span class="line">    <span class="attr">repositories</span> <span class="string">&#123;</span></span><br><span class="line">         <span class="attr">maven</span> <span class="string">&#123; url &#x27;https://maven.aliyun.com/repository/google/&#x27; &#125;</span></span><br><span class="line">         <span class="attr">maven</span> <span class="string">&#123; url &#x27;https://maven.aliyun.com/repository/jcenter/&#x27;&#125; </span></span><br><span class="line">    <span class="attr">&#125;</span></span><br><span class="line"><span class="attr">&#125;</span></span><br></pre></td></tr></table></figure></li>
-<li>如果是对所有项目生效，那么需要在用户的家目录下面的.gradle目录下创建<code>init.gradle</code>文件，内容如下：<figure class="highlight properties"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br></pre></td><td class="code"><pre><span class="line"><span class="attr">allprojects&#123;</span></span><br><span class="line">    <span class="attr">repositories</span> <span class="string">&#123;</span></span><br><span class="line">        <span class="attr">def</span> <span class="string">ALIYUN_REPOSITORY_URL = &#x27;https://maven.aliyun.com/repository/public/&#x27;</span></span><br><span class="line">        <span class="attr">def</span> <span class="string">ALIYUN_JCENTER_URL = &#x27;https://maven.aliyun.com/repository/jcenter/&#x27;</span></span><br><span class="line">        <span class="attr">def</span> <span class="string">ALIYUN_GOOGLE_URL = &#x27;https://maven.aliyun.com/repository/google/&#x27;</span></span><br><span class="line">        <span class="attr">def</span> <span class="string">ALIYUN_GRADLE_PLUGIN_URL = &#x27;https://maven.aliyun.com/repository/gradle-plugin/&#x27;</span></span><br><span class="line">        <span class="attr">all</span> <span class="string">&#123; ArtifactRepository repo -&gt;</span></span><br><span class="line">            <span class="meta">if(repo</span> <span class="string">instanceof MavenArtifactRepository)&#123;</span></span><br><span class="line">                <span class="attr">def</span> <span class="string">url = repo.url.toString()</span></span><br><span class="line">                <span class="attr">if</span> <span class="string">(url.startsWith(&#x27;https://repo1.maven.org/maven2/&#x27;)) &#123;</span></span><br><span class="line">                    <span class="meta">project.logger.lifecycle</span> <span class="string">&quot;Repository $&#123;repo.url&#125; replaced by $ALIYUN_REPOSITORY_URL.&quot;</span></span><br><span class="line">                    <span class="attr">remove</span> <span class="string">repo</span></span><br><span class="line">                <span class="attr">&#125;</span></span><br><span class="line">                <span class="attr">if</span> <span class="string">(url.startsWith(&#x27;https://jcenter.bintray.com/&#x27;)) &#123;</span></span><br><span class="line">                    <span class="meta">project.logger.lifecycle</span> <span class="string">&quot;Repository $&#123;repo.url&#125; replaced by $ALIYUN_JCENTER_URL.&quot;</span></span><br><span class="line">                    <span class="attr">remove</span> <span class="string">repo</span></span><br><span class="line">                <span class="attr">&#125;</span></span><br><span class="line">                <span class="attr">if</span> <span class="string">(url.startsWith(&#x27;https://dl.google.com/dl/android/maven2/&#x27;)) &#123;</span></span><br><span class="line">                    <span class="meta">project.logger.lifecycle</span> <span class="string">&quot;Repository $&#123;repo.url&#125; replaced by $ALIYUN_GOOGLE_URL.&quot;</span></span><br><span class="line">                    <span class="attr">remove</span> <span class="string">repo</span></span><br><span class="line">                <span class="attr">&#125;</span></span><br><span class="line">                <span class="attr">if</span> <span class="string">(url.startsWith(&#x27;https://plugins.gradle.org/m2/&#x27;)) &#123;</span></span><br><span class="line">                    <span class="meta">project.logger.lifecycle</span> <span class="string">&quot;Repository $&#123;repo.url&#125; replaced by $ALIYUN_GRADLE_PLUGIN_URL.&quot;</span></span><br><span class="line">                    <span class="attr">remove</span> <span class="string">repo</span></span><br><span class="line">                <span class="attr">&#125;</span></span><br><span class="line">            <span class="attr">&#125;</span></span><br><span class="line">        <span class="attr">&#125;</span></span><br><span class="line">        <span class="attr">maven</span> <span class="string">&#123; url ALIYUN_REPOSITORY_URL &#125;</span></span><br><span class="line">        <span class="attr">maven</span> <span class="string">&#123; url ALIYUN_JCENTER_URL &#125;</span></span><br><span class="line">        <span class="attr">maven</span> <span class="string">&#123; url ALIYUN_GOOGLE_URL &#125;</span></span><br><span class="line">        <span class="attr">maven</span> <span class="string">&#123; url ALIYUN_GRADLE_PLUGIN_URL &#125;</span></span><br><span class="line">    <span class="attr">&#125;</span></span><br><span class="line"><span class="attr">&#125;</span></span><br></pre></td></tr></table></figure></li>
-</ol>
-
-      
-    </div>
-
-    
-    
-    
-
-    <footer class="post-footer">
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-</div>
-
-
-
-
-    
-
-
-<div class="post-block">
-  
-  
-
-  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="http://kylepeng93.github.io/2021/03/14/spring-in-action/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.gif">
-      <meta itemprop="name" content="彭凯">
-      <meta itemprop="description" content="">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="成长日记">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          <a href="/2021/03/14/spring-in-action/" class="post-title-link" itemprop="url">spring实战</a>
-        </h2>
-
-        <div class="post-meta-container">
-          <div class="post-meta">
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-calendar"></i>
-      </span>
-      <span class="post-meta-item-text">发表于</span>
-
-      <time title="创建时间：2021-03-14 21:37:28" itemprop="dateCreated datePublished" datetime="2021-03-14T21:37:28+08:00">2021-03-14</time>
-    </span>
-      <span class="post-meta-item">
-        <span class="post-meta-item-icon">
-          <i class="far fa-calendar-check"></i>
-        </span>
-        <span class="post-meta-item-text">更新于</span>
-        <time title="修改时间：2021-03-15 00:08:43" itemprop="dateModified" datetime="2021-03-15T00:08:43+08:00">2021-03-15</time>
-      </span>
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-folder"></i>
-      </span>
-      <span class="post-meta-item-text">分类于</span>
-        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-          <a href="/categories/spring%E6%A1%86%E6%9E%B6/" itemprop="url" rel="index"><span itemprop="name">spring框架</span></a>
-        </span>
-    </span>
-
-  
-</div>
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-          <h2 id="认识spring框架"><a href="#认识spring框架" class="headerlink" title="认识spring框架"></a>认识spring框架</h2><ol>
-<li>spring框架为开发者做了很多，反过来，它也要求开发者同样对它。</li>
-<li></li>
-</ol>
-
-      
-    </div>
-
-    
-    
-    
-
-    <footer class="post-footer">
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-</div>
-
-
-
-
-    
-
-
-<div class="post-block">
-  
-  
-
-  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="http://kylepeng93.github.io/2021/03/14/bash-shortcut-manual/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.gif">
-      <meta itemprop="name" content="彭凯">
-      <meta itemprop="description" content="">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="成长日记">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          <a href="/2021/03/14/bash-shortcut-manual/" class="post-title-link" itemprop="url">bash中的常用快捷方式</a>
-        </h2>
-
-        <div class="post-meta-container">
-          <div class="post-meta">
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-calendar"></i>
-      </span>
-      <span class="post-meta-item-text">发表于</span>
-      
-
-      <time title="创建时间：2021-03-14 20:51:06 / 修改时间：21:34:06" itemprop="dateCreated datePublished" datetime="2021-03-14T20:51:06+08:00">2021-03-14</time>
-    </span>
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-folder"></i>
-      </span>
-      <span class="post-meta-item-text">分类于</span>
-        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-          <a href="/categories/linux/" itemprop="url" rel="index"><span itemprop="name">linux</span></a>
-        </span>
-    </span>
-
-  
-</div>
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-          <h2 id="以alt为辅助键的快捷键"><a href="#以alt为辅助键的快捷键" class="headerlink" title="以alt为辅助键的快捷键"></a>以<code>alt</code>为辅助键的快捷键</h2><ol>
-<li>alt+A 跳转到行首</li>
-<li>alt+B 跳转到光标后面一个单词长度的位置</li>
-<li>alt+C 中断bash中正在执行的任务</li>
-<li>alt+D 删除位于光标后面的所有字符</li>
-<li>alt+F 移动到光标前面一个单词长度的位置</li>
-<li>alt+T 交换光标位置前后的两个单词的位置</li>
-<li>alt+U 将位于光标位置后面的第一个单词全部转换成大写字母</li>
-<li>alt+L 和alt+U相反，将位于光标位置后面的第一个单词全部转换成小写字母</li>
-<li>alt+R 撤销当前命令所有的改变（等同于清空当前所有手动输入过的字符）</li>
-<li>alt+. 使用上一个命令的最后一个单词（以空格来区分）</li>
-</ol>
-<h2 id="以ctrl为辅助键的快捷键"><a href="#以ctrl为辅助键的快捷键" class="headerlink" title="以ctrl为辅助键的快捷键"></a>以<code>ctrl</code>为辅助键的快捷键</h2><ol>
-<li>ctrl+A 移动到行首</li>
-<li>ctrl+B 向光标后面移动一个字符</li>
-<li>ctrl+C 终止正在执行的任务</li>
-<li>ctrl+D 向光标后面删除一个字符</li>
-<li>ctrl+E 移动到行尾</li>
-<li>ctrl+H 删除光标前面的一个字符，相当于退格键</li>
-<li>ctrl+J 相当于<code>enter</code>键</li>
-<li>ctrl+K 删除所有位于光标后面的字符</li>
-<li>ctrl+L 清空屏幕</li>
-<li>ctrl+R 查询历史命令</li>
-<li>ctrl+O 执行ctrl+R查询出来的命令</li>
-<li>ctrl+T 交换最后两个字符</li>
-<li>ctrl+U 删除位于光标位置前的字符</li>
-<li>ctrl+W 删除光标位置前的一个单词</li>
-</ol>
-<h2 id="其他"><a href="#其他" class="headerlink" title="其他"></a>其他</h2><ol>
-<li>!! 重复执行上一条命令</li>
-<li>ESC+T 交换最后两个单词的位置</li>
-</ol>
-
-      
-    </div>
-
-    
-    
-    
-
-    <footer class="post-footer">
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-</div>
-
-
-
-
-    
-
-
-<div class="post-block">
-  
-  
-
-  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="http://kylepeng93.github.io/2021/03/13/gzip-manual/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.gif">
-      <meta itemprop="name" content="彭凯">
-      <meta itemprop="description" content="">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="成长日记">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          <a href="/2021/03/13/gzip-manual/" class="post-title-link" itemprop="url">gzip操作手册</a>
-        </h2>
-
-        <div class="post-meta-container">
-          <div class="post-meta">
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-calendar"></i>
-      </span>
-      <span class="post-meta-item-text">发表于</span>
-      
-
-      <time title="创建时间：2021-03-13 14:12:50 / 修改时间：16:23:01" itemprop="dateCreated datePublished" datetime="2021-03-13T14:12:50+08:00">2021-03-13</time>
-    </span>
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-folder"></i>
-      </span>
-      <span class="post-meta-item-text">分类于</span>
-        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-          <a href="/categories/linux/" itemprop="url" rel="index"><span itemprop="name">linux</span></a>
-        </span>
-    </span>
-
-  
-</div>
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-          <h2 id="gzip工具"><a href="#gzip工具" class="headerlink" title="gzip工具"></a>gzip工具</h2><p>gzip采用了最流行的压缩算法，可以让你缩小文件的大小，并且保留原始的文件模式，属主和时间戳。<br>使用gzip工具压缩的文件一般使用.gz的文件名后缀，并且gzip也可以用来解压缩文件。</p>
-<h2 id="命令格式以及说明"><a href="#命令格式以及说明" class="headerlink" title="命令格式以及说明"></a>命令格式以及说明</h2><p>通常的语法格式如下：</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">gzip [可选项] ... [文件]...</span><br></pre></td></tr></table></figure>
-<p>gzip只能压缩单个文件，并为给定的文件创建一个压缩之后的文件。根据惯例，压缩之后的文件的命令一把使用<code>.gz</code>或者<code>.z</code>。<br>如果你想将多个文件或者目录压缩到一个文件中，首先你需要创建一个tar包，然后对这个tar包进行压缩。这样的文件一般会使用<code>.tar.gz</code>或者<code>.tgz</code>作为后缀来表明这个文件是使用了gzip压缩之后的tar包。<br>gzip最常用作压缩文本文件，tar包或者网页，尽量不要使用gzip去压缩图片，音频，pdf文档或者其他的二进制文件，因为他们已经被压缩过了。<br>gzip只能压缩常规文件，符号链接文件会被忽略。</p>
-<h2 id="使用gzip压缩文件"><a href="#使用gzip压缩文件" class="headerlink" title="使用gzip压缩文件"></a>使用gzip压缩文件</h2><ul>
-<li>不带任何参数的压缩<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">gzip 你的文件</span><br></pre></td></tr></table></figure>
-该命令将会创建一个<code>你的文件.gz</code>文件，然后删除原始文件。<br>默认情况下，gzip会保留原始文件的时间戳，模式，属主和文件名。</li>
-<li>保留原始文件<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">gzip -k 你的文件</span><br></pre></td></tr></table></figure>
-另外一种保留原始文件的方法是使用<code>-c</code>选项，告诉gzip将原始文件写入到标准输出，然后重定向到指定的文件<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">gzip -c 你的文件 &gt; 你的文件.gz</span><br></pre></td></tr></table></figure></li>
-<li>查看冗余信息<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">gzip -v 你的文件</span><br></pre></td></tr></table></figure>
-该命令将会输出压缩进度信息</li>
-<li>压缩多个文件<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">gzip 文件1 文件2 文件3</span><br></pre></td></tr></table></figure>
-该命令将会生成<code>文件1.gz</code>、<code>文件2.gz</code>、<code>文件3.gz</code>这3个文件。</li>
-<li>压缩目录<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">gzip -r 你的目录</span><br></pre></td></tr></table></figure>
-该命令会递归压缩你的目录下的所有文件，分别生成<code>.gz</code>文件。</li>
-<li>改变压缩等级<br>gzip允许我们指定文件的压缩等级，范围是1-9，而<code>-1</code>或者<code>--fast</code>则代表使用最小的压缩率以达到最快的压缩速度；而<code>-9</code>或者<code>--best</code>则代表使用最高的压缩率，相应的，也会有最慢的压缩速度。默认的压缩级别是6；<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">gzip -9 你的文件</span><br></pre></td></tr></table></figure>
-压缩是CPU密集型的任务，压缩等级越高，压缩过程越长。</li>
-<li>使用标准输入<br>为了从标准输入创建<code>.gz</code>文件，使用管道命令重定向到gzip。<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">mysqldump database_name | gzip -c &gt; database_name.sql.gz</span><br></pre></td></tr></table></figure>
-该命令将会把<code>mysqldump</code>的输出内容作为输入传递给gzip。</li>
-</ul>
-<h2 id="使用gzip解压缩"><a href="#使用gzip解压缩" class="headerlink" title="使用gzip解压缩"></a>使用gzip解压缩</h2><ul>
-<li>使用-d作为解压缩选项<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">gzip -d 你的文件.gz</span><br></pre></td></tr></table></figure>
-另一个可以用于解压缩的命令是gunzip，它可以算作是gzip -d的别名。<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">gunzip 你的文件.gz</span><br></pre></td></tr></table></figure></li>
-<li>保留原始压缩文件<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">gzip -dk 你的文件.gz</span><br></pre></td></tr></table></figure></li>
-<li>解压缩多个文件<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">gzip -d 你的文件1.gz 你的文件2.gz 你的文件3.gz</span><br></pre></td></tr></table></figure></li>
-<li>解压缩目录下的所有压缩文件<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">gzip -dr 你的目录</span><br></pre></td></tr></table></figure></li>
-<li>查看压缩文件的内容<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">gzip -l 你的文件</span><br></pre></td></tr></table></figure>
-使用<code>-v</code>可以得到更加详细的信息。</li>
-</ul>
-
-      
-    </div>
-
-    
-    
-    
-
-    <footer class="post-footer">
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-</div>
-
-
-
-
-    
-
-
-<div class="post-block">
-  
-  
-
-  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="http://kylepeng93.github.io/2021/03/12/design-pattern-tutorial/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.gif">
-      <meta itemprop="name" content="彭凯">
-      <meta itemprop="description" content="">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="成长日记">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          <a href="/2021/03/12/design-pattern-tutorial/" class="post-title-link" itemprop="url">设计模式学习手册</a>
-        </h2>
-
-        <div class="post-meta-container">
-          <div class="post-meta">
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-calendar"></i>
-      </span>
-      <span class="post-meta-item-text">发表于</span>
-
-      <time title="创建时间：2021-03-12 22:41:53" itemprop="dateCreated datePublished" datetime="2021-03-12T22:41:53+08:00">2021-03-12</time>
-    </span>
-      <span class="post-meta-item">
-        <span class="post-meta-item-icon">
-          <i class="far fa-calendar-check"></i>
-        </span>
-        <span class="post-meta-item-text">更新于</span>
-        <time title="修改时间：2021-03-13 16:15:42" itemprop="dateModified" datetime="2021-03-13T16:15:42+08:00">2021-03-13</time>
-      </span>
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-folder"></i>
-      </span>
-      <span class="post-meta-item-text">分类于</span>
-        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-          <a href="/categories/java/" itemprop="url" rel="index"><span itemprop="name">java</span></a>
-        </span>
-    </span>
-
-  
-</div>
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-          <h2 id="设计模式的类别"><a href="#设计模式的类别" class="headerlink" title="设计模式的类别"></a>设计模式的类别</h2><ul>
-<li>创造性模式（creational）<blockquote>
-<p>创造型模式控制了对象的创建和类的实例化；</p>
-</blockquote>
-</li>
-<li>结构性模式（structural）<blockquote>
-<p>结构型设计模式控制了类和对象之间的关系</p>
-</blockquote>
-</li>
-<li>表现型模式（behavioral)<blockquote>
-<p>表现型设计模式控制了对象之间的交流和交互</p>
-</blockquote>
-<h2 id="设计模式带来的影响范围——确定了解决方案的关注点"><a href="#设计模式带来的影响范围——确定了解决方案的关注点" class="headerlink" title="设计模式带来的影响范围——确定了解决方案的关注点"></a>设计模式带来的影响范围——确定了解决方案的关注点</h2></li>
-<li>对象层面的影响范围——解决对象关系的问题<br>作用于运行期间，对象拥有动态的行为</li>
-<li>类层面的影响范围——解决类关系的问题<br>作用于编译期间，类拥有静态的行为<h2 id=""><a href="#" class="headerlink" title=""></a></h2></li>
-</ul>
-
-      
-    </div>
-
-    
-    
-    
-
-    <footer class="post-footer">
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-</div>
-
-
-
-
   <nav class="pagination">
-    <a class="extend prev" rel="prev" href="/"><i class="fa fa-angle-left" aria-label="上一页"></i></a><a class="page-number" href="/">1</a><span class="page-number current">2</span><a class="page-number" href="/page/3/">3</a><a class="page-number" href="/page/4/">4</a><a class="extend next" rel="next" href="/page/3/"><i class="fa fa-angle-right" aria-label="下一页"></i></a>
+    <a class="extend prev" rel="prev" href="/"><i class="fa fa-angle-left" aria-label="上一页"></i></a><a class="page-number" href="/">1</a><span class="page-number current">2</span><a class="page-number" href="/page/3/">3</a><span class="space">&hellip;</span><a class="page-number" href="/page/5/">5</a><a class="extend next" rel="next" href="/page/3/"><i class="fa fa-angle-right" aria-label="下一页"></i></a>
   </nav>
 
 
@@ -1178,6 +1247,7 @@
 
 
   
+
 
 
 
