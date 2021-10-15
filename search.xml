@@ -63,18 +63,6 @@
       </tags>
   </entry>
   <entry>
-    <title>国庆假期之后返回上海后的感想</title>
-    <url>/2021/10/08/back-to-shanghai-after-guoqing-holiday/</url>
-    <content><![CDATA[<h2 id="工作篇"><a href="#工作篇" class="headerlink" title="工作篇"></a>工作篇</h2><p>兜兜转转，一咋眼的功夫，来上海工作已经两年有余了，刚来上海找工作的那段时间其实心里是没底的，毕竟在上一家公司虽然说也有了两年的工作经验，可是真正学到的东西却没有多少，</p>
-]]></content>
-      <categories>
-        <category>人生</category>
-      </categories>
-      <tags>
-        <tag>个人感悟</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>bash中的常用快捷方式</title>
     <url>/2021/03/14/bash-shortcut-manual/</url>
     <content><![CDATA[<h2 id="以alt为辅助键的快捷键"><a href="#以alt为辅助键的快捷键" class="headerlink" title="以alt为辅助键的快捷键"></a>以<code>alt</code>为辅助键的快捷键</h2><ol>
@@ -116,6 +104,18 @@
       <tags>
         <tag>bash</tag>
         <tag>shortcut</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>国庆假期之后返回上海后的感想</title>
+    <url>/2021/10/08/back-to-shanghai-after-guoqing-holiday/</url>
+    <content><![CDATA[<h2 id="工作篇"><a href="#工作篇" class="headerlink" title="工作篇"></a>工作篇</h2><p>兜兜转转，一咋眼的功夫，来上海工作已经两年有余了，刚来上海找工作的那段时间其实心里是没底的，毕竟在上一家公司虽然说也有了两年的工作经验，可是真正学到的东西却没有多少，</p>
+]]></content>
+      <categories>
+        <category>人生</category>
+      </categories>
+      <tags>
+        <tag>个人感悟</tag>
       </tags>
   </entry>
   <entry>
@@ -186,33 +186,6 @@
       </tags>
   </entry>
   <entry>
-    <title>linux下使用crontab工具设置定时任务</title>
-    <url>/2021/03/04/cron-manual/</url>
-    <content><![CDATA[<h2 id="使用crontab添加定时任务"><a href="#使用crontab添加定时任务" class="headerlink" title="使用crontab添加定时任务"></a>使用crontab添加定时任务</h2><p>crontab -e</p>
-<h2 id="cron的格式说明"><a href="#cron的格式说明" class="headerlink" title="cron的格式说明"></a>cron的格式说明</h2><p>分钟 小时 月中日 月份 周中日 你的自动化脚本<br>取值范围：<br>分钟：0-59<br>小时：0-23<br>月中日：1-31<br>月份：1-12<br>周中日：0-6</p>
-<h2 id="在指定的时间点调度"><a href="#在指定的时间点调度" class="headerlink" title="在指定的时间点调度"></a>在指定的时间点调度</h2><p>30 08 10 12 * /home/pengkai/myjob.sh<br>上面的调度器会在12月10号的上午8点30分执行myjob.sh脚本。<br>注意，上面最后一个位置使用了*号来表示一周中的每一天。因为已经指定了具体的月日，所以不必再限制那一天是星期几。</p>
-<h2 id="查看当前用户下的所有调度任务"><a href="#查看当前用户下的所有调度任务" class="headerlink" title="查看当前用户下的所有调度任务"></a>查看当前用户下的所有调度任务</h2><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ crontab -l</span><br></pre></td></tr></table></figure>
-<p>或者以root用户查看其他用户的任务</p>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="comment"># crontab -u kyle -l</span></span><br></pre></td></tr></table></figure>
-<h2 id="每分钟执行一次调度"><a href="#每分钟执行一次调度" class="headerlink" title="每分钟执行一次调度"></a>每分钟执行一次调度</h2><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">* * * * * 你的脚本</span><br></pre></td></tr></table></figure>
-<h2 id="一天执行两次"><a href="#一天执行两次" class="headerlink" title="一天执行两次"></a>一天执行两次</h2><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">* 12,20 * * * 你的脚本</span><br></pre></td></tr></table></figure>
-<p>上面的命令会分别在中午12点晚上8点执行你的脚本</p>
-<h2 id="指定起止时间并按照固定间隔执行"><a href="#指定起止时间并按照固定间隔执行" class="headerlink" title="指定起止时间并按照固定间隔执行"></a>指定起止时间并按照固定间隔执行</h2><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">08-20 * * * 你的脚本</span><br></pre></td></tr></table></figure>
-<p>上面的命令会从8点开始执行，然后间隔一个小时再次执行，最后一直到晚上8点截止。</p>
-<h2 id="只在工作日的工作时间内执行"><a href="#只在工作日的工作时间内执行" class="headerlink" title="只在工作日的工作时间内执行"></a>只在工作日的工作时间内执行</h2><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">00 09-18 * * 1-5 你的脚本</span><br></pre></td></tr></table></figure>
-<p>从周一开始，每天从上午9点开始执行，然后每隔一个小时再次执行，最后一直到下午6点截止。如此往复到周五晚上6点停止执行。下周继续。</p>
-<h2 id="每隔10分钟执行一次"><a href="#每隔10分钟执行一次" class="headerlink" title="每隔10分钟执行一次"></a>每隔10分钟执行一次</h2><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">*/10 * * * * 你的脚本</span><br></pre></td></tr></table></figure>
-<h2 id="使用特殊字符指定调度周期"><a href="#使用特殊字符指定调度周期" class="headerlink" title="使用特殊字符指定调度周期"></a>使用特殊字符指定调度周期</h2><p>cron支持的特殊字符<br>@yearly = 0 0 1 1 * ：每年的1月1日执行<br>@daily = 0 0 * * * ： 每天的0点执行<br>@monthly = 0 0 1 * * ：每个月的1号的0点执行<br>@hourly = 0 * * * * ：每个小时执行一次<br>@reboot = 计算器启动时执行</p>
-]]></content>
-      <categories>
-        <category>linux</category>
-      </categories>
-      <tags>
-        <tag>linux</tag>
-        <tag>crontab</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>curl命令常见用法</title>
     <url>/2021/01/08/curl-command-usage/</url>
     <content><![CDATA[<h2 id="发送post请求"><a href="#发送post请求" class="headerlink" title="发送post请求"></a>发送post请求</h2><ul>
@@ -251,6 +224,33 @@
       <tags>
         <tag>linux</tag>
         <tag>curl</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>linux下使用crontab工具设置定时任务</title>
+    <url>/2021/03/04/cron-manual/</url>
+    <content><![CDATA[<h2 id="使用crontab添加定时任务"><a href="#使用crontab添加定时任务" class="headerlink" title="使用crontab添加定时任务"></a>使用crontab添加定时任务</h2><p>crontab -e</p>
+<h2 id="cron的格式说明"><a href="#cron的格式说明" class="headerlink" title="cron的格式说明"></a>cron的格式说明</h2><p>分钟 小时 月中日 月份 周中日 你的自动化脚本<br>取值范围：<br>分钟：0-59<br>小时：0-23<br>月中日：1-31<br>月份：1-12<br>周中日：0-6</p>
+<h2 id="在指定的时间点调度"><a href="#在指定的时间点调度" class="headerlink" title="在指定的时间点调度"></a>在指定的时间点调度</h2><p>30 08 10 12 * /home/pengkai/myjob.sh<br>上面的调度器会在12月10号的上午8点30分执行myjob.sh脚本。<br>注意，上面最后一个位置使用了*号来表示一周中的每一天。因为已经指定了具体的月日，所以不必再限制那一天是星期几。</p>
+<h2 id="查看当前用户下的所有调度任务"><a href="#查看当前用户下的所有调度任务" class="headerlink" title="查看当前用户下的所有调度任务"></a>查看当前用户下的所有调度任务</h2><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ crontab -l</span><br></pre></td></tr></table></figure>
+<p>或者以root用户查看其他用户的任务</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="comment"># crontab -u kyle -l</span></span><br></pre></td></tr></table></figure>
+<h2 id="每分钟执行一次调度"><a href="#每分钟执行一次调度" class="headerlink" title="每分钟执行一次调度"></a>每分钟执行一次调度</h2><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">* * * * * 你的脚本</span><br></pre></td></tr></table></figure>
+<h2 id="一天执行两次"><a href="#一天执行两次" class="headerlink" title="一天执行两次"></a>一天执行两次</h2><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">* 12,20 * * * 你的脚本</span><br></pre></td></tr></table></figure>
+<p>上面的命令会分别在中午12点晚上8点执行你的脚本</p>
+<h2 id="指定起止时间并按照固定间隔执行"><a href="#指定起止时间并按照固定间隔执行" class="headerlink" title="指定起止时间并按照固定间隔执行"></a>指定起止时间并按照固定间隔执行</h2><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">08-20 * * * 你的脚本</span><br></pre></td></tr></table></figure>
+<p>上面的命令会从8点开始执行，然后间隔一个小时再次执行，最后一直到晚上8点截止。</p>
+<h2 id="只在工作日的工作时间内执行"><a href="#只在工作日的工作时间内执行" class="headerlink" title="只在工作日的工作时间内执行"></a>只在工作日的工作时间内执行</h2><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">00 09-18 * * 1-5 你的脚本</span><br></pre></td></tr></table></figure>
+<p>从周一开始，每天从上午9点开始执行，然后每隔一个小时再次执行，最后一直到下午6点截止。如此往复到周五晚上6点停止执行。下周继续。</p>
+<h2 id="每隔10分钟执行一次"><a href="#每隔10分钟执行一次" class="headerlink" title="每隔10分钟执行一次"></a>每隔10分钟执行一次</h2><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">*/10 * * * * 你的脚本</span><br></pre></td></tr></table></figure>
+<h2 id="使用特殊字符指定调度周期"><a href="#使用特殊字符指定调度周期" class="headerlink" title="使用特殊字符指定调度周期"></a>使用特殊字符指定调度周期</h2><p>cron支持的特殊字符<br>@yearly = 0 0 1 1 * ：每年的1月1日执行<br>@daily = 0 0 * * * ： 每天的0点执行<br>@monthly = 0 0 1 * * ：每个月的1号的0点执行<br>@hourly = 0 * * * * ：每个小时执行一次<br>@reboot = 计算器启动时执行</p>
+]]></content>
+      <categories>
+        <category>linux</category>
+      </categories>
+      <tags>
+        <tag>linux</tag>
+        <tag>crontab</tag>
       </tags>
   </entry>
   <entry>
