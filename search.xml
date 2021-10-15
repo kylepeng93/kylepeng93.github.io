@@ -5,7 +5,8 @@
     <url>/2021/03/16/aliyun-gradle-config/</url>
     <content><![CDATA[<h2 id="在linux中使用gradle命令行构建程序时，使用国内镜像可以大大加快我们的构建过程，节约我们的时间，下面就如何配置aliyun仓库作为gradle的默认仓库作出说明。"><a href="#在linux中使用gradle命令行构建程序时，使用国内镜像可以大大加快我们的构建过程，节约我们的时间，下面就如何配置aliyun仓库作为gradle的默认仓库作出说明。" class="headerlink" title="在linux中使用gradle命令行构建程序时，使用国内镜像可以大大加快我们的构建过程，节约我们的时间，下面就如何配置aliyun仓库作为gradle的默认仓库作出说明。"></a>在linux中使用gradle命令行构建程序时，使用国内镜像可以大大加快我们的构建过程，节约我们的时间，下面就如何配置aliyun仓库作为gradle的默认仓库作出说明。</h2><ol>
 <li>如果只想对单个项目生效，那么可以在项目的<code>build.gradle</code>中添加如下配置：<figure class="highlight properties"><table><tr><td class="code"><pre><span class="line"><span class="attr">buildscript</span> <span class="string">&#123;</span></span><br><span class="line">    <span class="attr">repositories</span> <span class="string">&#123;</span></span><br><span class="line">        <span class="attr">maven</span> <span class="string">&#123;url &#x27;https://maven.aliyun.com/repository/google/&#x27;&#125;</span></span><br><span class="line">        <span class="attr">maven</span> <span class="string">&#123;url &#x27;https://maven.aliyun.com/repository/jcenter/&#x27;&#125;</span></span><br><span class="line">    <span class="attr">&#125;</span></span><br><span class="line">    <span class="attr">dependencies</span> <span class="string">&#123;</span></span><br><span class="line">        <span class="attr">classpath</span>: <span class="string">&#x27;com.android.tools.build:gradle:2.2.3&#x27;</span></span><br><span class="line"></span><br><span class="line">    <span class="attr">&#125;</span></span><br><span class="line"><span class="attr">&#125;</span></span><br><span class="line"><span class="attr">allprojects</span> <span class="string">&#123;</span></span><br><span class="line">    <span class="attr">repositories</span> <span class="string">&#123;</span></span><br><span class="line">         <span class="attr">maven</span> <span class="string">&#123; url &#x27;https://maven.aliyun.com/repository/google/&#x27; &#125;</span></span><br><span class="line">         <span class="attr">maven</span> <span class="string">&#123; url &#x27;https://maven.aliyun.com/repository/jcenter/&#x27;&#125; </span></span><br><span class="line">    <span class="attr">&#125;</span></span><br><span class="line"><span class="attr">&#125;</span></span><br></pre></td></tr></table></figure></li>
-<li>如果是对所有项目生效，那么需要在用户的家目录下面的.gradle目录下创建<code>init.gradle</code>文件，内容如下：<figure class="highlight properties"><table><tr><td class="code"><pre><span class="line"><span class="attr">allprojects&#123;</span></span><br><span class="line">    <span class="attr">repositories</span> <span class="string">&#123;</span></span><br><span class="line">        <span class="attr">def</span> <span class="string">ALIYUN_REPOSITORY_URL = &#x27;https://maven.aliyun.com/repository/public/&#x27;</span></span><br><span class="line">        <span class="attr">def</span> <span class="string">ALIYUN_JCENTER_URL = &#x27;https://maven.aliyun.com/repository/jcenter/&#x27;</span></span><br><span class="line">        <span class="attr">def</span> <span class="string">ALIYUN_GOOGLE_URL = &#x27;https://maven.aliyun.com/repository/google/&#x27;</span></span><br><span class="line">        <span class="attr">def</span> <span class="string">ALIYUN_GRADLE_PLUGIN_URL = &#x27;https://maven.aliyun.com/repository/gradle-plugin/&#x27;</span></span><br><span class="line">        <span class="attr">all</span> <span class="string">&#123; ArtifactRepository repo -&gt;</span></span><br><span class="line">            <span class="meta">if(repo</span> <span class="string">instanceof MavenArtifactRepository)&#123;</span></span><br><span class="line">                <span class="attr">def</span> <span class="string">url = repo.url.toString()</span></span><br><span class="line">                <span class="attr">if</span> <span class="string">(url.startsWith(&#x27;https://repo1.maven.org/maven2/&#x27;)) &#123;</span></span><br><span class="line">                    <span class="meta">project.logger.lifecycle</span> <span class="string">&quot;Repository $&#123;repo.url&#125; replaced by $ALIYUN_REPOSITORY_URL.&quot;</span></span><br><span class="line">                    <span class="attr">remove</span> <span class="string">repo</span></span><br><span class="line">                <span class="attr">&#125;</span></span><br><span class="line">                <span class="attr">if</span> <span class="string">(url.startsWith(&#x27;https://jcenter.bintray.com/&#x27;)) &#123;</span></span><br><span class="line">                    <span class="meta">project.logger.lifecycle</span> <span class="string">&quot;Repository $&#123;repo.url&#125; replaced by $ALIYUN_JCENTER_URL.&quot;</span></span><br><span class="line">                    <span class="attr">remove</span> <span class="string">repo</span></span><br><span class="line">                <span class="attr">&#125;</span></span><br><span class="line">                <span class="attr">if</span> <span class="string">(url.startsWith(&#x27;https://dl.google.com/dl/android/maven2/&#x27;)) &#123;</span></span><br><span class="line">                    <span class="meta">project.logger.lifecycle</span> <span class="string">&quot;Repository $&#123;repo.url&#125; replaced by $ALIYUN_GOOGLE_URL.&quot;</span></span><br><span class="line">                    <span class="attr">remove</span> <span class="string">repo</span></span><br><span class="line">                <span class="attr">&#125;</span></span><br><span class="line">                <span class="attr">if</span> <span class="string">(url.startsWith(&#x27;https://plugins.gradle.org/m2/&#x27;)) &#123;</span></span><br><span class="line">                    <span class="meta">project.logger.lifecycle</span> <span class="string">&quot;Repository $&#123;repo.url&#125; replaced by $ALIYUN_GRADLE_PLUGIN_URL.&quot;</span></span><br><span class="line">                    <span class="attr">remove</span> <span class="string">repo</span></span><br><span class="line">                <span class="attr">&#125;</span></span><br><span class="line">            <span class="attr">&#125;</span></span><br><span class="line">        <span class="attr">&#125;</span></span><br><span class="line">        <span class="attr">maven</span> <span class="string">&#123; url ALIYUN_REPOSITORY_URL &#125;</span></span><br><span class="line">        <span class="attr">maven</span> <span class="string">&#123; url ALIYUN_JCENTER_URL &#125;</span></span><br><span class="line">        <span class="attr">maven</span> <span class="string">&#123; url ALIYUN_GOOGLE_URL &#125;</span></span><br><span class="line">        <span class="attr">maven</span> <span class="string">&#123; url ALIYUN_GRADLE_PLUGIN_URL &#125;</span></span><br><span class="line">    <span class="attr">&#125;</span></span><br><span class="line"><span class="attr">&#125;</span></span><br></pre></td></tr></table></figure></li>
+<li>如果是对所有项目生效，那么需要在用户的家目录下面的.gradle目录下创建<code>init.gradle</code>文件，内容如下：<figure class="highlight properties"><table><tr><td class="code"><pre><span class="line"><span class="attr">allprojects&#123;</span></span><br><span class="line">    <span class="attr">repositories</span> <span class="string">&#123;</span></span><br><span class="line">        <span class="attr">def</span> <span class="string">ALIYUN_REPOSITORY_URL = &#x27;https://maven.aliyun.com/repository/public/&#x27;</span></span><br><span class="line">        <span class="attr">def</span> <span class="string">ALIYUN_JCENTER_URL = &#x27;https://maven.aliyun.com/repository/jcenter/&#x27;</span></span><br><span class="line">        <span class="attr">def</span> <span class="string">ALIYUN_GOOGLE_URL = &#x27;https://maven.aliyun.com/repository/google/&#x27;</span></span><br><span class="line">        <span class="attr">def</span> <span class="string">ALIYUN_GRADLE_PLUGIN_URL = &#x27;https://maven.aliyun.com/repository/gradle-plugin/&#x27;</span></span><br><span class="line">        <span class="attr">all</span> <span class="string">&#123; ArtifactRepository repo -&gt;</span></span><br><span class="line">            <span class="meta">if(repo</span> <span class="string">instanceof MavenArtifactRepository)&#123;</span></span><br><span class="line">                <span class="attr">def</span> <span class="string">url = repo.url.toString()</span></span><br><span class="line">                <span class="attr">if</span> <span class="string">(url.startsWith(&#x27;https://repo1.maven.org/maven2/&#x27;)) &#123;</span></span><br><span class="line">                    <span class="meta">project.logger.lifecycle</span> <span class="string">&quot;Repository $&#123;repo.url&#125; replaced by $ALIYUN_REPOSITORY_URL.&quot;</span></span><br><span class="line">                    <span class="attr">remove</span> <span class="string">repo</span></span><br><span class="line">                <span class="attr">&#125;</span></span><br><span class="line">                <span class="attr">if</span> <span class="string">(url.startsWith(&#x27;https://jcenter.bintray.com/&#x27;)) &#123;</span></span><br><span class="line">                    <span class="meta">project.logger.lifecycle</span> <span class="string">&quot;Repository $&#123;repo.url&#125; replaced by $ALIYUN_JCENTER_URL.&quot;</span></span><br><span class="line">                    <span class="attr">remove</span> <span class="string">repo</span></span><br><span class="line">                <span class="attr">&#125;</span></span><br><span class="line">                <span class="attr">if</span> <span class="string">(url.startsWith(&#x27;https://dl.google.com/dl/android/maven2/&#x27;)) &#123;</span></span><br><span class="line">                    <span class="meta">project.logger.lifecycle</span> <span class="string">&quot;Repository $&#123;repo.url&#125; replaced by $ALIYUN_GOOGLE_URL.&quot;</span></span><br><span class="line">                    <span class="attr">remove</span> <span class="string">repo</span></span><br><span class="line">                <span class="attr">&#125;</span></span><br><span class="line">                <span class="attr">if</span> <span class="string">(url.startsWith(&#x27;https://plugins.gradle.org/m2/&#x27;)) &#123;</span></span><br><span class="line">                    <span class="meta">project.logger.lifecycle</span> <span class="string">&quot;Repository $&#123;repo.url&#125; replaced by $ALIYUN_GRADLE_PLUGIN_URL.&quot;</span></span><br><span class="line">                    <span class="attr">remove</span> <span class="string">repo</span></span><br><span class="line">                <span class="attr">&#125;</span></span><br><span class="line">            <span class="attr">&#125;</span></span><br><span class="line">        <span class="attr">&#125;</span></span><br><span class="line">        <span class="attr">maven</span> <span class="string">&#123; url ALIYUN_REPOSITORY_URL &#125;</span></span><br><span class="line">        <span class="attr">maven</span> <span class="string">&#123; url ALIYUN_JCENTER_URL &#125;</span></span><br><span class="line">        <span class="attr">maven</span> <span class="string">&#123; url ALIYUN_GOOGLE_URL &#125;</span></span><br><span class="line">        <span class="attr">maven</span> <span class="string">&#123; url ALIYUN_GRADLE_PLUGIN_URL &#125;</span></span><br><span class="line">    <span class="attr">&#125;</span></span><br><span class="line"><span class="attr">&#125;</span></span><br></pre></td></tr></table></figure>
+</li>
 </ol>
 ]]></content>
       <categories>
@@ -14,6 +15,46 @@
       <tags>
         <tag>gradle</tag>
         <tag>maven</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>archlinux安装指南</title>
+    <url>/2021/10/02/archlinux-install-guide/</url>
+    <content><![CDATA[<h2 id="Arch-Linux是什么"><a href="#Arch-Linux是什么" class="headerlink" title="Arch Linux是什么"></a>Arch Linux是什么</h2><p>Arch Linux是一款滚动更新的GNU/Linux发行版，致力于提供最新的稳定版软件，相较于其他图形界面的发行版，Arch Linux只能在命令行界面进行安装，且默认不带任何桌面环境。（非特别说明，后文将GNU/Linux简称为Linux）</p>
+<h2 id="Arch-Linux有什么优势"><a href="#Arch-Linux有什么优势" class="headerlink" title="Arch Linux有什么优势"></a>Arch Linux有什么优势</h2><p>相较于其他基于Debian或者Redhat的发行版，Arch Linux提供了自己的包管理器——pacman，而且支持用户软件仓库（AUR）。基于这个特性，大大增加了Arch Linux系统原生软件的数量。而良好的软件生态正是Arch Linux的一大利器。</p>
+<h2 id="Arch-Linux的安装"><a href="#Arch-Linux的安装" class="headerlink" title="Arch Linux的安装"></a>Arch Linux的安装</h2><p>对于大部分非专业人士而言，习惯了Windows的图形界面之后，突然使用命令行操作软件往往变得非常困难，更不用说安装系统了，尽管Arch Linux拥有详细的由社区维护的安装指南Wiki，但也因此劝退了一些习惯了windows之后想要尝试linux系统的新手，基于此，本文特地将自己安装Arch Linux过程中的经历以及出现的问题做个说明，作为Arch Linux安装wiki的补充，不失为帮助更多的人能够接触到linux的一种方法（windows固然很优秀，但<strong>自由/开源软件</strong>才是软件开发的未来）。</p>
+<h3 id="1、获取最新版镜像"><a href="#1、获取最新版镜像" class="headerlink" title="1、获取最新版镜像"></a>1、获取最新版镜像</h3><p>官方下载网站：<a href="https://archlinux.org/download/">https://archlinux.org/download/</a></p>
+<h2 id="2、制作启动盘"><a href="#2、制作启动盘" class="headerlink" title="2、制作启动盘"></a>2、制作启动盘</h2><p>准备一个空的U盘，和一台已安装好linux系统的机器，使用如下命令进行写盘：</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">sudo dd bs=4MB <span class="keyword">if</span>=你的安装镜像路径 of=你的U盘路径 status=progress</span><br></pre></td></tr></table></figure>
+
+<blockquote>
+<p>of参数通常是/dev/sdb，其中sdb是你的U盘路径，注意不要带数字后缀，类似sdb1。另外，写盘之前必须使用umount命令卸载的U盘（如果被自动挂载的话）。</p>
+</blockquote>
+<h3 id="3、从U盘启动，开始安装"><a href="#3、从U盘启动，开始安装" class="headerlink" title="3、从U盘启动，开始安装"></a>3、从U盘启动，开始安装</h3><p>需要注意的是，为了确保可以正常从启动盘引导，需要关闭主板的安全启动选项（可以在安装完成之后重新打开），关闭方式因主板厂商不同而有所差异。具体如何关闭可以自行百度。</p>
+<p>重启主机之后，进入BIOS或者直接通过功能键选择启动顺序，将USB设备作为第一启动项，启动之后选择<code>Arch Linux install medium</code>进入系统安装界面。</p>
+<h3 id="4、验证启动模式"><a href="#4、验证启动模式" class="headerlink" title="4、验证启动模式"></a>4、验证启动模式</h3><p>如果使用的是UEFI模式，则可以使用如下命令验证:</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">ls /sys/firmware/efi/efivars</span><br></pre></td></tr></table></figure>
+
+<p>如果命令正常打印出一系列文件和目录，且没有任何错误，则表明当前是以UEFI模式启动。否则则是以BIOS或者CMS模式启动。</p>
+<h2 id="5、联网"><a href="#5、联网" class="headerlink" title="5、联网"></a>5、联网</h2><p>一般来说，我们可以直接插入网线联网，或者使用外置网卡。比如手机的USB网络共享。</p>
+<h2 id="6、调整时区"><a href="#6、调整时区" class="headerlink" title="6、调整时区"></a>6、调整时区</h2><p>使用<code>timedatectl</code>可以查看并设置时区。</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="comment"># 启用ntp（网络时间协议）</span></span><br><span class="line">timedatectl set-ntp <span class="literal">true</span></span><br><span class="line"><span class="comment"># 列出当前可用的时区</span></span><br><span class="line">timedatectl list-timezones</span><br><span class="line"><span class="comment"># 设置选择的时区</span></span><br><span class="line">timedatectl set-timezone Asia/Shanghai</span><br></pre></td></tr></table></figure>
+
+<h2 id="7、磁盘分区"><a href="#7、磁盘分区" class="headerlink" title="7、磁盘分区"></a>7、磁盘分区</h2><p>查看当前可用磁盘</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">fdisk -l</span><br></pre></td></tr></table></figure>
+
+<p>选择将要使用的磁盘，假设是<code>/dev/sda</code>，执行如下命令</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">fdisk /dev/sda</span><br></pre></td></tr></table></figure>
+
+<p>进入分区界面之后，使用<code>m</code>查看具体的分区指令。一般步骤如下：</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="comment"># 创建分区表</span></span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+]]></content>
+      <categories>
+        <category>linux</category>
+      </categories>
+      <tags>
+        <tag>archlinux</tag>
       </tags>
   </entry>
   <entry>
@@ -26,40 +67,6 @@
       <tags>
         <tag>aria2</tag>
         <tag>神器</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>archlinux安装指南</title>
-    <url>/2021/10/02/archlinux-install-guide/</url>
-    <content><![CDATA[<h2 id="Arch-Linux是什么"><a href="#Arch-Linux是什么" class="headerlink" title="Arch Linux是什么"></a>Arch Linux是什么</h2><p>Arch Linux是一款滚动更新的GNU/Linux发行版，致力于提供最新的稳定版软件，相较于其他图形界面的发行版，Arch Linux只能在命令行界面进行安装，且默认不带任何桌面环境。（非特别说明，后文将GNU/Linux简称为Linux）</p>
-<h2 id="Arch-Linux有什么优势"><a href="#Arch-Linux有什么优势" class="headerlink" title="Arch Linux有什么优势"></a>Arch Linux有什么优势</h2><p>相较于其他基于Debian或者Redhat的发行版，Arch Linux提供了自己的包管理器——pacman，而且支持用户软件仓库（AUR）。基于这个特性，大大增加了Arch Linux系统原生软件的数量。而良好的软件生态正是Arch Linux的一大利器。</p>
-<h2 id="Arch-Linux的安装"><a href="#Arch-Linux的安装" class="headerlink" title="Arch Linux的安装"></a>Arch Linux的安装</h2><p>对于大部分非专业人士而言，习惯了Windows的图形界面之后，突然使用命令行操作软件往往变得非常困难，更不用说安装系统了，尽管Arch Linux拥有详细的由社区维护的安装指南Wiki，但也因此劝退了一些习惯了windows之后想要尝试linux系统的新手，基于此，本文特地将自己安装Arch Linux过程中的经历以及出现的问题做个说明，作为Arch Linux安装wiki的补充，不失为帮助更多的人能够接触到linux的一种方法（windows固然很优秀，但<strong>自由/开源软件</strong>才是软件开发的未来）。</p>
-<h3 id="1、获取最新版镜像"><a href="#1、获取最新版镜像" class="headerlink" title="1、获取最新版镜像"></a>1、获取最新版镜像</h3><p>官方下载网站：<a href="https://archlinux.org/download/">https://archlinux.org/download/</a></p>
-<h2 id="2、制作启动盘"><a href="#2、制作启动盘" class="headerlink" title="2、制作启动盘"></a>2、制作启动盘</h2><p>准备一个空的U盘，和一台已安装好linux系统的机器，使用如下命令进行写盘：</p>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">sudo dd bs=4MB <span class="keyword">if</span>=你的安装镜像路径 of=你的U盘路径 status=progress</span><br></pre></td></tr></table></figure>
-<blockquote>
-<p>of参数通常是/dev/sdb，其中sdb是你的U盘路径，注意不要带数字后缀，类似sdb1。另外，写盘之前必须使用umount命令卸载的U盘（如果被自动挂载的话）。</p>
-</blockquote>
-<h3 id="3、从U盘启动，开始安装"><a href="#3、从U盘启动，开始安装" class="headerlink" title="3、从U盘启动，开始安装"></a>3、从U盘启动，开始安装</h3><p>需要注意的是，为了确保可以正常从启动盘引导，需要关闭主板的安全启动选项（可以在安装完成之后重新打开），关闭方式因主板厂商不同而有所差异。具体如何关闭可以自行百度。</p>
-<p>重启主机之后，进入BIOS或者直接通过功能键选择启动顺序，将USB设备作为第一启动项，启动之后选择<code>Arch Linux install medium</code>进入系统安装界面。</p>
-<h3 id="4、验证启动模式"><a href="#4、验证启动模式" class="headerlink" title="4、验证启动模式"></a>4、验证启动模式</h3><p>如果使用的是UEFI模式，则可以使用如下命令验证:</p>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">ls /sys/firmware/efi/efivars</span><br></pre></td></tr></table></figure>
-<p>如果命令正常打印出一系列文件和目录，且没有任何错误，则表明当前是以UEFI模式启动。否则则是以BIOS或者CMS模式启动。</p>
-<h2 id="5、联网"><a href="#5、联网" class="headerlink" title="5、联网"></a>5、联网</h2><p>一般来说，我们可以直接插入网线联网，或者使用外置网卡。比如手机的USB网络共享。</p>
-<h2 id="6、调整时区"><a href="#6、调整时区" class="headerlink" title="6、调整时区"></a>6、调整时区</h2><p>使用<code>timedatectl</code>可以查看并设置时区。</p>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="comment"># 启用ntp（网络时间协议）</span></span><br><span class="line">timedatectl set-ntp <span class="literal">true</span></span><br><span class="line"><span class="comment"># 列出当前可用的时区</span></span><br><span class="line">timedatectl list-timezones</span><br><span class="line"><span class="comment"># 设置选择的时区</span></span><br><span class="line">timedatectl set-timezone Asia/Shanghai</span><br></pre></td></tr></table></figure>
-<h2 id="7、磁盘分区"><a href="#7、磁盘分区" class="headerlink" title="7、磁盘分区"></a>7、磁盘分区</h2><p>查看当前可用磁盘</p>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">fdisk -l</span><br></pre></td></tr></table></figure>
-<p>选择将要使用的磁盘，假设是<code>/dev/sda</code>，执行如下命令</p>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">fdisk /dev/sda</span><br></pre></td></tr></table></figure>
-<p>进入分区界面之后，使用<code>m</code>查看具体的分区指令。一般步骤如下：</p>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="comment"># 创建分区表</span></span><br><span class="line"></span><br></pre></td></tr></table></figure>
-]]></content>
-      <categories>
-        <category>linux</category>
-      </categories>
-      <tags>
-        <tag>archlinux</tag>
       </tags>
   </entry>
   <entry>
@@ -136,10 +143,12 @@
 </li>
 <li><p>然后选择一台已经安装好netcat的机器，在终端中执行如下命令：</p>
 <figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">nc -l -vv -p 12345</span><br></pre></td></tr></table></figure>
+
 <p>其中<code>-l</code>和<code>p</code>表示在本机的12345端口进行监听，并创建一个TCP连接。<code>-vv</code>表示尽可能的展示运行过程中的系统消息，<code>-p</code>表示要监听的端口号。</p>
 </li>
 <li><p>选择要与监听主机建立连接的机器，在终端中执行如下命令：</p>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">nc 步骤2中创建监听的主机ip 步骤2中创建的监听端口</span><br></pre></td></tr></table></figure></li>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">nc 步骤2中创建监听的主机ip 步骤2中创建的监听端口</span><br></pre></td></tr></table></figure>
+</li>
 <li><p>执行完2、3之后，一条连接已经创建完成，可以开始互发消息了。</p>
 </li>
 </ol>
@@ -149,14 +158,16 @@
 <h2 id="使用netcat传输文件"><a href="#使用netcat传输文件" class="headerlink" title="使用netcat传输文件"></a>使用netcat传输文件</h2><p>netcat还可以用来传输文件</p>
 <ol>
 <li><p>对接收方执行如下命立：</p>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">nc -l -vv -p 12345 &gt; received_file</span><br></pre></td></tr></table></figure></li>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">nc -l -vv -p 12345 &gt; received_file</span><br></pre></td></tr></table></figure>
+</li>
 <li><p>在发送方执行如下命令</p>
 <figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">nc 接收方的ip地址 12345 &lt; received_file</span><br></pre></td></tr></table></figure>
+
+</li>
+</ol>
 <blockquote>
 <p>需要注意的是，这里创建监听的动作是由接收方发起的，而发送方需要和接收方建立连接并发送文件。</p>
 </blockquote>
-</li>
-</ol>
 ]]></content>
       <categories>
         <category>linux</category>
@@ -220,13 +231,16 @@
 </ul>
 <ol>
 <li><p>常规用法：</p>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">curl -d <span class="string">&#x27;&#123;&quot;key1&quot;:&quot;value1&quot;, &quot;key2&quot;: &quot;value2&quot;&#125;&#x27;</span> -H <span class="string">&quot;Content-Type: application/json&quot;</span> -X POST http://localhost:8080/your_interface_name</span><br></pre></td></tr></table></figure></li>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">curl -d <span class="string">&#x27;&#123;&quot;key1&quot;:&quot;value1&quot;, &quot;key2&quot;: &quot;value2&quot;&#125;&#x27;</span> -H <span class="string">&quot;Content-Type: application/json&quot;</span> -X POST http://localhost:8080/your_interface_name</span><br></pre></td></tr></table></figure>
+</li>
 <li><p>使用json文件：</p>
 <figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">curl -d <span class="string">&quot;@data.json&quot;</span> -X POST http://localhost:8080/your_interface_name</span><br></pre></td></tr></table></figure>
+
 <blockquote>
 <p><strong>data.json</strong></p>
 <hr>
-<figure class="highlight json"><table><tr><td class="code"><pre><span class="line">&#123;</span><br><span class="line">    <span class="attr">&quot;key1&quot;</span>: <span class="string">&quot;value1&quot;</span>,</span><br><span class="line">    <span class="attr">&quot;key2&quot;</span>: <span class="string">&quot;value2&quot;</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></blockquote>
+<figure class="highlight json"><table><tr><td class="code"><pre><span class="line">&#123;</span><br><span class="line">    <span class="attr">&quot;key1&quot;</span>: <span class="string">&quot;value1&quot;</span>,</span><br><span class="line">    <span class="attr">&quot;key2&quot;</span>: <span class="string">&quot;value2&quot;</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</blockquote>
 </li>
 </ol>
 <ul>
@@ -234,9 +248,11 @@
 </ul>
 <ol>
 <li><p>常规用法：</p>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">curl -d <span class="string">&quot;param1=value1&amp;param2=value2&quot;</span> -X POST http://localhost:8080/your_interface_name</span><br></pre></td></tr></table></figure></li>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">curl -d <span class="string">&quot;param1=value1&amp;param2=value2&quot;</span> -X POST http://localhost:8080/your_interface_name</span><br></pre></td></tr></table></figure>
+</li>
 <li><p>使用data文件：</p>
 <figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">curl -d <span class="string">&quot;@data.txt&quot;</span> -X POST http://localhost/your_interface_name</span><br></pre></td></tr></table></figure>
+
 <blockquote>
 <p><strong>data.txt</strong></p>
 <hr>
@@ -405,7 +421,7 @@
 </blockquote>
 <h2 id="翻译类软件"><a href="#翻译类软件" class="headerlink" title="翻译类软件"></a>翻译类软件</h2><ol>
 <li>带gui的：goldendict、stardict（星际译王）<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">sudo pacman -S goldendict</span><br><span class="line"><span class="comment"># 或者</span></span><br><span class="line">sudo pacman -S stardict</span><br></pre></td></tr></table></figure>
-<a href="http://download.huzheng.org/zh_CN/">字典下载链接</a><a id="more"></a></li>
+<a href="http://download.huzheng.org/zh_CN/">字典下载链接</a><span id="more"></span></li>
 <li>不带gui的：dictd（可以离线使用），translate-shell（必须连上网络）</li>
 </ol>
 <ul>
@@ -485,17 +501,23 @@ dict是客户端，dictd是dict的后台服务器。默认安装之后是不带�
     <url>/2021/10/05/hardware-info-cmd/</url>
     <content><![CDATA[<h2 id="使用如下命令查看包括CPU、内存、硬盘、主板在内的各种硬件相关的信息"><a href="#使用如下命令查看包括CPU、内存、硬盘、主板在内的各种硬件相关的信息" class="headerlink" title="使用如下命令查看包括CPU、内存、硬盘、主板在内的各种硬件相关的信息"></a>使用如下命令查看包括CPU、内存、硬盘、主板在内的各种硬件相关的信息</h2><ul>
 <li><p>CPU型号</p>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">cat /proc/cpuinfo | grep <span class="string">&quot;model name&quot;</span> | uniq</span><br></pre></td></tr></table></figure></li>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">cat /proc/cpuinfo | grep <span class="string">&quot;model name&quot;</span> | uniq</span><br></pre></td></tr></table></figure>
+</li>
 <li><p>查看CPU物理个数</p>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">cat /proc/cpuinfo | grep <span class="string">&quot;physical id&quot;</span> | uniq | wc -l</span><br></pre></td></tr></table></figure></li>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">cat /proc/cpuinfo | grep <span class="string">&quot;physical id&quot;</span> | uniq | wc -l</span><br></pre></td></tr></table></figure>
+</li>
 <li><p>查看内存信息</p>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="comment"># 先安装工具软件，以archlinux为例</span></span><br><span class="line">sudo pacman -S dmidecode</span><br><span class="line">sudo dmidecode -t memory | grep Size</span><br></pre></td></tr></table></figure></li>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="comment"># 先安装工具软件，以archlinux为例</span></span><br><span class="line">sudo pacman -S dmidecode</span><br><span class="line">sudo dmidecode -t memory | grep Size</span><br></pre></td></tr></table></figure>
+</li>
 <li><p>查看内存条厂家</p>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">sudo dmidecode -t memory | grep Manufacturer</span><br></pre></td></tr></table></figure></li>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">sudo dmidecode -t memory | grep Manufacturer</span><br></pre></td></tr></table></figure>
+</li>
 <li><p>查看硬盘信息</p>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">fdisk -l | grep <span class="string">&quot;Disk /dev/sd&quot;</span></span><br></pre></td></tr></table></figure></li>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">fdisk -l | grep <span class="string">&quot;Disk /dev/sd&quot;</span></span><br></pre></td></tr></table></figure>
+</li>
 <li><p>查看主板信息</p>
 <figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">sudo dmidecode | grep -A16 <span class="string">&quot;System Information$&quot;</span></span><br></pre></td></tr></table></figure>
+
 
 
 </li>
@@ -526,17 +548,20 @@ dict是客户端，dictd是dict的后台服务器。默认安装之后是不带�
 <h3 id="安装系统"><a href="#安装系统" class="headerlink" title="安装系统"></a>安装系统</h3><p>本教程基于Raspberry Pi OS，其他发行版系统可能不适用。下载地址：<a href="https://downloads.raspberrypi.org/raspios_armhf/images/raspios_armhf-2021-05-28/2021-05-07-raspios-buster-armhf.zip%E3%80%82">https://downloads.raspberrypi.org/raspios_armhf/images/raspios_armhf-2021-05-28/2021-05-07-raspios-buster-armhf.zip。</a></p>
 <h3 id="制作启动盘"><a href="#制作启动盘" class="headerlink" title="制作启动盘"></a>制作启动盘</h3><p>在linux下面可以使用如下命令</p>
 <figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">sudo dd <span class="keyword">if</span>=/home/your_home/raspberryOS.iso of=/dev/sd&#123;x&#125; bs=4MB status=progress</span><br></pre></td></tr></table></figure>
+
 <p>注意，使用上面的命令时必须确保of参数对应的值是你要写入的SD卡，一般以sd开头，if参数对应的是你下载解压后的原始镜像地址。</p>
 <blockquote>
 <p>windows上的启动盘制作请自行百度</p>
 </blockquote>
 <h3 id="写入wifi配置"><a href="#写入wifi配置" class="headerlink" title="写入wifi配置"></a>写入wifi配置</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">country=CN <span class="comment">#这里是我们位于的国家的缩写</span></span><br><span class="line">ctrl_interface=DIR=/var/run/wpa_supplicant GROUP=netdev</span><br><span class="line">update_config=1 <span class="comment">#更新现有配置</span></span><br><span class="line">network=&#123;</span><br><span class="line">  ssid=<span class="string">&quot;你的wifi名称&quot;</span></span><br><span class="line">  scan_ssid=1</span><br><span class="line">  psk=<span class="string">&quot;你的wifi密码&quot;</span></span><br><span class="line">  key_mgmt=WPA-PSK</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
 <p>将该文件命名为<code>wpa_supplicant.conf</code>，并将其保存到制作好的启动盘的最外层的boot目录下。</p>
 <h3 id="允许ssh访问"><a href="#允许ssh访问" class="headerlink" title="允许ssh访问"></a>允许ssh访问</h3><p>在启动盘的最外层的boot目录下创建ssh文件，不需要向里面写入内容。</p>
 <p><strong>最后将制作好的sd卡插入到树莓派中启动即可自动连接wifi,然后我们在路由器管理页面查看已连接设备中就能看到带有raspberry pi标签的设备了，找出其ip地址，尝试下使用ssh连接并管理树莓派，如果一切顺利的话，你将可以通过远程访问来管理你的树莓派设备了。</strong></p>
 <h2 id="使用静态ip地址"><a href="#使用静态ip地址" class="headerlink" title="使用静态ip地址"></a>使用静态ip地址</h2><p>由于树莓派内置了DHCP服务，所以，当我们每次连接上wifi时可能会被分配到不同的ip地址，这显然不利于配置外部对于树莓派后台服务的访问，因此，我们在连接上wifi之后，可以给树莓派配置一个静态ip。</p>
 <p>打开<code>/etc/dhcpcd.conf</code>文件，向里面追加如下配置</p>
 <figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">interface wlan0</span><br><span class="line">static ip_address=192.168.0.193/24</span><br><span class="line">static routers=192.168.0.1</span><br><span class="line">static domain_name_servers=192.168.0.1 192.168.1.1</span><br></pre></td></tr></table></figure>
+
 <p>其中<code>wlan0</code>是我们无线网卡的系统名称，后面的<code>ip_address</code>则是我们自定义的ip地址，<code>routers</code>是我们的路由，<code>domain_name_server</code>是我们的DNS地址，多个DNS的场合使用空格隔开。</p>
 ]]></content>
       <categories>
@@ -647,31 +672,44 @@ dict是客户端，dictd是dict的后台服务器。默认安装之后是不带�
     <url>/2021/08/08/namp-command-tutorial/</url>
     <content><![CDATA[<ol>
 <li><p>扫描单个目标地址：</p>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">nmap 192.168.0.100</span><br></pre></td></tr></table></figure></li>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">nmap 192.168.0.100</span><br></pre></td></tr></table></figure>
+</li>
 <li><p>扫描多个目标地址</p>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">nmap 192.168.0.100 192.168.0.105</span><br></pre></td></tr></table></figure></li>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">nmap 192.168.0.100 192.168.0.105</span><br></pre></td></tr></table></figure>
+</li>
 <li><p>扫描一个范围内的目标地址</p>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">nmap 192.168.0.100-200</span><br></pre></td></tr></table></figure></li>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">nmap 192.168.0.100-200</span><br></pre></td></tr></table></figure>
+</li>
 <li><p>扫描目标地址所在的某个网段：</p>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">nmap 192.168.0.100/24</span><br></pre></td></tr></table></figure></li>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">nmap 192.168.0.100/24</span><br></pre></td></tr></table></figure>
+</li>
 <li><p>扫描主机列表targets.txt文件中的所有目标地址</p>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">nmap -iL ~/targets.txt</span><br></pre></td></tr></table></figure></li>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">nmap -iL ~/targets.txt</span><br></pre></td></tr></table></figure>
+</li>
 <li><p>扫描除某一个目标地址之外的所有目标地址</p>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">nmap 192.168.0.100/24 -exclude 192.168.0.105</span><br></pre></td></tr></table></figure></li>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">nmap 192.168.0.100/24 -exclude 192.168.0.105</span><br></pre></td></tr></table></figure>
+</li>
 <li><p>扫描除某一文件中的目标地址之外的目标地址</p>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">nmap 192.168.0.100/24 -exceludefile ~/targets.txt</span><br></pre></td></tr></table></figure></li>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">nmap 192.168.0.100/24 -exceludefile ~/targets.txt</span><br></pre></td></tr></table></figure>
+</li>
 <li><p>扫描某一目标地址的21、22、23、80端口</p>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">nmap 192.168.0.100 -p 21,22,23,80</span><br></pre></td></tr></table></figure></li>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">nmap 192.168.0.100 -p 21,22,23,80</span><br></pre></td></tr></table></figure>
+</li>
 <li><p>对目标地址进行路由跟踪</p>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">nmap --traceroute 192.168.0.100</span><br></pre></td></tr></table></figure></li>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">nmap --traceroute 192.168.0.100</span><br></pre></td></tr></table></figure>
+</li>
 <li><p>扫描目标地址所在C段的在线状况</p>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">nmap -sP 192.168.0.100/24</span><br></pre></td></tr></table></figure></li>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">nmap -sP 192.168.0.100/24</span><br></pre></td></tr></table></figure>
+</li>
 <li><p>目标地址的操作系统指纹识别</p>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">nmap -O 192.168.0.100</span><br></pre></td></tr></table></figure></li>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">nmap -O 192.168.0.100</span><br></pre></td></tr></table></figure>
+</li>
 <li><p>目标地址提供的服务版本检测</p>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">nmap -sV 192.168.0.105</span><br></pre></td></tr></table></figure></li>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">nmap -sV 192.168.0.105</span><br></pre></td></tr></table></figure>
+</li>
 <li><p>探测防火墙状态</p>
 <figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">nmap -sF -T4 192.168.0.100</span><br></pre></td></tr></table></figure>
+
 
 
 
@@ -750,8 +788,11 @@ dict是客户端，dictd是dict的后台服务器。默认安装之后是不带�
 <p>PDO提供了一个数据访问抽象层，这意味着，不管你使用的是什么数据库，你都可以使用相同的函数去执行查询并获取数据。</p>
 <p>PDO不提供数据库抽象，无法消除不同数据库之间的语法差异，如果你想要做到做到这一点，你必须使用另外的抽象层去实现。</p>
 <h2 id="PDO连接MySQL数据库"><a href="#PDO连接MySQL数据库" class="headerlink" title="PDO连接MySQL数据库"></a>PDO连接MySQL数据库</h2><figure class="highlight php"><table><tr><td class="code"><pre><span class="line"><span class="comment">// 数据库主机地址</span></span><br><span class="line"><span class="keyword">const</span> DB_HOST = <span class="string">&#x27;mysqldb&#x27;</span>;</span><br><span class="line"><span class="comment">// 数据库名称</span></span><br><span class="line"><span class="keyword">const</span> DB_NAME = <span class="string">&#x27;default&#x27;</span>;</span><br><span class="line"><span class="comment">// 数据库用户名</span></span><br><span class="line"><span class="keyword">const</span> DB_USER = <span class="string">&#x27;root&#x27;</span>;</span><br><span class="line"><span class="comment">// 数据库密码</span></span><br><span class="line"><span class="keyword">const</span> DB_PASSWORD = <span class="string">&#x27;devstack&#x27;</span>;</span><br><span class="line"><span class="comment">// 连接对象</span></span><br><span class="line"><span class="keyword">private</span> <span class="variable">$pdo</span> = <span class="literal">null</span>;</span><br><span class="line"><span class="comment">// 格式化连接字符串</span></span><br><span class="line"><span class="variable">$conStr</span> =  sprintf(<span class="string">&quot;mysql:host=%s;dbname=%s&quot;</span>, <span class="built_in">self</span>::DB_HOST, <span class="built_in">self</span>::DB_NAME);</span><br><span class="line"><span class="keyword">try</span> &#123;</span><br><span class="line">    <span class="keyword">$this</span> -&gt; pdo = <span class="keyword">new</span> PDO(<span class="variable">$conStr</span>, <span class="built_in">self</span>::DB_USER, <span class="built_in">self</span>::DB_PASSWORD);</span><br><span class="line">&#125; <span class="keyword">catch</span> (PDOException <span class="variable">$e</span>) &#123;</span><br><span class="line">    <span class="keyword">echo</span> <span class="variable">$e</span> -&gt; getMessage();</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
 <h2 id="使用pdo连接对象执行插入、更新或者删除"><a href="#使用pdo连接对象执行插入、更新或者删除" class="headerlink" title="使用pdo连接对象执行插入、更新或者删除"></a>使用pdo连接对象执行插入、更新或者删除</h2><figure class="highlight php"><table><tr><td class="code"><pre><span class="line"><span class="variable">$sql</span> = <span class="string">&quot;insert into tasks (subject, start_date, end_date, description)</span></span><br><span class="line"><span class="string">                    values (&#x27;%s&#x27;, &#x27;%s&#x27;, &#x27;%s&#x27;, &#x27;%s&#x27;);&quot;</span>;</span><br><span class="line"><span class="variable">$insertStatement</span> = <span class="string">&quot;&quot;</span>;</span><br><span class="line"><span class="comment">// 构造插入语句</span></span><br><span class="line"><span class="comment">// date(&quot;Y-m-d H:i:s&quot;)的输出格式为yyyy-mm-dd hh:mm:ss</span></span><br><span class="line"><span class="keyword">for</span> (<span class="variable">$i</span> = <span class="number">0</span>; <span class="variable">$i</span> &lt; <span class="number">10</span>; <span class="variable">$i</span>++) &#123;</span><br><span class="line">    <span class="variable">$insertStatement</span> .= sprintf(<span class="variable">$sql</span>, <span class="string">&quot;睡觉&quot;</span>, date(<span class="string">&quot;Y-m-d H:i:s&quot;</span>), date(<span class="string">&quot;Y-m-d H:i:s&quot;</span>), <span class="string">&quot;测试&quot;</span>);</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">// 使用exec方法执行插入</span></span><br><span class="line"><span class="keyword">$this</span> -&gt; pdo -&gt; exec(<span class="variable">$insertStatement</span>);</span><br><span class="line"><span class="comment">// 更新和删除都可以使用exec()，返回值为表的影响条数</span></span><br></pre></td></tr></table></figure>
+
 <h2 id="使用pdo连接对象执行查询"><a href="#使用pdo连接对象执行查询" class="headerlink" title="使用pdo连接对象执行查询"></a>使用pdo连接对象执行查询</h2><figure class="highlight php"><table><tr><td class="code"><pre><span class="line"><span class="variable">$sql</span> = <span class="string">&quot;select * from tasks&quot;</span>;</span><br><span class="line"><span class="keyword">foreach</span> (<span class="keyword">$this</span> -&gt; pdo -&gt; query(<span class="variable">$sql</span>) <span class="keyword">as</span> <span class="variable">$row</span>) &#123;</span><br><span class="line">    <span class="keyword">print</span> <span class="variable">$row</span>[<span class="string">&#x27;subject&#x27;</span>] . <span class="string">&quot;\t&quot;</span>;</span><br><span class="line">    <span class="keyword">print</span> <span class="variable">$row</span>[<span class="string">&#x27;start_date&#x27;</span>] . <span class="string">&quot;\t&quot;</span>;</span><br><span class="line">    <span class="keyword">print</span> <span class="variable">$row</span>[<span class="string">&#x27;end_date&#x27;</span>] . <span class="string">&quot;\n&quot;</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
 <p>使用query方法可以执行查询操作。通过<code>foreach</code>遍历查询结果。</p>
 ]]></content>
       <categories>
@@ -767,22 +808,29 @@ dict是客户端，dictd是dict的后台服务器。默认安装之后是不带�
     <url>/2021/01/03/redis-commander-study/</url>
     <content><![CDATA[<h2 id="redis存储string类型的值"><a href="#redis存储string类型的值" class="headerlink" title="redis存储string类型的值"></a>redis存储string类型的值</h2><ol>
 <li><p>存值：</p>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="built_in">set</span> key value</span><br></pre></td></tr></table></figure></li>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="built_in">set</span> key value</span><br></pre></td></tr></table></figure>
+</li>
 <li><p>取值：</p>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">get key</span><br></pre></td></tr></table></figure></li>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">get key</span><br></pre></td></tr></table></figure>
+</li>
 <li><p>返回key中的部分字符串:</p>
 <figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">getrange key start end</span><br></pre></td></tr></table></figure>
+
 <div class="note info"><p>start从0开始，且返回的内容中包含索引为end的字符。</p>
 </div>
 </li>
 <li><p>取出旧值并返回新值：</p>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">getset key new_value</span><br></pre></td></tr></table></figure></li>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">getset key new_value</span><br></pre></td></tr></table></figure>
+</li>
 <li><p>取出key对应的值，并返回指定偏移量上的位(bit)：</p>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">getbit key offset</span><br></pre></td></tr></table></figure></li>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">getbit key offset</span><br></pre></td></tr></table></figure>
+</li>
 <li><p>一次性取出多个值</p>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">mget key1 key2 ...</span><br></pre></td></tr></table></figure></li>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">mget key1 key2 ...</span><br></pre></td></tr></table></figure>
+</li>
 <li><p>当key不存在时才设值：</p>
 <figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">setnx key value</span><br></pre></td></tr></table></figure>
+
 </li>
 </ol>
 ]]></content>
@@ -798,23 +846,37 @@ dict是客户端，dictd是dict的后台服务器。默认安装之后是不带�
     <url>/2021/08/08/samba-server-tutorial/</url>
     <content><![CDATA[<h2 id="samba"><a href="#samba" class="headerlink" title="samba"></a>samba</h2><p>类Unix（Gnu/Linux）操作系统上用来和标准Windows文件系统互相通信的一种程序套件；Samba允许类Unix系统和Windows系统共享文件和打印机，忽略两个系统间的差异性，从而实现共存。</p>
 <h2 id="在ubuntu上安装Samba"><a href="#在ubuntu上安装Samba" class="headerlink" title="在ubuntu上安装Samba"></a>在ubuntu上安装Samba</h2><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">sudo apt update &amp;&amp; sudo apt install -y samba</span><br></pre></td></tr></table></figure>
+
 <h2 id="修改配置文件，设置共享目录"><a href="#修改配置文件，设置共享目录" class="headerlink" title="修改配置文件，设置共享目录"></a>修改配置文件，设置共享目录</h2><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="comment"># 创建共享目录</span></span><br><span class="line">$ mkdir /tmp/share</span><br></pre></td></tr></table></figure>
+
 <figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="comment"># 将共享目录添加到配置文件中</span></span><br><span class="line">$ sudo vim /etc/samba/smb.conf</span><br></pre></td></tr></table></figure>
+
 <p>将下面的内容追加到文件末尾：</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">[share]</span><br><span class="line">	comment &#x3D; Samba share directory # 共享目录说明</span><br><span class="line">	path &#x3D; &#x2F;tmp&#x2F;share # 共享目录的系统路径</span><br><span class="line">	read only &#x3D; yes # 是否只读 </span><br><span class="line">    browsable &#x3D; yes # 是否可浏览</span><br></pre></td></tr></table></figure>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">[share]</span><br><span class="line">	comment = Samba share directory # 共享目录说明</span><br><span class="line">	path = /tmp/share # 共享目录的系统路径</span><br><span class="line">	read only = yes # 是否只读 </span><br><span class="line">    browsable = yes # 是否可浏览</span><br></pre></td></tr></table></figure>
+
 <h2 id="修改默认端口（适用于公网访问的场景，内网访问可以不用修改）"><a href="#修改默认端口（适用于公网访问的场景，内网访问可以不用修改）" class="headerlink" title="修改默认端口（适用于公网访问的场景，内网访问可以不用修改）"></a>修改默认端口（适用于公网访问的场景，内网访问可以不用修改）</h2><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ sudo vim /etc/samba/smb.conf</span><br></pre></td></tr></table></figure>
+
 <p>将下面的内容追加到<code>[global]</code>部分的末尾（如果端口配置已存在，则直接修改端口号）</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">[global]</span><br><span class="line">	...</span><br><span class="line">	smb ports &#x3D; 4450 1390 #想要指定的端口号，原本为445 139</span><br></pre></td></tr></table></figure>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">[global]</span><br><span class="line">	...</span><br><span class="line">	smb ports = 4450 1390 #想要指定的端口号，原本为445 139</span><br></pre></td></tr></table></figure>
+
 <h2 id="重启smbd守护进程"><a href="#重启smbd守护进程" class="headerlink" title="重启smbd守护进程"></a>重启smbd守护进程</h2><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ sudo systemctl restart smbd</span><br></pre></td></tr></table></figure>
+
 <h2 id="查看修改后的端口号是否生效"><a href="#查看修改后的端口号是否生效" class="headerlink" title="查看修改后的端口号是否生效"></a>查看修改后的端口号是否生效</h2><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ ss -nltp | grep 4450</span><br><span class="line">$ ss -nltp | grep 1390</span><br></pre></td></tr></table></figure>
+
 <h2 id="配置防火墙ufw"><a href="#配置防火墙ufw" class="headerlink" title="配置防火墙ufw"></a>配置防火墙ufw</h2><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="comment"># 如果开启了ufw,则需要将samba服务添加到允许访问服务列表中</span></span><br><span class="line">sudo ufw allow samba</span><br><span class="line"><span class="comment"># 如果重新配置了端口，则需要指定允许访问的端口号</span></span><br><span class="line">sudo ufw allow [port] <span class="comment"># 可以在端口号后面加上tcp或者udp,如1390/tcp、1390/udp</span></span><br></pre></td></tr></table></figure>
+
 <h2 id="创建samba用户账户"><a href="#创建samba用户账户" class="headerlink" title="创建samba用户账户"></a>创建samba用户账户</h2><p>samba默认不使用系统账户，因此，我们需要为共享目录设置一个用户名和密码：</p>
 <figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">sudo smbpasswd -a <span class="variable">$USER</span></span><br><span class="line"><span class="comment"># 该命令会将当前用户加入到samba的用户中，并提示设置该用户对应的密码</span></span><br></pre></td></tr></table></figure>
+
 <h2 id="验证samba服务的可用性"><a href="#验证samba服务的可用性" class="headerlink" title="验证samba服务的可用性"></a>验证samba服务的可用性</h2><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">sudo apt install smbclient</span><br><span class="line"><span class="comment"># 验证可用的samba共享目录</span></span><br><span class="line">smbclient -L samba_server_ip</span><br><span class="line"><span class="comment"># 如果修改了默认端口号，还需要手动指定端口号</span></span><br><span class="line">smbclient -p 1390 -L samba_server_ip</span><br></pre></td></tr></table></figure>
+
 <p>如果服务正常的话，会出现如下内容：</p>
 <figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">Enter WORKGROUP\pengkai<span class="string">&#x27;s password: </span></span><br><span class="line"><span class="string"></span></span><br><span class="line"><span class="string">	Sharename       Type      Comment</span></span><br><span class="line"><span class="string">	---------       ----      -------</span></span><br><span class="line"><span class="string">	sambashare      Disk      Samba And linux</span></span><br><span class="line"><span class="string">	www-data        Disk      apache web root</span></span><br><span class="line"><span class="string">	print$          Disk      Printer Drivers</span></span><br><span class="line"><span class="string">	IPC$            IPC       IPC Service (kyleVps server (Samba, Ubuntu))</span></span><br><span class="line"><span class="string">SMB1 disabled -- no workgroup available</span></span><br></pre></td></tr></table></figure>
+
 <h2 id="在终端中连接samba共享目录"><a href="#在终端中连接samba共享目录" class="headerlink" title="在终端中连接samba共享目录"></a>在终端中连接samba共享目录</h2><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">smbclient -U [user] [-p port] //[samba_ip]/[share_directory] </span><br><span class="line"><span class="comment"># 上述命令需要指定登陆用户和samba服务器ip以及共享目录，随后系统会提示输入密码</span></span><br><span class="line"><span class="comment"># 密码验证通过之后会进入smb的命令行交互界面：</span></span><br><span class="line">Try <span class="string">&quot;help&quot;</span> to get a list of possible commands.</span><br><span class="line">smb: \&gt; ls</span><br><span class="line">  .                                   D        0  Sun Feb 21 18:42:49 2021</span><br><span class="line">  ..                                  D        0  Sun Feb 21 18:42:18 2021</span><br><span class="line">  Test File                           N       20  Sun Feb 21 18:42:49 2021</span><br><span class="line"> </span><br><span class="line">        971515904 blocks of size 1024. 843676384 blocks available</span><br><span class="line">smb: \&gt; </span><br></pre></td></tr></table></figure>
+
 <h2 id="将samba挂载至指定目录下"><a href="#将samba挂载至指定目录下" class="headerlink" title="将samba挂载至指定目录下"></a>将samba挂载至指定目录下</h2><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">未完待续</span><br></pre></td></tr></table></figure>
+
 
 
 <p>至此，samba的安装、配置和使用就说完了。</p>
@@ -848,28 +910,37 @@ dict是客户端，dictd是dict的后台服务器。默认安装之后是不带�
 <h3 id="3-1-简单应用"><a href="#3-1-简单应用" class="headerlink" title="3.1 简单应用"></a>3.1 简单应用</h3><p>假设您想保护对公司打印机的访问，以便某些人可以打印到特定的打印机，而其他人可以查询当前队列中的作业。</p>
 <p>一种极其简单的方法是授予用户“queryPrinter”权限。 然后您可以通过调用来检查用户是否具有 queryPrinter 权限：</p>
 <figure class="highlight java"><table><tr><td class="code"><pre><span class="line">subject.isPermitted(<span class="string">&quot;queryPrinter&quot;</span>)</span><br></pre></td></tr></table></figure>
+
 <p>这等价于：</p>
 <figure class="highlight java"><table><tr><td class="code"><pre><span class="line">subject.isPermitted( <span class="keyword">new</span> WildcardPermission(<span class="string">&quot;queryPrinter&quot;</span>) )</span><br></pre></td></tr></table></figure>
+
 <p>这还不够，简单权限字符串可能适用于简单的应用程序，但它需要您拥有“printPrinter”、“queryPrinter”、“managePrinter”等权限。您也可以使用通配符授予用户“*”权限（授予此权限） 构造其名称），这意味着它们拥有整个应用程序的所有权限。</p>
 <p>但是使用这种方法，不能只说用户拥有“所有打印机权限”。 因此，通配符权限支持多级权限。</p>
 <h3 id="3-2-多个部件"><a href="#3-2-多个部件" class="headerlink" title="3.2 多个部件"></a>3.2 多个部件</h3><p>通配符权限支持多个级别或部分的概念。 例如，您可以通过授予用户权限来重构前面的简单示例</p>
 <figure class="highlight java"><table><tr><td class="code"><pre><span class="line">printer:query</span><br></pre></td></tr></table></figure>
+
 <p>本示例中的冒号是一个特殊字符，用于分隔权限字符串中的下一部分。</p>
 <p>在此示例中，第一部分是正在操作的域（打印机），第二部分是正在执行的操作（查询）。 上面的其他示例将更改为：</p>
 <figure class="highlight java"><table><tr><td class="code"><pre><span class="line">printer:print</span><br><span class="line">printer:manage</span><br></pre></td></tr></table></figure>
+
 <p>可以使用的部件数量没有限制，因此就可以在您的应用程序中使用它的方式而言，这取决于您的想象力。</p>
 <h4 id="3-2-1-多个值"><a href="#3-2-1-多个值" class="headerlink" title="3.2.1 多个值"></a>3.2.1 多个值</h4><p>每个部分可以包含多个值。 因此，与其同时授予用户“printer:print”和“printer:query”权限，您还可以简单地授予他们一个权限：</p>
 <figure class="highlight java"><table><tr><td class="code"><pre><span class="line">printer:print,query</span><br></pre></td></tr></table></figure>
+
 <p>这使他们能够打印和查询打印机。 并且由于他们被授予了这两个操作，您可以检查用户是否有能力通过调用来查询打印机：</p>
 <figure class="highlight java"><table><tr><td class="code"><pre><span class="line">subject.isPermitted(<span class="string">&quot;printer:query&quot;</span>)</span><br></pre></td></tr></table></figure>
+
 <p>这将返回 true。</p>
 <h4 id="3-2-2-全部的值"><a href="#3-2-2-全部的值" class="headerlink" title="3.2.2 全部的值"></a>3.2.2 全部的值</h4><p>如果您想授予用户特定部分的所有值怎么办？ 这样做比手动列出每个值更方便。 同样，基于通配符，我们可以做到这一点。 如果打印机域有 3 个可能的操作（查询、打印和管理），则：</p>
 <figure class="highlight java"><table><tr><td class="code"><pre><span class="line">printer:query,print,manage</span><br></pre></td></tr></table></figure>
+
 <p>可以简化为：</p>
 <figure class="highlight java"><table><tr><td class="code"><pre><span class="line">printer:*</span><br></pre></td></tr></table></figure>
+
 <p>然后，对“printer:XXX”的任何权限检查都将返回 true。 以这种方式使用通配符比显式列出操作更有效，因为如果稍后向应用程序添加新操作，则无需更新在该部分使用通配符的权限。</p>
 <p>最后，还可以在通配符权限字符串的任何部分使用通配符标记。 例如，如果您想授予用户跨所有域（不仅仅是打印机）的“查看”操作，您可以授予以下权限：</p>
 <figure class="highlight java"><table><tr><td class="code"><pre><span class="line">*:view</span><br></pre></td></tr></table></figure>
+
 <p>然后对“foo:view”的任何权限检查都将返回true。</p>
 <p><strong>未完待续：<a href="https://shiro.apache.org/permissions.html">https://shiro.apache.org/permissions.html</a></strong></p>
 ]]></content>
@@ -885,8 +956,10 @@ dict是客户端，dictd是dict的后台服务器。默认安装之后是不带�
     <title>Spring框架中bean的生命周期</title>
     <url>/2021/08/09/spring-bean-init-and-destroy/</url>
     <content><![CDATA[<h2 id="使用-PostConstruct和-PreDestroy注解在同一个配置类中执行bean的初始化前和销毁前的配置"><a href="#使用-PostConstruct和-PreDestroy注解在同一个配置类中执行bean的初始化前和销毁前的配置" class="headerlink" title="使用@PostConstruct和@PreDestroy注解在同一个配置类中执行bean的初始化前和销毁前的配置"></a>使用<code>@PostConstruct</code>和<code>@PreDestroy</code>注解在同一个配置类中执行bean的初始化前和销毁前的配置</h2><figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="meta">@Configuration</span></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">MyBeanPostProcessor</span> </span>&#123;</span><br><span class="line">    <span class="meta">@Bean</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> String <span class="title">helloWorld</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="string">&quot;hello world&quot;</span>;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@PostConstruct</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">init</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        System.out.println(<span class="string">&quot;我是初始化前执行的方法&quot;</span>);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@PreDestroy</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">destroy</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        System.out.println(<span class="string">&quot;我是销毁前执行的方法&quot;</span>);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
 <p>上面的配置类中只定义了一个bean，且是字符串类型（方便举例），大部分情况下应该是返回一个对象。</p>
 <h2 id="使用-Bean-initMethod-quot-init-quot-destroyMethod-quot-destroy-quot-注解执行bean初始化前和销毁前的配置"><a href="#使用-Bean-initMethod-quot-init-quot-destroyMethod-quot-destroy-quot-注解执行bean初始化前和销毁前的配置" class="headerlink" title="使用@Bean(initMethod = &quot;init&quot;, destroyMethod = &quot;destroy&quot;)注解执行bean初始化前和销毁前的配置"></a>使用<code>@Bean(initMethod = &quot;init&quot;, destroyMethod = &quot;destroy&quot;)</code>注解执行bean初始化前和销毁前的配置</h2><figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="meta">@Configuration</span></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">ConfigTest</span> </span>&#123;</span><br><span class="line">    <span class="meta">@Bean(initMethod = &quot;init&quot;, destroyMethod = &quot;destroy&quot;)</span></span><br><span class="line">    <span class="function">Test1 <span class="title">test1</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="keyword">new</span> Test1(); <span class="comment">// 使用默认的无参构造器</span></span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">// 定义Bean的内容，本质上是一个普通的java类</span></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Test1</span> </span>&#123;</span><br><span class="line">    <span class="comment">// 初始化前的执行方法</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">init</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        System.out.println(<span class="string">&quot;this is init method&quot;</span>);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="comment">// 销毁前的执行方法</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">destroy</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        System.out.println(<span class="string">&quot;this is destroy method&quot;</span>);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
 ]]></content>
       <categories>
         <category>spring framework</category>
@@ -901,12 +974,15 @@ dict是客户端，dictd是dict的后台服务器。默认安装之后是不带�
     <content><![CDATA[<h2 id="Spring框架中Bean的创建过程如下："><a href="#Spring框架中Bean的创建过程如下：" class="headerlink" title="Spring框架中Bean的创建过程如下："></a>Spring框架中Bean的创建过程如下：</h2><p><img src="https://springframework.guru/wp-content/uploads/2019/05/aware_interfaces_callbacks_in_bean_lifecycle-1024x545.png" alt="Aware interfaces Callbacks in Bean Lifecycle"></p>
 <p>其中BeanPostProcessor接口包含两个执行过程，分别是在bean执行init方法之前和执行init方法之后执行。代码如下：</p>
 <figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="meta">@Configuration</span></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">MyBeanPostProcessor</span> <span class="keyword">implements</span> <span class="title">BeanPostProcessor</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> Object <span class="title">postProcessBeforeInitialization</span><span class="params">(Object bean, String beanName)</span> <span class="keyword">throws</span> BeansException </span>&#123;</span><br><span class="line">        System.out.println(<span class="string">&quot;我在bean初始化前执行&quot;</span>);</span><br><span class="line">        <span class="keyword">return</span> BeanPostProcessor.<span class="keyword">super</span>.postProcessBeforeInitialization(bean, beanName);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> Object <span class="title">postProcessAfterInitialization</span><span class="params">(Object bean, String beanName)</span> <span class="keyword">throws</span> BeansException </span>&#123;</span><br><span class="line">        System.out.println(<span class="string">&quot;我在bean初始化之后执行&quot;</span>);</span><br><span class="line">        <span class="keyword">return</span> BeanPostProcessor.<span class="keyword">super</span>.postProcessAfterInitialization(bean, beanName);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Bean(name = &quot;DBConnection&quot;, initMethod = &quot;init&quot;, destroyMethod = &quot;destroy&quot;)</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> DatabaseConfig <span class="title">mysqlConnection</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        Properties properties = System.getProperties();</span><br><span class="line">        String url = properties.getProperty(<span class="string">&quot;url&quot;</span>);</span><br><span class="line">        String driverName = properties.getProperty(<span class="string">&quot;driverName&quot;</span>);</span><br><span class="line">        String userName = properties.getProperty(<span class="string">&quot;userName&quot;</span>);</span><br><span class="line">        String password = properties.getProperty(<span class="string">&quot;password&quot;</span>);</span><br><span class="line">        <span class="keyword">return</span> <span class="keyword">new</span> DatabaseConfig(driverName, url, userName, password);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
 <p>上述代码新建了自定义的<code>MyBeanPostProcessor</code>,并实现了接口<code>BeanPostProcessor</code>中的两个接口（自带default方法），同时，还定义了一个名为<code>DBConnection</code>的bean，指定了初始化方法和销毁前执行的方法。</p>
 <p>其中，<code>DatabaseConfig</code>的定义如下：</p>
 <figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="meta">@Data</span></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">DatabaseConfig</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">static</span> Connection connection;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">private</span> String driverName;</span><br><span class="line">    <span class="keyword">private</span> String url;</span><br><span class="line">    <span class="keyword">private</span> String userName;</span><br><span class="line">    <span class="keyword">private</span> String password;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="title">DatabaseConfig</span><span class="params">(String driverName, String url, String userName, String password)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">this</span>.driverName = driverName;</span><br><span class="line">        <span class="keyword">this</span>.url = url;</span><br><span class="line">        <span class="keyword">this</span>.userName = userName;</span><br><span class="line">        <span class="keyword">this</span>.password = password;</span><br><span class="line">        System.out.println(<span class="string">&quot;构造连接参数...&quot;</span>);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">init</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        System.out.println(<span class="string">&quot;初始化数据库连接&quot;</span>);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">destroy</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        System.out.println(<span class="string">&quot;销毁数据库连接&quot;</span>);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
 <p>为了方便识别执行阶段，分别在构造器和<code>init</code>以及<code>destroy</code>方法中加入了文字说明。</p>
 <p>最后的执行结果如下：</p>
 <figure class="highlight java"><table><tr><td class="code"><pre><span class="line">构造连接参数...</span><br><span class="line">我在bean初始化前执行</span><br><span class="line">初始化数据库连接</span><br><span class="line">我在bean初始化之后执行</span><br><span class="line">...</span><br><span class="line">销毁数据库连接</span><br></pre></td></tr></table></figure>
+
 <p>由此可见，构造器内的代码是最先执行的，属于填充属性阶段（即<code>Populate properties</code>），接着执行<code>MyBeanPostProcessor#postProcessBeforeInitialization</code>方法，然后执行<code>init方法</code>，之后执行<code>MyBeanPostProcessor#postProcessBeforeInitialization</code>，最后在关闭应用时执行<code>destroy</code>方法。</p>
 ]]></content>
       <categories>
@@ -1020,7 +1096,7 @@ dict是客户端，dictd是dict的后台服务器。默认安装之后是不带�
 <li>然后服务端会检查它的<code>~/authorized_keys</code>文件，这个文件中包含了所有已经保存的客户端公钥，一个公钥占据一行，这些公钥所对应的客户端可以实现免验证登录。</li>
 <li>服务端如果在文件中找到了请求客户端所对应的公钥，就会生成一个随机字符串，并使用找到的公钥进行加密。这个加密后的信息只能被请求客户端的私钥所解密，然后服务端将这个加密后的字符串发送给请求客户端，以此来验证该客户端是否拥有私钥。</li>
 <li>客户端收到来自服务端的加密字符串之后，会立即使用自己的私钥进行解密，并将解密后的随机字符串与之前协商好的会话id结合，生成一个md5加密的hash值，并回传给服务端。</li>
-<li>由于服务端已经知道加密之前的随机字符串和会话id，因此，服务端会在本地将这个随机字符串和会话id进行hash，然后和客户端传过来的值进行比较，如果一致，则表示请求客户端确实拥有私钥，并允许建立连接。<a id="more"></a>
+<li>由于服务端已经知道加密之前的随机字符串和会话id，因此，服务端会在本地将这个随机字符串和会话id进行hash，然后和客户端传过来的值进行比较，如果一致，则表示请求客户端确实拥有私钥，并允许建立连接。<span id="more"></span>
 <h2 id="生成SSH密码对"><a href="#生成SSH密码对" class="headerlink" title="生成SSH密码对"></a>生成SSH密码对</h2>有几种加密算法可以用来生成SSH密钥，例如RSA、DSA、ECDSA，默认情况下使用RSA加密算法。<br>使用如下命令可以生成一个默认的密钥：</li>
 </ol>
 <figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ ssh-keygen</span><br></pre></td></tr></table></figure>
@@ -1041,7 +1117,7 @@ dict是客户端，dictd是dict的后台服务器。默认安装之后是不带�
 你可以指定密钥的位置，或者直接按<code>Enter</code>接受默认的位置。<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">Enter old passphrase:</span><br></pre></td></tr></table></figure>
 输入你希望修改的旧密码，然后你会被提示输入一个新的密码短语：<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">Enter new passphrase (empty <span class="keyword">for</span> no passphrase):</span><br><span class="line">Enter same passphrase again:</span><br></pre></td></tr></table></figure>
 至此，输入你的新密码短语或者按<code>Enter</code>来移除密码短语。<h2 id="展示SSH密钥的手印（Fingerprint）"><a href="#展示SSH密钥的手印（Fingerprint）" class="headerlink" title="展示SSH密钥的手印（Fingerprint）"></a>展示SSH密钥的手印（Fingerprint）</h2>每个SSH密钥对共享一个密码形式的“手印”，它可以被用来唯一标识密钥对。这在有些情况下会很有用。<br>为了查看现有的密钥对，你可以执行：<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ ssh-keygen -l</span><br></pre></td></tr></table></figure>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">Enter file in which the key is (&#x2F;root&#x2F;.ssh&#x2F;id_rsa):</span><br></pre></td></tr></table></figure>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">Enter file in which the key is (/root/.ssh/id_rsa):</span><br></pre></td></tr></table></figure>
 你可以直接按<code>Enter</code>选择默认的密钥的位置，或者输入你期望的位置。之后你会得到包含了密钥的位长、手印和帐号以及所选主机和使用的算法的字符串：<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">4096 8e:c4:82:47:87:c2:26:4b:68:ff:96:1a:39:62:9e:4e  demo@<span class="built_in">test</span> (RSA)</span><br></pre></td></tr></table></figure>
 <h2 id="使用SSH-Copy-ID复制公钥到服务器"><a href="#使用SSH-Copy-ID复制公钥到服务器" class="headerlink" title="使用SSH-Copy-ID复制公钥到服务器"></a>使用SSH-Copy-ID复制公钥到服务器</h2>通过将你的公钥复制到服务器，可以让你不用输入密码就可以通过认证，有很多方法可以实现这一点。<br>如果你当前有一个基于密码的SSH远程服务器访问方式，并且你已经安装了ssh-copy-id工具，那么你就可以很容易的实现这一点。而且ssh-copy-id已经预装到了大多数的linux发行版中。<br>通过下面的命令可以实现这一点：<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ ssh-copy-id username@remote_host</span><br></pre></td></tr></table></figure>
 随后会提示你输入当前用户在远程服务器上的密码，正确输入之后，你本地的公钥就会被添加到服务器用户的<code>~/.ssh/authorized_keys</code>文件中，之后，你就可以不用输入密码也能登录到远程服务器了。<h2 id="不通过ssh-copy-id命令将公钥添加到远程服务器"><a href="#不通过ssh-copy-id命令将公钥添加到远程服务器" class="headerlink" title="不通过ssh-copy-id命令将公钥添加到远程服务器"></a>不通过ssh-copy-id命令将公钥添加到远程服务器</h2>如果你没有安装ssh-copy-id命令行工具，那你应该怎么样将你的公钥上传到远程服务器呢？通过linux中的管道命令，我们可以实现这一点。</li>
@@ -1085,6 +1161,7 @@ dict是客户端，dictd是dict的后台服务器。默认安装之后是不带�
 <li>输出文件名和内容</li>
 </ol>
 <figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">grep mysqli_connect ./</span><br></pre></td></tr></table></figure>
+
 <p>其中，，</p>
 <ul>
 <li><p>加入<code>-r</code>可以递归搜索</p>
@@ -1103,6 +1180,7 @@ dict是客户端，dictd是dict的后台服务器。默认安装之后是不带�
 <ol start="2">
 <li><p>替换上述匹配命令中的匹配字符串</p>
 <figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">sed -i <span class="string">&quot;s/mysqli_connect/mysql_connect/g&quot;</span> `grep mysqli_connect -rl ./`</span><br></pre></td></tr></table></figure>
+
 <p>其中，<code>-i</code>表示替换立即生效</p>
 </li>
 </ol>
@@ -1217,11 +1295,13 @@ dict是客户端，dictd是dict的后台服务器。默认安装之后是不带�
     <url>/2021/04/01/win10-activate/</url>
     <content><![CDATA[<h2 id="本文主要介绍如何通过kms服务器实现Windows-10专业版和企业版激活。"><a href="#本文主要介绍如何通过kms服务器实现Windows-10专业版和企业版激活。" class="headerlink" title="本文主要介绍如何通过kms服务器实现Windows 10专业版和企业版激活。"></a>本文主要介绍如何通过kms服务器实现Windows 10专业版和企业版激活。</h2><ul>
 <li><p>安装完系统之后，按住<code>Win+X</code>键，选择<code>Windows PowerShell（管理员）</code>,在弹出的窗口中输入下列命令：</p>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="comment"># win10专业版用户</span></span><br><span class="line">slmgr /ipk W269N-WFGWX-YVC9B-4J6C9-T83GX</span><br><span class="line">slmgr /skms kms.03k.org</span><br><span class="line">slmgr /ato</span><br><span class="line"><span class="comment"># win10企业版用户</span></span><br><span class="line">slmgr /ipk NPPR9-FWDCX-D2C8J-H872K-2YT43</span><br><span class="line">slmgr /skms kms.03k.org</span><br><span class="line">slmgr /ato</span><br></pre></td></tr></table></figure></li>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="comment"># win10专业版用户</span></span><br><span class="line">slmgr /ipk W269N-WFGWX-YVC9B-4J6C9-T83GX</span><br><span class="line">slmgr /skms kms.03k.org</span><br><span class="line">slmgr /ato</span><br><span class="line"><span class="comment"># win10企业版用户</span></span><br><span class="line">slmgr /ipk NPPR9-FWDCX-D2C8J-H872K-2YT43</span><br><span class="line">slmgr /skms kms.03k.org</span><br><span class="line">slmgr /ato</span><br></pre></td></tr></table></figure>
+</li>
 <li><p>考虑到一般笔记本厂商会预装win10家庭版，所以，在使用上面的办法之前需要先升级到win10专业版。步骤如下：</p>
 <ol>
 <li><p>打开<code>设置</code>页面，选择<code>更新和安全</code>，继续选择<code>激活</code>，点击<code>更改产品密钥</code>，输入：</p>
 <figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">J7QT3-3GCPG-9GVWT-CH2XR-GMRJM</span><br></pre></td></tr></table></figure>
+
 <p>点击下一步</p>
 </li>
 <li><p>在提示页面点击更新即可。</p>

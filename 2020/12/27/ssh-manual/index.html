@@ -2,9 +2,10 @@
 <html lang="zh-CN">
 <head>
   <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
-<meta name="theme-color" content="#222">
-<meta name="generator" content="Hexo 5.3.0">
+<meta name="viewport" content="width=device-width">
+<meta name="theme-color" content="#222" media="(prefers-color-scheme: light)">
+<meta name="theme-color" content="#222" media="(prefers-color-scheme: dark)">
+<meta name="generator" content="Hexo 5.4.0">
 
 
   <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon.png">
@@ -16,13 +17,10 @@
 
 
 
-<link rel="stylesheet" href="//cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@5.15.1/css/all.min.css">
-  <link rel="stylesheet" href="//cdn.jsdelivr.net/npm/animate.css@3.1.1/animate.min.css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@5.15.4/css/all.min.css" integrity="sha256-mUZM63G8m73Mcidfrv5E+Y61y7a12O5mW4ezU3bxqW4=" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/animate.css@3.1.1/animate.min.css" integrity="sha256-PR7ttpcvz8qrF57fur/yAx1qXMFJeJFiA6pSzWi0OIE=" crossorigin="anonymous">
 
-<script class="hexo-configurations">
-    var NexT = window.NexT || {};
-    var CONFIG = {"hostname":"kylepeng93.github.io","root":"/","images":"/imagesUse%20GitHub%20issues%20for%20blog%20comments,%20wik","scheme":"Pisces","version":"8.1.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12},"copycode":false,"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"buttons","active":"utterances","storage":true,"lazyload":false,"nav":{"utterances":{"text":"comment here","order":-1}},"activeClass":"utterances"},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"prism":false,"i18n":{"placeholder":"搜索...","empty":"没有找到任何搜索结果：${query}","hits_time":"找到 ${hits} 个搜索结果（用时 ${time} 毫秒）","hits":"找到 ${hits} 个搜索结果"},"path":"/search.xml","localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false}};
-  </script>
+<script class="next-config" data-name="main" type="application/json">{"hostname":"kylepeng93.github.io","root":"/","images":"/imagesUse%20GitHub%20issues%20for%20blog%20comments,%20wik","scheme":"Pisces","darkmode":true,"version":"8.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12},"copycode":false,"bookmark":{"enable":false,"color":"#222","save":"auto"},"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"buttons","active":"utterances","storage":true,"lazyload":false,"nav":{"utterances":{"text":"comment here","order":-1}},"activeClass":"utterances"},"stickytabs":false,"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"prism":false,"i18n":{"placeholder":"搜索...","empty":"没有找到任何搜索结果：${query}","hits_time":"找到 ${hits} 个搜索结果（用时 ${time} 毫秒）","hits":"找到 ${hits} 个搜索结果"},"path":"/search.xml","localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false}}</script><script src="/js/config.js"></script>
 <meta name="description" content="SSH连接的建立方式ssh可以通过密码和密钥（更加安全）这两种方式建立起客户端与 服务端的连接。 SSH连接的实现过程（假设通过密钥的方式连接） 当客户端发起一个ssh连接请求时，它首先会告诉服务端需要使用的公钥； 然后服务端会检查它的~&#x2F;authorized_keys文件，这个文件中包含了所有已经保存的客户端公钥，一个公钥占据一行，这些公钥所对应的客户端可以实现免验证登录。 服务端如果在文件中找">
 <meta property="og:type" content="article">
 <meta property="og:title" content="如何使用openssh进行远程连接">
@@ -41,55 +39,19 @@
 <link rel="canonical" href="http://kylepeng93.github.io/2020/12/27/ssh-manual/">
 
 
-<script class="page-configurations">
-  // https://hexo.io/docs/variables.html
-  CONFIG.page = {
-    sidebar: "",
-    isHome : false,
-    isPost : true,
-    lang   : 'zh-CN'
-  };
-</script>
+
+<script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":false,"isPost":true,"lang":"zh-CN","comments":true,"permalink":"http://kylepeng93.github.io/2020/12/27/ssh-manual/","path":"2020/12/27/ssh-manual/","title":"如何使用openssh进行远程连接"}</script>
+
+<script class="next-config" data-name="calendar" type="application/json">""</script>
 <title>如何使用openssh进行远程连接 | 成长日记</title>
   
 
 
 
+
   <noscript>
-  <style>
-  body { margin-top: 2rem; }
-
-  .use-motion .menu-item,
-  .use-motion .sidebar,
-  .use-motion .post-block,
-  .use-motion .pagination,
-  .use-motion .comments,
-  .use-motion .post-header,
-  .use-motion .post-body,
-  .use-motion .collection-header {
-    visibility: visible;
-  }
-
-  .use-motion .header,
-  .use-motion .site-brand-container .toggle,
-  .use-motion .footer { opacity: initial; }
-
-  .use-motion .site-title,
-  .use-motion .site-subtitle,
-  .use-motion .custom-logo-image {
-    opacity: initial;
-    top: initial;
-  }
-
-  .use-motion .logo-line {
-    transform: scaleX(1);
-  }
-
-  .search-pop-overlay, .sidebar-nav { display: none; }
-  .sidebar-panel { display: block; }
-  </style>
-</noscript>
-
+    <link rel="stylesheet" href="/css/noscript.css">
+  </noscript>
 </head>
 
 <body itemscope itemtype="http://schema.org/WebPage" class="use-motion">
@@ -99,7 +61,7 @@
     <header class="header" itemscope itemtype="http://schema.org/WPHeader">
       <div class="header-inner"><div class="site-brand-container">
   <div class="site-nav-toggle">
-    <div class="toggle" aria-label="切换导航栏">
+    <div class="toggle" aria-label="切换导航栏" role="button">
         <span class="toggle-line"></span>
         <span class="toggle-line"></span>
         <span class="toggle-line"></span>
@@ -126,31 +88,11 @@
 
 <nav class="site-nav">
   <ul class="main-menu menu">
-        <li class="menu-item menu-item-home">
-
-    <a href="/" rel="section"><i class="fa fa-home fa-fw"></i>首页</a>
-
-  </li>
-        <li class="menu-item menu-item-about">
-
-    <a href="/about/" rel="section"><i class="fa fa-user fa-fw"></i>关于</a>
-
-  </li>
-        <li class="menu-item menu-item-tags">
-
-    <a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>标签<span class="badge">59</span></a>
-
-  </li>
-        <li class="menu-item menu-item-categories">
-
-    <a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>分类<span class="badge">28</span></a>
-
-  </li>
-        <li class="menu-item menu-item-archives">
-
-    <a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档<span class="badge">43</span></a>
-
-  </li>
+        <li class="menu-item menu-item-home"><a href="/" rel="section"><i class="fa fa-home fa-fw"></i>首页</a></li>
+        <li class="menu-item menu-item-about"><a href="/about/" rel="section"><i class="fa fa-user fa-fw"></i>关于</a></li>
+        <li class="menu-item menu-item-tags"><a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>标签<span class="badge">59</span></a></li>
+        <li class="menu-item menu-item-categories"><a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>分类<span class="badge">28</span></a></li>
+        <li class="menu-item menu-item-archives"><a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档<span class="badge">43</span></a></li>
       <li class="menu-item menu-item-search">
         <a role="button" class="popup-trigger"><i class="fa fa-search fa-fw"></i>搜索
         </a>
@@ -170,7 +112,7 @@
            placeholder="搜索..." spellcheck="false"
            type="search" class="search-input">
   </div>
-  <span class="popup-btn-close">
+  <span class="popup-btn-close" role="button">
     <i class="fa fa-times-circle"></i>
   </span>
 </div>
@@ -186,7 +128,7 @@
 </div>
         
   
-  <div class="toggle sidebar-toggle">
+  <div class="toggle sidebar-toggle" role="button">
     <span class="toggle-line"></span>
     <span class="toggle-line"></span>
     <span class="toggle-line"></span>
@@ -206,12 +148,12 @@
 
       <div class="sidebar-panel-container">
         <!--noindex-->
-        <section class="post-toc-wrap sidebar-panel">
+        <div class="post-toc-wrap sidebar-panel">
             <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#SSH%E8%BF%9E%E6%8E%A5%E7%9A%84%E5%BB%BA%E7%AB%8B%E6%96%B9%E5%BC%8F"><span class="nav-number">1.</span> <span class="nav-text">SSH连接的建立方式</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#SSH%E8%BF%9E%E6%8E%A5%E7%9A%84%E5%AE%9E%E7%8E%B0%E8%BF%87%E7%A8%8B%EF%BC%88%E5%81%87%E8%AE%BE%E9%80%9A%E8%BF%87%E5%AF%86%E9%92%A5%E7%9A%84%E6%96%B9%E5%BC%8F%E8%BF%9E%E6%8E%A5%EF%BC%89"><span class="nav-number">2.</span> <span class="nav-text">SSH连接的实现过程（假设通过密钥的方式连接）</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%94%9F%E6%88%90SSH%E5%AF%86%E7%A0%81%E5%AF%B9"><span class="nav-number">3.</span> <span class="nav-text">生成SSH密码对</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%BD%BF%E7%94%A8%E6%9B%B4%E9%95%BF%E7%9A%84%E4%BD%8D%E6%95%B0%E7%94%9F%E6%88%90%E4%BD%A0%E7%9A%84%E5%AF%86%E9%92%A5%E5%AF%B9"><span class="nav-number">4.</span> <span class="nav-text">使用更长的位数生成你的密钥对</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%A7%BB%E9%99%A4%E6%88%96%E8%80%85%E4%BF%AE%E6%94%B9%E7%A7%81%E9%92%A5%E7%9A%84%E5%AF%86%E7%A0%81%E7%9F%AD%E8%AF%AD-passphase"><span class="nav-number">5.</span> <span class="nav-text">移除或者修改私钥的密码短语(passphase)</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%B1%95%E7%A4%BASSH%E5%AF%86%E9%92%A5%E7%9A%84%E6%89%8B%E5%8D%B0%EF%BC%88Fingerprint%EF%BC%89"><span class="nav-number">6.</span> <span class="nav-text">展示SSH密钥的手印（Fingerprint）</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%BD%BF%E7%94%A8SSH-Copy-ID%E5%A4%8D%E5%88%B6%E5%85%AC%E9%92%A5%E5%88%B0%E6%9C%8D%E5%8A%A1%E5%99%A8"><span class="nav-number">7.</span> <span class="nav-text">使用SSH-Copy-ID复制公钥到服务器</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%B8%8D%E9%80%9A%E8%BF%87ssh-copy-id%E5%91%BD%E4%BB%A4%E5%B0%86%E5%85%AC%E9%92%A5%E6%B7%BB%E5%8A%A0%E5%88%B0%E8%BF%9C%E7%A8%8B%E6%9C%8D%E5%8A%A1%E5%99%A8"><span class="nav-number">8.</span> <span class="nav-text">不通过ssh-copy-id命令将公钥添加到远程服务器</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%89%8B%E5%8A%A8%E5%B0%86%E4%BD%A0%E7%9A%84%E5%AF%86%E9%92%A5%E5%A4%8D%E5%88%B6%E5%88%B0%E6%9C%8D%E5%8A%A1%E5%99%A8"><span class="nav-number">9.</span> <span class="nav-text">手动将你的密钥复制到服务器</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%9F%BA%E6%9C%AC%E7%9A%84%E8%BF%9E%E6%8E%A5%E6%8C%87%E4%BB%A4"><span class="nav-number">10.</span> <span class="nav-text">基本的连接指令</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E8%BF%9E%E6%8E%A5%E5%88%B0%E6%8C%87%E5%AE%9A%E7%9A%84%E8%BF%9C%E7%A8%8B%E6%9C%8D%E5%8A%A1%E5%99%A8"><span class="nav-number">10.1.</span> <span class="nav-text">连接到指定的远程服务器</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%9C%A8%E8%BF%9C%E7%A8%8B%E6%9C%8D%E5%8A%A1%E5%99%A8%E4%B8%8A%E6%89%A7%E8%A1%8C%E5%8D%95%E6%AC%A1%E5%91%BD%E4%BB%A4"><span class="nav-number">11.</span> <span class="nav-text">在远程服务器上执行单次命令</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%BD%BF%E7%94%A8%E9%85%8D%E7%BD%AE%E6%96%87%E4%BB%B6%E7%AE%80%E5%8C%96%E8%BF%9E%E6%8E%A5%E8%BE%93%E5%85%A5"><span class="nav-number">12.</span> <span class="nav-text">使用配置文件简化连接输入</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%BD%BF%E7%94%A8SSH-Agent%E4%BF%9D%E5%AD%98%E5%AF%86%E7%A0%81%E7%9F%AD%E8%AF%AD%EF%BC%8C%E9%81%BF%E5%85%8D%E9%87%8D%E5%A4%8D%E8%BE%93%E5%85%A5"><span class="nav-number">13.</span> <span class="nav-text">使用SSH Agent保存密码短语，避免重复输入</span></a></li></ol></div>
-        </section>
+        </div>
         <!--/noindex-->
 
-        <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview-wrap sidebar-panel">
           <div class="site-author site-overview-item animated" itemprop="author" itemscope itemtype="http://schema.org/Person">
   <p class="site-author-name" itemprop="name">彭凯</p>
   <div class="site-description" itemprop="description"></div>
@@ -219,21 +161,18 @@
 <div class="site-state-wrap site-overview-item animated">
   <nav class="site-state">
       <div class="site-state-item site-state-posts">
-          <a href="/archives/">
-        
+        <a href="/archives/">
           <span class="site-state-item-count">43</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
       <div class="site-state-item site-state-categories">
-            <a href="/categories/">
-          
+          <a href="/categories/">
         <span class="site-state-item-count">28</span>
         <span class="site-state-item-name">分类</span></a>
       </div>
       <div class="site-state-item site-state-tags">
-            <a href="/tags/">
-          
+          <a href="/tags/">
         <span class="site-state-item-count">59</span>
         <span class="site-state-item-name">标签</span></a>
       </div>
@@ -242,7 +181,7 @@
 
 
 
-        </section>
+        </div>
       </div>
     </div>
   </aside>
@@ -252,7 +191,7 @@
     </header>
 
     
-  <div class="back-to-top">
+  <div class="back-to-top" role="button" aria-label="返回顶部">
     <i class="fa fa-arrow-up"></i>
     <span>0%</span>
   </div>
@@ -332,7 +271,7 @@
 <li>然后服务端会检查它的<code>~/authorized_keys</code>文件，这个文件中包含了所有已经保存的客户端公钥，一个公钥占据一行，这些公钥所对应的客户端可以实现免验证登录。</li>
 <li>服务端如果在文件中找到了请求客户端所对应的公钥，就会生成一个随机字符串，并使用找到的公钥进行加密。这个加密后的信息只能被请求客户端的私钥所解密，然后服务端将这个加密后的字符串发送给请求客户端，以此来验证该客户端是否拥有私钥。</li>
 <li>客户端收到来自服务端的加密字符串之后，会立即使用自己的私钥进行解密，并将解密后的随机字符串与之前协商好的会话id结合，生成一个md5加密的hash值，并回传给服务端。</li>
-<li>由于服务端已经知道加密之前的随机字符串和会话id，因此，服务端会在本地将这个随机字符串和会话id进行hash，然后和客户端传过来的值进行比较，如果一致，则表示请求客户端确实拥有私钥，并允许建立连接。<a id="more"></a>
+<li>由于服务端已经知道加密之前的随机字符串和会话id，因此，服务端会在本地将这个随机字符串和会话id进行hash，然后和客户端传过来的值进行比较，如果一致，则表示请求客户端确实拥有私钥，并允许建立连接。<span id="more"></span>
 <h2 id="生成SSH密码对"><a href="#生成SSH密码对" class="headerlink" title="生成SSH密码对"></a>生成SSH密码对</h2>有几种加密算法可以用来生成SSH密钥，例如RSA、DSA、ECDSA，默认情况下使用RSA加密算法。<br>使用如下命令可以生成一个默认的密钥：</li>
 </ol>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ ssh-keygen</span><br></pre></td></tr></table></figure>
@@ -353,7 +292,7 @@
 你可以指定密钥的位置，或者直接按<code>Enter</code>接受默认的位置。<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">Enter old passphrase:</span><br></pre></td></tr></table></figure>
 输入你希望修改的旧密码，然后你会被提示输入一个新的密码短语：<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">Enter new passphrase (empty <span class="keyword">for</span> no passphrase):</span><br><span class="line">Enter same passphrase again:</span><br></pre></td></tr></table></figure>
 至此，输入你的新密码短语或者按<code>Enter</code>来移除密码短语。<h2 id="展示SSH密钥的手印（Fingerprint）"><a href="#展示SSH密钥的手印（Fingerprint）" class="headerlink" title="展示SSH密钥的手印（Fingerprint）"></a>展示SSH密钥的手印（Fingerprint）</h2>每个SSH密钥对共享一个密码形式的“手印”，它可以被用来唯一标识密钥对。这在有些情况下会很有用。<br>为了查看现有的密钥对，你可以执行：<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ ssh-keygen -l</span><br></pre></td></tr></table></figure>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">Enter file in which the key is (&#x2F;root&#x2F;.ssh&#x2F;id_rsa):</span><br></pre></td></tr></table></figure>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">Enter file in which the key is (/root/.ssh/id_rsa):</span><br></pre></td></tr></table></figure>
 你可以直接按<code>Enter</code>选择默认的密钥的位置，或者输入你期望的位置。之后你会得到包含了密钥的位长、手印和帐号以及所选主机和使用的算法的字符串：<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">4096 8e:c4:82:47:87:c2:26:4b:68:ff:96:1a:39:62:9e:4e  demo@<span class="built_in">test</span> (RSA)</span><br></pre></td></tr></table></figure>
 <h2 id="使用SSH-Copy-ID复制公钥到服务器"><a href="#使用SSH-Copy-ID复制公钥到服务器" class="headerlink" title="使用SSH-Copy-ID复制公钥到服务器"></a>使用SSH-Copy-ID复制公钥到服务器</h2>通过将你的公钥复制到服务器，可以让你不用输入密码就可以通过认证，有很多方法可以实现这一点。<br>如果你当前有一个基于密码的SSH远程服务器访问方式，并且你已经安装了ssh-copy-id工具，那么你就可以很容易的实现这一点。而且ssh-copy-id已经预装到了大多数的linux发行版中。<br>通过下面的命令可以实现这一点：<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ ssh-copy-id username@remote_host</span><br></pre></td></tr></table></figure>
 随后会提示你输入当前用户在远程服务器上的密码，正确输入之后，你本地的公钥就会被添加到服务器用户的<code>~/.ssh/authorized_keys</code>文件中，之后，你就可以不用输入密码也能登录到远程服务器了。<h2 id="不通过ssh-copy-id命令将公钥添加到远程服务器"><a href="#不通过ssh-copy-id命令将公钥添加到远程服务器" class="headerlink" title="不通过ssh-copy-id命令将公钥添加到远程服务器"></a>不通过ssh-copy-id命令将公钥添加到远程服务器</h2>如果你没有安装ssh-copy-id命令行工具，那你应该怎么样将你的公钥上传到远程服务器呢？通过linux中的管道命令，我们可以实现这一点。</li>
@@ -414,33 +353,7 @@
 
 
 
-    
-  <div class="comments">
-    <div id="utterances-container"></div>
-  </div>
-  
-
-<script>
-  window.addEventListener('tabs:register', () => {
-    let { activeClass } = CONFIG.comments;
-    if (CONFIG.comments.storage) {
-      activeClass = localStorage.getItem('comments_active') || activeClass;
-    }
-    if (activeClass) {
-      const activeTab = document.querySelector(`a[href="#comment-${activeClass}"]`);
-      if (activeTab) {
-        activeTab.click();
-      }
-    }
-  });
-  if (CONFIG.comments.storage) {
-    window.addEventListener('tabs:click', event => {
-      if (!event.target.matches('.tabs-comment .tab-content .tab-pane')) return;
-      const commentClass = event.target.classList[1];
-      localStorage.setItem('comments_active', commentClass);
-    });
-  }
-</script>
+    <div class="comments utterances-container"></div>
 </div>
   </main>
 
@@ -456,46 +369,31 @@
   </span>
   <span class="author" itemprop="copyrightHolder">彭凯</span>
 </div>
-  <div class="powered-by">由 <a href="https://hexo.io/" class="theme-link" rel="noopener" target="_blank">Hexo</a> & <a href="https://theme-next.js.org/pisces/" class="theme-link" rel="noopener" target="_blank">NexT.Pisces</a> 强力驱动
+  <div class="powered-by">由 <a href="https://hexo.io/" rel="noopener" target="_blank">Hexo</a> & <a href="https://theme-next.js.org/pisces/" rel="noopener" target="_blank">NexT.Pisces</a> 强力驱动
   </div>
 
     </div>
   </footer>
 
   
-  <script src="//cdn.jsdelivr.net/npm/animejs@3.2.1/lib/anime.min.js"></script>
-<script src="/js/utils.js"></script><script src="/js/motion.js"></script><script src="/js/next-boot.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/animejs@3.2.1/lib/anime.min.js" integrity="sha256-XL2inqUJaslATFnHdJOi9GfQ60on8Wx1C2H8DYiN1xY=" crossorigin="anonymous"></script>
+<script src="/js/comments.js"></script><script src="/js/utils.js"></script><script src="/js/motion.js"></script><script src="/js/next-boot.js"></script>
+
+  
+<script src="https://cdn.jsdelivr.net/npm/hexo-generator-searchdb@1.4.0/dist/search.js" integrity="sha256-vXZMYLEqsROAXkEw93GGIvaB2ab+QW6w3+1ahD9nXXA=" crossorigin="anonymous"></script>
+<script src="/js/third-party/search/local-search.js"></script>
+
+
+
+
 
   
 
-<script src="/js/local-search.js"></script>
 
 
 
-
-
-
-  
-
-
-
-
-
-
-<script>
-NexT.utils.loadComments('#utterances-container', () => {
-    // if (typeof parcelRequire === 'function') { return; }
-    var js = document.createElement('script');
-    js.type = 'text/javascript';
-    js.src = 'https://utteranc.es/client.js';
-    js.async = true;
-    js.crossorigin = 'anonymous';
-    js.setAttribute('repo', 'kylepeng93/blog');
-    js.setAttribute('issue-term', 'pathname');
-    js.setAttribute('theme', 'github-light');
-    document.getElementById('utterances-container').appendChild(js);
-});
-</script>
+<script class="next-config" data-name="utterances" type="application/json">{"enable":true,"repo":"kylepeng93/blog","issue_term":"pathname","theme":"github-light"}</script>
+<script src="/js/third-party/comments/utterances.js"></script>
 
 </body>
 </html>
