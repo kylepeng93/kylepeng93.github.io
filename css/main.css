@@ -2614,11 +2614,14 @@ ul.breadcrumb li:last-child {
     color: #eee;
   }
 }
+.utterances {
+  max-width: unset;
+}
 .search-active {
   overflow: hidden;
 }
 .search-pop-overlay {
-  background: rgba(134, 74, 74, 0);
+  background: rgba(0,0,0,0);
   display: flex;
   height: 100%;
   left: 0;

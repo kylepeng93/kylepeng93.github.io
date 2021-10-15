@@ -1,460 +1,77 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
-    <title>curl命令常见用法</title>
-    <url>/2021/01/08/curl-command-usage/</url>
-    <content><![CDATA[<h2 id="发送post请求"><a href="#发送post请求" class="headerlink" title="发送post请求"></a>发送post请求</h2><ul>
-<li>参数类型为<code>application/json</code></li>
-</ul>
-<ol>
-<li><p>常规用法：</p>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">curl -d <span class="string">&#x27;&#123;&quot;key1&quot;:&quot;value1&quot;, &quot;key2&quot;: &quot;value2&quot;&#125;&#x27;</span> -H <span class="string">&quot;Content-Type: application/json&quot;</span> -X POST http://localhost:8080/your_interface_name</span><br></pre></td></tr></table></figure></li>
-<li><p>使用json文件：</p>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">curl -d <span class="string">&quot;@data.json&quot;</span> -X POST http://localhost:8080/your_interface_name</span><br></pre></td></tr></table></figure>
-<blockquote>
-<p><strong>data.json</strong></p>
-<hr>
-<figure class="highlight json"><table><tr><td class="code"><pre><span class="line">&#123;</span><br><span class="line">    <span class="attr">&quot;key1&quot;</span>: <span class="string">&quot;value1&quot;</span>,</span><br><span class="line">    <span class="attr">&quot;key2&quot;</span>: <span class="string">&quot;value2&quot;</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></blockquote>
-</li>
+    <title>使用aliyun的maven仓库初始化gradle</title>
+    <url>/2021/03/16/aliyun-gradle-config/</url>
+    <content><![CDATA[<h2 id="在linux中使用gradle命令行构建程序时，使用国内镜像可以大大加快我们的构建过程，节约我们的时间，下面就如何配置aliyun仓库作为gradle的默认仓库作出说明。"><a href="#在linux中使用gradle命令行构建程序时，使用国内镜像可以大大加快我们的构建过程，节约我们的时间，下面就如何配置aliyun仓库作为gradle的默认仓库作出说明。" class="headerlink" title="在linux中使用gradle命令行构建程序时，使用国内镜像可以大大加快我们的构建过程，节约我们的时间，下面就如何配置aliyun仓库作为gradle的默认仓库作出说明。"></a>在linux中使用gradle命令行构建程序时，使用国内镜像可以大大加快我们的构建过程，节约我们的时间，下面就如何配置aliyun仓库作为gradle的默认仓库作出说明。</h2><ol>
+<li>如果只想对单个项目生效，那么可以在项目的<code>build.gradle</code>中添加如下配置：<figure class="highlight properties"><table><tr><td class="code"><pre><span class="line"><span class="attr">buildscript</span> <span class="string">&#123;</span></span><br><span class="line">    <span class="attr">repositories</span> <span class="string">&#123;</span></span><br><span class="line">        <span class="attr">maven</span> <span class="string">&#123;url &#x27;https://maven.aliyun.com/repository/google/&#x27;&#125;</span></span><br><span class="line">        <span class="attr">maven</span> <span class="string">&#123;url &#x27;https://maven.aliyun.com/repository/jcenter/&#x27;&#125;</span></span><br><span class="line">    <span class="attr">&#125;</span></span><br><span class="line">    <span class="attr">dependencies</span> <span class="string">&#123;</span></span><br><span class="line">        <span class="attr">classpath</span>: <span class="string">&#x27;com.android.tools.build:gradle:2.2.3&#x27;</span></span><br><span class="line"></span><br><span class="line">    <span class="attr">&#125;</span></span><br><span class="line"><span class="attr">&#125;</span></span><br><span class="line"><span class="attr">allprojects</span> <span class="string">&#123;</span></span><br><span class="line">    <span class="attr">repositories</span> <span class="string">&#123;</span></span><br><span class="line">         <span class="attr">maven</span> <span class="string">&#123; url &#x27;https://maven.aliyun.com/repository/google/&#x27; &#125;</span></span><br><span class="line">         <span class="attr">maven</span> <span class="string">&#123; url &#x27;https://maven.aliyun.com/repository/jcenter/&#x27;&#125; </span></span><br><span class="line">    <span class="attr">&#125;</span></span><br><span class="line"><span class="attr">&#125;</span></span><br></pre></td></tr></table></figure></li>
+<li>如果是对所有项目生效，那么需要在用户的家目录下面的.gradle目录下创建<code>init.gradle</code>文件，内容如下：<figure class="highlight properties"><table><tr><td class="code"><pre><span class="line"><span class="attr">allprojects&#123;</span></span><br><span class="line">    <span class="attr">repositories</span> <span class="string">&#123;</span></span><br><span class="line">        <span class="attr">def</span> <span class="string">ALIYUN_REPOSITORY_URL = &#x27;https://maven.aliyun.com/repository/public/&#x27;</span></span><br><span class="line">        <span class="attr">def</span> <span class="string">ALIYUN_JCENTER_URL = &#x27;https://maven.aliyun.com/repository/jcenter/&#x27;</span></span><br><span class="line">        <span class="attr">def</span> <span class="string">ALIYUN_GOOGLE_URL = &#x27;https://maven.aliyun.com/repository/google/&#x27;</span></span><br><span class="line">        <span class="attr">def</span> <span class="string">ALIYUN_GRADLE_PLUGIN_URL = &#x27;https://maven.aliyun.com/repository/gradle-plugin/&#x27;</span></span><br><span class="line">        <span class="attr">all</span> <span class="string">&#123; ArtifactRepository repo -&gt;</span></span><br><span class="line">            <span class="meta">if(repo</span> <span class="string">instanceof MavenArtifactRepository)&#123;</span></span><br><span class="line">                <span class="attr">def</span> <span class="string">url = repo.url.toString()</span></span><br><span class="line">                <span class="attr">if</span> <span class="string">(url.startsWith(&#x27;https://repo1.maven.org/maven2/&#x27;)) &#123;</span></span><br><span class="line">                    <span class="meta">project.logger.lifecycle</span> <span class="string">&quot;Repository $&#123;repo.url&#125; replaced by $ALIYUN_REPOSITORY_URL.&quot;</span></span><br><span class="line">                    <span class="attr">remove</span> <span class="string">repo</span></span><br><span class="line">                <span class="attr">&#125;</span></span><br><span class="line">                <span class="attr">if</span> <span class="string">(url.startsWith(&#x27;https://jcenter.bintray.com/&#x27;)) &#123;</span></span><br><span class="line">                    <span class="meta">project.logger.lifecycle</span> <span class="string">&quot;Repository $&#123;repo.url&#125; replaced by $ALIYUN_JCENTER_URL.&quot;</span></span><br><span class="line">                    <span class="attr">remove</span> <span class="string">repo</span></span><br><span class="line">                <span class="attr">&#125;</span></span><br><span class="line">                <span class="attr">if</span> <span class="string">(url.startsWith(&#x27;https://dl.google.com/dl/android/maven2/&#x27;)) &#123;</span></span><br><span class="line">                    <span class="meta">project.logger.lifecycle</span> <span class="string">&quot;Repository $&#123;repo.url&#125; replaced by $ALIYUN_GOOGLE_URL.&quot;</span></span><br><span class="line">                    <span class="attr">remove</span> <span class="string">repo</span></span><br><span class="line">                <span class="attr">&#125;</span></span><br><span class="line">                <span class="attr">if</span> <span class="string">(url.startsWith(&#x27;https://plugins.gradle.org/m2/&#x27;)) &#123;</span></span><br><span class="line">                    <span class="meta">project.logger.lifecycle</span> <span class="string">&quot;Repository $&#123;repo.url&#125; replaced by $ALIYUN_GRADLE_PLUGIN_URL.&quot;</span></span><br><span class="line">                    <span class="attr">remove</span> <span class="string">repo</span></span><br><span class="line">                <span class="attr">&#125;</span></span><br><span class="line">            <span class="attr">&#125;</span></span><br><span class="line">        <span class="attr">&#125;</span></span><br><span class="line">        <span class="attr">maven</span> <span class="string">&#123; url ALIYUN_REPOSITORY_URL &#125;</span></span><br><span class="line">        <span class="attr">maven</span> <span class="string">&#123; url ALIYUN_JCENTER_URL &#125;</span></span><br><span class="line">        <span class="attr">maven</span> <span class="string">&#123; url ALIYUN_GOOGLE_URL &#125;</span></span><br><span class="line">        <span class="attr">maven</span> <span class="string">&#123; url ALIYUN_GRADLE_PLUGIN_URL &#125;</span></span><br><span class="line">    <span class="attr">&#125;</span></span><br><span class="line"><span class="attr">&#125;</span></span><br></pre></td></tr></table></figure></li>
 </ol>
-<ul>
-<li>参数类型为<code>application/x-www-form-urlencoded</code></li>
-</ul>
-<ol>
-<li><p>常规用法：</p>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">curl -d <span class="string">&quot;param1=value1&amp;param2=value2&quot;</span> -X POST http://localhost:8080/your_interface_name</span><br></pre></td></tr></table></figure></li>
-<li><p>使用data文件：</p>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">curl -d <span class="string">&quot;@data.txt&quot;</span> -X POST http://localhost/your_interface_name</span><br></pre></td></tr></table></figure>
-<blockquote>
-<p><strong>data.txt</strong></p>
-<hr>
-<p>param1=value1&amp;param2=value2</p>
-</blockquote>
-</li>
-</ol>
-]]></content>
-      <categories>
-        <category>linux命令</category>
-      </categories>
-      <tags>
-        <tag>linux</tag>
-        <tag>curl</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>如何vps上搭建自己的git服务器</title>
-    <url>/2020/12/29/how-to-set-up-a-private-git-server-on-your-vps/</url>
-    <content><![CDATA[<h2 id="介绍"><a href="#介绍" class="headerlink" title="介绍"></a>介绍</h2>]]></content>
-      <categories>
-        <category>linux</category>
-      </categories>
-      <tags>
-        <tag>git</tag>
-        <tag>vps</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>FormattingConversionService类的使用</title>
-    <url>/2021/01/10/formattingConversionService/</url>
-    <content><![CDATA[<h2 id="它是什么"><a href="#它是什么" class="headerlink" title="它是什么"></a>它是什么</h2><p>Spring MVC框架中用来解析方法参数的service类。</p>
-<h2 id="它有什么用"><a href="#它有什么用" class="headerlink" title="它有什么用"></a>它有什么用</h2><p>当我们在Spring的配置文件中添加<code><mvc:annotation-driven /></code>时，如果我们没有明确指定<code>conversion-service</code>属性的值，那么Spring MVC框架会自动使用默认的FormattingConversionService类，它包含了常用的转换方法，将字段转换成标准的JDK类型，另外，如果我们需要<code>date/time</code>的转换器，可以在类路径下引入<code>Joda Time</code>的时间库，它会被默认识别。</p>
-<h2 id="使用场合"><a href="#使用场合" class="headerlink" title="使用场合"></a>使用场合</h2><p>如果我们不需要在字段绑定期间使用自定义的类型转换器，那么我们完全可以使用默认的类。</p>
-<p>如果我们需要自定义格式转换器类的话，我们可以继承该类，并将<code><mvc:annotation /></code>注解中<code>conversion-service</code>属性的值设为我们自己的类（使用类路径引入）。</p>
-<p>如果使用的是SpringBoot自动装配的话，则需要在自定义的类上加上<code>@Configuration</code>注解，并使用<code>DateTimeFormatterRegistrar</code>注册器注册我们自定义的日期解析器。然后使用<code>@Autowired</code>添加到Spring容器中。</p>
-]]></content>
-      <categories>
-        <category>spring原理</category>
-      </categories>
-      <tags>
-        <tag>springmvc</tag>
-        <tag>util</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>java知识点速记</title>
-    <url>/2021/01/07/java-point/</url>
-    <content><![CDATA[<h2 id="java-bean和pojo的区别"><a href="#java-bean和pojo的区别" class="headerlink" title="java bean和pojo的区别"></a>java bean和pojo的区别</h2><p>一、 定义</p>
-<ul>
-<li><p><code>POJO</code>是<code>Plain Old Java Object</code>的缩写，它主要用来强调某个对象是一个普通的Java对象，而不是一个特殊的对象，尤其不是一个EJB。</p>
-<p>这个术语以其简单易懂的特性被广泛接受并使用，并用来区别那些复杂的对象框架。</p>
-</li>
-<li><p>一个<code>JavaBean</code>是一个可以被序列化的<code>POJO</code>。有一个默认的无参构造器，并允许使用Getter和Setter方法访问属性。</p>
-<p>对于EJB来说，<code>JavaBean</code>并不是一个单独的类，而是整个组件模型。</p>
-<p>JavaBean是java构建程序中可重用的软件组件，实际开发过程中，它们是使用java语言编写并符合某个约定的类。它们被用来封装一些对象到单个对象（也就是bean）中。</p>
-</li>
-</ul>
-<p>二、 用法</p>
-<ul>
-<li><code>POJO</code>主要被用来表明一个java对象不需要跟随任何java对象模型、约定或者框架。最理想的情况，一个<code>POJO</code>应该是一个不和任何框架绑定的java对象，并遵循以下原则：<ol>
-<li>不应该继承某个指定的类，比如HttpServlet；</li>
-<li>不应该实现指定的接口，比如EntityBean；</li>
-<li>不应该包含某些框架的注解。</li>
-</ol>
-</li>
-<li>JavaBean应该遵循以下原则：<ol>
-<li>必须有一个公共的默认构造器，便于实例化；</li>
-<li>属性必须可以通过Getter和Setter或者其他的可以访问并修改的方法进行控制，并遵循标准的命名规范，以便于框架对其进行自动化管理和状态的更新；</li>
-<li>必须可以被序列化，以便于应用和框架以一种独立于VM和操作系统的方式对其进行可靠的保存、存储以及恢复bean的状态。</li>
-</ol>
-</li>
-</ul>
-<p>对于业务程序员来说，这两种类型的java对象其实可以等同，或者说POJO更多强调的是一种业务概念，而JavaBean则属于java编程语言的特性。</p>
-]]></content>
-      <categories>
-        <category>java学习笔记</category>
-      </categories>
-      <tags>
-        <tag>java</tag>
-        <tag>概念</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>jsp-tag-usage-1</title>
-    <url>/2021/01/08/jsp-tag-usage-1/</url>
-    <content><![CDATA[]]></content>
-  </entry>
-  <entry>
-    <title>mybatis原理学习笔记</title>
-    <url>/2021/01/04/mybatis-theory-interview/</url>
-    <content><![CDATA[<h2 id="mybatis的执行原理："><a href="#mybatis的执行原理：" class="headerlink" title="mybatis的执行原理："></a>mybatis的执行原理：</h2><p>通常一个Mapper接口对应一个xml文件，Mapper接口中的方法名对应xml中的标签id，而xml中的每一个标签都会被解析为MapperStatement对象。通过xml中定义的namespace属性，可以和接口方法的执行路径相对应。而这个路径应该具有唯一性，<strong>所以Mapper接口中的方法不能被重载</strong>。Mapper接口的工作原理是JDK动态代理，Mybatis运行时会使用JDK动态代理为Mapper接口生成代理对象，代理对象会拦截接口方法，转而执行MapperStatement所代表的sql语句，然后将执行结果返回。</p>
-<h2 id="mybatis的分页原理："><a href="#mybatis的分页原理：" class="headerlink" title="mybatis的分页原理："></a>mybatis的分页原理：</h2><p>Mybatis使用RowBounds对象进行分页，它是针对ResultSet结果集执行的内容分页，而非物理分页。</p>
-<h2 id="mybatis-pagehelper插件的实现原理："><a href="#mybatis-pagehelper插件的实现原理：" class="headerlink" title="mybatis-pagehelper插件的实现原理："></a>mybatis-pagehelper插件的实现原理：</h2><p>使用mybatis提供的插件接口，实现自定义插件，在插件内拦截待执行的sql,然后重写sql,根据dialect方言，添加对应的物理分页语句和物理分页参数。</p>
-<h2 id=""><a href="#" class="headerlink" title=""></a></h2>]]></content>
-      <categories>
-        <category>数据库</category>
-      </categories>
-      <tags>
-        <tag>java</tag>
-        <tag>mybatis</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>netty高性能web服务器介绍</title>
-    <url>/2021/01/09/netty-intro/</url>
-    <content><![CDATA[<h2 id="1-什么是netty"><a href="#1-什么是netty" class="headerlink" title="1. 什么是netty"></a>1. 什么是netty</h2><p>Netty是一个异步的事件驱动网络应用框架。</p>
-<p>它的主要用途是构建高性能协议服务器，并通过基于隔离和松耦合的网络和业务逻辑组件的NIO（非阻塞输入输出）技术实现这一点。它可以实现广为人知的Http协议或者我们自定义的协议。</p>
-<h2 id="2-netty的核心概念"><a href="#2-netty的核心概念" class="headerlink" title="2. netty的核心概念"></a>2. netty的核心概念</h2><p>netty是一个非阻塞式框架，和阻塞式IO相比，它拥有更高的吞吐量。理解非阻塞式IO是掌握Netty的核心组件以及他们之间的关系的关键所在。</p>
-<h3 id="2-1-Channel（通道）"><a href="#2-1-Channel（通道）" class="headerlink" title="2.1 Channel（通道）"></a>2.1 Channel（通道）</h3><p>Channel是NIO的基石，它代表了一个拥有IO（读和写）处理能力的开放连接。</p>
-<h3 id="2-2-Future"><a href="#2-2-Future" class="headerlink" title="2.2 Future"></a>2.2 Future</h3><p><strong>对于Netty来说，Channel中的每一个连接都是非阻塞的。</strong></p>
-<p>这意味着每个操作在调用之后都会立刻返回。标准Java库中有一个Future的接口，但是它并不能方便的完成Netty的意图，因为我们只能通过这个接口去查询操作是否已完成或者阻塞当前线程直到操作完成。</p>
-<p>基于上面的原因，Netty实现了自己的ChannelFuture接口。我们可以通过回调函数告诉ChannelFuture，一旦操作完成，将要执行的操作。</p>
-<h3 id="2-3-事件和处理器"><a href="#2-3-事件和处理器" class="headerlink" title="2.3 事件和处理器"></a>2.3 事件和处理器</h3><p>Netty使用了基于事件驱动的应用模式，因此数据处理的管道（pipeline）本质上是贯穿处理器（handler）的一连串事件的链（chain）。事件和处理器类似于数据的流入以及流出。流入事件可以是下面的几种：</p>
-<ul>
-<li>通道的激活和失活</li>
-<li>读事件</li>
-<li>异常事件</li>
-<li>用户事件</li>
-</ul>
-<p>流出事件则比较简单，一般类似于打开或者关闭连接以及写入数据。</p>
-<p>Netty应用包含了几个网络和应用的逻辑事件以及他们对应的处理器。channel事件处理器可以使用的基础接口分别是ChannelHandler和它的祖先ChannelOutboundHandler和ChannelInboundHandler。</p>
-<p>Netty提供了大量的ChannelHandler接口的实现类。值得注意的是，适配器只是空的实现，例如ChannelInboundHandlerAdapter和ChannelOutboundHandlerAdapter。我们可以继承这些适配器当我们只需要处理所有事件集合中的子集。</p>
-<p>同样，Netty包含了某些指定协议的具体实现，比如Http。HttpRequestDecoder，HttpResponseEncoder，HttpObjectAggregator。你可以通过Netty的javaDoc去了解他们的用法。</p>
-<h3 id="2-4-编码器和解码器"><a href="#2-4-编码器和解码器" class="headerlink" title="2.4 编码器和解码器"></a>2.4 编码器和解码器</h3><p>当我们使用网络协议时，我们需要对数据进行序列化和反序列化。出于这个目的，Netty引进了一个特殊的解码拓展类ChannelInboundHandler，它可以对进来的数据进行解码。大多数解码器的基类是ByteToMessageDecoder。</p>
-<p>为了编码出去的数据，Netty也提供了一个特殊的编码实现类ChannelOutboundHandler。MessageToByteEncoder是大多数编码实现类的基类。通过编码器和解码器，我们可以将信息从字节序列转换成java对象，反之亦然。</p>
-]]></content>
-      <categories>
-        <category>javaweb</category>
-      </categories>
-      <tags>
-        <tag>netty</tag>
-        <tag>server</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>redis命令学习</title>
-    <url>/2021/01/03/redis-commander-study/</url>
-    <content><![CDATA[<h2 id="redis存储string类型的值"><a href="#redis存储string类型的值" class="headerlink" title="redis存储string类型的值"></a>redis存储string类型的值</h2><ol>
-<li><p>存值：</p>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="built_in">set</span> key value</span><br></pre></td></tr></table></figure></li>
-<li><p>取值：</p>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">get key</span><br></pre></td></tr></table></figure></li>
-<li><p>返回key中的部分字符串:</p>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">getrange key start end</span><br></pre></td></tr></table></figure>
-<div class="note info"><p>start从0开始，且返回的内容中包含索引为end的字符。</p>
-</div>
-</li>
-<li><p>取出旧值并返回新值：</p>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">getset key new_value</span><br></pre></td></tr></table></figure></li>
-<li><p>取出key对应的值，并返回指定偏移量上的位(bit)：</p>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">getbit key offset</span><br></pre></td></tr></table></figure></li>
-<li><p>一次性取出多个值</p>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">mget key1 key2 ...</span><br></pre></td></tr></table></figure></li>
-<li><p>当key不存在时才设值：</p>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">setnx key value</span><br></pre></td></tr></table></figure>
-</li>
-</ol>
-]]></content>
-      <categories>
-        <category>数据库</category>
-      </categories>
-      <tags>
-        <tag>redis</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>Spring框架中的异常处理方式</title>
-    <url>/2021/01/09/spring-exception-handle/</url>
-    <content><![CDATA[<h2 id="1-在控制层验证参数"><a href="#1-在控制层验证参数" class="headerlink" title="1. 在控制层验证参数"></a>1. 在控制层验证参数</h2><p>@RequestParam(“arg”)可以用来限制调用方只能使用arg作为参数名来调用接口。</p>
-]]></content>
-      <categories>
-        <category>spring框架</category>
-      </categories>
-      <tags>
-        <tag>spring</tag>
-        <tag>exception</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>springmvc注解学习</title>
-    <url>/2021/01/10/spring-mvc-annotation/</url>
-    <content><![CDATA[<h2 id="annotation-driven"><a href="#annotation-driven" class="headerlink" title="annotation-driven"></a>annotation-driven</h2><p>配置注解驱动的Spring MVC控制器编程模型。</p>
-<p>可选参数：</p>
-<ul>
-<li>conversion-service：指定字段转换服务</li>
-<li>validator：指定自定义的校验类，用来校验控制器中的model对象，默认使用<code>JSR-303</code>校验</li>
-</ul>
-<h2 id="resources"><a href="#resources" class="headerlink" title="resources"></a>resources</h2><p>配置静态资源的处理器，比如说图片、js、css，通过对缓存头进行优化，提升浏览器的加载速度。允许Spring资源处理器能够识别任何指定路径下的静态资源。</p>
-<p>可选参数：</p>
-<ul>
-<li>mapping：必须，指定URL的映射方式，基于当前的Servlet上下文，比如<code>/resources/**</code>则表示需要在url中加上resources，然后追加静态资源相对于根路经的目录结构路径。</li>
-<li>location：必须，指定静态资源的物理路径，多个路径可以使用逗号隔开，放在前面的会被优先读取（如果有两个同名的文件，会优先读取放在前面的路径下的文件），例如：<code>/,classpath:/META-INF/public-web-resources/</code>，将会读取位于web应用根路径下的静态资源以及类路径下的所有Jar包中<code>/META-INF/public-web-resources</code>目录下的文件，而web应用根路径下的文件优先级更高。</li>
-<li>cache-period：可选，指定静态资源的缓存策略。以秒为单位。默认情况下不会发送任何缓存头，而是取决于文件上次修改的时间戳。如果将该属性的值设为0,则会发送值为<code>prevent-cacheing</code>的缓存头。如果是大于0的值，则会发送<code>max-age</code>为该值的缓存头。</li>
-<li>order：可选，指定资源处理器的顺序。</li>
-</ul>
-<h2 id="default-servlet-handler"><a href="#default-servlet-handler" class="headerlink" title="default-servlet-handler"></a>default-servlet-handler</h2><p>用来配置处理静态资源的处理器（handler），通过将请求重定向到容器默认的servlet。使用这个处理器允许<code>/</code>映射与<code>DispatcherServlet</code>一起使用，同时仍利用Servlet容器提供静态资源服务。</p>
-<p>可用属性：</p>
-<ul>
-<li><p>default-servlet-name：可以重定向客户端静态资源请求的默认Servlet。默认的处理器在启动时会自动检测容器默认的Servlet（通过一个预定义的名字列表）。只有在默认但Servlet无法被检测到的情况下，才需要明确指定默认Servlet的名字。</p>
-</li>
-<li><p>interceptors：注册自定义的拦截器（父标签）</p>
-<ul>
-<li><p>interceptor：自定义拦截器必须继承HandlerInterceptor类或者实现WebRequestInterceptor接口。</p>
-<p>可用属性</p>
-<ul>
-<li>mapping：<ul>
-<li>path：指定被拦截的url路径，例如<code>/myPath</code>或者<code>/myPath/**</code></li>
-<li>ref：指定bean的引用。</li>
-</ul>
-</li>
-</ul>
-</li>
-</ul>
-</li>
-</ul>
-<h2 id="view-controller"><a href="#view-controller" class="headerlink" title="view-controller"></a>view-controller</h2><p>用来定义渲染返回视图的简单控制器</p>
-<p>可用属性：</p>
-<ul>
-<li>path：必须。被映射的URL路径。</li>
-<li>view-name：可选。被渲染的视图名，如果不指定，则通过当前HttpServletRequest对应的DispatcherServlet的RequestToViewNameTranslator来决定。</li>
-</ul>
-]]></content>
-      <categories>
-        <category>spring框架</category>
-      </categories>
-      <tags>
-        <tag>springmvc</tag>
-        <tag>annotation</tag>
-        <tag>javaweb</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>在docker中使用mysql</title>
-    <url>/2021/01/12/use-mysql-inside-docker/</url>
-    <content><![CDATA[<h2 id="什么是容器"><a href="#什么是容器" class="headerlink" title="什么是容器"></a>什么是容器</h2><p>容器是一种标准化的软件单元，它允许开发者将他们的应用的执行环境和机器环境隔离开来，可以解决类似”它在我机器上工作的好好的“的抱怨。而Docker是目前容器领域的实际标准。</p>
-<p>Docker的另外一个重要的用途是开发者可以下载并运行任何容器化的应用，而不用在他们的本地安装。因此很多应用都实现了容器化版本。</p>
-]]></content>
-      <categories>
-        <category>容器技术</category>
-      </categories>
-      <tags>
-        <tag>docker</tag>
-        <tag>mysql</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>如何使用openssh进行远程连接</title>
-    <url>/2020/12/27/ssh-manual/</url>
-    <content><![CDATA[<h2 id="SSH连接的建立方式"><a href="#SSH连接的建立方式" class="headerlink" title="SSH连接的建立方式"></a>SSH连接的建立方式</h2><p>ssh可以通过密码和密钥（更加安全）这两种方式建立起客户端与 服务端的连接。</p>
-<h2 id="SSH连接的实现过程（假设通过密钥的方式连接）"><a href="#SSH连接的实现过程（假设通过密钥的方式连接）" class="headerlink" title="SSH连接的实现过程（假设通过密钥的方式连接）"></a>SSH连接的实现过程（假设通过密钥的方式连接）</h2><ol>
-<li>当客户端发起一个ssh连接请求时，它首先会告诉服务端需要使用的公钥；</li>
-<li>然后服务端会检查它的<code>~/authorized_keys</code>文件，这个文件中包含了所有已经保存的客户端公钥，一个公钥占据一行，这些公钥所对应的客户端可以实现免验证登录。</li>
-<li>服务端如果在文件中找到了请求客户端所对应的公钥，就会生成一个随机字符串，并使用找到的公钥进行加密。这个加密后的信息只能被请求客户端的私钥所解密，然后服务端将这个加密后的字符串发送给请求客户端，以此来验证该客户端是否拥有私钥。</li>
-<li>客户端收到来自服务端的加密字符串之后，会立即使用自己的私钥进行解密，并将解密后的随机字符串与之前协商好的会话id结合，生成一个md5加密的hash值，并回传给服务端。</li>
-<li>由于服务端已经知道加密之前的随机字符串和会话id，因此，服务端会在本地将这个随机字符串和会话id进行hash，然后和客户端传过来的值进行比较，如果一致，则表示请求客户端确实拥有私钥，并允许建立连接。<a id="more"></a>
-<h2 id="生成SSH密码对"><a href="#生成SSH密码对" class="headerlink" title="生成SSH密码对"></a>生成SSH密码对</h2>有几种加密算法可以用来生成SSH密钥，例如RSA、DSA、ECDSA，默认情况下使用RSA加密算法。<br>使用如下命令可以生成一个默认的密钥：</li>
-</ol>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ ssh-keygen</span><br></pre></td></tr></table></figure>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">Generating public/private rsa key pair.</span><br><span class="line">Enter file <span class="keyword">in</span> <span class="built_in">which</span> to save the key (/home/demo/.ssh/id_rsa):</span><br></pre></td></tr></table></figure>
-<p>这里可以指定密钥文件的保存位置。默认是<code>~/.ssh/id_rsa</code>。<br>点击<code>enter</code>进入下一步：</p>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">Enter passphrase (empty <span class="keyword">for</span> no passphrase):</span><br><span class="line">Enter same passphrase again:</span><br></pre></td></tr></table></figure>
-<p>这里可以指定密钥的密码短语，即在密码之上再加一层密码验证，增强密钥的安全性。<br>点击<code>enter</code>进入下一步：</p>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">Your identification has been saved <span class="keyword">in</span> /root/.ssh/id_rsa.</span><br><span class="line">Your public key has been saved <span class="keyword">in</span> /root/.ssh/id_rsa.pub.</span><br><span class="line">The key fingerprint is:</span><br><span class="line">8c:e9:7c:fa:bf:c4:e5:9c:c9:b8:60:1f:fe:1c:d3:8a root@here</span><br><span class="line">The key<span class="string">&#x27;s randomart image is:</span></span><br><span class="line"><span class="string">+--[ RSA 2048]----+</span></span><br><span class="line"><span class="string">|                 |</span></span><br><span class="line"><span class="string">|                 |</span></span><br><span class="line"><span class="string">|                 |</span></span><br><span class="line"><span class="string">|       +         |</span></span><br><span class="line"><span class="string">|      o S   .    |</span></span><br><span class="line"><span class="string">|     o   . * +   |</span></span><br><span class="line"><span class="string">|      o + = O .  |</span></span><br><span class="line"><span class="string">|       + = = +   |</span></span><br><span class="line"><span class="string">|      ....Eo+    |</span></span><br><span class="line"><span class="string">+-----------------+</span></span><br></pre></td></tr></table></figure>
-<p>这时，你的密钥对就算生成成功了。生成的文件如下：</p>
-<ul>
-<li><code>~/.ssh/id_rsa</code>:存放你的私钥。<strong>只能你自己知道</strong>。</li>
-<li><code>~/.ssh/id_rsa.pub</code>:存放你的公钥，可以让其他人知道。<h2 id="使用更长的位数生成你的密钥对"><a href="#使用更长的位数生成你的密钥对" class="headerlink" title="使用更长的位数生成你的密钥对"></a>使用更长的位数生成你的密钥对</h2>默认情况下，ssh-keyken使用2048的位长度生成密钥对。这一默认值大多数场合已经足够安全，但是，我们在某些特殊场景下仍然可以使用更大的位长度来增强我们服务器的安全性。<br>为了做到这一点，我们可以使用<code>-b</code>参数来指定我们需要的位长度。<br>比如：<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ ssh-keygen -b 4096</span><br></pre></td></tr></table></figure>
-如果你之前已经生成过一个密钥对，那么这里会提示你是否需要覆盖你之前的键：<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">Overrite(Y/n)?</span><br></pre></td></tr></table></figure>
-如果你选择是，那你之前的文件会被覆写，导致你再也无法使用之前的密钥登录到之前的服务器，因此，一定要小心之前的密钥是否需要保留。<h2 id="移除或者修改私钥的密码短语-passphase"><a href="#移除或者修改私钥的密码短语-passphase" class="headerlink" title="移除或者修改私钥的密码短语(passphase)"></a>移除或者修改私钥的密码短语(passphase)</h2>如果你已经为你的私钥指定了一个密码短语，该怎么修改或者直接删除这个密码短语呢？<div class="note info"><p>为了修改或移除密码短语，你必须知道原来的密码短语。如果你忘记了原来的密码短语，你将无法再次使用该密钥，必须重新生成新的密钥。</p>
-</div>
-通过下面的命令：<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ ssh-keygen -p</span><br></pre></td></tr></table></figure>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">Enter file <span class="keyword">in</span> <span class="built_in">which</span> the key is (/root/.ssh/id_rsa):</span><br></pre></td></tr></table></figure>
-你可以指定密钥的位置，或者直接按<code>Enter</code>接受默认的位置。<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">Enter old passphrase:</span><br></pre></td></tr></table></figure>
-输入你希望修改的旧密码，然后你会被提示输入一个新的密码短语：<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">Enter new passphrase (empty <span class="keyword">for</span> no passphrase):</span><br><span class="line">Enter same passphrase again:</span><br></pre></td></tr></table></figure>
-至此，输入你的新密码短语或者按<code>Enter</code>来移除密码短语。<h2 id="展示SSH密钥的手印（Fingerprint）"><a href="#展示SSH密钥的手印（Fingerprint）" class="headerlink" title="展示SSH密钥的手印（Fingerprint）"></a>展示SSH密钥的手印（Fingerprint）</h2>每个SSH密钥对共享一个密码形式的“手印”，它可以被用来唯一标识密钥对。这在有些情况下会很有用。<br>为了查看现有的密钥对，你可以执行：<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ ssh-keygen -l</span><br></pre></td></tr></table></figure>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">Enter file in which the key is (&#x2F;root&#x2F;.ssh&#x2F;id_rsa):</span><br></pre></td></tr></table></figure>
-你可以直接按<code>Enter</code>选择默认的密钥的位置，或者输入你期望的位置。之后你会得到包含了密钥的位长、手印和帐号以及所选主机和使用的算法的字符串：<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">4096 8e:c4:82:47:87:c2:26:4b:68:ff:96:1a:39:62:9e:4e  demo@<span class="built_in">test</span> (RSA)</span><br></pre></td></tr></table></figure>
-<h2 id="使用SSH-Copy-ID复制公钥到服务器"><a href="#使用SSH-Copy-ID复制公钥到服务器" class="headerlink" title="使用SSH-Copy-ID复制公钥到服务器"></a>使用SSH-Copy-ID复制公钥到服务器</h2>通过将你的公钥复制到服务器，可以让你不用输入密码就可以通过认证，有很多方法可以实现这一点。<br>如果你当前有一个基于密码的SSH远程服务器访问方式，并且你已经安装了ssh-copy-id工具，那么你就可以很容易的实现这一点。而且ssh-copy-id已经预装到了大多数的linux发行版中。<br>通过下面的命令可以实现这一点：<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ ssh-copy-id username@remote_host</span><br></pre></td></tr></table></figure>
-随后会提示你输入当前用户在远程服务器上的密码，正确输入之后，你本地的公钥就会被添加到服务器用户的<code>~/.ssh/authorized_keys</code>文件中，之后，你就可以不用输入密码也能登录到远程服务器了。<h2 id="不通过ssh-copy-id命令将公钥添加到远程服务器"><a href="#不通过ssh-copy-id命令将公钥添加到远程服务器" class="headerlink" title="不通过ssh-copy-id命令将公钥添加到远程服务器"></a>不通过ssh-copy-id命令将公钥添加到远程服务器</h2>如果你没有安装ssh-copy-id命令行工具，那你应该怎么样将你的公钥上传到远程服务器呢？通过linux中的管道命令，我们可以实现这一点。</li>
-</ul>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ cat ~/.ssh/id_rsa.pub | ssh username@remote_host <span class="string">&quot;mkdir -p ~/.ssh &amp;&amp; ~/.ssh/authorized_keys&quot;</span></span><br></pre></td></tr></table></figure>
-<p>随后根据提示输入远程主机的用户名密码：</p>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">The authenticity of host <span class="string">&#x27;111.111.11.111 (111.111.11.111)&#x27;</span> can<span class="string">&#x27;t be established.</span></span><br><span class="line"><span class="string">ECDSA key fingerprint is fd:fd:d4:f9:77:fe:73:84:e1:55:00:ad:d6:6d:22:fe.</span></span><br><span class="line"><span class="string">Are you sure you want to continue connecting (yes/no)? yes</span></span><br><span class="line"><span class="string">demo@111.111.11.111&#x27;</span>s password:</span><br></pre></td></tr></table></figure>
-<p>如果添加成功，你之后的登录将无需再次输入密码，而是简单的通过如下命令：</p>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ ssh username@remote_ip_host</span><br></pre></td></tr></table></figure>
-<h2 id="手动将你的密钥复制到服务器"><a href="#手动将你的密钥复制到服务器" class="headerlink" title="手动将你的密钥复制到服务器"></a>手动将你的密钥复制到服务器</h2><p>如果你没有可用的基于密码访问的SSH连接，你将必须手动将你的公钥复制到远程服务器。<br>打开你的本地终端，输入下面的命令：</p>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ cat ~/.ssh/id_rsa.pub</span><br></pre></td></tr></table></figure>
-<p>将输出到屏幕上的公钥复制到剪贴板，然后通过工具（一般是服务器供应商提供的web面板）连接到远程服务器，并在远程服务器的<code>~/.ssh/</code>（如果不存在就新建）目录下面创建<code>authorized_keys</code>文件。最后将你复制的公钥粘贴到该文件中，并保存。</p>
-<h2 id="基本的连接指令"><a href="#基本的连接指令" class="headerlink" title="基本的连接指令"></a>基本的连接指令</h2><p>接下来是针对SSH中一些比较常用的命令做个说明。</p>
-<h3 id="连接到指定的远程服务器"><a href="#连接到指定的远程服务器" class="headerlink" title="连接到指定的远程服务器"></a>连接到指定的远程服务器</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ ssh remote_host</span><br></pre></td></tr></table></figure>
-<p>这个命令会假设你当前机器的本地用户名和远程服务器上的用户名是一致的。如果不一致，请使用下面的命令。</p>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ ssh username@remote_host</span><br></pre></td></tr></table></figure>
-<p>这个命令会假设你要连接的远程服务器的端口号是22（ssh默认的端口号）。如果不是，请使用<code>-p your_port</code>指定你的自定义端口号。<br>如果服务器正常开启了ssh服务以及对应的监听端口，那么你会看到如下信息：</p>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">The authenticity of host <span class="string">&#x27;111.111.11.111 (111.111.11.111)&#x27;</span> can<span class="string">&#x27;t be established.</span></span><br><span class="line"><span class="string">ECDSA key fingerprint is fd:fd:d4:f9:77:fe:73:84:e1:55:00:ad:d6:6d:22:fe.</span></span><br><span class="line"><span class="string">Are you sure you want to continue connecting (yes/no)? yes</span></span><br></pre></td></tr></table></figure>
-<p>输入”yes”即可接受来自远程服务器的验证。<br>如果你使用了密码验证，那么你会被要求输入密码，如果你使用了公钥免登录，且设置了密码短语，那么你将同样被要求输入密码短语，否则，你将自动登录成功。</p>
-<h2 id="在远程服务器上执行单次命令"><a href="#在远程服务器上执行单次命令" class="headerlink" title="在远程服务器上执行单次命令"></a>在远程服务器上执行单次命令</h2><p>如果你只是想在远程服务器上执行单个命令，并不想开启一次远程会话。那么你可以通过下面的命令来完成：</p>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ ssh username@remote_host commander_to_run</span><br></pre></td></tr></table></figure>
-<p>这个命令会在连接上远程服务器之后立即执行后面的命令，随后便会关闭连接。</p>
-<h2 id="使用配置文件简化连接输入"><a href="#使用配置文件简化连接输入" class="headerlink" title="使用配置文件简化连接输入"></a>使用配置文件简化连接输入</h2><p>在<code>~/.ssh</code>目录下新建<code>config</code>文件（如果不存在的话），并输入如下内容：</p>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">Host remote_aliss <span class="comment"># 远程主机别名</span></span><br><span class="line">    HostName remote_host <span class="comment">#远程主机</span></span><br><span class="line">    Port port_num <span class="comment"># 端口号</span></span><br><span class="line">    User your_user <span class="comment"># 登录用户</span></span><br><span class="line">    IdentityFile ~/.ssh/id_rsa <span class="comment"># 要使用的密钥</span></span><br></pre></td></tr></table></figure>
-<p>配置完成之后，之后的连接只需要通过输入如下命令即可：</p>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ ssh remote_alias</span><br></pre></td></tr></table></figure>
-<h2 id="使用SSH-Agent保存密码短语，避免重复输入"><a href="#使用SSH-Agent保存密码短语，避免重复输入" class="headerlink" title="使用SSH Agent保存密码短语，避免重复输入"></a>使用SSH Agent保存密码短语，避免重复输入</h2><p>如果你对密钥使用了密码短语进行加密，那么你在每次建立SSH连接会话之前都会要求输入密码短语，为了简化连接过程，避免每次都要重复输入，你可以使用SSH Agent来保存你的密码短语。</p>
-]]></content>
-      <categories>
-        <category>生涯 SSH连接的建立方式</category>
-      </categories>
-      <tags>
-        <tag>linux</tag>
-        <tag>ssh</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>linux下使用crontab工具设置定时任务</title>
-    <url>/2021/03/04/cron-manual/</url>
-    <content><![CDATA[<h2 id="使用crontab添加定时任务"><a href="#使用crontab添加定时任务" class="headerlink" title="使用crontab添加定时任务"></a>使用crontab添加定时任务</h2><p>crontab -e</p>
-<h2 id="cron的格式说明"><a href="#cron的格式说明" class="headerlink" title="cron的格式说明"></a>cron的格式说明</h2><p>分钟 小时 月中日 月份 周中日 你的自动化脚本<br>取值范围：<br>分钟：0-59<br>小时：0-23<br>月中日：1-31<br>月份：1-12<br>周中日：0-6</p>
-<h2 id="在指定的时间点调度"><a href="#在指定的时间点调度" class="headerlink" title="在指定的时间点调度"></a>在指定的时间点调度</h2><p>30 08 10 12 * /home/pengkai/myjob.sh<br>上面的调度器会在12月10号的上午8点30分执行myjob.sh脚本。<br>注意，上面最后一个位置使用了*号来表示一周中的每一天。因为已经指定了具体的月日，所以不必再限制那一天是星期几。</p>
-<h2 id="查看当前用户下的所有调度任务"><a href="#查看当前用户下的所有调度任务" class="headerlink" title="查看当前用户下的所有调度任务"></a>查看当前用户下的所有调度任务</h2><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ crontab -l</span><br></pre></td></tr></table></figure>
-<p>或者以root用户查看其他用户的任务</p>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="comment"># crontab -u kyle -l</span></span><br></pre></td></tr></table></figure>
-<h2 id="每分钟执行一次调度"><a href="#每分钟执行一次调度" class="headerlink" title="每分钟执行一次调度"></a>每分钟执行一次调度</h2><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">* * * * * 你的脚本</span><br></pre></td></tr></table></figure>
-<h2 id="一天执行两次"><a href="#一天执行两次" class="headerlink" title="一天执行两次"></a>一天执行两次</h2><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">* 12,20 * * * 你的脚本</span><br></pre></td></tr></table></figure>
-<p>上面的命令会分别在中午12点晚上8点执行你的脚本</p>
-<h2 id="指定起止时间并按照固定间隔执行"><a href="#指定起止时间并按照固定间隔执行" class="headerlink" title="指定起止时间并按照固定间隔执行"></a>指定起止时间并按照固定间隔执行</h2><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">08-20 * * * 你的脚本</span><br></pre></td></tr></table></figure>
-<p>上面的命令会从8点开始执行，然后间隔一个小时再次执行，最后一直到晚上8点截止。</p>
-<h2 id="只在工作日的工作时间内执行"><a href="#只在工作日的工作时间内执行" class="headerlink" title="只在工作日的工作时间内执行"></a>只在工作日的工作时间内执行</h2><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">00 09-18 * * 1-5 你的脚本</span><br></pre></td></tr></table></figure>
-<p>从周一开始，每天从上午9点开始执行，然后每隔一个小时再次执行，最后一直到下午6点截止。如此往复到周五晚上6点停止执行。下周继续。</p>
-<h2 id="每隔10分钟执行一次"><a href="#每隔10分钟执行一次" class="headerlink" title="每隔10分钟执行一次"></a>每隔10分钟执行一次</h2><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">*/10 * * * * 你的脚本</span><br></pre></td></tr></table></figure>
-<h2 id="使用特殊字符指定调度周期"><a href="#使用特殊字符指定调度周期" class="headerlink" title="使用特殊字符指定调度周期"></a>使用特殊字符指定调度周期</h2><p>cron支持的特殊字符<br>@yearly = 0 0 1 1 * ：每年的1月1日执行<br>@daily = 0 0 * * * ： 每天的0点执行<br>@monthly = 0 0 1 * * ：每个月的1号的0点执行<br>@hourly = 0 * * * * ：每个小时执行一次<br>@reboot = 计算器启动时执行</p>
-]]></content>
-      <categories>
-        <category>linux</category>
-      </categories>
-      <tags>
-        <tag>linux</tag>
-        <tag>crontab</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>docker使用手冊</title>
-    <url>/2021/03/12/docker-manual/</url>
-    <content><![CDATA[<h2 id="启动docker实例"><a href="#启动docker实例" class="headerlink" title="启动docker实例"></a>启动docker实例</h2><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">sudo docker start 你的镜像名称</span><br></pre></td></tr></table></figure>
-<h2 id="关闭docker实例"><a href="#关闭docker实例" class="headerlink" title="关闭docker实例"></a>关闭docker实例</h2><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">sudo docker stop 你的镜像名称</span><br></pre></td></tr></table></figure>
-<h2 id="查看所有的本地镜像"><a href="#查看所有的本地镜像" class="headerlink" title="查看所有的本地镜像"></a>查看所有的本地镜像</h2><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">sudo docker ps -a</span><br></pre></td></tr></table></figure>
-<p>或者带上选项<code>q</code>则只会列出容器id（类似369a959e3402）</p>
-<h2 id="查看指定命令的帮助手册（有哪些可用选项）"><a href="#查看指定命令的帮助手册（有哪些可用选项）" class="headerlink" title="查看指定命令的帮助手册（有哪些可用选项）"></a>查看指定命令的帮助手册（有哪些可用选项）</h2><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">docker 你的命令 --<span class="built_in">help</span></span><br></pre></td></tr></table></figure>
-<h2 id="安装镜像"><a href="#安装镜像" class="headerlink" title="安装镜像"></a>安装镜像</h2><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">docker pull 镜像名</span><br></pre></td></tr></table></figure>
-<h2 id="安装并启动镜像"><a href="#安装并启动镜像" class="headerlink" title="安装并启动镜像"></a>安装并启动镜像</h2><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">docker run -it --name &lt;容器名称&gt; --hostname &lt;容器主机名&gt; -p 15672:15672 -p 5672:5672 镜像名称</span><br></pre></td></tr></table></figure>
-<p>注意，该命令会先在本地查找镜像是否已经存在，如果不存在，则从远程仓库下载，并创建该镜像的一个实例。其中，–name用来指定被创建容器的名称，–hostname被用来指定被创建容器的主机名，-p被用来映射容器端口和本地运行环境端口，最后的镜像名称为远程仓库中已存在的镜像名；-it,其中的i表示交互式运行，t表示开启一个伪终端。</p>
-<h2 id="删除指定的容器实例"><a href="#删除指定的容器实例" class="headerlink" title="删除指定的容器实例"></a>删除指定的容器实例</h2><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">docker rm 容器名称或者容器id</span><br></pre></td></tr></table></figure>
-<h2 id="挂载本地目录，并映射到容器内的存储目录"><a href="#挂载本地目录，并映射到容器内的存储目录" class="headerlink" title="挂载本地目录，并映射到容器内的存储目录"></a>挂载本地目录，并映射到容器内的存储目录</h2><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">docker run -it --name mongo -v /mongodb/data/db:/data/db -p 27017:27017 -d mongo:latest</span><br></pre></td></tr></table></figure>
-<p>该命令使用<code>-v</code>选项（volumn）将本地目录<code>/mongodb/data/db</code>挂载到容器内的目录<code>/data/db</code>，并使用<code>-d</code>选项将容器实例以后台进程的形式运行。</p>
-<h2 id="进入容器实例内部"><a href="#进入容器实例内部" class="headerlink" title="进入容器实例内部"></a>进入容器实例内部</h2><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">docker <span class="built_in">exec</span> -it mongodb bash</span><br></pre></td></tr></table></figure>
-<p>该命令会开启一个新的bash shell,而该bash shell对应的是容器内的环境。</p>
-]]></content>
-      <categories>
-        <category>docker</category>
-      </categories>
-      <tags>
-        <tag>linux</tag>
-        <tag>docker</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>设计模式学习手册</title>
-    <url>/2021/03/12/design-pattern-tutorial/</url>
-    <content><![CDATA[<h2 id="设计模式的类别"><a href="#设计模式的类别" class="headerlink" title="设计模式的类别"></a>设计模式的类别</h2><ul>
-<li>创造性模式（creational）<blockquote>
-<p>创造型模式控制了对象的创建和类的实例化；</p>
-</blockquote>
-</li>
-<li>结构性模式（structural）<blockquote>
-<p>结构型设计模式控制了类和对象之间的关系</p>
-</blockquote>
-</li>
-<li>表现型模式（behavioral)<blockquote>
-<p>表现型设计模式控制了对象之间的交流和交互</p>
-</blockquote>
-<h2 id="设计模式带来的影响范围——确定了解决方案的关注点"><a href="#设计模式带来的影响范围——确定了解决方案的关注点" class="headerlink" title="设计模式带来的影响范围——确定了解决方案的关注点"></a>设计模式带来的影响范围——确定了解决方案的关注点</h2></li>
-<li>对象层面的影响范围——解决对象关系的问题<br>作用于运行期间，对象拥有动态的行为</li>
-<li>类层面的影响范围——解决类关系的问题<br>作用于编译期间，类拥有静态的行为<h2 id=""><a href="#" class="headerlink" title=""></a></h2></li>
-</ul>
 ]]></content>
       <categories>
         <category>java</category>
       </categories>
       <tags>
-        <tag>design pattern</tag>
+        <tag>gradle</tag>
+        <tag>maven</tag>
       </tags>
   </entry>
   <entry>
-    <title>gzip操作手册</title>
-    <url>/2021/03/13/gzip-manual/</url>
-    <content><![CDATA[<h2 id="gzip工具"><a href="#gzip工具" class="headerlink" title="gzip工具"></a>gzip工具</h2><p>gzip采用了最流行的压缩算法，可以让你缩小文件的大小，并且保留原始的文件模式，属主和时间戳。<br>使用gzip工具压缩的文件一般使用.gz的文件名后缀，并且gzip也可以用来解压缩文件。</p>
-<h2 id="命令格式以及说明"><a href="#命令格式以及说明" class="headerlink" title="命令格式以及说明"></a>命令格式以及说明</h2><p>通常的语法格式如下：</p>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">gzip [可选项] ... [文件]...</span><br></pre></td></tr></table></figure>
-<p>gzip只能压缩单个文件，并为给定的文件创建一个压缩之后的文件。根据惯例，压缩之后的文件的命令一把使用<code>.gz</code>或者<code>.z</code>。<br>如果你想将多个文件或者目录压缩到一个文件中，首先你需要创建一个tar包，然后对这个tar包进行压缩。这样的文件一般会使用<code>.tar.gz</code>或者<code>.tgz</code>作为后缀来表明这个文件是使用了gzip压缩之后的tar包。<br>gzip最常用作压缩文本文件，tar包或者网页，尽量不要使用gzip去压缩图片，音频，pdf文档或者其他的二进制文件，因为他们已经被压缩过了。<br>gzip只能压缩常规文件，符号链接文件会被忽略。</p>
-<h2 id="使用gzip压缩文件"><a href="#使用gzip压缩文件" class="headerlink" title="使用gzip压缩文件"></a>使用gzip压缩文件</h2><ul>
-<li>不带任何参数的压缩<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">gzip 你的文件</span><br></pre></td></tr></table></figure>
-该命令将会创建一个<code>你的文件.gz</code>文件，然后删除原始文件。<br>默认情况下，gzip会保留原始文件的时间戳，模式，属主和文件名。</li>
-<li>保留原始文件<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">gzip -k 你的文件</span><br></pre></td></tr></table></figure>
-另外一种保留原始文件的方法是使用<code>-c</code>选项，告诉gzip将原始文件写入到标准输出，然后重定向到指定的文件<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">gzip -c 你的文件 &gt; 你的文件.gz</span><br></pre></td></tr></table></figure></li>
-<li>查看冗余信息<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">gzip -v 你的文件</span><br></pre></td></tr></table></figure>
-该命令将会输出压缩进度信息</li>
-<li>压缩多个文件<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">gzip 文件1 文件2 文件3</span><br></pre></td></tr></table></figure>
-该命令将会生成<code>文件1.gz</code>、<code>文件2.gz</code>、<code>文件3.gz</code>这3个文件。</li>
-<li>压缩目录<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">gzip -r 你的目录</span><br></pre></td></tr></table></figure>
-该命令会递归压缩你的目录下的所有文件，分别生成<code>.gz</code>文件。</li>
-<li>改变压缩等级<br>gzip允许我们指定文件的压缩等级，范围是1-9，而<code>-1</code>或者<code>--fast</code>则代表使用最小的压缩率以达到最快的压缩速度；而<code>-9</code>或者<code>--best</code>则代表使用最高的压缩率，相应的，也会有最慢的压缩速度。默认的压缩级别是6；<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">gzip -9 你的文件</span><br></pre></td></tr></table></figure>
-压缩是CPU密集型的任务，压缩等级越高，压缩过程越长。</li>
-<li>使用标准输入<br>为了从标准输入创建<code>.gz</code>文件，使用管道命令重定向到gzip。<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">mysqldump database_name | gzip -c &gt; database_name.sql.gz</span><br></pre></td></tr></table></figure>
-该命令将会把<code>mysqldump</code>的输出内容作为输入传递给gzip。</li>
-</ul>
-<h2 id="使用gzip解压缩"><a href="#使用gzip解压缩" class="headerlink" title="使用gzip解压缩"></a>使用gzip解压缩</h2><ul>
-<li>使用-d作为解压缩选项<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">gzip -d 你的文件.gz</span><br></pre></td></tr></table></figure>
-另一个可以用于解压缩的命令是gunzip，它可以算作是gzip -d的别名。<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">gunzip 你的文件.gz</span><br></pre></td></tr></table></figure></li>
-<li>保留原始压缩文件<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">gzip -dk 你的文件.gz</span><br></pre></td></tr></table></figure></li>
-<li>解压缩多个文件<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">gzip -d 你的文件1.gz 你的文件2.gz 你的文件3.gz</span><br></pre></td></tr></table></figure></li>
-<li>解压缩目录下的所有压缩文件<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">gzip -dr 你的目录</span><br></pre></td></tr></table></figure></li>
-<li>查看压缩文件的内容<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">gzip -l 你的文件</span><br></pre></td></tr></table></figure>
-使用<code>-v</code>可以得到更加详细的信息。</li>
-</ul>
+    <title>archlinux安装指南</title>
+    <url>/2021/10/02/archlinux-install-guide/</url>
+    <content><![CDATA[<h2 id="Arch-Linux是什么"><a href="#Arch-Linux是什么" class="headerlink" title="Arch Linux是什么"></a>Arch Linux是什么</h2><p>Arch Linux是一款滚动更新的GNU/Linux发行版，致力于提供最新的稳定版软件，相较于其他图形界面的发行版，Arch Linux只能在命令行界面进行安装，且默认不带任何桌面环境。（非特别说明，后文将GNU/Linux简称为Linux）</p>
+<h2 id="Arch-Linux有什么优势"><a href="#Arch-Linux有什么优势" class="headerlink" title="Arch Linux有什么优势"></a>Arch Linux有什么优势</h2><p>相较于其他基于Debian或者Redhat的发行版，Arch Linux提供了自己的包管理器——pacman，而且支持用户软件仓库（AUR）。基于这个特性，大大增加了Arch Linux系统原生软件的数量。而良好的软件生态正是Arch Linux的一大利器。</p>
+<h2 id="Arch-Linux的安装"><a href="#Arch-Linux的安装" class="headerlink" title="Arch Linux的安装"></a>Arch Linux的安装</h2><p>对于大部分非专业人士而言，习惯了Windows的图形界面之后，突然使用命令行操作软件往往变得非常困难，更不用说安装系统了，尽管Arch Linux拥有详细的由社区维护的安装指南Wiki，但也因此劝退了一些习惯了windows之后想要尝试linux系统的新手，基于此，本文特地将自己安装Arch Linux过程中的经历以及出现的问题做个说明，作为Arch Linux安装wiki的补充，不失为帮助更多的人能够接触到linux的一种方法（windows固然很优秀，但<strong>自由/开源软件</strong>才是软件开发的未来）。</p>
+<h3 id="1、获取最新版镜像"><a href="#1、获取最新版镜像" class="headerlink" title="1、获取最新版镜像"></a>1、获取最新版镜像</h3><p>官方下载网站：<a href="https://archlinux.org/download/">https://archlinux.org/download/</a></p>
+<h2 id="2、制作启动盘"><a href="#2、制作启动盘" class="headerlink" title="2、制作启动盘"></a>2、制作启动盘</h2><p>准备一个空的U盘，和一台已安装好linux系统的机器，使用如下命令进行写盘：</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">sudo dd bs=4MB <span class="keyword">if</span>=你的安装镜像路径 of=你的U盘路径 status=progress</span><br></pre></td></tr></table></figure>
+<blockquote>
+<p>of参数通常是/dev/sdb，其中sdb是你的U盘路径，注意不要带数字后缀，类似sdb1。另外，写盘之前必须使用umount命令卸载的U盘（如果被自动挂载的话）。</p>
+</blockquote>
+<h3 id="3、从U盘启动，开始安装"><a href="#3、从U盘启动，开始安装" class="headerlink" title="3、从U盘启动，开始安装"></a>3、从U盘启动，开始安装</h3><p>需要注意的是，为了确保可以正常从启动盘引导，需要关闭主板的安全启动选项（可以在安装完成之后重新打开），关闭方式因主板厂商不同而有所差异。具体如何关闭可以自行百度。</p>
+<p>重启主机之后，进入BIOS或者直接通过功能键选择启动顺序，将USB设备作为第一启动项，启动之后选择<code>Arch Linux install medium</code>进入系统安装界面。</p>
+<h3 id="4、验证启动模式"><a href="#4、验证启动模式" class="headerlink" title="4、验证启动模式"></a>4、验证启动模式</h3><p>如果使用的是UEFI模式，则可以使用如下命令验证:</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">ls /sys/firmware/efi/efivars</span><br></pre></td></tr></table></figure>
+<p>如果命令正常打印出一系列文件和目录，且没有任何错误，则表明当前是以UEFI模式启动。否则则是以BIOS或者CMS模式启动。</p>
+<h2 id="5、联网"><a href="#5、联网" class="headerlink" title="5、联网"></a>5、联网</h2><p>一般来说，我们可以直接插入网线联网，或者使用外置网卡。比如手机的USB网络共享。</p>
+<h2 id="6、调整时区"><a href="#6、调整时区" class="headerlink" title="6、调整时区"></a>6、调整时区</h2><p>使用<code>timedatectl</code>可以查看并设置时区。</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="comment"># 启用ntp（网络时间协议）</span></span><br><span class="line">timedatectl set-ntp <span class="literal">true</span></span><br><span class="line"><span class="comment"># 列出当前可用的时区</span></span><br><span class="line">timedatectl list-timezones</span><br><span class="line"><span class="comment"># 设置选择的时区</span></span><br><span class="line">timedatectl set-timezone Asia/Shanghai</span><br></pre></td></tr></table></figure>
+<h2 id="7、磁盘分区"><a href="#7、磁盘分区" class="headerlink" title="7、磁盘分区"></a>7、磁盘分区</h2><p>查看当前可用磁盘</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">fdisk -l</span><br></pre></td></tr></table></figure>
+<p>选择将要使用的磁盘，假设是<code>/dev/sda</code>，执行如下命令</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">fdisk /dev/sda</span><br></pre></td></tr></table></figure>
+<p>进入分区界面之后，使用<code>m</code>查看具体的分区指令。一般步骤如下：</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="comment"># 创建分区表</span></span><br><span class="line"></span><br></pre></td></tr></table></figure>
 ]]></content>
       <categories>
         <category>linux</category>
       </categories>
       <tags>
-        <tag>gzip</tag>
+        <tag>archlinux</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>下载神器aria2使用手册</title>
+    <url>/2021/04/01/aria2-manual/</url>
+    <content><![CDATA[<h2 id="aria2是什么东西"><a href="#aria2是什么东西" class="headerlink" title="aria2是什么东西"></a>aria2是什么东西</h2>]]></content>
+      <categories>
+        <category>工具</category>
+      </categories>
+      <tags>
+        <tag>aria2</tag>
+        <tag>神器</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>国庆假期之后返回上海后的感想</title>
+    <url>/2021/10/08/back-to-shanghai-after-guoqing-holiday/</url>
+    <content><![CDATA[<h2 id="工作篇"><a href="#工作篇" class="headerlink" title="工作篇"></a>工作篇</h2><p>兜兜转转，一咋眼的功夫，来上海工作已经两年有余了，刚来上海找工作的那段时间其实心里是没底的，毕竟在上一家公司虽然说也有了两年的工作经验，可是真正学到的东西却没有多少，</p>
+]]></content>
+      <categories>
+        <category>人生</category>
+      </categories>
+      <tags>
+        <tag>个人感悟</tag>
       </tags>
   </entry>
   <entry>
@@ -502,35 +119,281 @@
       </tags>
   </entry>
   <entry>
-    <title>使用aliyun的maven仓库初始化gradle</title>
-    <url>/2021/03/16/aliyun-gradle-config/</url>
-    <content><![CDATA[<h2 id="在linux中使用gradle命令行构建程序时，使用国内镜像可以大大加快我们的构建过程，节约我们的时间，下面就如何配置aliyun仓库作为gradle的默认仓库作出说明。"><a href="#在linux中使用gradle命令行构建程序时，使用国内镜像可以大大加快我们的构建过程，节约我们的时间，下面就如何配置aliyun仓库作为gradle的默认仓库作出说明。" class="headerlink" title="在linux中使用gradle命令行构建程序时，使用国内镜像可以大大加快我们的构建过程，节约我们的时间，下面就如何配置aliyun仓库作为gradle的默认仓库作出说明。"></a>在linux中使用gradle命令行构建程序时，使用国内镜像可以大大加快我们的构建过程，节约我们的时间，下面就如何配置aliyun仓库作为gradle的默认仓库作出说明。</h2><ol>
-<li>如果只想对单个项目生效，那么可以在项目的<code>build.gradle</code>中添加如下配置：<figure class="highlight properties"><table><tr><td class="code"><pre><span class="line"><span class="attr">buildscript</span> <span class="string">&#123;</span></span><br><span class="line">    <span class="attr">repositories</span> <span class="string">&#123;</span></span><br><span class="line">        <span class="attr">maven</span> <span class="string">&#123;url &#x27;https://maven.aliyun.com/repository/google/&#x27;&#125;</span></span><br><span class="line">        <span class="attr">maven</span> <span class="string">&#123;url &#x27;https://maven.aliyun.com/repository/jcenter/&#x27;&#125;</span></span><br><span class="line">    <span class="attr">&#125;</span></span><br><span class="line">    <span class="attr">dependencies</span> <span class="string">&#123;</span></span><br><span class="line">        <span class="attr">classpath</span>: <span class="string">&#x27;com.android.tools.build:gradle:2.2.3&#x27;</span></span><br><span class="line"></span><br><span class="line">    <span class="attr">&#125;</span></span><br><span class="line"><span class="attr">&#125;</span></span><br><span class="line"><span class="attr">allprojects</span> <span class="string">&#123;</span></span><br><span class="line">    <span class="attr">repositories</span> <span class="string">&#123;</span></span><br><span class="line">         <span class="attr">maven</span> <span class="string">&#123; url &#x27;https://maven.aliyun.com/repository/google/&#x27; &#125;</span></span><br><span class="line">         <span class="attr">maven</span> <span class="string">&#123; url &#x27;https://maven.aliyun.com/repository/jcenter/&#x27;&#125; </span></span><br><span class="line">    <span class="attr">&#125;</span></span><br><span class="line"><span class="attr">&#125;</span></span><br></pre></td></tr></table></figure></li>
-<li>如果是对所有项目生效，那么需要在用户的家目录下面的.gradle目录下创建<code>init.gradle</code>文件，内容如下：<figure class="highlight properties"><table><tr><td class="code"><pre><span class="line"><span class="attr">allprojects&#123;</span></span><br><span class="line">    <span class="attr">repositories</span> <span class="string">&#123;</span></span><br><span class="line">        <span class="attr">def</span> <span class="string">ALIYUN_REPOSITORY_URL = &#x27;https://maven.aliyun.com/repository/public/&#x27;</span></span><br><span class="line">        <span class="attr">def</span> <span class="string">ALIYUN_JCENTER_URL = &#x27;https://maven.aliyun.com/repository/jcenter/&#x27;</span></span><br><span class="line">        <span class="attr">def</span> <span class="string">ALIYUN_GOOGLE_URL = &#x27;https://maven.aliyun.com/repository/google/&#x27;</span></span><br><span class="line">        <span class="attr">def</span> <span class="string">ALIYUN_GRADLE_PLUGIN_URL = &#x27;https://maven.aliyun.com/repository/gradle-plugin/&#x27;</span></span><br><span class="line">        <span class="attr">all</span> <span class="string">&#123; ArtifactRepository repo -&gt;</span></span><br><span class="line">            <span class="meta">if(repo</span> <span class="string">instanceof MavenArtifactRepository)&#123;</span></span><br><span class="line">                <span class="attr">def</span> <span class="string">url = repo.url.toString()</span></span><br><span class="line">                <span class="attr">if</span> <span class="string">(url.startsWith(&#x27;https://repo1.maven.org/maven2/&#x27;)) &#123;</span></span><br><span class="line">                    <span class="meta">project.logger.lifecycle</span> <span class="string">&quot;Repository $&#123;repo.url&#125; replaced by $ALIYUN_REPOSITORY_URL.&quot;</span></span><br><span class="line">                    <span class="attr">remove</span> <span class="string">repo</span></span><br><span class="line">                <span class="attr">&#125;</span></span><br><span class="line">                <span class="attr">if</span> <span class="string">(url.startsWith(&#x27;https://jcenter.bintray.com/&#x27;)) &#123;</span></span><br><span class="line">                    <span class="meta">project.logger.lifecycle</span> <span class="string">&quot;Repository $&#123;repo.url&#125; replaced by $ALIYUN_JCENTER_URL.&quot;</span></span><br><span class="line">                    <span class="attr">remove</span> <span class="string">repo</span></span><br><span class="line">                <span class="attr">&#125;</span></span><br><span class="line">                <span class="attr">if</span> <span class="string">(url.startsWith(&#x27;https://dl.google.com/dl/android/maven2/&#x27;)) &#123;</span></span><br><span class="line">                    <span class="meta">project.logger.lifecycle</span> <span class="string">&quot;Repository $&#123;repo.url&#125; replaced by $ALIYUN_GOOGLE_URL.&quot;</span></span><br><span class="line">                    <span class="attr">remove</span> <span class="string">repo</span></span><br><span class="line">                <span class="attr">&#125;</span></span><br><span class="line">                <span class="attr">if</span> <span class="string">(url.startsWith(&#x27;https://plugins.gradle.org/m2/&#x27;)) &#123;</span></span><br><span class="line">                    <span class="meta">project.logger.lifecycle</span> <span class="string">&quot;Repository $&#123;repo.url&#125; replaced by $ALIYUN_GRADLE_PLUGIN_URL.&quot;</span></span><br><span class="line">                    <span class="attr">remove</span> <span class="string">repo</span></span><br><span class="line">                <span class="attr">&#125;</span></span><br><span class="line">            <span class="attr">&#125;</span></span><br><span class="line">        <span class="attr">&#125;</span></span><br><span class="line">        <span class="attr">maven</span> <span class="string">&#123; url ALIYUN_REPOSITORY_URL &#125;</span></span><br><span class="line">        <span class="attr">maven</span> <span class="string">&#123; url ALIYUN_JCENTER_URL &#125;</span></span><br><span class="line">        <span class="attr">maven</span> <span class="string">&#123; url ALIYUN_GOOGLE_URL &#125;</span></span><br><span class="line">        <span class="attr">maven</span> <span class="string">&#123; url ALIYUN_GRADLE_PLUGIN_URL &#125;</span></span><br><span class="line">    <span class="attr">&#125;</span></span><br><span class="line"><span class="attr">&#125;</span></span><br></pre></td></tr></table></figure></li>
+    <title>使用netcat工具在两台linux主机之间通信</title>
+    <url>/2021/10/02/chat-with-netcat-between-linux-host/</url>
+    <content><![CDATA[<h2 id="为什么我们不使用当下流行的即时通讯工具在PC间通信或者传输文件"><a href="#为什么我们不使用当下流行的即时通讯工具在PC间通信或者传输文件" class="headerlink" title="为什么我们不使用当下流行的即时通讯工具在PC间通信或者传输文件"></a>为什么我们不使用当下流行的即时通讯工具在PC间通信或者传输文件</h2><p>目前国内使用率最高的两款即时通讯工具莫过于鹅厂的两款工具——微信和QQ。因为某些众所周知的原因，这两款工具在linux平台要么直接没有，要么只有一个复古的阉割版，功能少的让人怀疑是不是鹅厂直接把10年前的产品直接拿来用了。基于这些现实的问题，对于linux用户来说，其实可替换方案也不是没有，最好的办法就是使用telegram，但在中国，这种方案并不是人人都能够直接拿来用，最直接的原因就是使用这款软件必须要学会科学上网（比如访问谷歌或者油管）。而科学上网在中国处于法律的灰色地带，一般人没有途径也不愿意承担这样的风险。那么作为一名linux用户，只要具备基本的使用命令行的能力，其实方法还是有很多的。这里介绍一种非常方便而且直观的通讯工具——netcat，供大家参考。</p>
+<h2 id="netcat是个什么样的工具"><a href="#netcat是个什么样的工具" class="headerlink" title="netcat是个什么样的工具"></a>netcat是个什么样的工具</h2><p>netcat是一款网络工具，可以在基于TCP和UDP网络连接的基础上执行读写操作。</p>
+<p>它被设计为一个可靠的后端工具，可以直接在其他程序或者脚本中被使用。同时，它还是一个用来调试和探测网络的工具。因为它可以创建几乎所有你可能需要的连接类型。</p>
+<h2 id="netcat有哪些特性"><a href="#netcat有哪些特性" class="headerlink" title="netcat有哪些特性"></a>netcat有哪些特性</h2><ul>
+<li>流出和流入连接：例如来自基于TCP或者UDP的任意端口的连接。</li>
+<li>隧道模式：它允许创建特殊的隧道，如 UDP 到 TCP，并且可以指定所有网络参数（源主机端口/接受主机端口、监听端口/接口和允许连接到隧道的远程主机）。</li>
+<li>使用随机发生器进行端口扫描</li>
+<li>高级使用选项：例如传输和接收数据的缓冲发送模式（每 N 秒一行）和 hexdump（到 stderr 或到指定文件）。</li>
+<li>可选的 RFC854 telnet 代码解析器和响应器。</li>
+</ul>
+<h2 id="如何将netcat作为一款即时通讯工具呢"><a href="#如何将netcat作为一款即时通讯工具呢" class="headerlink" title="如何将netcat作为一款即时通讯工具呢"></a>如何将netcat作为一款即时通讯工具呢</h2><ol>
+<li><p>首先，我们需要在需要建立通讯的主机上安装netcat工具，使用linux自带的包管理器安装即可。</p>
+</li>
+<li><p>然后选择一台已经安装好netcat的机器，在终端中执行如下命令：</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">nc -l -vv -p 12345</span><br></pre></td></tr></table></figure>
+<p>其中<code>-l</code>和<code>p</code>表示在本机的12345端口进行监听，并创建一个TCP连接。<code>-vv</code>表示尽可能的展示运行过程中的系统消息，<code>-p</code>表示要监听的端口号。</p>
+</li>
+<li><p>选择要与监听主机建立连接的机器，在终端中执行如下命令：</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">nc 步骤2中创建监听的主机ip 步骤2中创建的监听端口</span><br></pre></td></tr></table></figure></li>
+<li><p>执行完2、3之后，一条连接已经创建完成，可以开始互发消息了。</p>
+</li>
 </ol>
+<blockquote>
+<p>需要注意的是，连接双方发送的消息会全部展示在各自的屏幕上，如果有多于两个以上的连接方则无法区分消息的来源。</p>
+</blockquote>
+<h2 id="使用netcat传输文件"><a href="#使用netcat传输文件" class="headerlink" title="使用netcat传输文件"></a>使用netcat传输文件</h2><p>netcat还可以用来传输文件</p>
+<ol>
+<li><p>对接收方执行如下命立：</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">nc -l -vv -p 12345 &gt; received_file</span><br></pre></td></tr></table></figure></li>
+<li><p>在发送方执行如下命令</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">nc 接收方的ip地址 12345 &lt; received_file</span><br></pre></td></tr></table></figure>
+<blockquote>
+<p>需要注意的是，这里创建监听的动作是由接收方发起的，而发送方需要和接收方建立连接并发送文件。</p>
+</blockquote>
+</li>
+</ol>
+]]></content>
+      <categories>
+        <category>linux</category>
+      </categories>
+      <tags>
+        <tag>netcat</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>代码大全读后感</title>
+    <url>/2021/03/18/code-complete-after-reading/</url>
+    <content><![CDATA[<h2 id="利用隐喻对编程进行更加深刻的理解"><a href="#利用隐喻对编程进行更加深刻的理解" class="headerlink" title="利用隐喻对编程进行更加深刻的理解"></a>利用隐喻对编程进行更加深刻的理解</h2><ol>
+<li>公式与启发之间的区别是微妙的，体现在它们与答案之间的直接程度：公式直接给予指令;而启发则告诉你该怎样找到这些指令，或者告诉你到哪里寻找它们。</li>
+<li>隐喻仅仅是启发，而不是公式，因此，它们更倾向于比较随便，无拘无束。<blockquote>
+<p>为每个工作选择合适的工具，是成为一个优秀程序员的首要素质之一。</p>
+</blockquote>
+</li>
+<li></li>
+</ol>
+]]></content>
+      <categories>
+        <category>代码大全</category>
+      </categories>
+      <tags>
+        <tag>编码</tag>
+        <tag>模式</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>linux下使用crontab工具设置定时任务</title>
+    <url>/2021/03/04/cron-manual/</url>
+    <content><![CDATA[<h2 id="使用crontab添加定时任务"><a href="#使用crontab添加定时任务" class="headerlink" title="使用crontab添加定时任务"></a>使用crontab添加定时任务</h2><p>crontab -e</p>
+<h2 id="cron的格式说明"><a href="#cron的格式说明" class="headerlink" title="cron的格式说明"></a>cron的格式说明</h2><p>分钟 小时 月中日 月份 周中日 你的自动化脚本<br>取值范围：<br>分钟：0-59<br>小时：0-23<br>月中日：1-31<br>月份：1-12<br>周中日：0-6</p>
+<h2 id="在指定的时间点调度"><a href="#在指定的时间点调度" class="headerlink" title="在指定的时间点调度"></a>在指定的时间点调度</h2><p>30 08 10 12 * /home/pengkai/myjob.sh<br>上面的调度器会在12月10号的上午8点30分执行myjob.sh脚本。<br>注意，上面最后一个位置使用了*号来表示一周中的每一天。因为已经指定了具体的月日，所以不必再限制那一天是星期几。</p>
+<h2 id="查看当前用户下的所有调度任务"><a href="#查看当前用户下的所有调度任务" class="headerlink" title="查看当前用户下的所有调度任务"></a>查看当前用户下的所有调度任务</h2><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ crontab -l</span><br></pre></td></tr></table></figure>
+<p>或者以root用户查看其他用户的任务</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="comment"># crontab -u kyle -l</span></span><br></pre></td></tr></table></figure>
+<h2 id="每分钟执行一次调度"><a href="#每分钟执行一次调度" class="headerlink" title="每分钟执行一次调度"></a>每分钟执行一次调度</h2><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">* * * * * 你的脚本</span><br></pre></td></tr></table></figure>
+<h2 id="一天执行两次"><a href="#一天执行两次" class="headerlink" title="一天执行两次"></a>一天执行两次</h2><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">* 12,20 * * * 你的脚本</span><br></pre></td></tr></table></figure>
+<p>上面的命令会分别在中午12点晚上8点执行你的脚本</p>
+<h2 id="指定起止时间并按照固定间隔执行"><a href="#指定起止时间并按照固定间隔执行" class="headerlink" title="指定起止时间并按照固定间隔执行"></a>指定起止时间并按照固定间隔执行</h2><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">08-20 * * * 你的脚本</span><br></pre></td></tr></table></figure>
+<p>上面的命令会从8点开始执行，然后间隔一个小时再次执行，最后一直到晚上8点截止。</p>
+<h2 id="只在工作日的工作时间内执行"><a href="#只在工作日的工作时间内执行" class="headerlink" title="只在工作日的工作时间内执行"></a>只在工作日的工作时间内执行</h2><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">00 09-18 * * 1-5 你的脚本</span><br></pre></td></tr></table></figure>
+<p>从周一开始，每天从上午9点开始执行，然后每隔一个小时再次执行，最后一直到下午6点截止。如此往复到周五晚上6点停止执行。下周继续。</p>
+<h2 id="每隔10分钟执行一次"><a href="#每隔10分钟执行一次" class="headerlink" title="每隔10分钟执行一次"></a>每隔10分钟执行一次</h2><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">*/10 * * * * 你的脚本</span><br></pre></td></tr></table></figure>
+<h2 id="使用特殊字符指定调度周期"><a href="#使用特殊字符指定调度周期" class="headerlink" title="使用特殊字符指定调度周期"></a>使用特殊字符指定调度周期</h2><p>cron支持的特殊字符<br>@yearly = 0 0 1 1 * ：每年的1月1日执行<br>@daily = 0 0 * * * ： 每天的0点执行<br>@monthly = 0 0 1 * * ：每个月的1号的0点执行<br>@hourly = 0 * * * * ：每个小时执行一次<br>@reboot = 计算器启动时执行</p>
+]]></content>
+      <categories>
+        <category>linux</category>
+      </categories>
+      <tags>
+        <tag>linux</tag>
+        <tag>crontab</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>curl命令常见用法</title>
+    <url>/2021/01/08/curl-command-usage/</url>
+    <content><![CDATA[<h2 id="发送post请求"><a href="#发送post请求" class="headerlink" title="发送post请求"></a>发送post请求</h2><ul>
+<li>参数类型为<code>application/json</code></li>
+</ul>
+<ol>
+<li><p>常规用法：</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">curl -d <span class="string">&#x27;&#123;&quot;key1&quot;:&quot;value1&quot;, &quot;key2&quot;: &quot;value2&quot;&#125;&#x27;</span> -H <span class="string">&quot;Content-Type: application/json&quot;</span> -X POST http://localhost:8080/your_interface_name</span><br></pre></td></tr></table></figure></li>
+<li><p>使用json文件：</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">curl -d <span class="string">&quot;@data.json&quot;</span> -X POST http://localhost:8080/your_interface_name</span><br></pre></td></tr></table></figure>
+<blockquote>
+<p><strong>data.json</strong></p>
+<hr>
+<figure class="highlight json"><table><tr><td class="code"><pre><span class="line">&#123;</span><br><span class="line">    <span class="attr">&quot;key1&quot;</span>: <span class="string">&quot;value1&quot;</span>,</span><br><span class="line">    <span class="attr">&quot;key2&quot;</span>: <span class="string">&quot;value2&quot;</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></blockquote>
+</li>
+</ol>
+<ul>
+<li>参数类型为<code>application/x-www-form-urlencoded</code></li>
+</ul>
+<ol>
+<li><p>常规用法：</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">curl -d <span class="string">&quot;param1=value1&amp;param2=value2&quot;</span> -X POST http://localhost:8080/your_interface_name</span><br></pre></td></tr></table></figure></li>
+<li><p>使用data文件：</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">curl -d <span class="string">&quot;@data.txt&quot;</span> -X POST http://localhost/your_interface_name</span><br></pre></td></tr></table></figure>
+<blockquote>
+<p><strong>data.txt</strong></p>
+<hr>
+<p>param1=value1&amp;param2=value2</p>
+</blockquote>
+</li>
+</ol>
+]]></content>
+      <categories>
+        <category>linux命令</category>
+      </categories>
+      <tags>
+        <tag>linux</tag>
+        <tag>curl</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>设计模式学习手册</title>
+    <url>/2021/03/12/design-pattern-tutorial/</url>
+    <content><![CDATA[<h2 id="设计模式的类别"><a href="#设计模式的类别" class="headerlink" title="设计模式的类别"></a>设计模式的类别</h2><ul>
+<li>创造性模式（creational）<blockquote>
+<p>创造型模式控制了对象的创建和类的实例化；</p>
+</blockquote>
+</li>
+<li>结构性模式（structural）<blockquote>
+<p>结构型设计模式控制了类和对象之间的关系</p>
+</blockquote>
+</li>
+<li>表现型模式（behavioral)<blockquote>
+<p>表现型设计模式控制了对象之间的交流和交互</p>
+</blockquote>
+<h2 id="设计模式带来的影响范围——确定了解决方案的关注点"><a href="#设计模式带来的影响范围——确定了解决方案的关注点" class="headerlink" title="设计模式带来的影响范围——确定了解决方案的关注点"></a>设计模式带来的影响范围——确定了解决方案的关注点</h2></li>
+<li>对象层面的影响范围——解决对象关系的问题<br>作用于运行期间，对象拥有动态的行为</li>
+<li>类层面的影响范围——解决类关系的问题<br>作用于编译期间，类拥有静态的行为<h2 id=""><a href="#" class="headerlink" title=""></a></h2></li>
+</ul>
 ]]></content>
       <categories>
         <category>java</category>
       </categories>
       <tags>
-        <tag>gradle</tag>
-        <tag>maven</tag>
+        <tag>design pattern</tag>
       </tags>
   </entry>
   <entry>
-    <title>spring实战</title>
-    <url>/2021/03/14/spring-in-action/</url>
-    <content><![CDATA[<h2 id="认识spring框架"><a href="#认识spring框架" class="headerlink" title="认识spring框架"></a>认识spring框架</h2><ol>
-<li>spring框架为开发者做了很多，反过来，它也要求开发者同样对它。</li>
-<li></li>
-</ol>
+    <title>docker使用手冊</title>
+    <url>/2021/03/12/docker-manual/</url>
+    <content><![CDATA[<h2 id="启动docker实例"><a href="#启动docker实例" class="headerlink" title="启动docker实例"></a>启动docker实例</h2><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">sudo docker start 你的镜像名称</span><br></pre></td></tr></table></figure>
+<h2 id="关闭docker实例"><a href="#关闭docker实例" class="headerlink" title="关闭docker实例"></a>关闭docker实例</h2><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">sudo docker stop 你的镜像名称</span><br></pre></td></tr></table></figure>
+<h2 id="查看所有的本地镜像"><a href="#查看所有的本地镜像" class="headerlink" title="查看所有的本地镜像"></a>查看所有的本地镜像</h2><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">sudo docker ps -a</span><br></pre></td></tr></table></figure>
+<p>或者带上选项<code>q</code>则只会列出容器id（类似369a959e3402）</p>
+<h2 id="查看指定命令的帮助手册（有哪些可用选项）"><a href="#查看指定命令的帮助手册（有哪些可用选项）" class="headerlink" title="查看指定命令的帮助手册（有哪些可用选项）"></a>查看指定命令的帮助手册（有哪些可用选项）</h2><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">docker 你的命令 --<span class="built_in">help</span></span><br></pre></td></tr></table></figure>
+<h2 id="安装镜像"><a href="#安装镜像" class="headerlink" title="安装镜像"></a>安装镜像</h2><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">docker pull 镜像名</span><br></pre></td></tr></table></figure>
+<h2 id="安装并启动镜像"><a href="#安装并启动镜像" class="headerlink" title="安装并启动镜像"></a>安装并启动镜像</h2><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">docker run -it --name &lt;容器名称&gt; --hostname &lt;容器主机名&gt; -p 15672:15672 -p 5672:5672 镜像名称</span><br></pre></td></tr></table></figure>
+<p>注意，该命令会先在本地查找镜像是否已经存在，如果不存在，则从远程仓库下载，并创建该镜像的一个实例。其中，–name用来指定被创建容器的名称，–hostname被用来指定被创建容器的主机名，-p被用来映射容器端口和本地运行环境端口，最后的镜像名称为远程仓库中已存在的镜像名；-it,其中的i表示交互式运行，t表示开启一个伪终端。</p>
+<h2 id="删除指定的容器实例"><a href="#删除指定的容器实例" class="headerlink" title="删除指定的容器实例"></a>删除指定的容器实例</h2><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">docker rm 容器名称或者容器id</span><br></pre></td></tr></table></figure>
+<h2 id="挂载本地目录，并映射到容器内的存储目录"><a href="#挂载本地目录，并映射到容器内的存储目录" class="headerlink" title="挂载本地目录，并映射到容器内的存储目录"></a>挂载本地目录，并映射到容器内的存储目录</h2><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">docker run -it --name mongo -v /mongodb/data/db:/data/db -p 27017:27017 -d mongo:latest</span><br></pre></td></tr></table></figure>
+<p>该命令使用<code>-v</code>选项（volumn）将本地目录<code>/mongodb/data/db</code>挂载到容器内的目录<code>/data/db</code>，并使用<code>-d</code>选项将容器实例以后台进程的形式运行。</p>
+<h2 id="进入容器实例内部"><a href="#进入容器实例内部" class="headerlink" title="进入容器实例内部"></a>进入容器实例内部</h2><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">docker <span class="built_in">exec</span> -it mongodb bash</span><br></pre></td></tr></table></figure>
+<p>该命令会开启一个新的bash shell,而该bash shell对应的是容器内的环境。</p>
 ]]></content>
       <categories>
-        <category>spring框架</category>
+        <category>docker</category>
       </categories>
       <tags>
+        <tag>linux</tag>
+        <tag>docker</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>分布式搜索引擎-elasticsearch</title>
+    <url>/2021/08/20/elasticsearch-tutorial/</url>
+    <content><![CDATA[<h2 id="1-elatsticsearch（简写为es）是什么"><a href="#1-elatsticsearch（简写为es）是什么" class="headerlink" title="1. elatsticsearch（简写为es）是什么"></a>1. elatsticsearch（简写为es）是什么</h2><p>它是一个实时的分布式、开源的全文本查询和分析引擎，基于java语言开发。</p>
+<h2 id="2-es可以做什么"><a href="#2-es可以做什么" class="headerlink" title="2. es可以做什么"></a>2. es可以做什么</h2><p>它可以在SPA（single page application-单页应用）中被使用，为用户提供高速的数据查询和分析。且原生支持java应用。</p>
+<h2 id="3-主要特性"><a href="#3-主要特性" class="headerlink" title="3. 主要特性"></a>3. 主要特性</h2><p>它有如下几个主要特性：</p>
+<ul>
+<li>可拓展性强，支持高达千兆字节（GB）的数据（不管是结构性的还是非结构性的）；</li>
+<li>可以作为类似MongoDB和RavenDB等文档存储数据库的替代品；</li>
+<li>使用非规范化来提高搜索性能；</li>
+<li>企业级的搜索引擎，被大型公司广泛使用；</li>
+<li>开源工具，且使用Apache许可证。</li>
+</ul>
+<h2 id="4-关键性的概念"><a href="#4-关键性的概念" class="headerlink" title="4. 关键性的概念"></a>4. 关键性的概念</h2><ul>
+<li>节点：表示单个运行的es实例，es可以在单台服务器上运行多个实例，这完全取决于服务器的物理内存和处理器能力；</li>
+<li>集群：一个或者多个节点的集合，在逻辑上提供了集中的数据索引和查询能力，通常表现在横跨多个节点获取完整数据的能力。</li>
+<li>索引：不同类型的文档和他们的属性的集合。在关系型数据库中，索引一般用于提升查询性能。</li>
+<li>文档：一个使用JSON格式定义的字段集合，而这些字段定义了数据查询的规则。每个文档都属于一种类型并驻留在索引中，每个文档都与一个称为 UID 的唯一标识符相关联。</li>
+<li>分片：索引被横向拆分成不同的分片，这意味着每个分片包含了所有的文档属性，但包含的 JSON 对象数量少于索引。水平分离使分片成为一个独立的节点，且可以存储在任何节点，主分片是索引的原始水平部分，然后将这些主分片复制到副本分片中。</li>
+<li>副本：es允许用户创建索引和分片的副本。复制不仅有助于在发生故障时提高数据的可用性，而且通过在这些副本中执行并行搜索操作来提高搜索性能。</li>
+</ul>
+<h2 id="5-es的优势"><a href="#5-es的优势" class="headerlink" title="5. es的优势"></a>5. es的优势</h2><ul>
+<li>es 是基于 Java 开发的，这使得它几乎可以兼容所有平台；</li>
+<li>es 是实时的，也就是说一秒后添加的文档就可以在这个引擎中搜索了；</li>
+<li>es 是分布式的，这使得它可以轻松地在任何大型组织中扩展和集成。</li>
+<li>使用 es 中的网关概念可以轻松创建完整备份。</li>
+<li>与 Apache Solr 相比，在 es 中处理多租户非常容易。</li>
+<li>es 使用 JSON 对象作为响应，这使得使用大量不同的编程语言调用 es 服务器成为可能。</li>
+<li>es 支持几乎所有文档类型，除了那些不支持文本渲染的文档类型。</li>
+</ul>
+<h2 id="6-es的缺点"><a href="#6-es的缺点" class="headerlink" title="6. es的缺点"></a>6. es的缺点</h2><ul>
+<li>与 Apache Solr 不同，es 在处理请求和响应数据方面没有多语言支持（仅支持JSON），而Apache Solr 可以支持 CSV、XML 和 JSON 格式。</li>
+<li>偶尔，es 会出现**<em>脑裂（Split brain）**</em>的问题。（什么是脑裂）</li>
+</ul>
+<h2 id="7-es和关系数据库之间的区别"><a href="#7-es和关系数据库之间的区别" class="headerlink" title="7. es和关系数据库之间的区别"></a>7. es和关系数据库之间的区别</h2><p>在 es 中，索引类似于 RDBMS（关系数据库管理系统）中的表。 每个表都是行的集合，就像 es 中的每个索引都是文档的集合一样。<br>下表给出了这些术语之间的直接比较 -</p>
+<table>
+<thead>
+<tr>
+<th>es</th>
+<th>RDBMS</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>集群</td>
+<td>数据库</td>
+</tr>
+<tr>
+<td>分片</td>
+<td>分片</td>
+</tr>
+<tr>
+<td>索引</td>
+<td>表</td>
+</tr>
+<tr>
+<td>字段</td>
+<td>列</td>
+</tr>
+<tr>
+<td>文档</td>
+<td>行</td>
+</tr>
+</tbody></table>
+]]></content>
+      <categories>
+        <category>elasticsearch</category>
+      </categories>
+      <tags>
+        <tag>elasticsearch</tag>
         <tag>java</tag>
-        <tag>spring</tag>
+        <tag>分布式</tag>
+        <tag>搜索引擎</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>FormattingConversionService类的使用</title>
+    <url>/2021/01/10/formattingConversionService/</url>
+    <content><![CDATA[<h2 id="它是什么"><a href="#它是什么" class="headerlink" title="它是什么"></a>它是什么</h2><p>Spring MVC框架中用来解析方法参数的service类。</p>
+<h2 id="它有什么用"><a href="#它有什么用" class="headerlink" title="它有什么用"></a>它有什么用</h2><p>当我们在Spring的配置文件中添加<code><mvc:annotation-driven /></code>时，如果我们没有明确指定<code>conversion-service</code>属性的值，那么Spring MVC框架会自动使用默认的FormattingConversionService类，它包含了常用的转换方法，将字段转换成标准的JDK类型，另外，如果我们需要<code>date/time</code>的转换器，可以在类路径下引入<code>Joda Time</code>的时间库，它会被默认识别。</p>
+<h2 id="使用场合"><a href="#使用场合" class="headerlink" title="使用场合"></a>使用场合</h2><p>如果我们不需要在字段绑定期间使用自定义的类型转换器，那么我们完全可以使用默认的类。</p>
+<p>如果我们需要自定义格式转换器类的话，我们可以继承该类，并将<code><mvc:annotation /></code>注解中<code>conversion-service</code>属性的值设为我们自己的类（使用类路径引入）。</p>
+<p>如果使用的是SpringBoot自动装配的话，则需要在自定义的类上加上<code>@Configuration</code>注解，并使用<code>DateTimeFormatterRegistrar</code>注册器注册我们自定义的日期解析器。然后使用<code>@Autowired</code>添加到Spring容器中。</p>
+]]></content>
+      <categories>
+        <category>spring原理</category>
+      </categories>
+      <tags>
+        <tag>springmvc</tag>
+        <tag>util</tag>
       </tags>
   </entry>
   <entry>
@@ -578,23 +441,177 @@ dict是客户端，dictd是dict的后台服务器。默认安装之后是不带�
       </tags>
   </entry>
   <entry>
-    <title>代码大全读后感</title>
-    <url>/2021/03/18/code-complete-after-reading/</url>
-    <content><![CDATA[<h2 id="利用隐喻对编程进行更加深刻的理解"><a href="#利用隐喻对编程进行更加深刻的理解" class="headerlink" title="利用隐喻对编程进行更加深刻的理解"></a>利用隐喻对编程进行更加深刻的理解</h2><ol>
-<li>公式与启发之间的区别是微妙的，体现在它们与答案之间的直接程度：公式直接给予指令;而启发则告诉你该怎样找到这些指令，或者告诉你到哪里寻找它们。</li>
-<li>隐喻仅仅是启发，而不是公式，因此，它们更倾向于比较随便，无拘无束。<blockquote>
-<p>为每个工作选择合适的工具，是成为一个优秀程序员的首要素质之一。</p>
-</blockquote>
-</li>
-<li></li>
-</ol>
+    <title>gzip操作手册</title>
+    <url>/2021/03/13/gzip-manual/</url>
+    <content><![CDATA[<h2 id="gzip工具"><a href="#gzip工具" class="headerlink" title="gzip工具"></a>gzip工具</h2><p>gzip采用了最流行的压缩算法，可以让你缩小文件的大小，并且保留原始的文件模式，属主和时间戳。<br>使用gzip工具压缩的文件一般使用.gz的文件名后缀，并且gzip也可以用来解压缩文件。</p>
+<h2 id="命令格式以及说明"><a href="#命令格式以及说明" class="headerlink" title="命令格式以及说明"></a>命令格式以及说明</h2><p>通常的语法格式如下：</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">gzip [可选项] ... [文件]...</span><br></pre></td></tr></table></figure>
+<p>gzip只能压缩单个文件，并为给定的文件创建一个压缩之后的文件。根据惯例，压缩之后的文件的命令一把使用<code>.gz</code>或者<code>.z</code>。<br>如果你想将多个文件或者目录压缩到一个文件中，首先你需要创建一个tar包，然后对这个tar包进行压缩。这样的文件一般会使用<code>.tar.gz</code>或者<code>.tgz</code>作为后缀来表明这个文件是使用了gzip压缩之后的tar包。<br>gzip最常用作压缩文本文件，tar包或者网页，尽量不要使用gzip去压缩图片，音频，pdf文档或者其他的二进制文件，因为他们已经被压缩过了。<br>gzip只能压缩常规文件，符号链接文件会被忽略。</p>
+<h2 id="使用gzip压缩文件"><a href="#使用gzip压缩文件" class="headerlink" title="使用gzip压缩文件"></a>使用gzip压缩文件</h2><ul>
+<li>不带任何参数的压缩<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">gzip 你的文件</span><br></pre></td></tr></table></figure>
+该命令将会创建一个<code>你的文件.gz</code>文件，然后删除原始文件。<br>默认情况下，gzip会保留原始文件的时间戳，模式，属主和文件名。</li>
+<li>保留原始文件<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">gzip -k 你的文件</span><br></pre></td></tr></table></figure>
+另外一种保留原始文件的方法是使用<code>-c</code>选项，告诉gzip将原始文件写入到标准输出，然后重定向到指定的文件<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">gzip -c 你的文件 &gt; 你的文件.gz</span><br></pre></td></tr></table></figure></li>
+<li>查看冗余信息<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">gzip -v 你的文件</span><br></pre></td></tr></table></figure>
+该命令将会输出压缩进度信息</li>
+<li>压缩多个文件<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">gzip 文件1 文件2 文件3</span><br></pre></td></tr></table></figure>
+该命令将会生成<code>文件1.gz</code>、<code>文件2.gz</code>、<code>文件3.gz</code>这3个文件。</li>
+<li>压缩目录<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">gzip -r 你的目录</span><br></pre></td></tr></table></figure>
+该命令会递归压缩你的目录下的所有文件，分别生成<code>.gz</code>文件。</li>
+<li>改变压缩等级<br>gzip允许我们指定文件的压缩等级，范围是1-9，而<code>-1</code>或者<code>--fast</code>则代表使用最小的压缩率以达到最快的压缩速度；而<code>-9</code>或者<code>--best</code>则代表使用最高的压缩率，相应的，也会有最慢的压缩速度。默认的压缩级别是6；<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">gzip -9 你的文件</span><br></pre></td></tr></table></figure>
+压缩是CPU密集型的任务，压缩等级越高，压缩过程越长。</li>
+<li>使用标准输入<br>为了从标准输入创建<code>.gz</code>文件，使用管道命令重定向到gzip。<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">mysqldump database_name | gzip -c &gt; database_name.sql.gz</span><br></pre></td></tr></table></figure>
+该命令将会把<code>mysqldump</code>的输出内容作为输入传递给gzip。</li>
+</ul>
+<h2 id="使用gzip解压缩"><a href="#使用gzip解压缩" class="headerlink" title="使用gzip解压缩"></a>使用gzip解压缩</h2><ul>
+<li>使用-d作为解压缩选项<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">gzip -d 你的文件.gz</span><br></pre></td></tr></table></figure>
+另一个可以用于解压缩的命令是gunzip，它可以算作是gzip -d的别名。<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">gunzip 你的文件.gz</span><br></pre></td></tr></table></figure></li>
+<li>保留原始压缩文件<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">gzip -dk 你的文件.gz</span><br></pre></td></tr></table></figure></li>
+<li>解压缩多个文件<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">gzip -d 你的文件1.gz 你的文件2.gz 你的文件3.gz</span><br></pre></td></tr></table></figure></li>
+<li>解压缩目录下的所有压缩文件<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">gzip -dr 你的目录</span><br></pre></td></tr></table></figure></li>
+<li>查看压缩文件的内容<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">gzip -l 你的文件</span><br></pre></td></tr></table></figure>
+使用<code>-v</code>可以得到更加详细的信息。</li>
+</ul>
 ]]></content>
       <categories>
-        <category>代码大全</category>
+        <category>linux</category>
       </categories>
       <tags>
-        <tag>编码</tag>
-        <tag>模式</tag>
+        <tag>gzip</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>在linux系统终端查看硬件信息</title>
+    <url>/2021/10/05/hardware-info-cmd/</url>
+    <content><![CDATA[<h2 id="使用如下命令查看包括CPU、内存、硬盘、主板在内的各种硬件相关的信息"><a href="#使用如下命令查看包括CPU、内存、硬盘、主板在内的各种硬件相关的信息" class="headerlink" title="使用如下命令查看包括CPU、内存、硬盘、主板在内的各种硬件相关的信息"></a>使用如下命令查看包括CPU、内存、硬盘、主板在内的各种硬件相关的信息</h2><ul>
+<li><p>CPU型号</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">cat /proc/cpuinfo | grep <span class="string">&quot;model name&quot;</span> | uniq</span><br></pre></td></tr></table></figure></li>
+<li><p>查看CPU物理个数</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">cat /proc/cpuinfo | grep <span class="string">&quot;physical id&quot;</span> | uniq | wc -l</span><br></pre></td></tr></table></figure></li>
+<li><p>查看内存信息</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="comment"># 先安装工具软件，以archlinux为例</span></span><br><span class="line">sudo pacman -S dmidecode</span><br><span class="line">sudo dmidecode -t memory | grep Size</span><br></pre></td></tr></table></figure></li>
+<li><p>查看内存条厂家</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">sudo dmidecode -t memory | grep Manufacturer</span><br></pre></td></tr></table></figure></li>
+<li><p>查看硬盘信息</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">fdisk -l | grep <span class="string">&quot;Disk /dev/sd&quot;</span></span><br></pre></td></tr></table></figure></li>
+<li><p>查看主板信息</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">sudo dmidecode | grep -A16 <span class="string">&quot;System Information$&quot;</span></span><br></pre></td></tr></table></figure>
+
+
+</li>
+</ul>
+]]></content>
+      <categories>
+        <category>hardware</category>
+      </categories>
+      <tags>
+        <tag>linux</tag>
+        <tag>硬件</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>怎么在不开机的情况下让树莓派自动连接上wifi</title>
+    <url>/2021/09/26/how-raspberry-pi-connect-to-wifi-without-boot/</url>
+    <content><![CDATA[<p><img src="/assets/raspberry_pi.jpg" alt="树莓派"></p>
+<h2 id="什么是树莓派"><a href="#什么是树莓派" class="headerlink" title="什么是树莓派"></a>什么是树莓派</h2><p>树莓派（Raspberry Pi）是一款只有巴掌大小的微型计算机开发板，别看它体积小，但它确实是一个功能完备的计算机，可以做绝大部分我们个人电脑（PC）可以做的事情。而且功耗更小。</p>
+<h2 id="树莓派支持的系统"><a href="#树莓派支持的系统" class="headerlink" title="树莓派支持的系统"></a>树莓派支持的系统</h2><p>目前除了官方主推的Raspberry Pi OS ，还有其他第三方系统，比如基于ubuntu和debian的arm发行版，理论上可以安装微软的Windows，但不推荐，毕竟Windows是收费软件，而且对系统资源相较于linux有更高的要求，作为一款主打轻量级的开发版，Windows显然太重了。</p>
+<h2 id="树莓派怎么联网"><a href="#树莓派怎么联网" class="headerlink" title="树莓派怎么联网"></a>树莓派怎么联网</h2><ol>
+<li>树莓派自带支持802.11n的以太网网卡，因此可以直接使用支持RJ45的标准网口连接上网；</li>
+<li>从Model 3开始，树莓派自带支持802.11n的无线网卡，对于无法通过网线直连的场合，wifi变成了我们唯一的途径。</li>
+</ol>
+<p>下面具体就怎么在不开机的情况下配置无线连接做个介绍，方便大家在无线环境中使用树莓派。</p>
+<blockquote>
+<p>不得不说，树莓派自带的无线网卡的性能确实很弱，对于大流量的场景不推荐使用，最好自备外接无线网卡。</p>
+</blockquote>
+<h3 id="安装系统"><a href="#安装系统" class="headerlink" title="安装系统"></a>安装系统</h3><p>本教程基于Raspberry Pi OS，其他发行版系统可能不适用。下载地址：<a href="https://downloads.raspberrypi.org/raspios_armhf/images/raspios_armhf-2021-05-28/2021-05-07-raspios-buster-armhf.zip%E3%80%82">https://downloads.raspberrypi.org/raspios_armhf/images/raspios_armhf-2021-05-28/2021-05-07-raspios-buster-armhf.zip。</a></p>
+<h3 id="制作启动盘"><a href="#制作启动盘" class="headerlink" title="制作启动盘"></a>制作启动盘</h3><p>在linux下面可以使用如下命令</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">sudo dd <span class="keyword">if</span>=/home/your_home/raspberryOS.iso of=/dev/sd&#123;x&#125; bs=4MB status=progress</span><br></pre></td></tr></table></figure>
+<p>注意，使用上面的命令时必须确保of参数对应的值是你要写入的SD卡，一般以sd开头，if参数对应的是你下载解压后的原始镜像地址。</p>
+<blockquote>
+<p>windows上的启动盘制作请自行百度</p>
+</blockquote>
+<h3 id="写入wifi配置"><a href="#写入wifi配置" class="headerlink" title="写入wifi配置"></a>写入wifi配置</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">country=CN <span class="comment">#这里是我们位于的国家的缩写</span></span><br><span class="line">ctrl_interface=DIR=/var/run/wpa_supplicant GROUP=netdev</span><br><span class="line">update_config=1 <span class="comment">#更新现有配置</span></span><br><span class="line">network=&#123;</span><br><span class="line">  ssid=<span class="string">&quot;你的wifi名称&quot;</span></span><br><span class="line">  scan_ssid=1</span><br><span class="line">  psk=<span class="string">&quot;你的wifi密码&quot;</span></span><br><span class="line">  key_mgmt=WPA-PSK</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>将该文件命名为<code>wpa_supplicant.conf</code>，并将其保存到制作好的启动盘的最外层的boot目录下。</p>
+<h3 id="允许ssh访问"><a href="#允许ssh访问" class="headerlink" title="允许ssh访问"></a>允许ssh访问</h3><p>在启动盘的最外层的boot目录下创建ssh文件，不需要向里面写入内容。</p>
+<p><strong>最后将制作好的sd卡插入到树莓派中启动即可自动连接wifi,然后我们在路由器管理页面查看已连接设备中就能看到带有raspberry pi标签的设备了，找出其ip地址，尝试下使用ssh连接并管理树莓派，如果一切顺利的话，你将可以通过远程访问来管理你的树莓派设备了。</strong></p>
+<h2 id="使用静态ip地址"><a href="#使用静态ip地址" class="headerlink" title="使用静态ip地址"></a>使用静态ip地址</h2><p>由于树莓派内置了DHCP服务，所以，当我们每次连接上wifi时可能会被分配到不同的ip地址，这显然不利于配置外部对于树莓派后台服务的访问，因此，我们在连接上wifi之后，可以给树莓派配置一个静态ip。</p>
+<p>打开<code>/etc/dhcpcd.conf</code>文件，向里面追加如下配置</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">interface wlan0</span><br><span class="line">static ip_address=192.168.0.193/24</span><br><span class="line">static routers=192.168.0.1</span><br><span class="line">static domain_name_servers=192.168.0.1 192.168.1.1</span><br></pre></td></tr></table></figure>
+<p>其中<code>wlan0</code>是我们无线网卡的系统名称，后面的<code>ip_address</code>则是我们自定义的ip地址，<code>routers</code>是我们的路由，<code>domain_name_server</code>是我们的DNS地址，多个DNS的场合使用空格隔开。</p>
+]]></content>
+      <categories>
+        <category>raspberry pi</category>
+      </categories>
+      <tags>
+        <tag>raspberry pi</tag>
+        <tag>ssh</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>如何vps上搭建自己的git服务器</title>
+    <url>/2020/12/29/how-to-set-up-a-private-git-server-on-your-vps/</url>
+    <content><![CDATA[<h2 id="介绍"><a href="#介绍" class="headerlink" title="介绍"></a>介绍</h2>]]></content>
+      <categories>
+        <category>linux</category>
+      </categories>
+      <tags>
+        <tag>git</tag>
+        <tag>vps</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>面试指南</title>
+    <url>/2021/10/07/interview-guide/</url>
+    <content><![CDATA[<h2 id="1、说下你的优点和缺点"><a href="#1、说下你的优点和缺点" class="headerlink" title="1、说下你的优点和缺点"></a>1、说下你的优点和缺点</h2><ul>
+<li><p>缺点：</p>
+<p>公开演讲</p>
+</li>
+<li></li>
+</ul>
+]]></content>
+      <categories>
+        <category>面试</category>
+      </categories>
+      <tags>
+        <tag>面试</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>java知识点速记</title>
+    <url>/2021/01/07/java-point/</url>
+    <content><![CDATA[<h2 id="java-bean和pojo的区别"><a href="#java-bean和pojo的区别" class="headerlink" title="java bean和pojo的区别"></a>java bean和pojo的区别</h2><p>一、 定义</p>
+<ul>
+<li><p><code>POJO</code>是<code>Plain Old Java Object</code>的缩写，它主要用来强调某个对象是一个普通的Java对象，而不是一个特殊的对象，尤其不是一个EJB。</p>
+<p>这个术语以其简单易懂的特性被广泛接受并使用，并用来区别那些复杂的对象框架。</p>
+</li>
+<li><p>一个<code>JavaBean</code>是一个可以被序列化的<code>POJO</code>。有一个默认的无参构造器，并允许使用Getter和Setter方法访问属性。</p>
+<p>对于EJB来说，<code>JavaBean</code>并不是一个单独的类，而是整个组件模型。</p>
+<p>JavaBean是java构建程序中可重用的软件组件，实际开发过程中，它们是使用java语言编写并符合某个约定的类。它们被用来封装一些对象到单个对象（也就是bean）中。</p>
+</li>
+</ul>
+<p>二、 用法</p>
+<ul>
+<li><code>POJO</code>主要被用来表明一个java对象不需要跟随任何java对象模型、约定或者框架。最理想的情况，一个<code>POJO</code>应该是一个不和任何框架绑定的java对象，并遵循以下原则：<ol>
+<li>不应该继承某个指定的类，比如HttpServlet；</li>
+<li>不应该实现指定的接口，比如EntityBean；</li>
+<li>不应该包含某些框架的注解。</li>
+</ol>
+</li>
+<li>JavaBean应该遵循以下原则：<ol>
+<li>必须有一个公共的默认构造器，便于实例化；</li>
+<li>属性必须可以通过Getter和Setter或者其他的可以访问并修改的方法进行控制，并遵循标准的命名规范，以便于框架对其进行自动化管理和状态的更新；</li>
+<li>必须可以被序列化，以便于应用和框架以一种独立于VM和操作系统的方式对其进行可靠的保存、存储以及恢复bean的状态。</li>
+</ol>
+</li>
+</ul>
+<p>对于业务程序员来说，这两种类型的java对象其实可以等同，或者说POJO更多强调的是一种业务概念，而JavaBean则属于java编程语言的特性。</p>
+]]></content>
+      <categories>
+        <category>java学习笔记</category>
+      </categories>
+      <tags>
+        <tag>java</tag>
+        <tag>概念</tag>
       </tags>
   </entry>
   <entry>
@@ -606,111 +623,23 @@ dict是客户端，dictd是dict的后台服务器。默认安装之后是不带�
       </tags>
   </entry>
   <entry>
-    <title>下载神器aria2使用手册</title>
-    <url>/2021/04/01/aria2-manual/</url>
-    <content><![CDATA[<h2 id="aria2是什么东西"><a href="#aria2是什么东西" class="headerlink" title="aria2是什么东西"></a>aria2是什么东西</h2>]]></content>
-      <categories>
-        <category>工具</category>
-      </categories>
-      <tags>
-        <tag>aria2</tag>
-        <tag>神器</tag>
-      </tags>
+    <title>jsp-tag-usage-1</title>
+    <url>/2021/01/08/jsp-tag-usage-1/</url>
+    <content><![CDATA[]]></content>
   </entry>
   <entry>
-    <title>spring-framework-core-thinking-1</title>
-    <url>/2021/08/08/spring-framework-core-thinking-1/</url>
-    <content><![CDATA[<h2 id="spring框架进阶—Aware接口的原理和使用"><a href="#spring框架进阶—Aware接口的原理和使用" class="headerlink" title="spring框架进阶—Aware接口的原理和使用"></a>spring框架进阶—Aware接口的原理和使用</h2>]]></content>
+    <title>mybatis原理学习笔记</title>
+    <url>/2021/01/04/mybatis-theory-interview/</url>
+    <content><![CDATA[<h2 id="mybatis的执行原理："><a href="#mybatis的执行原理：" class="headerlink" title="mybatis的执行原理："></a>mybatis的执行原理：</h2><p>通常一个Mapper接口对应一个xml文件，Mapper接口中的方法名对应xml中的标签id，而xml中的每一个标签都会被解析为MapperStatement对象。通过xml中定义的namespace属性，可以和接口方法的执行路径相对应。而这个路径应该具有唯一性，<strong>所以Mapper接口中的方法不能被重载</strong>。Mapper接口的工作原理是JDK动态代理，Mybatis运行时会使用JDK动态代理为Mapper接口生成代理对象，代理对象会拦截接口方法，转而执行MapperStatement所代表的sql语句，然后将执行结果返回。</p>
+<h2 id="mybatis的分页原理："><a href="#mybatis的分页原理：" class="headerlink" title="mybatis的分页原理："></a>mybatis的分页原理：</h2><p>Mybatis使用RowBounds对象进行分页，它是针对ResultSet结果集执行的内容分页，而非物理分页。</p>
+<h2 id="mybatis-pagehelper插件的实现原理："><a href="#mybatis-pagehelper插件的实现原理：" class="headerlink" title="mybatis-pagehelper插件的实现原理："></a>mybatis-pagehelper插件的实现原理：</h2><p>使用mybatis提供的插件接口，实现自定义插件，在插件内拦截待执行的sql,然后重写sql,根据dialect方言，添加对应的物理分页语句和物理分页参数。</p>
+<h2 id=""><a href="#" class="headerlink" title=""></a></h2>]]></content>
       <categories>
-        <category>spring框架</category>
+        <category>数据库</category>
       </categories>
       <tags>
-        <tag>spring</tag>
-        <tag>aware</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>string-in-file-search</title>
-    <url>/2021/08/08/string-in-file-search/</url>
-    <content><![CDATA[<h2 id="在指定目下寻找包含指定字符串的文件："><a href="#在指定目下寻找包含指定字符串的文件：" class="headerlink" title="在指定目下寻找包含指定字符串的文件："></a>在指定目下寻找包含指定字符串的文件：</h2><ol>
-<li>输出文件名和内容</li>
-</ol>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">grep mysqli_connect ./</span><br></pre></td></tr></table></figure>
-<p>其中，，</p>
-<ul>
-<li><p>加入<code>-r</code>可以递归搜索</p>
-</li>
-<li><p>加入<code>-l</code>可以只打印匹配的文件名</p>
-</li>
-<li><p>加入参数<code>-e</code>可以支持正则表达式</p>
-</li>
-<li><p>加入参数<code>-i</code>可以不区分大小写</p>
-</li>
-<li><p>加入参数<code>-c</code>可以指定匹配的行数</p>
-</li>
-<li><p>加入<code>-v</code>可以查出不匹配指定字符串的行数</p>
-</li>
-</ul>
-<ol start="2">
-<li><p>替换上述匹配命令中的匹配字符串</p>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">sed -i <span class="string">&quot;s/mysqli_connect/mysql_connect/g&quot;</span> `grep mysqli_connect -rl ./`</span><br></pre></td></tr></table></figure>
-<p>其中，<code>-i</code>表示替换立即生效</p>
-</li>
-</ol>
-]]></content>
-      <categories>
-        <category>字符串处理</category>
-      </categories>
-      <tags>
-        <tag>grep</tag>
-        <tag>sed</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>在windows 10中访问wsl（linux子系统）的方式（反过来又如何）</title>
-    <url>/2021/04/01/the-way-of-accessing-wsl-file-system-in-windows/</url>
-    <content><![CDATA[<h2 id="在windows文件管理器中访问wsl（windows-subsystem-for-linux）文件系统"><a href="#在windows文件管理器中访问wsl（windows-subsystem-for-linux）文件系统" class="headerlink" title="在windows文件管理器中访问wsl（windows subsystem for linux）文件系统"></a>在windows文件管理器中访问wsl（windows subsystem for linux）文件系统</h2><ol>
-<li>进入安装好的wsl终端，输入如下命令： <figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ explorer.exe .</span><br></pre></td></tr></table></figure>
- 其中，<code>explorer.exe</code>为文件管理器的可执行文件，<code>.</code>代表当前目录（家目录）。<h2 id="在wsl中访问windows的本地文件"><a href="#在wsl中访问windows的本地文件" class="headerlink" title="在wsl中访问windows的本地文件"></a>在wsl中访问windows的本地文件</h2></li>
-<li>默认情况下，windows的各个分区以盘符作为挂载点，在wsl中可以通过目录<code>/mnt/c</code>进行访问，其中<code>c</code>代表C盘，其他分区依次类推。 <figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ <span class="built_in">cd</span> /mnt/c</span><br></pre></td></tr></table></figure>
-<blockquote>
-<p>在linux哲学中，一切皆是文件。</p>
-</blockquote>
-</li>
-</ol>
-]]></content>
-      <categories>
-        <category>notes</category>
-      </categories>
-      <tags>
-        <tag>wsl</tag>
-        <tag>windows</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>win10企业版激活方法</title>
-    <url>/2021/04/01/win10-activate/</url>
-    <content><![CDATA[<h2 id="本文主要介绍如何通过kms服务器实现Windows-10专业版和企业版激活。"><a href="#本文主要介绍如何通过kms服务器实现Windows-10专业版和企业版激活。" class="headerlink" title="本文主要介绍如何通过kms服务器实现Windows 10专业版和企业版激活。"></a>本文主要介绍如何通过kms服务器实现Windows 10专业版和企业版激活。</h2><ul>
-<li><p>安装完系统之后，按住<code>Win+X</code>键，选择<code>Windows PowerShell（管理员）</code>,在弹出的窗口中输入下列命令：</p>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="comment"># win10专业版用户</span></span><br><span class="line">slmgr /ipk W269N-WFGWX-YVC9B-4J6C9-T83GX</span><br><span class="line">slmgr /skms kms.03k.org</span><br><span class="line">slmgr /ato</span><br><span class="line"><span class="comment"># win10企业版用户</span></span><br><span class="line">slmgr /ipk NPPR9-FWDCX-D2C8J-H872K-2YT43</span><br><span class="line">slmgr /skms kms.03k.org</span><br><span class="line">slmgr /ato</span><br></pre></td></tr></table></figure></li>
-<li><p>考虑到一般笔记本厂商会预装win10家庭版，所以，在使用上面的办法之前需要先升级到win10专业版。步骤如下：</p>
-<ol>
-<li><p>打开<code>设置</code>页面，选择<code>更新和安全</code>，继续选择<code>激活</code>，点击<code>更改产品密钥</code>，输入：</p>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">J7QT3-3GCPG-9GVWT-CH2XR-GMRJM</span><br></pre></td></tr></table></figure>
-<p>点击下一步</p>
-</li>
-<li><p>在提示页面点击更新即可。</p>
-</li>
-</ol>
-</li>
-</ul>
-]]></content>
-      <categories>
-        <category>工具</category>
-      </categories>
-      <tags>
-        <tag>windows</tag>
-        <tag>激活</tag>
+        <tag>java</tag>
+        <tag>mybatis</tag>
       </tags>
   </entry>
   <entry>
@@ -783,6 +712,88 @@ dict是客户端，dictd是dict的后台服务器。默认安装之后是不带�
       </tags>
   </entry>
   <entry>
+    <title>netty高性能web服务器介绍</title>
+    <url>/2021/01/09/netty-intro/</url>
+    <content><![CDATA[<h2 id="1-什么是netty"><a href="#1-什么是netty" class="headerlink" title="1. 什么是netty"></a>1. 什么是netty</h2><p>Netty是一个异步的事件驱动网络应用框架。</p>
+<p>它的主要用途是构建高性能协议服务器，并通过基于隔离和松耦合的网络和业务逻辑组件的NIO（非阻塞输入输出）技术实现这一点。它可以实现广为人知的Http协议或者我们自定义的协议。</p>
+<h2 id="2-netty的核心概念"><a href="#2-netty的核心概念" class="headerlink" title="2. netty的核心概念"></a>2. netty的核心概念</h2><p>netty是一个非阻塞式框架，和阻塞式IO相比，它拥有更高的吞吐量。理解非阻塞式IO是掌握Netty的核心组件以及他们之间的关系的关键所在。</p>
+<h3 id="2-1-Channel（通道）"><a href="#2-1-Channel（通道）" class="headerlink" title="2.1 Channel（通道）"></a>2.1 Channel（通道）</h3><p>Channel是NIO的基石，它代表了一个拥有IO（读和写）处理能力的开放连接。</p>
+<h3 id="2-2-Future"><a href="#2-2-Future" class="headerlink" title="2.2 Future"></a>2.2 Future</h3><p><strong>对于Netty来说，Channel中的每一个连接都是非阻塞的。</strong></p>
+<p>这意味着每个操作在调用之后都会立刻返回。标准Java库中有一个Future的接口，但是它并不能方便的完成Netty的意图，因为我们只能通过这个接口去查询操作是否已完成或者阻塞当前线程直到操作完成。</p>
+<p>基于上面的原因，Netty实现了自己的ChannelFuture接口。我们可以通过回调函数告诉ChannelFuture，一旦操作完成，将要执行的操作。</p>
+<h3 id="2-3-事件和处理器"><a href="#2-3-事件和处理器" class="headerlink" title="2.3 事件和处理器"></a>2.3 事件和处理器</h3><p>Netty使用了基于事件驱动的应用模式，因此数据处理的管道（pipeline）本质上是贯穿处理器（handler）的一连串事件的链（chain）。事件和处理器类似于数据的流入以及流出。流入事件可以是下面的几种：</p>
+<ul>
+<li>通道的激活和失活</li>
+<li>读事件</li>
+<li>异常事件</li>
+<li>用户事件</li>
+</ul>
+<p>流出事件则比较简单，一般类似于打开或者关闭连接以及写入数据。</p>
+<p>Netty应用包含了几个网络和应用的逻辑事件以及他们对应的处理器。channel事件处理器可以使用的基础接口分别是ChannelHandler和它的祖先ChannelOutboundHandler和ChannelInboundHandler。</p>
+<p>Netty提供了大量的ChannelHandler接口的实现类。值得注意的是，适配器只是空的实现，例如ChannelInboundHandlerAdapter和ChannelOutboundHandlerAdapter。我们可以继承这些适配器当我们只需要处理所有事件集合中的子集。</p>
+<p>同样，Netty包含了某些指定协议的具体实现，比如Http。HttpRequestDecoder，HttpResponseEncoder，HttpObjectAggregator。你可以通过Netty的javaDoc去了解他们的用法。</p>
+<h3 id="2-4-编码器和解码器"><a href="#2-4-编码器和解码器" class="headerlink" title="2.4 编码器和解码器"></a>2.4 编码器和解码器</h3><p>当我们使用网络协议时，我们需要对数据进行序列化和反序列化。出于这个目的，Netty引进了一个特殊的解码拓展类ChannelInboundHandler，它可以对进来的数据进行解码。大多数解码器的基类是ByteToMessageDecoder。</p>
+<p>为了编码出去的数据，Netty也提供了一个特殊的编码实现类ChannelOutboundHandler。MessageToByteEncoder是大多数编码实现类的基类。通过编码器和解码器，我们可以将信息从字节序列转换成java对象，反之亦然。</p>
+]]></content>
+      <categories>
+        <category>javaweb</category>
+      </categories>
+      <tags>
+        <tag>netty</tag>
+        <tag>server</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>php——使用pdo连接mysql数据库</title>
+    <url>/2021/08/10/php-connect-mysql-with-pdo/</url>
+    <content><![CDATA[<h2 id="PDO是什么"><a href="#PDO是什么" class="headerlink" title="PDO是什么"></a>PDO是什么</h2><p>PDO（PHP Data Objects）拓展是一个轻量级、而且统一的接口，用来在PHP中访问数据库。</p>
+<p>PDO提供了一个数据访问抽象层，这意味着，不管你使用的是什么数据库，你都可以使用相同的函数去执行查询并获取数据。</p>
+<p>PDO不提供数据库抽象，无法消除不同数据库之间的语法差异，如果你想要做到做到这一点，你必须使用另外的抽象层去实现。</p>
+<h2 id="PDO连接MySQL数据库"><a href="#PDO连接MySQL数据库" class="headerlink" title="PDO连接MySQL数据库"></a>PDO连接MySQL数据库</h2><figure class="highlight php"><table><tr><td class="code"><pre><span class="line"><span class="comment">// 数据库主机地址</span></span><br><span class="line"><span class="keyword">const</span> DB_HOST = <span class="string">&#x27;mysqldb&#x27;</span>;</span><br><span class="line"><span class="comment">// 数据库名称</span></span><br><span class="line"><span class="keyword">const</span> DB_NAME = <span class="string">&#x27;default&#x27;</span>;</span><br><span class="line"><span class="comment">// 数据库用户名</span></span><br><span class="line"><span class="keyword">const</span> DB_USER = <span class="string">&#x27;root&#x27;</span>;</span><br><span class="line"><span class="comment">// 数据库密码</span></span><br><span class="line"><span class="keyword">const</span> DB_PASSWORD = <span class="string">&#x27;devstack&#x27;</span>;</span><br><span class="line"><span class="comment">// 连接对象</span></span><br><span class="line"><span class="keyword">private</span> <span class="variable">$pdo</span> = <span class="literal">null</span>;</span><br><span class="line"><span class="comment">// 格式化连接字符串</span></span><br><span class="line"><span class="variable">$conStr</span> =  sprintf(<span class="string">&quot;mysql:host=%s;dbname=%s&quot;</span>, <span class="built_in">self</span>::DB_HOST, <span class="built_in">self</span>::DB_NAME);</span><br><span class="line"><span class="keyword">try</span> &#123;</span><br><span class="line">    <span class="keyword">$this</span> -&gt; pdo = <span class="keyword">new</span> PDO(<span class="variable">$conStr</span>, <span class="built_in">self</span>::DB_USER, <span class="built_in">self</span>::DB_PASSWORD);</span><br><span class="line">&#125; <span class="keyword">catch</span> (PDOException <span class="variable">$e</span>) &#123;</span><br><span class="line">    <span class="keyword">echo</span> <span class="variable">$e</span> -&gt; getMessage();</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h2 id="使用pdo连接对象执行插入、更新或者删除"><a href="#使用pdo连接对象执行插入、更新或者删除" class="headerlink" title="使用pdo连接对象执行插入、更新或者删除"></a>使用pdo连接对象执行插入、更新或者删除</h2><figure class="highlight php"><table><tr><td class="code"><pre><span class="line"><span class="variable">$sql</span> = <span class="string">&quot;insert into tasks (subject, start_date, end_date, description)</span></span><br><span class="line"><span class="string">                    values (&#x27;%s&#x27;, &#x27;%s&#x27;, &#x27;%s&#x27;, &#x27;%s&#x27;);&quot;</span>;</span><br><span class="line"><span class="variable">$insertStatement</span> = <span class="string">&quot;&quot;</span>;</span><br><span class="line"><span class="comment">// 构造插入语句</span></span><br><span class="line"><span class="comment">// date(&quot;Y-m-d H:i:s&quot;)的输出格式为yyyy-mm-dd hh:mm:ss</span></span><br><span class="line"><span class="keyword">for</span> (<span class="variable">$i</span> = <span class="number">0</span>; <span class="variable">$i</span> &lt; <span class="number">10</span>; <span class="variable">$i</span>++) &#123;</span><br><span class="line">    <span class="variable">$insertStatement</span> .= sprintf(<span class="variable">$sql</span>, <span class="string">&quot;睡觉&quot;</span>, date(<span class="string">&quot;Y-m-d H:i:s&quot;</span>), date(<span class="string">&quot;Y-m-d H:i:s&quot;</span>), <span class="string">&quot;测试&quot;</span>);</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">// 使用exec方法执行插入</span></span><br><span class="line"><span class="keyword">$this</span> -&gt; pdo -&gt; exec(<span class="variable">$insertStatement</span>);</span><br><span class="line"><span class="comment">// 更新和删除都可以使用exec()，返回值为表的影响条数</span></span><br></pre></td></tr></table></figure>
+<h2 id="使用pdo连接对象执行查询"><a href="#使用pdo连接对象执行查询" class="headerlink" title="使用pdo连接对象执行查询"></a>使用pdo连接对象执行查询</h2><figure class="highlight php"><table><tr><td class="code"><pre><span class="line"><span class="variable">$sql</span> = <span class="string">&quot;select * from tasks&quot;</span>;</span><br><span class="line"><span class="keyword">foreach</span> (<span class="keyword">$this</span> -&gt; pdo -&gt; query(<span class="variable">$sql</span>) <span class="keyword">as</span> <span class="variable">$row</span>) &#123;</span><br><span class="line">    <span class="keyword">print</span> <span class="variable">$row</span>[<span class="string">&#x27;subject&#x27;</span>] . <span class="string">&quot;\t&quot;</span>;</span><br><span class="line">    <span class="keyword">print</span> <span class="variable">$row</span>[<span class="string">&#x27;start_date&#x27;</span>] . <span class="string">&quot;\t&quot;</span>;</span><br><span class="line">    <span class="keyword">print</span> <span class="variable">$row</span>[<span class="string">&#x27;end_date&#x27;</span>] . <span class="string">&quot;\n&quot;</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>使用query方法可以执行查询操作。通过<code>foreach</code>遍历查询结果。</p>
+]]></content>
+      <categories>
+        <category>php</category>
+      </categories>
+      <tags>
+        <tag>pdo</tag>
+        <tag>mysql</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>redis命令学习</title>
+    <url>/2021/01/03/redis-commander-study/</url>
+    <content><![CDATA[<h2 id="redis存储string类型的值"><a href="#redis存储string类型的值" class="headerlink" title="redis存储string类型的值"></a>redis存储string类型的值</h2><ol>
+<li><p>存值：</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="built_in">set</span> key value</span><br></pre></td></tr></table></figure></li>
+<li><p>取值：</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">get key</span><br></pre></td></tr></table></figure></li>
+<li><p>返回key中的部分字符串:</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">getrange key start end</span><br></pre></td></tr></table></figure>
+<div class="note info"><p>start从0开始，且返回的内容中包含索引为end的字符。</p>
+</div>
+</li>
+<li><p>取出旧值并返回新值：</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">getset key new_value</span><br></pre></td></tr></table></figure></li>
+<li><p>取出key对应的值，并返回指定偏移量上的位(bit)：</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">getbit key offset</span><br></pre></td></tr></table></figure></li>
+<li><p>一次性取出多个值</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">mget key1 key2 ...</span><br></pre></td></tr></table></figure></li>
+<li><p>当key不存在时才设值：</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">setnx key value</span><br></pre></td></tr></table></figure>
+</li>
+</ol>
+]]></content>
+      <categories>
+        <category>数据库</category>
+      </categories>
+      <tags>
+        <tag>redis</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>在ubuntu上创建自己的samba服务器</title>
     <url>/2021/08/08/samba-server-tutorial/</url>
     <content><![CDATA[<h2 id="samba"><a href="#samba" class="headerlink" title="samba"></a>samba</h2><p>类Unix（Gnu/Linux）操作系统上用来和标准Windows文件系统互相通信的一种程序套件；Samba允许类Unix系统和Windows系统共享文件和打印机，忽略两个系统间的差异性，从而实现共存。</p>
@@ -813,165 +824,6 @@ dict是客户端，dictd是dict的后台服务器。默认安装之后是不带�
       </categories>
       <tags>
         <tag>samba</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>Spring框架中bean的生命周期</title>
-    <url>/2021/08/09/spring-bean-init-and-destroy/</url>
-    <content><![CDATA[<h2 id="使用-PostConstruct和-PreDestroy注解在同一个配置类中执行bean的初始化前和销毁前的配置"><a href="#使用-PostConstruct和-PreDestroy注解在同一个配置类中执行bean的初始化前和销毁前的配置" class="headerlink" title="使用@PostConstruct和@PreDestroy注解在同一个配置类中执行bean的初始化前和销毁前的配置"></a>使用<code>@PostConstruct</code>和<code>@PreDestroy</code>注解在同一个配置类中执行bean的初始化前和销毁前的配置</h2><figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="meta">@Configuration</span></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">MyBeanPostProcessor</span> </span>&#123;</span><br><span class="line">    <span class="meta">@Bean</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> String <span class="title">helloWorld</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="string">&quot;hello world&quot;</span>;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@PostConstruct</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">init</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        System.out.println(<span class="string">&quot;我是初始化前执行的方法&quot;</span>);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@PreDestroy</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">destroy</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        System.out.println(<span class="string">&quot;我是销毁前执行的方法&quot;</span>);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p>上面的配置类中只定义了一个bean，且是字符串类型（方便举例），大部分情况下应该是返回一个对象。</p>
-<h2 id="使用-Bean-initMethod-quot-init-quot-destroyMethod-quot-destroy-quot-注解执行bean初始化前和销毁前的配置"><a href="#使用-Bean-initMethod-quot-init-quot-destroyMethod-quot-destroy-quot-注解执行bean初始化前和销毁前的配置" class="headerlink" title="使用@Bean(initMethod = &quot;init&quot;, destroyMethod = &quot;destroy&quot;)注解执行bean初始化前和销毁前的配置"></a>使用<code>@Bean(initMethod = &quot;init&quot;, destroyMethod = &quot;destroy&quot;)</code>注解执行bean初始化前和销毁前的配置</h2><figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="meta">@Configuration</span></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">ConfigTest</span> </span>&#123;</span><br><span class="line">    <span class="meta">@Bean(initMethod = &quot;init&quot;, destroyMethod = &quot;destroy&quot;)</span></span><br><span class="line">    <span class="function">Test1 <span class="title">test1</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="keyword">new</span> Test1(); <span class="comment">// 使用默认的无参构造器</span></span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">// 定义Bean的内容，本质上是一个普通的java类</span></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Test1</span> </span>&#123;</span><br><span class="line">    <span class="comment">// 初始化前的执行方法</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">init</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        System.out.println(<span class="string">&quot;this is init method&quot;</span>);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="comment">// 销毁前的执行方法</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">destroy</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        System.out.println(<span class="string">&quot;this is destroy method&quot;</span>);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-]]></content>
-      <categories>
-        <category>spring framework</category>
-      </categories>
-      <tags>
-        <tag>bean</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>Spring框架中bean的前置处理和后置处理</title>
-    <url>/2021/08/09/spring-bean-post-processor/</url>
-    <content><![CDATA[<h2 id="Spring框架中Bean的创建过程如下："><a href="#Spring框架中Bean的创建过程如下：" class="headerlink" title="Spring框架中Bean的创建过程如下："></a>Spring框架中Bean的创建过程如下：</h2><p><img src="https://springframework.guru/wp-content/uploads/2019/05/aware_interfaces_callbacks_in_bean_lifecycle-1024x545.png" alt="Aware interfaces Callbacks in Bean Lifecycle"></p>
-<p>其中BeanPostProcessor接口包含两个执行过程，分别是在bean执行init方法之前和执行init方法之后执行。代码如下：</p>
-<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="meta">@Configuration</span></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">MyBeanPostProcessor</span> <span class="keyword">implements</span> <span class="title">BeanPostProcessor</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> Object <span class="title">postProcessBeforeInitialization</span><span class="params">(Object bean, String beanName)</span> <span class="keyword">throws</span> BeansException </span>&#123;</span><br><span class="line">        System.out.println(<span class="string">&quot;我在bean初始化前执行&quot;</span>);</span><br><span class="line">        <span class="keyword">return</span> BeanPostProcessor.<span class="keyword">super</span>.postProcessBeforeInitialization(bean, beanName);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> Object <span class="title">postProcessAfterInitialization</span><span class="params">(Object bean, String beanName)</span> <span class="keyword">throws</span> BeansException </span>&#123;</span><br><span class="line">        System.out.println(<span class="string">&quot;我在bean初始化之后执行&quot;</span>);</span><br><span class="line">        <span class="keyword">return</span> BeanPostProcessor.<span class="keyword">super</span>.postProcessAfterInitialization(bean, beanName);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Bean(name = &quot;DBConnection&quot;, initMethod = &quot;init&quot;, destroyMethod = &quot;destroy&quot;)</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> DatabaseConfig <span class="title">mysqlConnection</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        Properties properties = System.getProperties();</span><br><span class="line">        String url = properties.getProperty(<span class="string">&quot;url&quot;</span>);</span><br><span class="line">        String driverName = properties.getProperty(<span class="string">&quot;driverName&quot;</span>);</span><br><span class="line">        String userName = properties.getProperty(<span class="string">&quot;userName&quot;</span>);</span><br><span class="line">        String password = properties.getProperty(<span class="string">&quot;password&quot;</span>);</span><br><span class="line">        <span class="keyword">return</span> <span class="keyword">new</span> DatabaseConfig(driverName, url, userName, password);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p>上述代码新建了自定义的<code>MyBeanPostProcessor</code>,并实现了接口<code>BeanPostProcessor</code>中的两个接口（自带default方法），同时，还定义了一个名为<code>DBConnection</code>的bean，指定了初始化方法和销毁前执行的方法。</p>
-<p>其中，<code>DatabaseConfig</code>的定义如下：</p>
-<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="meta">@Data</span></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">DatabaseConfig</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">static</span> Connection connection;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">private</span> String driverName;</span><br><span class="line">    <span class="keyword">private</span> String url;</span><br><span class="line">    <span class="keyword">private</span> String userName;</span><br><span class="line">    <span class="keyword">private</span> String password;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="title">DatabaseConfig</span><span class="params">(String driverName, String url, String userName, String password)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">this</span>.driverName = driverName;</span><br><span class="line">        <span class="keyword">this</span>.url = url;</span><br><span class="line">        <span class="keyword">this</span>.userName = userName;</span><br><span class="line">        <span class="keyword">this</span>.password = password;</span><br><span class="line">        System.out.println(<span class="string">&quot;构造连接参数...&quot;</span>);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">init</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        System.out.println(<span class="string">&quot;初始化数据库连接&quot;</span>);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">destroy</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        System.out.println(<span class="string">&quot;销毁数据库连接&quot;</span>);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
-<p>为了方便识别执行阶段，分别在构造器和<code>init</code>以及<code>destroy</code>方法中加入了文字说明。</p>
-<p>最后的执行结果如下：</p>
-<figure class="highlight java"><table><tr><td class="code"><pre><span class="line">构造连接参数...</span><br><span class="line">我在bean初始化前执行</span><br><span class="line">初始化数据库连接</span><br><span class="line">我在bean初始化之后执行</span><br><span class="line">...</span><br><span class="line">销毁数据库连接</span><br></pre></td></tr></table></figure>
-<p>由此可见，构造器内的代码是最先执行的，属于填充属性阶段（即<code>Populate properties</code>），接着执行<code>MyBeanPostProcessor#postProcessBeforeInitialization</code>方法，然后执行<code>init方法</code>，之后执行<code>MyBeanPostProcessor#postProcessBeforeInitialization</code>，最后在关闭应用时执行<code>destroy</code>方法。</p>
-]]></content>
-      <categories>
-        <category>spring framework</category>
-      </categories>
-      <tags>
-        <tag>bean</tag>
-        <tag>post-processor</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>php——使用pdo连接mysql数据库</title>
-    <url>/2021/08/10/php-connect-mysql-with-pdo/</url>
-    <content><![CDATA[<h2 id="PDO是什么"><a href="#PDO是什么" class="headerlink" title="PDO是什么"></a>PDO是什么</h2><p>PDO（PHP Data Objects）拓展是一个轻量级、而且统一的接口，用来在PHP中访问数据库。</p>
-<p>PDO提供了一个数据访问抽象层，这意味着，不管你使用的是什么数据库，你都可以使用相同的函数去执行查询并获取数据。</p>
-<p>PDO不提供数据库抽象，无法消除不同数据库之间的语法差异，如果你想要做到做到这一点，你必须使用另外的抽象层去实现。</p>
-<h2 id="PDO连接MySQL数据库"><a href="#PDO连接MySQL数据库" class="headerlink" title="PDO连接MySQL数据库"></a>PDO连接MySQL数据库</h2><figure class="highlight php"><table><tr><td class="code"><pre><span class="line"><span class="comment">// 数据库主机地址</span></span><br><span class="line"><span class="keyword">const</span> DB_HOST = <span class="string">&#x27;mysqldb&#x27;</span>;</span><br><span class="line"><span class="comment">// 数据库名称</span></span><br><span class="line"><span class="keyword">const</span> DB_NAME = <span class="string">&#x27;default&#x27;</span>;</span><br><span class="line"><span class="comment">// 数据库用户名</span></span><br><span class="line"><span class="keyword">const</span> DB_USER = <span class="string">&#x27;root&#x27;</span>;</span><br><span class="line"><span class="comment">// 数据库密码</span></span><br><span class="line"><span class="keyword">const</span> DB_PASSWORD = <span class="string">&#x27;devstack&#x27;</span>;</span><br><span class="line"><span class="comment">// 连接对象</span></span><br><span class="line"><span class="keyword">private</span> <span class="variable">$pdo</span> = <span class="literal">null</span>;</span><br><span class="line"><span class="comment">// 格式化连接字符串</span></span><br><span class="line"><span class="variable">$conStr</span> =  sprintf(<span class="string">&quot;mysql:host=%s;dbname=%s&quot;</span>, <span class="built_in">self</span>::DB_HOST, <span class="built_in">self</span>::DB_NAME);</span><br><span class="line"><span class="keyword">try</span> &#123;</span><br><span class="line">    <span class="keyword">$this</span> -&gt; pdo = <span class="keyword">new</span> PDO(<span class="variable">$conStr</span>, <span class="built_in">self</span>::DB_USER, <span class="built_in">self</span>::DB_PASSWORD);</span><br><span class="line">&#125; <span class="keyword">catch</span> (PDOException <span class="variable">$e</span>) &#123;</span><br><span class="line">    <span class="keyword">echo</span> <span class="variable">$e</span> -&gt; getMessage();</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<h2 id="使用pdo连接对象执行插入、更新或者删除"><a href="#使用pdo连接对象执行插入、更新或者删除" class="headerlink" title="使用pdo连接对象执行插入、更新或者删除"></a>使用pdo连接对象执行插入、更新或者删除</h2><figure class="highlight php"><table><tr><td class="code"><pre><span class="line"><span class="variable">$sql</span> = <span class="string">&quot;insert into tasks (subject, start_date, end_date, description)</span></span><br><span class="line"><span class="string">                    values (&#x27;%s&#x27;, &#x27;%s&#x27;, &#x27;%s&#x27;, &#x27;%s&#x27;);&quot;</span>;</span><br><span class="line"><span class="variable">$insertStatement</span> = <span class="string">&quot;&quot;</span>;</span><br><span class="line"><span class="comment">// 构造插入语句</span></span><br><span class="line"><span class="comment">// date(&quot;Y-m-d H:i:s&quot;)的输出格式为yyyy-mm-dd hh:mm:ss</span></span><br><span class="line"><span class="keyword">for</span> (<span class="variable">$i</span> = <span class="number">0</span>; <span class="variable">$i</span> &lt; <span class="number">10</span>; <span class="variable">$i</span>++) &#123;</span><br><span class="line">    <span class="variable">$insertStatement</span> .= sprintf(<span class="variable">$sql</span>, <span class="string">&quot;睡觉&quot;</span>, date(<span class="string">&quot;Y-m-d H:i:s&quot;</span>), date(<span class="string">&quot;Y-m-d H:i:s&quot;</span>), <span class="string">&quot;测试&quot;</span>);</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">// 使用exec方法执行插入</span></span><br><span class="line"><span class="keyword">$this</span> -&gt; pdo -&gt; exec(<span class="variable">$insertStatement</span>);</span><br><span class="line"><span class="comment">// 更新和删除都可以使用exec()，返回值为表的影响条数</span></span><br></pre></td></tr></table></figure>
-<h2 id="使用pdo连接对象执行查询"><a href="#使用pdo连接对象执行查询" class="headerlink" title="使用pdo连接对象执行查询"></a>使用pdo连接对象执行查询</h2><figure class="highlight php"><table><tr><td class="code"><pre><span class="line"><span class="variable">$sql</span> = <span class="string">&quot;select * from tasks&quot;</span>;</span><br><span class="line"><span class="keyword">foreach</span> (<span class="keyword">$this</span> -&gt; pdo -&gt; query(<span class="variable">$sql</span>) <span class="keyword">as</span> <span class="variable">$row</span>) &#123;</span><br><span class="line">    <span class="keyword">print</span> <span class="variable">$row</span>[<span class="string">&#x27;subject&#x27;</span>] . <span class="string">&quot;\t&quot;</span>;</span><br><span class="line">    <span class="keyword">print</span> <span class="variable">$row</span>[<span class="string">&#x27;start_date&#x27;</span>] . <span class="string">&quot;\t&quot;</span>;</span><br><span class="line">    <span class="keyword">print</span> <span class="variable">$row</span>[<span class="string">&#x27;end_date&#x27;</span>] . <span class="string">&quot;\n&quot;</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p>使用query方法可以执行查询操作。通过<code>foreach</code>遍历查询结果。</p>
-]]></content>
-      <categories>
-        <category>php</category>
-      </categories>
-      <tags>
-        <tag>mysql</tag>
-        <tag>pdo</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>分布式搜索引擎-elasticsearch</title>
-    <url>/2021/08/20/elasticsearch-tutorial/</url>
-    <content><![CDATA[<h2 id="1-elatsticsearch（简写为es）是什么"><a href="#1-elatsticsearch（简写为es）是什么" class="headerlink" title="1. elatsticsearch（简写为es）是什么"></a>1. elatsticsearch（简写为es）是什么</h2><p>它是一个实时的分布式、开源的全文本查询和分析引擎，基于java语言开发。</p>
-<h2 id="2-es可以做什么"><a href="#2-es可以做什么" class="headerlink" title="2. es可以做什么"></a>2. es可以做什么</h2><p>它可以在SPA（single page application-单页应用）中被使用，为用户提供高速的数据查询和分析。且原生支持java应用。</p>
-<h2 id="3-主要特性"><a href="#3-主要特性" class="headerlink" title="3. 主要特性"></a>3. 主要特性</h2><p>它有如下几个主要特性：</p>
-<ul>
-<li>可拓展性强，支持高达千兆字节（GB）的数据（不管是结构性的还是非结构性的）；</li>
-<li>可以作为类似MongoDB和RavenDB等文档存储数据库的替代品；</li>
-<li>使用非规范化来提高搜索性能；</li>
-<li>企业级的搜索引擎，被大型公司广泛使用；</li>
-<li>开源工具，且使用Apache许可证。</li>
-</ul>
-<h2 id="4-关键性的概念"><a href="#4-关键性的概念" class="headerlink" title="4. 关键性的概念"></a>4. 关键性的概念</h2><ul>
-<li>节点：表示单个运行的es实例，es可以在单台服务器上运行多个实例，这完全取决于服务器的物理内存和处理器能力；</li>
-<li>集群：一个或者多个节点的集合，在逻辑上提供了集中的数据索引和查询能力，通常表现在横跨多个节点获取完整数据的能力。</li>
-<li>索引：不同类型的文档和他们的属性的集合。在关系型数据库中，索引一般用于提升查询性能。</li>
-<li>文档：一个使用JSON格式定义的字段集合，而这些字段定义了数据查询的规则。每个文档都属于一种类型并驻留在索引中，每个文档都与一个称为 UID 的唯一标识符相关联。</li>
-<li>分片：索引被横向拆分成不同的分片，这意味着每个分片包含了所有的文档属性，但包含的 JSON 对象数量少于索引。水平分离使分片成为一个独立的节点，且可以存储在任何节点，主分片是索引的原始水平部分，然后将这些主分片复制到副本分片中。</li>
-<li>副本：es允许用户创建索引和分片的副本。复制不仅有助于在发生故障时提高数据的可用性，而且通过在这些副本中执行并行搜索操作来提高搜索性能。</li>
-</ul>
-<h2 id="5-es的优势"><a href="#5-es的优势" class="headerlink" title="5. es的优势"></a>5. es的优势</h2><ul>
-<li>es 是基于 Java 开发的，这使得它几乎可以兼容所有平台；</li>
-<li>es 是实时的，也就是说一秒后添加的文档就可以在这个引擎中搜索了；</li>
-<li>es 是分布式的，这使得它可以轻松地在任何大型组织中扩展和集成。</li>
-<li>使用 es 中的网关概念可以轻松创建完整备份。</li>
-<li>与 Apache Solr 相比，在 es 中处理多租户非常容易。</li>
-<li>es 使用 JSON 对象作为响应，这使得使用大量不同的编程语言调用 es 服务器成为可能。</li>
-<li>es 支持几乎所有文档类型，除了那些不支持文本渲染的文档类型。</li>
-</ul>
-<h2 id="6-es的缺点"><a href="#6-es的缺点" class="headerlink" title="6. es的缺点"></a>6. es的缺点</h2><ul>
-<li>与 Apache Solr 不同，es 在处理请求和响应数据方面没有多语言支持（仅支持JSON），而Apache Solr 可以支持 CSV、XML 和 JSON 格式。</li>
-<li>偶尔，es 会出现**<em>脑裂（Split brain）**</em>的问题。（什么是脑裂）</li>
-</ul>
-<h2 id="7-es和关系数据库之间的区别"><a href="#7-es和关系数据库之间的区别" class="headerlink" title="7. es和关系数据库之间的区别"></a>7. es和关系数据库之间的区别</h2><p>在 es 中，索引类似于 RDBMS（关系数据库管理系统）中的表。 每个表都是行的集合，就像 es 中的每个索引都是文档的集合一样。<br>下表给出了这些术语之间的直接比较 -</p>
-<table>
-<thead>
-<tr>
-<th>es</th>
-<th>RDBMS</th>
-</tr>
-</thead>
-<tbody><tr>
-<td>集群</td>
-<td>数据库</td>
-</tr>
-<tr>
-<td>分片</td>
-<td>分片</td>
-</tr>
-<tr>
-<td>索引</td>
-<td>表</td>
-</tr>
-<tr>
-<td>字段</td>
-<td>列</td>
-</tr>
-<tr>
-<td>文档</td>
-<td>行</td>
-</tr>
-</tbody></table>
-]]></content>
-      <categories>
-        <category>elasticsearch</category>
-      </categories>
-      <tags>
-        <tag>java</tag>
-        <tag>elasticsearch</tag>
-        <tag>分布式</tag>
-        <tag>搜索引擎</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>学习资源汇总</title>
-    <url>/2021/08/20/study-resource-collection/</url>
-    <content><![CDATA[<ol>
-<li><p>分布式搜索引擎elasticsearch学习教程——<a href="https://www.tutorialspoint.com/elasticsearch/elasticsearch_populate.htm">https://www.tutorialspoint.com/elasticsearch/elasticsearch_populate.htm</a></p>
-</li>
-<li><p>java权限认证框架shiro——<a href="https://shiro.apache.org/authentication.html">https://shiro.apache.org/authentication.html</a></p>
-</li>
-<li><p>vue+bootstrap4学习——<a href="https://www.remotestack.io/build-vue-login-signup-ui-auth-template-with-bootstrap/">https://www.remotestack.io/build-vue-login-signup-ui-auth-template-with-bootstrap/</a></p>
-</li>
-<li><p>druid学习资源——<a href="https://druid.apache.org/docs/latest/configuration/index.html">https://druid.apache.org/docs/latest/configuration/index.html</a></p>
-</li>
-<li><p>java日志框架logback——<a href="https://dennis-xlc.gitbooks.io/the-logback-manual/content/en/chapter-4-appenders/logback-core/rollingfileappender/size-and-time-based-rolling-policy.html">https://dennis-xlc.gitbooks.io/the-logback-manual/content/en/chapter-4-appenders/logback-core/rollingfileappender/size-and-time-based-rolling-policy.html</a></p>
-</li>
-<li><p>springboot官方文档——<a href="https://docs.spring.io/spring-boot/docs/current/reference/htmlsingle/#legal">https://docs.spring.io/spring-boot/docs/current/reference/htmlsingle/#legal</a></p>
-</li>
-<li><p>java缩写解释：<a href="https://www.allacronyms.com/EIS/Enterprise_Information_Server">https://www.allacronyms.com/EIS/Enterprise_Information_Server</a></p>
-</li>
-<li><p>hexo使用文档：<a href="https://hexo.io/docs/writing.html">https://hexo.io/docs/writing.html</a></p>
-</li>
-</ol>
-]]></content>
-      <categories>
-        <category>自学</category>
-      </categories>
-      <tags>
-        <tag>study</tag>
-        <tag>汇总</tag>
       </tags>
   </entry>
   <entry>
@@ -1030,55 +882,288 @@ dict是客户端，dictd是dict的后台服务器。默认安装之后是不带�
       </tags>
   </entry>
   <entry>
-    <title>怎么在不开机的情况下让树莓派自动连接上wifi</title>
-    <url>/2021/09/26/how-raspberry-pi-connect-to-wifi-without-boot/</url>
-    <content><![CDATA[<p><img src="/assets/raspberry_pi.jpg" alt="树莓派"></p>
-<h2 id="什么是树莓派"><a href="#什么是树莓派" class="headerlink" title="什么是树莓派"></a>什么是树莓派</h2><p>树莓派（Raspberry Pi）是一款只有巴掌大小的微型计算机开发板，别看它体积小，但它确实是一个功能完备的计算机，可以做绝大部分我们个人电脑（PC）可以做的事情。而且功耗更小。</p>
-<h2 id="树莓派支持的系统"><a href="#树莓派支持的系统" class="headerlink" title="树莓派支持的系统"></a>树莓派支持的系统</h2><p>目前除了官方主推的Raspberry Pi OS ，还有其他第三方系统，比如基于ubuntu和debian的arm发行版，理论上可以安装微软的Windows，但不推荐，毕竟Windows是收费软件，而且对系统资源相较于linux有更高的要求，作为一款主打轻量级的开发版，Windows显然太重了。</p>
-<h2 id="树莓派怎么联网"><a href="#树莓派怎么联网" class="headerlink" title="树莓派怎么联网"></a>树莓派怎么联网</h2><ol>
-<li>树莓派自带支持802.11n的以太网网卡，因此可以直接使用支持RJ45的标准网口连接上网；</li>
-<li>从Model 3开始，树莓派自带支持802.11n的无线网卡，对于无法通过网线直连的场合，wifi变成了我们唯一的途径。</li>
-</ol>
-<p>下面具体就怎么在不开机的情况下配置无线连接做个介绍，方便大家在无线环境中使用树莓派。</p>
-<blockquote>
-<p>不得不说，树莓派自带的无线网卡的性能确实很弱，对于大流量的场景不推荐使用，最好自备外接无线网卡。</p>
-</blockquote>
-<h3 id="安装系统"><a href="#安装系统" class="headerlink" title="安装系统"></a>安装系统</h3><p>本教程基于Raspberry Pi OS，其他发行版系统可能不适用。下载地址：<a href="https://downloads.raspberrypi.org/raspios_armhf/images/raspios_armhf-2021-05-28/2021-05-07-raspios-buster-armhf.zip%E3%80%82">https://downloads.raspberrypi.org/raspios_armhf/images/raspios_armhf-2021-05-28/2021-05-07-raspios-buster-armhf.zip。</a></p>
-<h3 id="制作启动盘"><a href="#制作启动盘" class="headerlink" title="制作启动盘"></a>制作启动盘</h3><p>在linux下面可以使用如下命令</p>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">sudo dd <span class="keyword">if</span>=/home/your_home/raspberryOS.iso of=/dev/sd&#123;x&#125; bs=4MB status=progress</span><br></pre></td></tr></table></figure>
-<p>注意，使用上面的命令时必须确保of参数对应的值是你要写入的SD卡，一般以sd开头，if参数对应的是你下载解压后的原始镜像地址。</p>
-<blockquote>
-<p>windows上的启动盘制作请自行百度</p>
-</blockquote>
-<h3 id="写入wifi配置"><a href="#写入wifi配置" class="headerlink" title="写入wifi配置"></a>写入wifi配置</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">country=CN <span class="comment">#这里是我们位于的国家的缩写</span></span><br><span class="line">ctrl_interface=DIR=/var/run/wpa_supplicant GROUP=netdev</span><br><span class="line">update_config=1 <span class="comment">#更新现有配置</span></span><br><span class="line">network=&#123;</span><br><span class="line">  ssid=<span class="string">&quot;你的wifi名称&quot;</span></span><br><span class="line">  scan_ssid=1</span><br><span class="line">  psk=<span class="string">&quot;你的wifi密码&quot;</span></span><br><span class="line">  key_mgmt=WPA-PSK</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p>将该文件命名为<code>wpa_supplicant.conf</code>，并将其保存到制作好的启动盘的最外层的boot目录下。</p>
-<h3 id="允许ssh访问"><a href="#允许ssh访问" class="headerlink" title="允许ssh访问"></a>允许ssh访问</h3><p>在启动盘的最外层的boot目录下创建ssh文件，不需要向里面写入内容。</p>
-<p><strong>最后将制作好的sd卡插入到树莓派中启动即可自动连接wifi,然后我们在路由器管理页面查看已连接设备中就能看到带有raspberry pi标签的设备了，找出其ip地址，尝试下使用ssh连接并管理树莓派，如果一切顺利的话，你将可以通过远程访问来管理你的树莓派设备了。</strong></p>
-<h2 id="使用静态ip地址"><a href="#使用静态ip地址" class="headerlink" title="使用静态ip地址"></a>使用静态ip地址</h2><p>由于树莓派内置了DHCP服务，所以，当我们每次连接上wifi时可能会被分配到不同的ip地址，这显然不利于配置外部对于树莓派后台服务的访问，因此，我们在连接上wifi之后，可以给树莓派配置一个静态ip。</p>
-<p>打开<code>/etc/dhcpcd.conf</code>文件，向里面追加如下配置</p>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">interface wlan0</span><br><span class="line">static ip_address=192.168.0.193/24</span><br><span class="line">static routers=192.168.0.1</span><br><span class="line">static domain_name_servers=192.168.0.1 192.168.1.1</span><br></pre></td></tr></table></figure>
-<p>其中<code>wlan0</code>是我们无线网卡的系统名称，后面的<code>ip_address</code>则是我们自定义的ip地址，<code>routers</code>是我们的路由，<code>domain_name_server</code>是我们的DNS地址，多个DNS的场合使用空格隔开。</p>
+    <title>Spring框架中bean的生命周期</title>
+    <url>/2021/08/09/spring-bean-init-and-destroy/</url>
+    <content><![CDATA[<h2 id="使用-PostConstruct和-PreDestroy注解在同一个配置类中执行bean的初始化前和销毁前的配置"><a href="#使用-PostConstruct和-PreDestroy注解在同一个配置类中执行bean的初始化前和销毁前的配置" class="headerlink" title="使用@PostConstruct和@PreDestroy注解在同一个配置类中执行bean的初始化前和销毁前的配置"></a>使用<code>@PostConstruct</code>和<code>@PreDestroy</code>注解在同一个配置类中执行bean的初始化前和销毁前的配置</h2><figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="meta">@Configuration</span></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">MyBeanPostProcessor</span> </span>&#123;</span><br><span class="line">    <span class="meta">@Bean</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> String <span class="title">helloWorld</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="string">&quot;hello world&quot;</span>;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@PostConstruct</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">init</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        System.out.println(<span class="string">&quot;我是初始化前执行的方法&quot;</span>);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@PreDestroy</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">destroy</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        System.out.println(<span class="string">&quot;我是销毁前执行的方法&quot;</span>);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>上面的配置类中只定义了一个bean，且是字符串类型（方便举例），大部分情况下应该是返回一个对象。</p>
+<h2 id="使用-Bean-initMethod-quot-init-quot-destroyMethod-quot-destroy-quot-注解执行bean初始化前和销毁前的配置"><a href="#使用-Bean-initMethod-quot-init-quot-destroyMethod-quot-destroy-quot-注解执行bean初始化前和销毁前的配置" class="headerlink" title="使用@Bean(initMethod = &quot;init&quot;, destroyMethod = &quot;destroy&quot;)注解执行bean初始化前和销毁前的配置"></a>使用<code>@Bean(initMethod = &quot;init&quot;, destroyMethod = &quot;destroy&quot;)</code>注解执行bean初始化前和销毁前的配置</h2><figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="meta">@Configuration</span></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">ConfigTest</span> </span>&#123;</span><br><span class="line">    <span class="meta">@Bean(initMethod = &quot;init&quot;, destroyMethod = &quot;destroy&quot;)</span></span><br><span class="line">    <span class="function">Test1 <span class="title">test1</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="keyword">new</span> Test1(); <span class="comment">// 使用默认的无参构造器</span></span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">// 定义Bean的内容，本质上是一个普通的java类</span></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Test1</span> </span>&#123;</span><br><span class="line">    <span class="comment">// 初始化前的执行方法</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">init</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        System.out.println(<span class="string">&quot;this is init method&quot;</span>);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="comment">// 销毁前的执行方法</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">destroy</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        System.out.println(<span class="string">&quot;this is destroy method&quot;</span>);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 ]]></content>
       <categories>
-        <category>raspberry pi</category>
+        <category>spring framework</category>
       </categories>
       <tags>
-        <tag>ssh</tag>
-        <tag>raspberry pi</tag>
+        <tag>bean</tag>
       </tags>
   </entry>
   <entry>
-    <title>我们为什么喜欢迪迦奥特曼——迪迦被禁播后的感想</title>
-    <url>/2021/09/26/why-we-like-ultraman-tiga/</url>
-    <content><![CDATA[<h1 id="谁能想到，2021年的9月24日，这个看似格外普通的日子，却也是陪伴我们童年一路走来的特摄剧《迪迦奥特曼》上映25周年，居然在一片举报声中无声无息的全网下架，对于奥迷来说，这是一个值得被记住的日子，而对于期盼国产动漫能早日赶超国际水平的国人而言，这次的禁令不能不让我们心寒，或许我们希望的那一天永远都不会到来了。"><a href="#谁能想到，2021年的9月24日，这个看似格外普通的日子，却也是陪伴我们童年一路走来的特摄剧《迪迦奥特曼》上映25周年，居然在一片举报声中无声无息的全网下架，对于奥迷来说，这是一个值得被记住的日子，而对于期盼国产动漫能早日赶超国际水平的国人而言，这次的禁令不能不让我们心寒，或许我们希望的那一天永远都不会到来了。" class="headerlink" title="谁能想到，2021年的9月24日，这个看似格外普通的日子，却也是陪伴我们童年一路走来的特摄剧《迪迦奥特曼》上映25周年，居然在一片举报声中无声无息的全网下架，对于奥迷来说，这是一个值得被记住的日子，而对于期盼国产动漫能早日赶超国际水平的国人而言，这次的禁令不能不让我们心寒，或许我们希望的那一天永远都不会到来了。"></a>谁能想到，2021年的9月24日，这个看似格外普通的日子，却也是陪伴我们童年一路走来的特摄剧《迪迦奥特曼》上映25周年，居然在一片举报声中无声无息的全网下架，对于奥迷来说，这是一个值得被记住的日子，而对于期盼国产动漫能早日赶超国际水平的国人而言，这次的禁令不能不让我们心寒，或许我们希望的那一天永远都不会到来了。</h1><p><img src="/assets/tiga-ultraman.png"></p>
-<h2 id="迪迦带给我们的感动"><a href="#迪迦带给我们的感动" class="headerlink" title="迪迦带给我们的感动"></a>迪迦带给我们的感动</h2><p>我们总说迪迦代表的是<strong>光</strong>，其实我们喜欢迪迦的真正原因是我们信仰迪迦带给我们的<strong>希望</strong>和<strong>与黑暗势力抗争到底的决心和勇气</strong>。</p>
-<p>在迪迦奥特曼中，人类不停的被外来生物入侵，作为承担保护地球责任的地球防卫队——GUTS组织，在正面对抗体型庞大的怪兽和拥有高科技的外星人时根本也是无能为力，如果没有迪迦奥特曼的帮助，人类早就被毁灭几十次了，即使在面对没有丝毫破坏力的奇杰拉时，人类的表现也是令人失望的，因为人类宁愿活在虚无缥缈的幻境中，去逃避现实中的种种不堪，也不愿为了人类的未来去努力拼搏，积极进取，人类到底是一种软弱的生物。即便是迪迦之前的超古代奥特战士在看到这样的人类之后也只能任其毁灭，因为他们不是人类，对于浩瀚的宇宙而言，人类也只是其中渺小的一份子，如同大部分宇宙生物一样，自生自灭就是最好的生存法则。但是，这一切在迪迦出现后就完全变了，作为人类的大古机缘巧合之下获得了迪迦留在地球的巨人身躯，从一个普通的人类变成了保护地球的奥特战士，一次次以人类的身份比肩神明，为了人类的生存义无反顾的同凶残的巨型怪兽和邪恶的外星生物进行战斗，甚至在人类对奥特曼失去信任，反而帮助外星人诋毁奥特曼时也坚持维护人类免受灭顶之灾，如果这样的迪迦奥特曼都不能称之为英雄，并受到人类的尊敬和爱戴，那这人间或许本就该成为奇杰拉的墓场，这样的文明即使毁灭也无妨。迪迦奥特曼不仅带给我们希望，还教会了我们很多的道理，其中不乏对于人与人，人与科技，人与环境，人与地球，人与宇宙的深度思考，而这些看似宏大的人生理念，却在迪迦奥特曼中得到了很好的诠释。如果对于这样的一部作品都要冠以暴力的称谓而加以禁播，可想而知我们的社会中还有多少看似人模狗样，实则满肚子鸡鸣狗盗，阳奉阴违之人。这样的人无论是作为个人还是父母，对于人类的进步和社会的稳定都是一大阻碍，因为在他们眼中任何表达美好事物的东西都会被他们过滤在外，而最终留给他们的只能是暴力，于人于己，这样的人都是社会的毒瘤，而为他们提供滋生土壤的人也难辞其咎。此时此刻，迪迦或许只是暂时的离开，但他的精神会永远留在我们心中。迪迦奥特曼保护人类，更是为了保护我们人类赖以生存的美丽地球。</p>
+    <title>Spring框架中bean的前置处理和后置处理</title>
+    <url>/2021/08/09/spring-bean-post-processor/</url>
+    <content><![CDATA[<h2 id="Spring框架中Bean的创建过程如下："><a href="#Spring框架中Bean的创建过程如下：" class="headerlink" title="Spring框架中Bean的创建过程如下："></a>Spring框架中Bean的创建过程如下：</h2><p><img src="https://springframework.guru/wp-content/uploads/2019/05/aware_interfaces_callbacks_in_bean_lifecycle-1024x545.png" alt="Aware interfaces Callbacks in Bean Lifecycle"></p>
+<p>其中BeanPostProcessor接口包含两个执行过程，分别是在bean执行init方法之前和执行init方法之后执行。代码如下：</p>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="meta">@Configuration</span></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">MyBeanPostProcessor</span> <span class="keyword">implements</span> <span class="title">BeanPostProcessor</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> Object <span class="title">postProcessBeforeInitialization</span><span class="params">(Object bean, String beanName)</span> <span class="keyword">throws</span> BeansException </span>&#123;</span><br><span class="line">        System.out.println(<span class="string">&quot;我在bean初始化前执行&quot;</span>);</span><br><span class="line">        <span class="keyword">return</span> BeanPostProcessor.<span class="keyword">super</span>.postProcessBeforeInitialization(bean, beanName);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> Object <span class="title">postProcessAfterInitialization</span><span class="params">(Object bean, String beanName)</span> <span class="keyword">throws</span> BeansException </span>&#123;</span><br><span class="line">        System.out.println(<span class="string">&quot;我在bean初始化之后执行&quot;</span>);</span><br><span class="line">        <span class="keyword">return</span> BeanPostProcessor.<span class="keyword">super</span>.postProcessAfterInitialization(bean, beanName);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Bean(name = &quot;DBConnection&quot;, initMethod = &quot;init&quot;, destroyMethod = &quot;destroy&quot;)</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> DatabaseConfig <span class="title">mysqlConnection</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        Properties properties = System.getProperties();</span><br><span class="line">        String url = properties.getProperty(<span class="string">&quot;url&quot;</span>);</span><br><span class="line">        String driverName = properties.getProperty(<span class="string">&quot;driverName&quot;</span>);</span><br><span class="line">        String userName = properties.getProperty(<span class="string">&quot;userName&quot;</span>);</span><br><span class="line">        String password = properties.getProperty(<span class="string">&quot;password&quot;</span>);</span><br><span class="line">        <span class="keyword">return</span> <span class="keyword">new</span> DatabaseConfig(driverName, url, userName, password);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>上述代码新建了自定义的<code>MyBeanPostProcessor</code>,并实现了接口<code>BeanPostProcessor</code>中的两个接口（自带default方法），同时，还定义了一个名为<code>DBConnection</code>的bean，指定了初始化方法和销毁前执行的方法。</p>
+<p>其中，<code>DatabaseConfig</code>的定义如下：</p>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="meta">@Data</span></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">DatabaseConfig</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">static</span> Connection connection;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">private</span> String driverName;</span><br><span class="line">    <span class="keyword">private</span> String url;</span><br><span class="line">    <span class="keyword">private</span> String userName;</span><br><span class="line">    <span class="keyword">private</span> String password;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="title">DatabaseConfig</span><span class="params">(String driverName, String url, String userName, String password)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">this</span>.driverName = driverName;</span><br><span class="line">        <span class="keyword">this</span>.url = url;</span><br><span class="line">        <span class="keyword">this</span>.userName = userName;</span><br><span class="line">        <span class="keyword">this</span>.password = password;</span><br><span class="line">        System.out.println(<span class="string">&quot;构造连接参数...&quot;</span>);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">init</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        System.out.println(<span class="string">&quot;初始化数据库连接&quot;</span>);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">destroy</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        System.out.println(<span class="string">&quot;销毁数据库连接&quot;</span>);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+<p>为了方便识别执行阶段，分别在构造器和<code>init</code>以及<code>destroy</code>方法中加入了文字说明。</p>
+<p>最后的执行结果如下：</p>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line">构造连接参数...</span><br><span class="line">我在bean初始化前执行</span><br><span class="line">初始化数据库连接</span><br><span class="line">我在bean初始化之后执行</span><br><span class="line">...</span><br><span class="line">销毁数据库连接</span><br></pre></td></tr></table></figure>
+<p>由此可见，构造器内的代码是最先执行的，属于填充属性阶段（即<code>Populate properties</code>），接着执行<code>MyBeanPostProcessor#postProcessBeforeInitialization</code>方法，然后执行<code>init方法</code>，之后执行<code>MyBeanPostProcessor#postProcessBeforeInitialization</code>，最后在关闭应用时执行<code>destroy</code>方法。</p>
 ]]></content>
       <categories>
-        <category>奥特曼</category>
+        <category>spring framework</category>
       </categories>
       <tags>
-        <tag>迪迦</tag>
+        <tag>bean</tag>
+        <tag>post-processor</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>Spring框架中的异常处理方式</title>
+    <url>/2021/01/09/spring-exception-handle/</url>
+    <content><![CDATA[<h2 id="1-在控制层验证参数"><a href="#1-在控制层验证参数" class="headerlink" title="1. 在控制层验证参数"></a>1. 在控制层验证参数</h2><p>@RequestParam(“arg”)可以用来限制调用方只能使用arg作为参数名来调用接口。</p>
+]]></content>
+      <categories>
+        <category>spring框架</category>
+      </categories>
+      <tags>
+        <tag>spring</tag>
+        <tag>exception</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>spring-framework-core-thinking-1</title>
+    <url>/2021/08/08/spring-framework-core-thinking-1/</url>
+    <content><![CDATA[<h2 id="spring框架进阶—Aware接口的原理和使用"><a href="#spring框架进阶—Aware接口的原理和使用" class="headerlink" title="spring框架进阶—Aware接口的原理和使用"></a>spring框架进阶—Aware接口的原理和使用</h2>]]></content>
+      <categories>
+        <category>spring框架</category>
+      </categories>
+      <tags>
+        <tag>spring</tag>
+        <tag>aware</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>spring实战</title>
+    <url>/2021/03/14/spring-in-action/</url>
+    <content><![CDATA[<h2 id="认识spring框架"><a href="#认识spring框架" class="headerlink" title="认识spring框架"></a>认识spring框架</h2><ol>
+<li>spring框架为开发者做了很多，反过来，它也要求开发者同样对它。</li>
+<li></li>
+</ol>
+]]></content>
+      <categories>
+        <category>spring框架</category>
+      </categories>
+      <tags>
+        <tag>java</tag>
+        <tag>spring</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>springmvc注解学习</title>
+    <url>/2021/01/10/spring-mvc-annotation/</url>
+    <content><![CDATA[<h2 id="annotation-driven"><a href="#annotation-driven" class="headerlink" title="annotation-driven"></a>annotation-driven</h2><p>配置注解驱动的Spring MVC控制器编程模型。</p>
+<p>可选参数：</p>
+<ul>
+<li>conversion-service：指定字段转换服务</li>
+<li>validator：指定自定义的校验类，用来校验控制器中的model对象，默认使用<code>JSR-303</code>校验</li>
+</ul>
+<h2 id="resources"><a href="#resources" class="headerlink" title="resources"></a>resources</h2><p>配置静态资源的处理器，比如说图片、js、css，通过对缓存头进行优化，提升浏览器的加载速度。允许Spring资源处理器能够识别任何指定路径下的静态资源。</p>
+<p>可选参数：</p>
+<ul>
+<li>mapping：必须，指定URL的映射方式，基于当前的Servlet上下文，比如<code>/resources/**</code>则表示需要在url中加上resources，然后追加静态资源相对于根路经的目录结构路径。</li>
+<li>location：必须，指定静态资源的物理路径，多个路径可以使用逗号隔开，放在前面的会被优先读取（如果有两个同名的文件，会优先读取放在前面的路径下的文件），例如：<code>/,classpath:/META-INF/public-web-resources/</code>，将会读取位于web应用根路径下的静态资源以及类路径下的所有Jar包中<code>/META-INF/public-web-resources</code>目录下的文件，而web应用根路径下的文件优先级更高。</li>
+<li>cache-period：可选，指定静态资源的缓存策略。以秒为单位。默认情况下不会发送任何缓存头，而是取决于文件上次修改的时间戳。如果将该属性的值设为0,则会发送值为<code>prevent-cacheing</code>的缓存头。如果是大于0的值，则会发送<code>max-age</code>为该值的缓存头。</li>
+<li>order：可选，指定资源处理器的顺序。</li>
+</ul>
+<h2 id="default-servlet-handler"><a href="#default-servlet-handler" class="headerlink" title="default-servlet-handler"></a>default-servlet-handler</h2><p>用来配置处理静态资源的处理器（handler），通过将请求重定向到容器默认的servlet。使用这个处理器允许<code>/</code>映射与<code>DispatcherServlet</code>一起使用，同时仍利用Servlet容器提供静态资源服务。</p>
+<p>可用属性：</p>
+<ul>
+<li><p>default-servlet-name：可以重定向客户端静态资源请求的默认Servlet。默认的处理器在启动时会自动检测容器默认的Servlet（通过一个预定义的名字列表）。只有在默认但Servlet无法被检测到的情况下，才需要明确指定默认Servlet的名字。</p>
+</li>
+<li><p>interceptors：注册自定义的拦截器（父标签）</p>
+<ul>
+<li><p>interceptor：自定义拦截器必须继承HandlerInterceptor类或者实现WebRequestInterceptor接口。</p>
+<p>可用属性</p>
+<ul>
+<li>mapping：<ul>
+<li>path：指定被拦截的url路径，例如<code>/myPath</code>或者<code>/myPath/**</code></li>
+<li>ref：指定bean的引用。</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<h2 id="view-controller"><a href="#view-controller" class="headerlink" title="view-controller"></a>view-controller</h2><p>用来定义渲染返回视图的简单控制器</p>
+<p>可用属性：</p>
+<ul>
+<li>path：必须。被映射的URL路径。</li>
+<li>view-name：可选。被渲染的视图名，如果不指定，则通过当前HttpServletRequest对应的DispatcherServlet的RequestToViewNameTranslator来决定。</li>
+</ul>
+]]></content>
+      <categories>
+        <category>spring框架</category>
+      </categories>
+      <tags>
+        <tag>springmvc</tag>
+        <tag>annotation</tag>
+        <tag>javaweb</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>如何使用openssh进行远程连接</title>
+    <url>/2020/12/27/ssh-manual/</url>
+    <content><![CDATA[<h2 id="SSH连接的建立方式"><a href="#SSH连接的建立方式" class="headerlink" title="SSH连接的建立方式"></a>SSH连接的建立方式</h2><p>ssh可以通过密码和密钥（更加安全）这两种方式建立起客户端与 服务端的连接。</p>
+<h2 id="SSH连接的实现过程（假设通过密钥的方式连接）"><a href="#SSH连接的实现过程（假设通过密钥的方式连接）" class="headerlink" title="SSH连接的实现过程（假设通过密钥的方式连接）"></a>SSH连接的实现过程（假设通过密钥的方式连接）</h2><ol>
+<li>当客户端发起一个ssh连接请求时，它首先会告诉服务端需要使用的公钥；</li>
+<li>然后服务端会检查它的<code>~/authorized_keys</code>文件，这个文件中包含了所有已经保存的客户端公钥，一个公钥占据一行，这些公钥所对应的客户端可以实现免验证登录。</li>
+<li>服务端如果在文件中找到了请求客户端所对应的公钥，就会生成一个随机字符串，并使用找到的公钥进行加密。这个加密后的信息只能被请求客户端的私钥所解密，然后服务端将这个加密后的字符串发送给请求客户端，以此来验证该客户端是否拥有私钥。</li>
+<li>客户端收到来自服务端的加密字符串之后，会立即使用自己的私钥进行解密，并将解密后的随机字符串与之前协商好的会话id结合，生成一个md5加密的hash值，并回传给服务端。</li>
+<li>由于服务端已经知道加密之前的随机字符串和会话id，因此，服务端会在本地将这个随机字符串和会话id进行hash，然后和客户端传过来的值进行比较，如果一致，则表示请求客户端确实拥有私钥，并允许建立连接。<a id="more"></a>
+<h2 id="生成SSH密码对"><a href="#生成SSH密码对" class="headerlink" title="生成SSH密码对"></a>生成SSH密码对</h2>有几种加密算法可以用来生成SSH密钥，例如RSA、DSA、ECDSA，默认情况下使用RSA加密算法。<br>使用如下命令可以生成一个默认的密钥：</li>
+</ol>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ ssh-keygen</span><br></pre></td></tr></table></figure>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">Generating public/private rsa key pair.</span><br><span class="line">Enter file <span class="keyword">in</span> <span class="built_in">which</span> to save the key (/home/demo/.ssh/id_rsa):</span><br></pre></td></tr></table></figure>
+<p>这里可以指定密钥文件的保存位置。默认是<code>~/.ssh/id_rsa</code>。<br>点击<code>enter</code>进入下一步：</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">Enter passphrase (empty <span class="keyword">for</span> no passphrase):</span><br><span class="line">Enter same passphrase again:</span><br></pre></td></tr></table></figure>
+<p>这里可以指定密钥的密码短语，即在密码之上再加一层密码验证，增强密钥的安全性。<br>点击<code>enter</code>进入下一步：</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">Your identification has been saved <span class="keyword">in</span> /root/.ssh/id_rsa.</span><br><span class="line">Your public key has been saved <span class="keyword">in</span> /root/.ssh/id_rsa.pub.</span><br><span class="line">The key fingerprint is:</span><br><span class="line">8c:e9:7c:fa:bf:c4:e5:9c:c9:b8:60:1f:fe:1c:d3:8a root@here</span><br><span class="line">The key<span class="string">&#x27;s randomart image is:</span></span><br><span class="line"><span class="string">+--[ RSA 2048]----+</span></span><br><span class="line"><span class="string">|                 |</span></span><br><span class="line"><span class="string">|                 |</span></span><br><span class="line"><span class="string">|                 |</span></span><br><span class="line"><span class="string">|       +         |</span></span><br><span class="line"><span class="string">|      o S   .    |</span></span><br><span class="line"><span class="string">|     o   . * +   |</span></span><br><span class="line"><span class="string">|      o + = O .  |</span></span><br><span class="line"><span class="string">|       + = = +   |</span></span><br><span class="line"><span class="string">|      ....Eo+    |</span></span><br><span class="line"><span class="string">+-----------------+</span></span><br></pre></td></tr></table></figure>
+<p>这时，你的密钥对就算生成成功了。生成的文件如下：</p>
+<ul>
+<li><code>~/.ssh/id_rsa</code>:存放你的私钥。<strong>只能你自己知道</strong>。</li>
+<li><code>~/.ssh/id_rsa.pub</code>:存放你的公钥，可以让其他人知道。<h2 id="使用更长的位数生成你的密钥对"><a href="#使用更长的位数生成你的密钥对" class="headerlink" title="使用更长的位数生成你的密钥对"></a>使用更长的位数生成你的密钥对</h2>默认情况下，ssh-keyken使用2048的位长度生成密钥对。这一默认值大多数场合已经足够安全，但是，我们在某些特殊场景下仍然可以使用更大的位长度来增强我们服务器的安全性。<br>为了做到这一点，我们可以使用<code>-b</code>参数来指定我们需要的位长度。<br>比如：<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ ssh-keygen -b 4096</span><br></pre></td></tr></table></figure>
+如果你之前已经生成过一个密钥对，那么这里会提示你是否需要覆盖你之前的键：<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">Overrite(Y/n)?</span><br></pre></td></tr></table></figure>
+如果你选择是，那你之前的文件会被覆写，导致你再也无法使用之前的密钥登录到之前的服务器，因此，一定要小心之前的密钥是否需要保留。<h2 id="移除或者修改私钥的密码短语-passphase"><a href="#移除或者修改私钥的密码短语-passphase" class="headerlink" title="移除或者修改私钥的密码短语(passphase)"></a>移除或者修改私钥的密码短语(passphase)</h2>如果你已经为你的私钥指定了一个密码短语，该怎么修改或者直接删除这个密码短语呢？<div class="note info"><p>为了修改或移除密码短语，你必须知道原来的密码短语。如果你忘记了原来的密码短语，你将无法再次使用该密钥，必须重新生成新的密钥。</p>
+</div>
+通过下面的命令：<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ ssh-keygen -p</span><br></pre></td></tr></table></figure>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">Enter file <span class="keyword">in</span> <span class="built_in">which</span> the key is (/root/.ssh/id_rsa):</span><br></pre></td></tr></table></figure>
+你可以指定密钥的位置，或者直接按<code>Enter</code>接受默认的位置。<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">Enter old passphrase:</span><br></pre></td></tr></table></figure>
+输入你希望修改的旧密码，然后你会被提示输入一个新的密码短语：<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">Enter new passphrase (empty <span class="keyword">for</span> no passphrase):</span><br><span class="line">Enter same passphrase again:</span><br></pre></td></tr></table></figure>
+至此，输入你的新密码短语或者按<code>Enter</code>来移除密码短语。<h2 id="展示SSH密钥的手印（Fingerprint）"><a href="#展示SSH密钥的手印（Fingerprint）" class="headerlink" title="展示SSH密钥的手印（Fingerprint）"></a>展示SSH密钥的手印（Fingerprint）</h2>每个SSH密钥对共享一个密码形式的“手印”，它可以被用来唯一标识密钥对。这在有些情况下会很有用。<br>为了查看现有的密钥对，你可以执行：<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ ssh-keygen -l</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">Enter file in which the key is (&#x2F;root&#x2F;.ssh&#x2F;id_rsa):</span><br></pre></td></tr></table></figure>
+你可以直接按<code>Enter</code>选择默认的密钥的位置，或者输入你期望的位置。之后你会得到包含了密钥的位长、手印和帐号以及所选主机和使用的算法的字符串：<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">4096 8e:c4:82:47:87:c2:26:4b:68:ff:96:1a:39:62:9e:4e  demo@<span class="built_in">test</span> (RSA)</span><br></pre></td></tr></table></figure>
+<h2 id="使用SSH-Copy-ID复制公钥到服务器"><a href="#使用SSH-Copy-ID复制公钥到服务器" class="headerlink" title="使用SSH-Copy-ID复制公钥到服务器"></a>使用SSH-Copy-ID复制公钥到服务器</h2>通过将你的公钥复制到服务器，可以让你不用输入密码就可以通过认证，有很多方法可以实现这一点。<br>如果你当前有一个基于密码的SSH远程服务器访问方式，并且你已经安装了ssh-copy-id工具，那么你就可以很容易的实现这一点。而且ssh-copy-id已经预装到了大多数的linux发行版中。<br>通过下面的命令可以实现这一点：<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ ssh-copy-id username@remote_host</span><br></pre></td></tr></table></figure>
+随后会提示你输入当前用户在远程服务器上的密码，正确输入之后，你本地的公钥就会被添加到服务器用户的<code>~/.ssh/authorized_keys</code>文件中，之后，你就可以不用输入密码也能登录到远程服务器了。<h2 id="不通过ssh-copy-id命令将公钥添加到远程服务器"><a href="#不通过ssh-copy-id命令将公钥添加到远程服务器" class="headerlink" title="不通过ssh-copy-id命令将公钥添加到远程服务器"></a>不通过ssh-copy-id命令将公钥添加到远程服务器</h2>如果你没有安装ssh-copy-id命令行工具，那你应该怎么样将你的公钥上传到远程服务器呢？通过linux中的管道命令，我们可以实现这一点。</li>
+</ul>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ cat ~/.ssh/id_rsa.pub | ssh username@remote_host <span class="string">&quot;mkdir -p ~/.ssh &amp;&amp; ~/.ssh/authorized_keys&quot;</span></span><br></pre></td></tr></table></figure>
+<p>随后根据提示输入远程主机的用户名密码：</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">The authenticity of host <span class="string">&#x27;111.111.11.111 (111.111.11.111)&#x27;</span> can<span class="string">&#x27;t be established.</span></span><br><span class="line"><span class="string">ECDSA key fingerprint is fd:fd:d4:f9:77:fe:73:84:e1:55:00:ad:d6:6d:22:fe.</span></span><br><span class="line"><span class="string">Are you sure you want to continue connecting (yes/no)? yes</span></span><br><span class="line"><span class="string">demo@111.111.11.111&#x27;</span>s password:</span><br></pre></td></tr></table></figure>
+<p>如果添加成功，你之后的登录将无需再次输入密码，而是简单的通过如下命令：</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ ssh username@remote_ip_host</span><br></pre></td></tr></table></figure>
+<h2 id="手动将你的密钥复制到服务器"><a href="#手动将你的密钥复制到服务器" class="headerlink" title="手动将你的密钥复制到服务器"></a>手动将你的密钥复制到服务器</h2><p>如果你没有可用的基于密码访问的SSH连接，你将必须手动将你的公钥复制到远程服务器。<br>打开你的本地终端，输入下面的命令：</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ cat ~/.ssh/id_rsa.pub</span><br></pre></td></tr></table></figure>
+<p>将输出到屏幕上的公钥复制到剪贴板，然后通过工具（一般是服务器供应商提供的web面板）连接到远程服务器，并在远程服务器的<code>~/.ssh/</code>（如果不存在就新建）目录下面创建<code>authorized_keys</code>文件。最后将你复制的公钥粘贴到该文件中，并保存。</p>
+<h2 id="基本的连接指令"><a href="#基本的连接指令" class="headerlink" title="基本的连接指令"></a>基本的连接指令</h2><p>接下来是针对SSH中一些比较常用的命令做个说明。</p>
+<h3 id="连接到指定的远程服务器"><a href="#连接到指定的远程服务器" class="headerlink" title="连接到指定的远程服务器"></a>连接到指定的远程服务器</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ ssh remote_host</span><br></pre></td></tr></table></figure>
+<p>这个命令会假设你当前机器的本地用户名和远程服务器上的用户名是一致的。如果不一致，请使用下面的命令。</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ ssh username@remote_host</span><br></pre></td></tr></table></figure>
+<p>这个命令会假设你要连接的远程服务器的端口号是22（ssh默认的端口号）。如果不是，请使用<code>-p your_port</code>指定你的自定义端口号。<br>如果服务器正常开启了ssh服务以及对应的监听端口，那么你会看到如下信息：</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">The authenticity of host <span class="string">&#x27;111.111.11.111 (111.111.11.111)&#x27;</span> can<span class="string">&#x27;t be established.</span></span><br><span class="line"><span class="string">ECDSA key fingerprint is fd:fd:d4:f9:77:fe:73:84:e1:55:00:ad:d6:6d:22:fe.</span></span><br><span class="line"><span class="string">Are you sure you want to continue connecting (yes/no)? yes</span></span><br></pre></td></tr></table></figure>
+<p>输入”yes”即可接受来自远程服务器的验证。<br>如果你使用了密码验证，那么你会被要求输入密码，如果你使用了公钥免登录，且设置了密码短语，那么你将同样被要求输入密码短语，否则，你将自动登录成功。</p>
+<h2 id="在远程服务器上执行单次命令"><a href="#在远程服务器上执行单次命令" class="headerlink" title="在远程服务器上执行单次命令"></a>在远程服务器上执行单次命令</h2><p>如果你只是想在远程服务器上执行单个命令，并不想开启一次远程会话。那么你可以通过下面的命令来完成：</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ ssh username@remote_host commander_to_run</span><br></pre></td></tr></table></figure>
+<p>这个命令会在连接上远程服务器之后立即执行后面的命令，随后便会关闭连接。</p>
+<h2 id="使用配置文件简化连接输入"><a href="#使用配置文件简化连接输入" class="headerlink" title="使用配置文件简化连接输入"></a>使用配置文件简化连接输入</h2><p>在<code>~/.ssh</code>目录下新建<code>config</code>文件（如果不存在的话），并输入如下内容：</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">Host remote_aliss <span class="comment"># 远程主机别名</span></span><br><span class="line">    HostName remote_host <span class="comment">#远程主机</span></span><br><span class="line">    Port port_num <span class="comment"># 端口号</span></span><br><span class="line">    User your_user <span class="comment"># 登录用户</span></span><br><span class="line">    IdentityFile ~/.ssh/id_rsa <span class="comment"># 要使用的密钥</span></span><br></pre></td></tr></table></figure>
+<p>配置完成之后，之后的连接只需要通过输入如下命令即可：</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ ssh remote_alias</span><br></pre></td></tr></table></figure>
+<h2 id="使用SSH-Agent保存密码短语，避免重复输入"><a href="#使用SSH-Agent保存密码短语，避免重复输入" class="headerlink" title="使用SSH Agent保存密码短语，避免重复输入"></a>使用SSH Agent保存密码短语，避免重复输入</h2><p>如果你对密钥使用了密码短语进行加密，那么你在每次建立SSH连接会话之前都会要求输入密码短语，为了简化连接过程，避免每次都要重复输入，你可以使用SSH Agent来保存你的密码短语。</p>
+]]></content>
+      <categories>
+        <category>生涯 SSH连接的建立方式</category>
+      </categories>
+      <tags>
+        <tag>linux</tag>
+        <tag>ssh</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>string-in-file-search</title>
+    <url>/2021/08/08/string-in-file-search/</url>
+    <content><![CDATA[<h2 id="在指定目下寻找包含指定字符串的文件："><a href="#在指定目下寻找包含指定字符串的文件：" class="headerlink" title="在指定目下寻找包含指定字符串的文件："></a>在指定目下寻找包含指定字符串的文件：</h2><ol>
+<li>输出文件名和内容</li>
+</ol>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">grep mysqli_connect ./</span><br></pre></td></tr></table></figure>
+<p>其中，，</p>
+<ul>
+<li><p>加入<code>-r</code>可以递归搜索</p>
+</li>
+<li><p>加入<code>-l</code>可以只打印匹配的文件名</p>
+</li>
+<li><p>加入参数<code>-e</code>可以支持正则表达式</p>
+</li>
+<li><p>加入参数<code>-i</code>可以不区分大小写</p>
+</li>
+<li><p>加入参数<code>-c</code>可以指定匹配的行数</p>
+</li>
+<li><p>加入<code>-v</code>可以查出不匹配指定字符串的行数</p>
+</li>
+</ul>
+<ol start="2">
+<li><p>替换上述匹配命令中的匹配字符串</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">sed -i <span class="string">&quot;s/mysqli_connect/mysql_connect/g&quot;</span> `grep mysqli_connect -rl ./`</span><br></pre></td></tr></table></figure>
+<p>其中，<code>-i</code>表示替换立即生效</p>
+</li>
+</ol>
+]]></content>
+      <categories>
+        <category>字符串处理</category>
+      </categories>
+      <tags>
+        <tag>grep</tag>
+        <tag>sed</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>学习资源汇总</title>
+    <url>/2021/08/20/study-resource-collection/</url>
+    <content><![CDATA[<ol>
+<li><p>分布式搜索引擎elasticsearch学习教程——<a href="https://www.tutorialspoint.com/elasticsearch/elasticsearch_populate.htm">https://www.tutorialspoint.com/elasticsearch/elasticsearch_populate.htm</a></p>
+</li>
+<li><p>java权限认证框架shiro——<a href="https://shiro.apache.org/authentication.html">https://shiro.apache.org/authentication.html</a></p>
+</li>
+<li><p>vue+bootstrap4学习——<a href="https://www.remotestack.io/build-vue-login-signup-ui-auth-template-with-bootstrap/">https://www.remotestack.io/build-vue-login-signup-ui-auth-template-with-bootstrap/</a></p>
+</li>
+<li><p>druid学习资源——<a href="https://druid.apache.org/docs/latest/configuration/index.html">https://druid.apache.org/docs/latest/configuration/index.html</a></p>
+</li>
+<li><p>java日志框架logback——<a href="https://dennis-xlc.gitbooks.io/the-logback-manual/content/en/chapter-4-appenders/logback-core/rollingfileappender/size-and-time-based-rolling-policy.html">https://dennis-xlc.gitbooks.io/the-logback-manual/content/en/chapter-4-appenders/logback-core/rollingfileappender/size-and-time-based-rolling-policy.html</a></p>
+</li>
+<li><p>springboot官方文档——<a href="https://docs.spring.io/spring-boot/docs/current/reference/htmlsingle/#legal">https://docs.spring.io/spring-boot/docs/current/reference/htmlsingle/#legal</a></p>
+</li>
+<li><p>java缩写解释：<a href="https://www.allacronyms.com/EIS/Enterprise_Information_Server">https://www.allacronyms.com/EIS/Enterprise_Information_Server</a></p>
+</li>
+<li><p>hexo使用文档：<a href="https://hexo.io/docs/writing.html">https://hexo.io/docs/writing.html</a></p>
+</li>
+</ol>
+]]></content>
+      <categories>
+        <category>自学</category>
+      </categories>
+      <tags>
+        <tag>study</tag>
+        <tag>汇总</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>在windows 10中访问wsl（linux子系统）的方式（反过来又如何）</title>
+    <url>/2021/04/01/the-way-of-accessing-wsl-file-system-in-windows/</url>
+    <content><![CDATA[<h2 id="在windows文件管理器中访问wsl（windows-subsystem-for-linux）文件系统"><a href="#在windows文件管理器中访问wsl（windows-subsystem-for-linux）文件系统" class="headerlink" title="在windows文件管理器中访问wsl（windows subsystem for linux）文件系统"></a>在windows文件管理器中访问wsl（windows subsystem for linux）文件系统</h2><ol>
+<li>进入安装好的wsl终端，输入如下命令： <figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ explorer.exe .</span><br></pre></td></tr></table></figure>
+ 其中，<code>explorer.exe</code>为文件管理器的可执行文件，<code>.</code>代表当前目录（家目录）。<h2 id="在wsl中访问windows的本地文件"><a href="#在wsl中访问windows的本地文件" class="headerlink" title="在wsl中访问windows的本地文件"></a>在wsl中访问windows的本地文件</h2></li>
+<li>默认情况下，windows的各个分区以盘符作为挂载点，在wsl中可以通过目录<code>/mnt/c</code>进行访问，其中<code>c</code>代表C盘，其他分区依次类推。 <figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ <span class="built_in">cd</span> /mnt/c</span><br></pre></td></tr></table></figure>
+<blockquote>
+<p>在linux哲学中，一切皆是文件。</p>
+</blockquote>
+</li>
+</ol>
+]]></content>
+      <categories>
+        <category>notes</category>
+      </categories>
+      <tags>
+        <tag>wsl</tag>
+        <tag>windows</tag>
       </tags>
   </entry>
   <entry>
@@ -1100,142 +1185,57 @@ dict是客户端，dictd是dict的后台服务器。默认安装之后是不带�
       </tags>
   </entry>
   <entry>
-    <title>archlinux安装指南</title>
-    <url>/2021/10/02/archlinux-install-guide/</url>
-    <content><![CDATA[<h2 id="Arch-Linux是什么"><a href="#Arch-Linux是什么" class="headerlink" title="Arch Linux是什么"></a>Arch Linux是什么</h2><p>Arch Linux是一款滚动更新的GNU/Linux发行版，致力于提供最新的稳定版软件，相较于其他图形界面的发行版，Arch Linux只能在命令行界面进行安装，且默认不带任何桌面环境。（非特别说明，后文将GNU/Linux简称为Linux）</p>
-<h2 id="Arch-Linux有什么优势"><a href="#Arch-Linux有什么优势" class="headerlink" title="Arch Linux有什么优势"></a>Arch Linux有什么优势</h2><p>相较于其他基于Debian或者Redhat的发行版，Arch Linux提供了自己的包管理器——pacman，而且支持用户软件仓库（AUR）。基于这个特性，大大增加了Arch Linux系统原生软件的数量。而良好的软件生态正是Arch Linux的一大利器。</p>
-<h2 id="Arch-Linux的安装"><a href="#Arch-Linux的安装" class="headerlink" title="Arch Linux的安装"></a>Arch Linux的安装</h2><p>对于大部分非专业人士而言，习惯了Windows的图形界面之后，突然使用命令行操作软件往往变得非常困难，更不用说安装系统了，尽管Arch Linux拥有详细的由社区维护的安装指南Wiki，但也因此劝退了一些习惯了windows之后想要尝试linux系统的新手，基于此，本文特地将自己安装Arch Linux过程中的经历以及出现的问题做个说明，作为Arch Linux安装wiki的补充，不失为帮助更多的人能够接触到linux的一种方法（windows固然很优秀，但<strong>自由/开源软件</strong>才是软件开发的未来）。</p>
-<h3 id="1、获取最新版镜像"><a href="#1、获取最新版镜像" class="headerlink" title="1、获取最新版镜像"></a>1、获取最新版镜像</h3><p>官方下载网站：<a href="https://archlinux.org/download/">https://archlinux.org/download/</a></p>
-<h2 id="2、制作启动盘"><a href="#2、制作启动盘" class="headerlink" title="2、制作启动盘"></a>2、制作启动盘</h2><p>准备一个空的U盘，和一台已安装好linux系统的机器，使用如下命令进行写盘：</p>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">sudo dd bs=4MB <span class="keyword">if</span>=你的安装镜像路径 of=你的U盘路径 status=progress</span><br></pre></td></tr></table></figure>
-<blockquote>
-<p>of参数通常是/dev/sdb，其中sdb是你的U盘路径，注意不要带数字后缀，类似sdb1。另外，写盘之前必须使用umount命令卸载的U盘（如果被自动挂载的话）。</p>
-</blockquote>
-<h3 id="3、从U盘启动，开始安装"><a href="#3、从U盘启动，开始安装" class="headerlink" title="3、从U盘启动，开始安装"></a>3、从U盘启动，开始安装</h3><p>需要注意的是，为了确保可以正常从启动盘引导，需要关闭主板的安全启动选项（可以在安装完成之后重新打开），关闭方式因主板厂商不同而有所差异。具体如何关闭可以自行百度。</p>
-<p>重启主机之后，进入BIOS或者直接通过功能键选择启动顺序，将USB设备作为第一启动项，启动之后选择<code>Arch Linux install medium</code>进入系统安装界面。</p>
-<h3 id="4、验证启动模式"><a href="#4、验证启动模式" class="headerlink" title="4、验证启动模式"></a>4、验证启动模式</h3><p>如果使用的是UEFI模式，则可以使用如下命令验证:</p>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">ls /sys/firmware/efi/efivars</span><br></pre></td></tr></table></figure>
-<p>如果命令正常打印出一系列文件和目录，且没有任何错误，则表明当前是以UEFI模式启动。否则则是以BIOS或者CMS模式启动。</p>
-<h2 id="5、联网"><a href="#5、联网" class="headerlink" title="5、联网"></a>5、联网</h2><p>一般来说，我们可以直接插入网线联网，或者使用外置网卡。比如手机的USB网络共享。</p>
-<h2 id="6、调整时区"><a href="#6、调整时区" class="headerlink" title="6、调整时区"></a>6、调整时区</h2><p>使用<code>timedatectl</code>可以查看并设置时区。</p>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="comment"># 启用ntp（网络时间协议）</span></span><br><span class="line">timedatectl set-ntp <span class="literal">true</span></span><br><span class="line"><span class="comment"># 列出当前可用的时区</span></span><br><span class="line">timedatectl list-timezones</span><br><span class="line"><span class="comment"># 设置选择的时区</span></span><br><span class="line">timedatectl set-timezone Asia/Shanghai</span><br></pre></td></tr></table></figure>
-<h2 id="7、磁盘分区"><a href="#7、磁盘分区" class="headerlink" title="7、磁盘分区"></a>7、磁盘分区</h2><p>查看当前可用磁盘</p>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">fdisk -l</span><br></pre></td></tr></table></figure>
-<p>选择将要使用的磁盘，假设是<code>/dev/sda</code>，执行如下命令</p>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">fdisk /dev/sda</span><br></pre></td></tr></table></figure>
-<p>进入分区界面之后，使用<code>m</code>查看具体的分区指令。一般步骤如下：</p>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="comment"># 创建分区表</span></span><br><span class="line"></span><br></pre></td></tr></table></figure>
+    <title>在docker中使用mysql</title>
+    <url>/2021/01/12/use-mysql-inside-docker/</url>
+    <content><![CDATA[<h2 id="什么是容器"><a href="#什么是容器" class="headerlink" title="什么是容器"></a>什么是容器</h2><p>容器是一种标准化的软件单元，它允许开发者将他们的应用的执行环境和机器环境隔离开来，可以解决类似”它在我机器上工作的好好的“的抱怨。而Docker是目前容器领域的实际标准。</p>
+<p>Docker的另外一个重要的用途是开发者可以下载并运行任何容器化的应用，而不用在他们的本地安装。因此很多应用都实现了容器化版本。</p>
 ]]></content>
       <categories>
-        <category>linux</category>
+        <category>容器技术</category>
       </categories>
       <tags>
-        <tag>archlinux</tag>
+        <tag>docker</tag>
+        <tag>mysql</tag>
       </tags>
   </entry>
   <entry>
-    <title>使用netcat工具在两台linux主机之间通信</title>
-    <url>/2021/10/02/chat-with-netcat-between-linux-host/</url>
-    <content><![CDATA[<h2 id="为什么我们不使用当下流行的即时通讯工具在PC间通信或者传输文件"><a href="#为什么我们不使用当下流行的即时通讯工具在PC间通信或者传输文件" class="headerlink" title="为什么我们不使用当下流行的即时通讯工具在PC间通信或者传输文件"></a>为什么我们不使用当下流行的即时通讯工具在PC间通信或者传输文件</h2><p>目前国内使用率最高的两款即时通讯工具莫过于鹅厂的两款工具——微信和QQ。因为某些众所周知的原因，这两款工具在linux平台要么直接没有，要么只有一个复古的阉割版，功能少的让人怀疑是不是鹅厂直接把10年前的产品直接拿来用了。基于这些现实的问题，对于linux用户来说，其实可替换方案也不是没有，最好的办法就是使用telegram，但在中国，这种方案并不是人人都能够直接拿来用，最直接的原因就是使用这款软件必须要学会科学上网（比如访问谷歌或者油管）。而科学上网在中国处于法律的灰色地带，一般人没有途径也不愿意承担这样的风险。那么作为一名linux用户，只要具备基本的使用命令行的能力，其实方法还是有很多的。这里介绍一种非常方便而且直观的通讯工具——netcat，供大家参考。</p>
-<h2 id="netcat是个什么样的工具"><a href="#netcat是个什么样的工具" class="headerlink" title="netcat是个什么样的工具"></a>netcat是个什么样的工具</h2><p>netcat是一款网络工具，可以在基于TCP和UDP网络连接的基础上执行读写操作。</p>
-<p>它被设计为一个可靠的后端工具，可以直接在其他程序或者脚本中被使用。同时，它还是一个用来调试和探测网络的工具。因为它可以创建几乎所有你可能需要的连接类型。</p>
-<h2 id="netcat有哪些特性"><a href="#netcat有哪些特性" class="headerlink" title="netcat有哪些特性"></a>netcat有哪些特性</h2><ul>
-<li>流出和流入连接：例如来自基于TCP或者UDP的任意端口的连接。</li>
-<li>隧道模式：它允许创建特殊的隧道，如 UDP 到 TCP，并且可以指定所有网络参数（源主机端口/接受主机端口、监听端口/接口和允许连接到隧道的远程主机）。</li>
-<li>使用随机发生器进行端口扫描</li>
-<li>高级使用选项：例如传输和接收数据的缓冲发送模式（每 N 秒一行）和 hexdump（到 stderr 或到指定文件）。</li>
-<li>可选的 RFC854 telnet 代码解析器和响应器。</li>
-</ul>
-<h2 id="如何将netcat作为一款即时通讯工具呢"><a href="#如何将netcat作为一款即时通讯工具呢" class="headerlink" title="如何将netcat作为一款即时通讯工具呢"></a>如何将netcat作为一款即时通讯工具呢</h2><ol>
-<li><p>首先，我们需要在需要建立通讯的主机上安装netcat工具，使用linux自带的包管理器安装即可。</p>
-</li>
-<li><p>然后选择一台已经安装好netcat的机器，在终端中执行如下命令：</p>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">nc -l -vv -p 12345</span><br></pre></td></tr></table></figure>
-<p>其中<code>-l</code>和<code>p</code>表示在本机的12345端口进行监听，并创建一个TCP连接。<code>-vv</code>表示尽可能的展示运行过程中的系统消息，<code>-p</code>表示要监听的端口号。</p>
-</li>
-<li><p>选择要与监听主机建立连接的机器，在终端中执行如下命令：</p>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">nc 步骤2中创建监听的主机ip 步骤2中创建的监听端口</span><br></pre></td></tr></table></figure></li>
-<li><p>执行完2、3之后，一条连接已经创建完成，可以开始互发消息了。</p>
-</li>
-</ol>
-<blockquote>
-<p>需要注意的是，连接双方发送的消息会全部展示在各自的屏幕上，如果有多于两个以上的连接方则无法区分消息的来源。</p>
-</blockquote>
-<h2 id="使用netcat传输文件"><a href="#使用netcat传输文件" class="headerlink" title="使用netcat传输文件"></a>使用netcat传输文件</h2><p>netcat还可以用来传输文件</p>
+    <title>我们为什么喜欢迪迦奥特曼——迪迦被禁播后的感想</title>
+    <url>/2021/09/26/why-we-like-ultraman-tiga/</url>
+    <content><![CDATA[<h1 id="谁能想到，2021年的9月24日，这个看似格外普通的日子，却也是陪伴我们童年一路走来的特摄剧《迪迦奥特曼》上映25周年，居然在一片举报声中无声无息的全网下架，对于奥迷来说，这是一个值得被记住的日子，而对于期盼国产动漫能早日赶超国际水平的国人而言，这次的禁令不能不让我们心寒，或许我们希望的那一天永远都不会到来了。"><a href="#谁能想到，2021年的9月24日，这个看似格外普通的日子，却也是陪伴我们童年一路走来的特摄剧《迪迦奥特曼》上映25周年，居然在一片举报声中无声无息的全网下架，对于奥迷来说，这是一个值得被记住的日子，而对于期盼国产动漫能早日赶超国际水平的国人而言，这次的禁令不能不让我们心寒，或许我们希望的那一天永远都不会到来了。" class="headerlink" title="谁能想到，2021年的9月24日，这个看似格外普通的日子，却也是陪伴我们童年一路走来的特摄剧《迪迦奥特曼》上映25周年，居然在一片举报声中无声无息的全网下架，对于奥迷来说，这是一个值得被记住的日子，而对于期盼国产动漫能早日赶超国际水平的国人而言，这次的禁令不能不让我们心寒，或许我们希望的那一天永远都不会到来了。"></a>谁能想到，2021年的9月24日，这个看似格外普通的日子，却也是陪伴我们童年一路走来的特摄剧《迪迦奥特曼》上映25周年，居然在一片举报声中无声无息的全网下架，对于奥迷来说，这是一个值得被记住的日子，而对于期盼国产动漫能早日赶超国际水平的国人而言，这次的禁令不能不让我们心寒，或许我们希望的那一天永远都不会到来了。</h1><p><img src="/assets/tiga-ultraman.png"></p>
+<h2 id="迪迦带给我们的感动"><a href="#迪迦带给我们的感动" class="headerlink" title="迪迦带给我们的感动"></a>迪迦带给我们的感动</h2><p>我们总说迪迦代表的是<strong>光</strong>，其实我们喜欢迪迦的真正原因是我们信仰迪迦带给我们的<strong>希望</strong>和<strong>与黑暗势力抗争到底的决心和勇气</strong>。</p>
+<p>在迪迦奥特曼中，人类不停的被外来生物入侵，作为承担保护地球责任的地球防卫队——GUTS组织，在正面对抗体型庞大的怪兽和拥有高科技的外星人时根本也是无能为力，如果没有迪迦奥特曼的帮助，人类早就被毁灭几十次了，即使在面对没有丝毫破坏力的奇杰拉时，人类的表现也是令人失望的，因为人类宁愿活在虚无缥缈的幻境中，去逃避现实中的种种不堪，也不愿为了人类的未来去努力拼搏，积极进取，人类到底是一种软弱的生物。即便是迪迦之前的超古代奥特战士在看到这样的人类之后也只能任其毁灭，因为他们不是人类，对于浩瀚的宇宙而言，人类也只是其中渺小的一份子，如同大部分宇宙生物一样，自生自灭就是最好的生存法则。但是，这一切在迪迦出现后就完全变了，作为人类的大古机缘巧合之下获得了迪迦留在地球的巨人身躯，从一个普通的人类变成了保护地球的奥特战士，一次次以人类的身份比肩神明，为了人类的生存义无反顾的同凶残的巨型怪兽和邪恶的外星生物进行战斗，甚至在人类对奥特曼失去信任，反而帮助外星人诋毁奥特曼时也坚持维护人类免受灭顶之灾，如果这样的迪迦奥特曼都不能称之为英雄，并受到人类的尊敬和爱戴，那这人间或许本就该成为奇杰拉的墓场，这样的文明即使毁灭也无妨。迪迦奥特曼不仅带给我们希望，还教会了我们很多的道理，其中不乏对于人与人，人与科技，人与环境，人与地球，人与宇宙的深度思考，而这些看似宏大的人生理念，却在迪迦奥特曼中得到了很好的诠释。如果对于这样的一部作品都要冠以暴力的称谓而加以禁播，可想而知我们的社会中还有多少看似人模狗样，实则满肚子鸡鸣狗盗，阳奉阴违之人。这样的人无论是作为个人还是父母，对于人类的进步和社会的稳定都是一大阻碍，因为在他们眼中任何表达美好事物的东西都会被他们过滤在外，而最终留给他们的只能是暴力，于人于己，这样的人都是社会的毒瘤，而为他们提供滋生土壤的人也难辞其咎。此时此刻，迪迦或许只是暂时的离开，但他的精神会永远留在我们心中。迪迦奥特曼保护人类，更是为了保护我们人类赖以生存的美丽地球。</p>
+]]></content>
+      <categories>
+        <category>奥特曼</category>
+      </categories>
+      <tags>
+        <tag>迪迦</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>win10企业版激活方法</title>
+    <url>/2021/04/01/win10-activate/</url>
+    <content><![CDATA[<h2 id="本文主要介绍如何通过kms服务器实现Windows-10专业版和企业版激活。"><a href="#本文主要介绍如何通过kms服务器实现Windows-10专业版和企业版激活。" class="headerlink" title="本文主要介绍如何通过kms服务器实现Windows 10专业版和企业版激活。"></a>本文主要介绍如何通过kms服务器实现Windows 10专业版和企业版激活。</h2><ul>
+<li><p>安装完系统之后，按住<code>Win+X</code>键，选择<code>Windows PowerShell（管理员）</code>,在弹出的窗口中输入下列命令：</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="comment"># win10专业版用户</span></span><br><span class="line">slmgr /ipk W269N-WFGWX-YVC9B-4J6C9-T83GX</span><br><span class="line">slmgr /skms kms.03k.org</span><br><span class="line">slmgr /ato</span><br><span class="line"><span class="comment"># win10企业版用户</span></span><br><span class="line">slmgr /ipk NPPR9-FWDCX-D2C8J-H872K-2YT43</span><br><span class="line">slmgr /skms kms.03k.org</span><br><span class="line">slmgr /ato</span><br></pre></td></tr></table></figure></li>
+<li><p>考虑到一般笔记本厂商会预装win10家庭版，所以，在使用上面的办法之前需要先升级到win10专业版。步骤如下：</p>
 <ol>
-<li><p>对接收方执行如下命立：</p>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">nc -l -vv -p 12345 &gt; received_file</span><br></pre></td></tr></table></figure></li>
-<li><p>在发送方执行如下命令</p>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">nc 接收方的ip地址 12345 &lt; received_file</span><br></pre></td></tr></table></figure>
-<blockquote>
-<p>需要注意的是，这里创建监听的动作是由接收方发起的，而发送方需要和接收方建立连接并发送文件。</p>
-</blockquote>
+<li><p>打开<code>设置</code>页面，选择<code>更新和安全</code>，继续选择<code>激活</code>，点击<code>更改产品密钥</code>，输入：</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">J7QT3-3GCPG-9GVWT-CH2XR-GMRJM</span><br></pre></td></tr></table></figure>
+<p>点击下一步</p>
+</li>
+<li><p>在提示页面点击更新即可。</p>
 </li>
 </ol>
-]]></content>
-      <categories>
-        <category>linux</category>
-      </categories>
-      <tags>
-        <tag>netcat</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>在linux系统终端查看硬件信息</title>
-    <url>/2021/10/05/hardware-info-cmd/</url>
-    <content><![CDATA[<h2 id="使用如下命令查看包括CPU、内存、硬盘、主板在内的各种硬件相关的信息"><a href="#使用如下命令查看包括CPU、内存、硬盘、主板在内的各种硬件相关的信息" class="headerlink" title="使用如下命令查看包括CPU、内存、硬盘、主板在内的各种硬件相关的信息"></a>使用如下命令查看包括CPU、内存、硬盘、主板在内的各种硬件相关的信息</h2><ul>
-<li><p>CPU型号</p>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">cat /proc/cpuinfo | grep <span class="string">&quot;model name&quot;</span> | uniq</span><br></pre></td></tr></table></figure></li>
-<li><p>查看CPU物理个数</p>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">cat /proc/cpuinfo | grep <span class="string">&quot;physical id&quot;</span> | uniq | wc -l</span><br></pre></td></tr></table></figure></li>
-<li><p>查看内存信息</p>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="comment"># 先安装工具软件，以archlinux为例</span></span><br><span class="line">sudo pacman -S dmidecode</span><br><span class="line">sudo dmidecode -t memory | grep Size</span><br></pre></td></tr></table></figure></li>
-<li><p>查看内存条厂家</p>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">sudo dmidecode -t memory | grep Manufacturer</span><br></pre></td></tr></table></figure></li>
-<li><p>查看硬盘信息</p>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">fdisk -l | grep <span class="string">&quot;Disk /dev/sd&quot;</span></span><br></pre></td></tr></table></figure></li>
-<li><p>查看主板信息</p>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">sudo dmidecode | grep -A16 <span class="string">&quot;System Information$&quot;</span></span><br></pre></td></tr></table></figure>
-
-
 </li>
 </ul>
 ]]></content>
       <categories>
-        <category>hardware</category>
+        <category>工具</category>
       </categories>
       <tags>
-        <tag>linux</tag>
-        <tag>硬件</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>国庆假期之后返回上海后的感想</title>
-    <url>/2021/10/08/back-to-shanghai-after-guoqing-holiday/</url>
-    <content><![CDATA[<h2 id="工作篇"><a href="#工作篇" class="headerlink" title="工作篇"></a>工作篇</h2><p>兜兜转转，一咋眼的功夫，来上海工作已经两年有余了，刚来上海找工作的那段时间其实心里是没底的，毕竟在上一家公司虽然说也有了两年的工作经验，可是真正学到的东西却没有多少，</p>
-]]></content>
-      <categories>
-        <category>人生</category>
-      </categories>
-      <tags>
-        <tag>个人感悟</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>面试指南</title>
-    <url>/2021/10/07/interview-guide/</url>
-    <content><![CDATA[<h2 id="1、说下你的优点和缺点"><a href="#1、说下你的优点和缺点" class="headerlink" title="1、说下你的优点和缺点"></a>1、说下你的优点和缺点</h2><ul>
-<li><p>缺点：</p>
-<p>公开演讲</p>
-</li>
-<li></li>
-</ul>
-]]></content>
-      <categories>
-        <category>面试</category>
-      </categories>
-      <tags>
-        <tag>面试</tag>
+        <tag>windows</tag>
+        <tag>激活</tag>
       </tags>
   </entry>
 </search>
