@@ -1012,43 +1012,6 @@ dict是客户端，dictd是dict的后台服务器。默认安装之后是不带�
       </tags>
   </entry>
   <entry>
-    <title>string-in-file-search</title>
-    <url>/2021/08/08/string-in-file-search/</url>
-    <content><![CDATA[<h2 id="在指定目下寻找包含指定字符串的文件："><a href="#在指定目下寻找包含指定字符串的文件：" class="headerlink" title="在指定目下寻找包含指定字符串的文件："></a>在指定目下寻找包含指定字符串的文件：</h2><ol>
-<li>输出文件名和内容</li>
-</ol>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">grep mysqli_connect ./</span><br></pre></td></tr></table></figure>
-<p>其中，，</p>
-<ul>
-<li><p>加入<code>-r</code>可以递归搜索</p>
-</li>
-<li><p>加入<code>-l</code>可以只打印匹配的文件名</p>
-</li>
-<li><p>加入参数<code>-e</code>可以支持正则表达式</p>
-</li>
-<li><p>加入参数<code>-i</code>可以不区分大小写</p>
-</li>
-<li><p>加入参数<code>-c</code>可以指定匹配的行数</p>
-</li>
-<li><p>加入<code>-v</code>可以查出不匹配指定字符串的行数</p>
-</li>
-</ul>
-<ol start="2">
-<li><p>替换上述匹配命令中的匹配字符串</p>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">sed -i <span class="string">&quot;s/mysqli_connect/mysql_connect/g&quot;</span> `grep mysqli_connect -rl ./`</span><br></pre></td></tr></table></figure>
-<p>其中，<code>-i</code>表示替换立即生效</p>
-</li>
-</ol>
-]]></content>
-      <categories>
-        <category>字符串处理</category>
-      </categories>
-      <tags>
-        <tag>grep</tag>
-        <tag>sed</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>如何使用openssh进行远程连接</title>
     <url>/2020/12/27/ssh-manual/</url>
     <content><![CDATA[<h2 id="SSH连接的建立方式"><a href="#SSH连接的建立方式" class="headerlink" title="SSH连接的建立方式"></a>SSH连接的建立方式</h2><p>ssh可以通过密码和密钥（更加安全）这两种方式建立起客户端与 服务端的连接。</p>
@@ -1113,6 +1076,43 @@ dict是客户端，dictd是dict的后台服务器。默认安装之后是不带�
       <tags>
         <tag>linux</tag>
         <tag>ssh</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>string-in-file-search</title>
+    <url>/2021/08/08/string-in-file-search/</url>
+    <content><![CDATA[<h2 id="在指定目下寻找包含指定字符串的文件："><a href="#在指定目下寻找包含指定字符串的文件：" class="headerlink" title="在指定目下寻找包含指定字符串的文件："></a>在指定目下寻找包含指定字符串的文件：</h2><ol>
+<li>输出文件名和内容</li>
+</ol>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">grep mysqli_connect ./</span><br></pre></td></tr></table></figure>
+<p>其中，，</p>
+<ul>
+<li><p>加入<code>-r</code>可以递归搜索</p>
+</li>
+<li><p>加入<code>-l</code>可以只打印匹配的文件名</p>
+</li>
+<li><p>加入参数<code>-e</code>可以支持正则表达式</p>
+</li>
+<li><p>加入参数<code>-i</code>可以不区分大小写</p>
+</li>
+<li><p>加入参数<code>-c</code>可以指定匹配的行数</p>
+</li>
+<li><p>加入<code>-v</code>可以查出不匹配指定字符串的行数</p>
+</li>
+</ul>
+<ol start="2">
+<li><p>替换上述匹配命令中的匹配字符串</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">sed -i <span class="string">&quot;s/mysqli_connect/mysql_connect/g&quot;</span> `grep mysqli_connect -rl ./`</span><br></pre></td></tr></table></figure>
+<p>其中，<code>-i</code>表示替换立即生效</p>
+</li>
+</ol>
+]]></content>
+      <categories>
+        <category>字符串处理</category>
+      </categories>
+      <tags>
+        <tag>grep</tag>
+        <tag>sed</tag>
       </tags>
   </entry>
   <entry>
