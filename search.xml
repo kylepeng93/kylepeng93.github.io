@@ -17,6 +17,18 @@
       </tags>
   </entry>
   <entry>
+    <title>下载神器aria2使用手册</title>
+    <url>/2021/04/01/aria2-manual/</url>
+    <content><![CDATA[<h2 id="aria2是什么东西"><a href="#aria2是什么东西" class="headerlink" title="aria2是什么东西"></a>aria2是什么东西</h2>]]></content>
+      <categories>
+        <category>工具</category>
+      </categories>
+      <tags>
+        <tag>aria2</tag>
+        <tag>神器</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>archlinux安装指南</title>
     <url>/2021/10/02/archlinux-install-guide/</url>
     <content><![CDATA[<h2 id="Arch-Linux是什么"><a href="#Arch-Linux是什么" class="headerlink" title="Arch Linux是什么"></a>Arch Linux是什么</h2><p>Arch Linux是一款滚动更新的GNU/Linux发行版，致力于提供最新的稳定版软件，相较于其他图形界面的发行版，Arch Linux只能在命令行界面进行安装，且默认不带任何桌面环境。（非特别说明，后文将GNU/Linux简称为Linux）</p>
@@ -48,18 +60,6 @@
       </categories>
       <tags>
         <tag>archlinux</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>下载神器aria2使用手册</title>
-    <url>/2021/04/01/aria2-manual/</url>
-    <content><![CDATA[<h2 id="aria2是什么东西"><a href="#aria2是什么东西" class="headerlink" title="aria2是什么东西"></a>aria2是什么东西</h2>]]></content>
-      <categories>
-        <category>工具</category>
-      </categories>
-      <tags>
-        <tag>aria2</tag>
-        <tag>神器</tag>
       </tags>
   </entry>
   <entry>
