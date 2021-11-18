@@ -1352,4 +1352,56 @@ dict是客户端，dictd是dict的后台服务器。默认安装之后是不带�
         <tag>激活</tag>
       </tags>
   </entry>
+  <entry>
+    <title>为树莓派配置国内软件源</title>
+    <url>/2021/11/18/add-china-software-source-for-raspberry-pi/</url>
+    <content><![CDATA[<h2 id="因为众所周知的原因，树莓派的国外软件源在国内访问速度非常考验耐性，所以，为了能让树莓派愉快的更新到最新版本，有必要将默认的软件源替换成国内的同步镜像。下面就以清华大学的镜像站点为例子进行说明"><a href="#因为众所周知的原因，树莓派的国外软件源在国内访问速度非常考验耐性，所以，为了能让树莓派愉快的更新到最新版本，有必要将默认的软件源替换成国内的同步镜像。下面就以清华大学的镜像站点为例子进行说明" class="headerlink" title="因为众所周知的原因，树莓派的国外软件源在国内访问速度非常考验耐性，所以，为了能让树莓派愉快的更新到最新版本，有必要将默认的软件源替换成国内的同步镜像。下面就以清华大学的镜像站点为例子进行说明"></a>因为众所周知的原因，树莓派的国外软件源在国内访问速度非常考验耐性，所以，为了能让树莓派愉快的更新到最新版本，有必要将默认的软件源替换成国内的同步镜像。下面就以清华大学的镜像站点为例子进行说明</h2><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ sudo vim /etc/apt/sources.list</span><br><span class="line"><span class="comment"># 将默认的软件源注释掉，新增如下的配置</span></span><br></pre></td></tr></table></figure>
+
+<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">deb http://mirrors.tuna.tsinghua.edu.cn/raspbian/raspbian/ bullseye main non-free contrib rpi</span><br><span class="line">deb-src http://mirrors.tuna.tsinghua.edu.cn/raspbian/raspbian/ bullseye main non-free contrib rpi</span><br></pre></td></tr></table></figure>
+
+<p>其中<code>bullseye</code>为当前树莓派系统的版本代号，可以参考默认的国外源的镜像配置中的代号，保持一致即可。</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ sudo vim /etc/apt/sources.list.d/raspi.list</span><br><span class="line"><span class="comment"># 将默认的软件源注释掉，并新增如下的配置</span></span><br></pre></td></tr></table></figure>
+
+<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">deb http://mirrors.tuna.tsinghua.edu.cn/raspberrypi/ bullseye main</span><br></pre></td></tr></table></figure>
+
+<p><code>bullseye</code>和默认配置的保持一直即可。</p>
+]]></content>
+      <categories>
+        <category>raspberry pi</category>
+      </categories>
+      <tags>
+        <tag>国内源</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>怎么在linux上清除命令的输出内容</title>
+    <url>/2021/11/15/how-to-discard-output-on-linux/</url>
+    <content><![CDATA[<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ ls -al &gt; /dev/null 2&gt;&amp;1</span><br></pre></td></tr></table></figure>
+
+<p>执行上面的命令之后你会发现终端没有任何输出，为什么会这样呢？</p>
+<p>继续执行下面的命令</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ ls -qwer &gt; /dev/null 2&gt;&amp;1</span><br></pre></td></tr></table></figure>
+
+<p>发现还是没有任何输出，即使该命令是错误的。</p>
+<p>造成这一切的根源在于命令最后面的<code>2&gt;&amp;1</code>。</p>
+<p>我们知道<code>/dev/null</code>是<code>linux</code>系统上的伪设备文件，可以被用来消除来自程序的输出。尤其是对于命令行程序而言有更大的意义。</p>
+<p><code>/dev/null</code>看起来像是一个水漕，比如说一个可写的目标文件，然而只要有任何数据流被写入这个文件，都会被马上删除。</p>
+<p>当用户不需要来自程序的输出信息时，这个命令是有用的。因为程序可能会生成大量的输出内容，而这会给分析日志的工作带来混乱。</p>
+<p>对于<code>/dev/null 2&gt;&amp;1</code>命令，2在linux上代表STDERR（标准错误输出），而1则代表STDOUT（标准输出）。因此，这个命令的最终解释就是将标准错误输出和标准输出重定向到<code>/dev/null</code>，即消除这两种类型的输出。</p>
+<p>我们再来具体分析下这个命令的构成，首先<code>&gt;</code>表示重定向，而被重定向的对象则是<code>/dev/null</code>。而不是打印到终端。</p>
+<p>这是否意味着该命令所有的输出都会被重定向到<code>/dev/null</code>呢，并不是，因为它只会重定向标准输出。</p>
+<p>因此，还需要加上<code>2&gt;&amp;1</code>。表示将2（标准错误输出）重定向到1（标准输出）。那么<code>&amp;</code>代表什么意思呢？如果不加上<code>&amp;</code>的话，标准错误输出将会输出到名字为1的文件中。而<code>&amp;</code>会告诉系统1不是一个文件，而是一个标准输出描述符号。</p>
+<p>最后，我们将标准输出和标准错误输出都重定向到了<code>/dev/null</code>。而<code>/dev/null</code>会将所有的输出内容全部清除掉。</p>
+<blockquote>
+<p>小结：/dev/null是linux系统上一个特殊的设备文件，可以将任何命令的标准输出（不管是标准输出还是错误输出）清除掉。</p>
+</blockquote>
+]]></content>
+      <categories>
+        <category>linux</category>
+      </categories>
+      <tags>
+        <tag>linux</tag>
+        <tag>输出</tag>
+      </tags>
+  </entry>
 </search>
