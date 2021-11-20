@@ -865,8 +865,23 @@ dict是客户端，dictd是dict的后台服务器。默认安装之后是不带�
 <li><p>当key不存在时才设值：</p>
 <figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">setnx key value</span><br></pre></td></tr></table></figure>
 
+
+
 </li>
 </ol>
+<h2 id="redis系统管理命令"><a href="#redis系统管理命令" class="headerlink" title="redis系统管理命令"></a>redis系统管理命令</h2><ol>
+<li>给redis服务器设置密码</li>
+</ol>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ redis-cli</span><br><span class="line">127.0.0.1:6379&gt; config <span class="built_in">set</span> requirepass my_password</span><br><span class="line"><span class="comment"># 获取密码</span></span><br><span class="line">127.0.0.1:6379&gt; config get requirepass</span><br><span class="line">(error) NOAUTH Authentication required.</span><br><span class="line"><span class="comment"># 使用设置过的密码登陆</span></span><br><span class="line">127.0.0.1:6379&gt; auth my_password</span><br><span class="line">OK</span><br><span class="line">127.0.0.1:6379&gt; config get requirepass</span><br><span class="line">1)<span class="string">&quot;requirepass&quot;</span></span><br><span class="line">2)<span class="string">&quot;my_password&quot;</span></span><br></pre></td></tr></table></figure>
+
+<p>需要注意的是，上面的设置方式在redis服务器重启之后便会失效，如果需要重启后仍然有效，则可以修改配置文件</p>
+<p>打开<code>/etc/redis/redis.conf</code>，修改如下地方：</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="comment"># requirepass foobared</span></span><br></pre></td></tr></table></figure>
+
+<p>改成如下内容</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">requirepass my_password</span><br></pre></td></tr></table></figure>
+
+<p>保存之后重启redis服务器即可生效。</p>
 ]]></content>
       <categories>
         <category>数据库</category>
