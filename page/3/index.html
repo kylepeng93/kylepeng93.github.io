@@ -84,9 +84,9 @@
   <ul class="main-menu menu">
         <li class="menu-item menu-item-home"><a href="/" rel="section"><i class="fa fa-home fa-fw"></i>首页</a></li>
         <li class="menu-item menu-item-about"><a href="/about/" rel="section"><i class="fa fa-user fa-fw"></i>关于</a></li>
-        <li class="menu-item menu-item-tags"><a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>标签<span class="badge">64</span></a></li>
-        <li class="menu-item menu-item-categories"><a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>分类<span class="badge">29</span></a></li>
-        <li class="menu-item menu-item-archives"><a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档<span class="badge">47</span></a></li>
+        <li class="menu-item menu-item-tags"><a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>标签<span class="badge">68</span></a></li>
+        <li class="menu-item menu-item-categories"><a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>分类<span class="badge">32</span></a></li>
+        <li class="menu-item menu-item-archives"><a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档<span class="badge">50</span></a></li>
       <li class="menu-item menu-item-search">
         <a role="button" class="popup-trigger"><i class="fa fa-search fa-fw"></i>搜索
         </a>
@@ -155,18 +155,18 @@
   <nav class="site-state">
       <div class="site-state-item site-state-posts">
         <a href="/archives/">
-          <span class="site-state-item-count">47</span>
+          <span class="site-state-item-count">50</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
       <div class="site-state-item site-state-categories">
           <a href="/categories/">
-        <span class="site-state-item-count">29</span>
+        <span class="site-state-item-count">32</span>
         <span class="site-state-item-name">分类</span></a>
       </div>
       <div class="site-state-item site-state-tags">
           <a href="/tags/">
-        <span class="site-state-item-count">64</span>
+        <span class="site-state-item-count">68</span>
         <span class="site-state-item-name">标签</span></a>
       </div>
   </nav>
@@ -195,6 +195,336 @@
 
 
     <div class="main-inner index posts-expand">
+
+    
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
+    <link itemprop="mainEntityOfPage" href="http://kylepeng93.github.io/2021/08/09/spring-bean-init-and-destroy/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/imagesUse%20GitHub%20issues%20for%20blog%20comments,%20wik/avatar.gif">
+      <meta itemprop="name" content="彭凯">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="成长日记">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          <a href="/2021/08/09/spring-bean-init-and-destroy/" class="post-title-link" itemprop="url">Spring框架中bean的生命周期</a>
+        </h2>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">发表于</span>
+      
+
+      <time title="创建时间：2021-08-09 22:23:53 / 修改时间：22:35:31" itemprop="dateCreated datePublished" datetime="2021-08-09T22:23:53+08:00">2021-08-09</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">分类于</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/spring-framework/" itemprop="url" rel="index"><span itemprop="name">spring framework</span></a>
+        </span>
+    </span>
+
+  
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+          <h2 id="使用-PostConstruct和-PreDestroy注解在同一个配置类中执行bean的初始化前和销毁前的配置"><a href="#使用-PostConstruct和-PreDestroy注解在同一个配置类中执行bean的初始化前和销毁前的配置" class="headerlink" title="使用@PostConstruct和@PreDestroy注解在同一个配置类中执行bean的初始化前和销毁前的配置"></a>使用<code>@PostConstruct</code>和<code>@PreDestroy</code>注解在同一个配置类中执行bean的初始化前和销毁前的配置</h2><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@Configuration</span></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">MyBeanPostProcessor</span> </span>&#123;</span><br><span class="line">    <span class="meta">@Bean</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> String <span class="title">helloWorld</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="string">&quot;hello world&quot;</span>;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@PostConstruct</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">init</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        System.out.println(<span class="string">&quot;我是初始化前执行的方法&quot;</span>);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@PreDestroy</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">destroy</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        System.out.println(<span class="string">&quot;我是销毁前执行的方法&quot;</span>);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>上面的配置类中只定义了一个bean，且是字符串类型（方便举例），大部分情况下应该是返回一个对象。</p>
+<h2 id="使用-Bean-initMethod-quot-init-quot-destroyMethod-quot-destroy-quot-注解执行bean初始化前和销毁前的配置"><a href="#使用-Bean-initMethod-quot-init-quot-destroyMethod-quot-destroy-quot-注解执行bean初始化前和销毁前的配置" class="headerlink" title="使用@Bean(initMethod = &quot;init&quot;, destroyMethod = &quot;destroy&quot;)注解执行bean初始化前和销毁前的配置"></a>使用<code>@Bean(initMethod = &quot;init&quot;, destroyMethod = &quot;destroy&quot;)</code>注解执行bean初始化前和销毁前的配置</h2><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@Configuration</span></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">ConfigTest</span> </span>&#123;</span><br><span class="line">    <span class="meta">@Bean(initMethod = &quot;init&quot;, destroyMethod = &quot;destroy&quot;)</span></span><br><span class="line">    <span class="function">Test1 <span class="title">test1</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="keyword">new</span> Test1(); <span class="comment">// 使用默认的无参构造器</span></span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">// 定义Bean的内容，本质上是一个普通的java类</span></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Test1</span> </span>&#123;</span><br><span class="line">    <span class="comment">// 初始化前的执行方法</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">init</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        System.out.println(<span class="string">&quot;this is init method&quot;</span>);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="comment">// 销毁前的执行方法</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">destroy</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        System.out.println(<span class="string">&quot;this is destroy method&quot;</span>);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+
+      
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+</div>
+
+
+
+
+    
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
+    <link itemprop="mainEntityOfPage" href="http://kylepeng93.github.io/2021/08/08/samba-server-tutorial/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/imagesUse%20GitHub%20issues%20for%20blog%20comments,%20wik/avatar.gif">
+      <meta itemprop="name" content="彭凯">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="成长日记">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          <a href="/2021/08/08/samba-server-tutorial/" class="post-title-link" itemprop="url">在ubuntu上创建自己的samba服务器</a>
+        </h2>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">发表于</span>
+      
+
+      <time title="创建时间：2021-08-08 19:23:12 / 修改时间：21:51:03" itemprop="dateCreated datePublished" datetime="2021-08-08T19:23:12+08:00">2021-08-08</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">分类于</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/%E6%96%87%E4%BB%B6%E5%85%B1%E4%BA%AB%E6%9C%8D%E5%8A%A1/" itemprop="url" rel="index"><span itemprop="name">文件共享服务</span></a>
+        </span>
+    </span>
+
+  
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+          <h2 id="samba"><a href="#samba" class="headerlink" title="samba"></a>samba</h2><p>类Unix（Gnu/Linux）操作系统上用来和标准Windows文件系统互相通信的一种程序套件；Samba允许类Unix系统和Windows系统共享文件和打印机，忽略两个系统间的差异性，从而实现共存。</p>
+<h2 id="在ubuntu上安装Samba"><a href="#在ubuntu上安装Samba" class="headerlink" title="在ubuntu上安装Samba"></a>在ubuntu上安装Samba</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo apt update &amp;&amp; sudo apt install -y samba</span><br></pre></td></tr></table></figure>
+
+<h2 id="修改配置文件，设置共享目录"><a href="#修改配置文件，设置共享目录" class="headerlink" title="修改配置文件，设置共享目录"></a>修改配置文件，设置共享目录</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 创建共享目录</span></span><br><span class="line">$ mkdir /tmp/share</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 将共享目录添加到配置文件中</span></span><br><span class="line">$ sudo vim /etc/samba/smb.conf</span><br></pre></td></tr></table></figure>
+
+<p>将下面的内容追加到文件末尾：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">[share]</span><br><span class="line">	comment = Samba share directory # 共享目录说明</span><br><span class="line">	path = /tmp/share # 共享目录的系统路径</span><br><span class="line">	read only = yes # 是否只读 </span><br><span class="line">    browsable = yes # 是否可浏览</span><br></pre></td></tr></table></figure>
+
+<h2 id="修改默认端口（适用于公网访问的场景，内网访问可以不用修改）"><a href="#修改默认端口（适用于公网访问的场景，内网访问可以不用修改）" class="headerlink" title="修改默认端口（适用于公网访问的场景，内网访问可以不用修改）"></a>修改默认端口（适用于公网访问的场景，内网访问可以不用修改）</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ sudo vim /etc/samba/smb.conf</span><br></pre></td></tr></table></figure>
+
+<p>将下面的内容追加到<code>[global]</code>部分的末尾（如果端口配置已存在，则直接修改端口号）</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">[global]</span><br><span class="line">	...</span><br><span class="line">	smb ports = 4450 1390 #想要指定的端口号，原本为445 139</span><br></pre></td></tr></table></figure>
+
+<h2 id="重启smbd守护进程"><a href="#重启smbd守护进程" class="headerlink" title="重启smbd守护进程"></a>重启smbd守护进程</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ sudo systemctl restart smbd</span><br></pre></td></tr></table></figure>
+
+<h2 id="查看修改后的端口号是否生效"><a href="#查看修改后的端口号是否生效" class="headerlink" title="查看修改后的端口号是否生效"></a>查看修改后的端口号是否生效</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">$ ss -nltp | grep 4450</span><br><span class="line">$ ss -nltp | grep 1390</span><br></pre></td></tr></table></figure>
+
+<h2 id="配置防火墙ufw"><a href="#配置防火墙ufw" class="headerlink" title="配置防火墙ufw"></a>配置防火墙ufw</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 如果开启了ufw,则需要将samba服务添加到允许访问服务列表中</span></span><br><span class="line">sudo ufw allow samba</span><br><span class="line"><span class="comment"># 如果重新配置了端口，则需要指定允许访问的端口号</span></span><br><span class="line">sudo ufw allow [port] <span class="comment"># 可以在端口号后面加上tcp或者udp,如1390/tcp、1390/udp</span></span><br></pre></td></tr></table></figure>
+
+<h2 id="创建samba用户账户"><a href="#创建samba用户账户" class="headerlink" title="创建samba用户账户"></a>创建samba用户账户</h2><p>samba默认不使用系统账户，因此，我们需要为共享目录设置一个用户名和密码：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">sudo smbpasswd -a <span class="variable">$USER</span></span><br><span class="line"><span class="comment"># 该命令会将当前用户加入到samba的用户中，并提示设置该用户对应的密码</span></span><br></pre></td></tr></table></figure>
+
+<h2 id="验证samba服务的可用性"><a href="#验证samba服务的可用性" class="headerlink" title="验证samba服务的可用性"></a>验证samba服务的可用性</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">sudo apt install smbclient</span><br><span class="line"><span class="comment"># 验证可用的samba共享目录</span></span><br><span class="line">smbclient -L samba_server_ip</span><br><span class="line"><span class="comment"># 如果修改了默认端口号，还需要手动指定端口号</span></span><br><span class="line">smbclient -p 1390 -L samba_server_ip</span><br></pre></td></tr></table></figure>
+
+<p>如果服务正常的话，会出现如下内容：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">Enter WORKGROUP\pengkai<span class="string">&#x27;s password: </span></span><br><span class="line"><span class="string"></span></span><br><span class="line"><span class="string">	Sharename       Type      Comment</span></span><br><span class="line"><span class="string">	---------       ----      -------</span></span><br><span class="line"><span class="string">	sambashare      Disk      Samba And linux</span></span><br><span class="line"><span class="string">	www-data        Disk      apache web root</span></span><br><span class="line"><span class="string">	print$          Disk      Printer Drivers</span></span><br><span class="line"><span class="string">	IPC$            IPC       IPC Service (kyleVps server (Samba, Ubuntu))</span></span><br><span class="line"><span class="string">SMB1 disabled -- no workgroup available</span></span><br></pre></td></tr></table></figure>
+
+<h2 id="在终端中连接samba共享目录"><a href="#在终端中连接samba共享目录" class="headerlink" title="在终端中连接samba共享目录"></a>在终端中连接samba共享目录</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">smbclient -U [user] [-p port] //[samba_ip]/[share_directory] </span><br><span class="line"><span class="comment"># 上述命令需要指定登陆用户和samba服务器ip以及共享目录，随后系统会提示输入密码</span></span><br><span class="line"><span class="comment"># 密码验证通过之后会进入smb的命令行交互界面：</span></span><br><span class="line">Try <span class="string">&quot;help&quot;</span> to get a list of possible commands.</span><br><span class="line">smb: \&gt; ls</span><br><span class="line">  .                                   D        0  Sun Feb 21 18:42:49 2021</span><br><span class="line">  ..                                  D        0  Sun Feb 21 18:42:18 2021</span><br><span class="line">  Test File                           N       20  Sun Feb 21 18:42:49 2021</span><br><span class="line"> </span><br><span class="line">        971515904 blocks of size 1024. 843676384 blocks available</span><br><span class="line">smb: \&gt; </span><br></pre></td></tr></table></figure>
+
+<h2 id="将samba挂载至指定目录下"><a href="#将samba挂载至指定目录下" class="headerlink" title="将samba挂载至指定目录下"></a>将samba挂载至指定目录下</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">未完待续</span><br></pre></td></tr></table></figure>
+
+
+
+<p>至此，samba的安装、配置和使用就说完了。</p>
+
+      
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+</div>
+
+
+
+
+    
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
+    <link itemprop="mainEntityOfPage" href="http://kylepeng93.github.io/2021/08/08/namp-command-tutorial/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/imagesUse%20GitHub%20issues%20for%20blog%20comments,%20wik/avatar.gif">
+      <meta itemprop="name" content="彭凯">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="成长日记">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          <a href="/2021/08/08/namp-command-tutorial/" class="post-title-link" itemprop="url">nmap命令使用教程</a>
+        </h2>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">发表于</span>
+      
+
+      <time title="创建时间：2021-08-08 16:19:00 / 修改时间：17:20:43" itemprop="dateCreated datePublished" datetime="2021-08-08T16:19:00+08:00">2021-08-08</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">分类于</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/nmap/" itemprop="url" rel="index"><span itemprop="name">nmap</span></a>
+        </span>
+    </span>
+
+  
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+          <ol>
+<li><p>扫描单个目标地址：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">nmap 192.168.0.100</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>扫描多个目标地址</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">nmap 192.168.0.100 192.168.0.105</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>扫描一个范围内的目标地址</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">nmap 192.168.0.100-200</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>扫描目标地址所在的某个网段：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">nmap 192.168.0.100/24</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>扫描主机列表targets.txt文件中的所有目标地址</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">nmap -iL ~/targets.txt</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>扫描除某一个目标地址之外的所有目标地址</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">nmap 192.168.0.100/24 -exclude 192.168.0.105</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>扫描除某一文件中的目标地址之外的目标地址</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">nmap 192.168.0.100/24 -exceludefile ~/targets.txt</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>扫描某一目标地址的21、22、23、80端口</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">nmap 192.168.0.100 -p 21,22,23,80</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>对目标地址进行路由跟踪</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">nmap --traceroute 192.168.0.100</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>扫描目标地址所在C段的在线状况</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">nmap -sP 192.168.0.100/24</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>目标地址的操作系统指纹识别</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">nmap -O 192.168.0.100</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>目标地址提供的服务版本检测</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">nmap -sV 192.168.0.105</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>探测防火墙状态</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">nmap -sF -T4 192.168.0.100</span><br></pre></td></tr></table></figure>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</li>
+</ol>
+
+      
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+</div>
+
+
+
 
     
 
@@ -738,260 +1068,6 @@
 <p>为每个工作选择合适的工具，是成为一个优秀程序员的首要素质之一。</p>
 </blockquote>
 </li>
-<li></li>
-</ol>
-
-      
-    </div>
-
-    
-    
-    
-
-    <footer class="post-footer">
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-</div>
-
-
-
-
-    
-
-
-<div class="post-block">
-  
-  
-
-  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
-    <link itemprop="mainEntityOfPage" href="http://kylepeng93.github.io/2021/03/16/great-tool-for-linux/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/imagesUse%20GitHub%20issues%20for%20blog%20comments,%20wik/avatar.gif">
-      <meta itemprop="name" content="彭凯">
-      <meta itemprop="description" content="">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="成长日记">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          <a href="/2021/03/16/great-tool-for-linux/" class="post-title-link" itemprop="url">linux上的实用软件清单（个人用）</a>
-        </h2>
-
-        <div class="post-meta-container">
-          <div class="post-meta">
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-calendar"></i>
-      </span>
-      <span class="post-meta-item-text">发表于</span>
-
-      <time title="创建时间：2021-03-16 23:37:01" itemprop="dateCreated datePublished" datetime="2021-03-16T23:37:01+08:00">2021-03-16</time>
-    </span>
-      <span class="post-meta-item">
-        <span class="post-meta-item-icon">
-          <i class="far fa-calendar-check"></i>
-        </span>
-        <span class="post-meta-item-text">更新于</span>
-        <time title="修改时间：2021-03-18 00:22:30" itemprop="dateModified" datetime="2021-03-18T00:22:30+08:00">2021-03-18</time>
-      </span>
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-folder"></i>
-      </span>
-      <span class="post-meta-item-text">分类于</span>
-        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-          <a href="/categories/%E7%B3%BB%E7%BB%9F/" itemprop="url" rel="index"><span itemprop="name">系统</span></a>
-        </span>
-    </span>
-
-  
-</div>
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-          <h2 id="为什么要列这个清单"><a href="#为什么要列这个清单" class="headerlink" title="为什么要列这个清单"></a>为什么要列这个清单</h2><p>在使用gnu linux（后面均简称为linux）操作系统的过程当中，总有一些软件让你觉得即使没有windows也能让自己的工作和生活变得更加便利，因此，为了方便后面因为更换发行版或者因为不可控因素导致系统损坏而必须重新安装linux系统，特别将自己平时用的比较多的软件列出来以供后面安装新系统之后能够快速恢复到正常工作和生活状态。个人觉得，对于linux用户来说，相对于windows系统中软件来源的不可控性和零散性，linux系统自带的包管理器绝对是节约我们软件安装时间的一大利器。而且更便于自动化安装和初始化，而作为软件开发者，良好的编程环境更是完胜windows系统。也希望这个清单能让自己在今后的软件开发生涯中更加注重时间的重要性，不要浪费时间在一些无意义的折腾上，毕竟，系统是拿来用的，高效才是操作系统带给我们最终的目的。</p>
-<blockquote>
-<p><strong>以下包管理器均采用archlinux内置的<code>pacman</code></strong></p>
-</blockquote>
-<h2 id="翻译类软件"><a href="#翻译类软件" class="headerlink" title="翻译类软件"></a>翻译类软件</h2><ol>
-<li>带gui的：goldendict、stardict（星际译王）<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">sudo pacman -S goldendict</span><br><span class="line"><span class="comment"># 或者</span></span><br><span class="line">sudo pacman -S stardict</span><br></pre></td></tr></table></figure>
-<a target="_blank" rel="noopener" href="http://download.huzheng.org/zh_CN/">字典下载链接</a>
-          <!--noindex-->
-            <div class="post-button">
-              <a class="btn" href="/2021/03/16/great-tool-for-linux/#more" rel="contents">
-                阅读全文 &raquo;
-              </a>
-            </div>
-          <!--/noindex-->
-        
-      
-    </div>
-
-    
-    
-    
-
-    <footer class="post-footer">
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-</div>
-
-
-
-
-    
-
-
-<div class="post-block">
-  
-  
-
-  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
-    <link itemprop="mainEntityOfPage" href="http://kylepeng93.github.io/2021/03/16/aliyun-gradle-config/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/imagesUse%20GitHub%20issues%20for%20blog%20comments,%20wik/avatar.gif">
-      <meta itemprop="name" content="彭凯">
-      <meta itemprop="description" content="">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="成长日记">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          <a href="/2021/03/16/aliyun-gradle-config/" class="post-title-link" itemprop="url">使用aliyun的maven仓库初始化gradle</a>
-        </h2>
-
-        <div class="post-meta-container">
-          <div class="post-meta">
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-calendar"></i>
-      </span>
-      <span class="post-meta-item-text">发表于</span>
-      
-
-      <time title="创建时间：2021-03-16 22:27:37 / 修改时间：22:45:18" itemprop="dateCreated datePublished" datetime="2021-03-16T22:27:37+08:00">2021-03-16</time>
-    </span>
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-folder"></i>
-      </span>
-      <span class="post-meta-item-text">分类于</span>
-        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-          <a href="/categories/java/" itemprop="url" rel="index"><span itemprop="name">java</span></a>
-        </span>
-    </span>
-
-  
-</div>
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-          <h2 id="在linux中使用gradle命令行构建程序时，使用国内镜像可以大大加快我们的构建过程，节约我们的时间，下面就如何配置aliyun仓库作为gradle的默认仓库作出说明。"><a href="#在linux中使用gradle命令行构建程序时，使用国内镜像可以大大加快我们的构建过程，节约我们的时间，下面就如何配置aliyun仓库作为gradle的默认仓库作出说明。" class="headerlink" title="在linux中使用gradle命令行构建程序时，使用国内镜像可以大大加快我们的构建过程，节约我们的时间，下面就如何配置aliyun仓库作为gradle的默认仓库作出说明。"></a>在linux中使用gradle命令行构建程序时，使用国内镜像可以大大加快我们的构建过程，节约我们的时间，下面就如何配置aliyun仓库作为gradle的默认仓库作出说明。</h2><ol>
-<li>如果只想对单个项目生效，那么可以在项目的<code>build.gradle</code>中添加如下配置：<figure class="highlight properties"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="attr">buildscript</span> <span class="string">&#123;</span></span><br><span class="line">    <span class="attr">repositories</span> <span class="string">&#123;</span></span><br><span class="line">        <span class="attr">maven</span> <span class="string">&#123;url &#x27;https://maven.aliyun.com/repository/google/&#x27;&#125;</span></span><br><span class="line">        <span class="attr">maven</span> <span class="string">&#123;url &#x27;https://maven.aliyun.com/repository/jcenter/&#x27;&#125;</span></span><br><span class="line">    <span class="attr">&#125;</span></span><br><span class="line">    <span class="attr">dependencies</span> <span class="string">&#123;</span></span><br><span class="line">        <span class="attr">classpath</span>: <span class="string">&#x27;com.android.tools.build:gradle:2.2.3&#x27;</span></span><br><span class="line"></span><br><span class="line">    <span class="attr">&#125;</span></span><br><span class="line"><span class="attr">&#125;</span></span><br><span class="line"><span class="attr">allprojects</span> <span class="string">&#123;</span></span><br><span class="line">    <span class="attr">repositories</span> <span class="string">&#123;</span></span><br><span class="line">         <span class="attr">maven</span> <span class="string">&#123; url &#x27;https://maven.aliyun.com/repository/google/&#x27; &#125;</span></span><br><span class="line">         <span class="attr">maven</span> <span class="string">&#123; url &#x27;https://maven.aliyun.com/repository/jcenter/&#x27;&#125; </span></span><br><span class="line">    <span class="attr">&#125;</span></span><br><span class="line"><span class="attr">&#125;</span></span><br></pre></td></tr></table></figure></li>
-<li>如果是对所有项目生效，那么需要在用户的家目录下面的.gradle目录下创建<code>init.gradle</code>文件，内容如下：<figure class="highlight properties"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br></pre></td><td class="code"><pre><span class="line"><span class="attr">allprojects&#123;</span></span><br><span class="line">    <span class="attr">repositories</span> <span class="string">&#123;</span></span><br><span class="line">        <span class="attr">def</span> <span class="string">ALIYUN_REPOSITORY_URL = &#x27;https://maven.aliyun.com/repository/public/&#x27;</span></span><br><span class="line">        <span class="attr">def</span> <span class="string">ALIYUN_JCENTER_URL = &#x27;https://maven.aliyun.com/repository/jcenter/&#x27;</span></span><br><span class="line">        <span class="attr">def</span> <span class="string">ALIYUN_GOOGLE_URL = &#x27;https://maven.aliyun.com/repository/google/&#x27;</span></span><br><span class="line">        <span class="attr">def</span> <span class="string">ALIYUN_GRADLE_PLUGIN_URL = &#x27;https://maven.aliyun.com/repository/gradle-plugin/&#x27;</span></span><br><span class="line">        <span class="attr">all</span> <span class="string">&#123; ArtifactRepository repo -&gt;</span></span><br><span class="line">            <span class="meta">if(repo</span> <span class="string">instanceof MavenArtifactRepository)&#123;</span></span><br><span class="line">                <span class="attr">def</span> <span class="string">url = repo.url.toString()</span></span><br><span class="line">                <span class="attr">if</span> <span class="string">(url.startsWith(&#x27;https://repo1.maven.org/maven2/&#x27;)) &#123;</span></span><br><span class="line">                    <span class="meta">project.logger.lifecycle</span> <span class="string">&quot;Repository $&#123;repo.url&#125; replaced by $ALIYUN_REPOSITORY_URL.&quot;</span></span><br><span class="line">                    <span class="attr">remove</span> <span class="string">repo</span></span><br><span class="line">                <span class="attr">&#125;</span></span><br><span class="line">                <span class="attr">if</span> <span class="string">(url.startsWith(&#x27;https://jcenter.bintray.com/&#x27;)) &#123;</span></span><br><span class="line">                    <span class="meta">project.logger.lifecycle</span> <span class="string">&quot;Repository $&#123;repo.url&#125; replaced by $ALIYUN_JCENTER_URL.&quot;</span></span><br><span class="line">                    <span class="attr">remove</span> <span class="string">repo</span></span><br><span class="line">                <span class="attr">&#125;</span></span><br><span class="line">                <span class="attr">if</span> <span class="string">(url.startsWith(&#x27;https://dl.google.com/dl/android/maven2/&#x27;)) &#123;</span></span><br><span class="line">                    <span class="meta">project.logger.lifecycle</span> <span class="string">&quot;Repository $&#123;repo.url&#125; replaced by $ALIYUN_GOOGLE_URL.&quot;</span></span><br><span class="line">                    <span class="attr">remove</span> <span class="string">repo</span></span><br><span class="line">                <span class="attr">&#125;</span></span><br><span class="line">                <span class="attr">if</span> <span class="string">(url.startsWith(&#x27;https://plugins.gradle.org/m2/&#x27;)) &#123;</span></span><br><span class="line">                    <span class="meta">project.logger.lifecycle</span> <span class="string">&quot;Repository $&#123;repo.url&#125; replaced by $ALIYUN_GRADLE_PLUGIN_URL.&quot;</span></span><br><span class="line">                    <span class="attr">remove</span> <span class="string">repo</span></span><br><span class="line">                <span class="attr">&#125;</span></span><br><span class="line">            <span class="attr">&#125;</span></span><br><span class="line">        <span class="attr">&#125;</span></span><br><span class="line">        <span class="attr">maven</span> <span class="string">&#123; url ALIYUN_REPOSITORY_URL &#125;</span></span><br><span class="line">        <span class="attr">maven</span> <span class="string">&#123; url ALIYUN_JCENTER_URL &#125;</span></span><br><span class="line">        <span class="attr">maven</span> <span class="string">&#123; url ALIYUN_GOOGLE_URL &#125;</span></span><br><span class="line">        <span class="attr">maven</span> <span class="string">&#123; url ALIYUN_GRADLE_PLUGIN_URL &#125;</span></span><br><span class="line">    <span class="attr">&#125;</span></span><br><span class="line"><span class="attr">&#125;</span></span><br></pre></td></tr></table></figure>
-</li>
-</ol>
-
-      
-    </div>
-
-    
-    
-    
-
-    <footer class="post-footer">
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-</div>
-
-
-
-
-    
-
-
-<div class="post-block">
-  
-  
-
-  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
-    <link itemprop="mainEntityOfPage" href="http://kylepeng93.github.io/2021/03/14/spring-in-action/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/imagesUse%20GitHub%20issues%20for%20blog%20comments,%20wik/avatar.gif">
-      <meta itemprop="name" content="彭凯">
-      <meta itemprop="description" content="">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="成长日记">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          <a href="/2021/03/14/spring-in-action/" class="post-title-link" itemprop="url">spring实战</a>
-        </h2>
-
-        <div class="post-meta-container">
-          <div class="post-meta">
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-calendar"></i>
-      </span>
-      <span class="post-meta-item-text">发表于</span>
-
-      <time title="创建时间：2021-03-14 21:37:28" itemprop="dateCreated datePublished" datetime="2021-03-14T21:37:28+08:00">2021-03-14</time>
-    </span>
-      <span class="post-meta-item">
-        <span class="post-meta-item-icon">
-          <i class="far fa-calendar-check"></i>
-        </span>
-        <span class="post-meta-item-text">更新于</span>
-        <time title="修改时间：2021-03-15 00:08:43" itemprop="dateModified" datetime="2021-03-15T00:08:43+08:00">2021-03-15</time>
-      </span>
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-folder"></i>
-      </span>
-      <span class="post-meta-item-text">分类于</span>
-        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-          <a href="/categories/spring%E6%A1%86%E6%9E%B6/" itemprop="url" rel="index"><span itemprop="name">spring框架</span></a>
-        </span>
-    </span>
-
-  
-</div>
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-          <h2 id="认识spring框架"><a href="#认识spring框架" class="headerlink" title="认识spring框架"></a>认识spring框架</h2><ol>
-<li>spring框架为开发者做了很多，反过来，它也要求开发者同样对它。</li>
 <li></li>
 </ol>
 

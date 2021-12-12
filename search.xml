@@ -864,8 +864,15 @@ dict是客户端，dictd是dict的后台服务器。默认安装之后是不带�
 </li>
 <li><p>当key不存在时才设值：</p>
 <figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">setnx key value</span><br></pre></td></tr></table></figure>
-
-
+</li>
+<li><p>删除指定key</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">del key</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>返回给定key的超时时间</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">ttl key</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>查看key的类型</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="built_in">type</span> key</span><br></pre></td></tr></table></figure>
 
 </li>
 </ol>
@@ -882,6 +889,21 @@ dict是客户端，dictd是dict的后台服务器。默认安装之后是不带�
 <figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">requirepass my_password</span><br></pre></td></tr></table></figure>
 
 <p>保存之后重启redis服务器即可生效。</p>
+<h2 id="redis模糊查询"><a href="#redis模糊查询" class="headerlink" title="redis模糊查询"></a>redis模糊查询</h2><ol>
+<li><p>查询所有的key</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">keys *</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>单字符匹配</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">keys h?llo <span class="comment"># 可以匹配hello、hallo和hxllo等</span></span><br></pre></td></tr></table></figure>
+</li>
+<li><p>多字符匹配</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">keys h*llo <span class="comment"># 可以匹配hello、heeeello等</span></span><br></pre></td></tr></table></figure>
+</li>
+<li><p>范围内匹配</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">keys h[ae]llo <span class="comment"># 可以匹配hallo、hello</span></span><br></pre></td></tr></table></figure>
+
+</li>
+</ol>
 ]]></content>
       <categories>
         <category>数据库</category>
@@ -1417,6 +1439,107 @@ dict是客户端，dictd是dict的后台服务器。默认安装之后是不带�
       <tags>
         <tag>linux</tag>
         <tag>输出</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>IT老齐的架构课程之缓存</title>
+    <url>/2021/12/12/it-laoqi-architecture-cache/</url>
+    <content><![CDATA[<h2 id="使用缓存的目的"><a href="#使用缓存的目的" class="headerlink" title="使用缓存的目的"></a>使用缓存的目的</h2><p>提升性能</p>
+<h2 id="缓存分类"><a href="#缓存分类" class="headerlink" title="缓存分类"></a>缓存分类</h2><ul>
+<li><p>客户端</p>
+<p>主要对浏览器的静态资源进行缓存，通过在浏览器端设置Expires（过期时间点）或者Cache-Control（时间段）来告诉浏览器将资源缓存到客户端本地，从而减少多次请求同一个静态资源带来的带宽和响应时效上的损耗。</p>
+</li>
+<li><p>应用层</p>
+<ul>
+<li>主要表现形式为CDN（Content Delivery Network），可以有效解决带宽集中占用以及数据分发的问题。</li>
+<li>通过Nginx实现负载均衡，将静态资源存储在Nginx服务器上，并开启压缩功能；</li>
+</ul>
+</li>
+<li><p>服务层</p>
+<ul>
+<li>进程内缓存：比如Mybatis的一二级缓存，或者Spring框架中的@EnableCache注解。</li>
+<li>进程外缓存：典型的使用redis作为分布式缓存技术。</li>
+</ul>
+</li>
+<li><p>数据层</p>
+</li>
+</ul>
+<h2 id="分布式缓存引入的问题"><a href="#分布式缓存引入的问题" class="headerlink" title="分布式缓存引入的问题"></a>分布式缓存引入的问题</h2><p>数据一致性</p>
+<h2 id="如何保证数据一致性"><a href="#如何保证数据一致性" class="headerlink" title="如何保证数据一致性"></a>如何保证数据一致性</h2><p>引入消息队列的主动推送功能，推送变更消息</p>
+<h2 id="什么情况下适用多级缓存架构"><a href="#什么情况下适用多级缓存架构" class="headerlink" title="什么情况下适用多级缓存架构"></a>什么情况下适用多级缓存架构</h2><ol>
+<li>缓存数据稳定</li>
+<li>可能产生高并发场景，应用启动时进行预热处理，访问前将热点数据先缓存，减少后端压力</li>
+<li>一定程度上允许数据不一致不重要的信息更新处理方式：T+1，ETL日中处理。</li>
+</ol>
+]]></content>
+      <categories>
+        <category>it老齐</category>
+      </categories>
+      <tags>
+        <tag>cache</tag>
+        <tag>缓存</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>微服务导论</title>
+    <url>/2021/11/23/microservices-theory-guide/</url>
+    <content><![CDATA[<p>“微服务”——一个在当前种类繁多的软件架构中出现的新术语。虽然我们对这种事的自然反应一般都是轻蔑的瞥一眼，但真正能吸引我们的其实是术语中描述的一种软件系统风格。我们在过去的几年中看到了有一些项目使用了这种风格，迄今为止，他们的结果大部分都是正面的，因此，我们很多的同事也将它作为了一种构建企业级应用的默认风格。但是，并没有太多的的信息来告诉我们微服务风格究竟是什么，以及怎么去实现它。</p>
+<p>简而言之，微服务架构风格是一种由多个微小服务集合组成的单应用开发风格，其中的每一个微小服务都拥有自己的进程以及轻量级的交互机制，通常是一个基于HTTP的API。这些服务围绕业务能力单独构建，并且可以被全自动化部署机制实现各自独立部署。对于这些服务也有一个纯粹的最小集中化管理，通常他们可以用不同的编程语言以及不同的数据存储技术来实现。</p>
+]]></content>
+      <categories>
+        <category>微服务</category>
+      </categories>
+      <tags>
+        <tag>微服务</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>spring-cloud服务注册与发现组件——Eureka</title>
+    <url>/2021/11/29/spring-cloud-component-eureka/</url>
+    <content><![CDATA[<h2 id="Spring-Cloud之服务发现——Eureka-发音为-juә’ri-kә"><a href="#Spring-Cloud之服务发现——Eureka-发音为-juә’ri-kә" class="headerlink" title="Spring Cloud之服务发现——Eureka(发音为[juә’ri:kә])"></a>Spring Cloud之服务发现——Eureka(发音为[juә’ri:kә])</h2><ul>
+<li><p>服务注册与发现以及反馈的实现流程：</p>
+<ol>
+<li>Provider将自己的节点信息发送到指定的服务注册机上；</li>
+<li>服务注册机将Provider发送过来的信息保存在指定区域，等待Consumer查询；</li>
+<li>Provider通过定期向服务注册机发送消息确保自己不会被注销，而当服务注册机长时间未收到某个Provider发送过来的信息时，会自动将该Provider注销。</li>
+<li>当Provider网络地址发生变更时，会自动重新注册节点信息到服务注册机，避免了人工修改配置的问题。</li>
+</ol>
+</li>
+<li><p>Eureka的实现机制:</p>
+<ol>
+<li>Eureka分为Server端和Client端，Server端提供服务发现的能力，当微服务节点启动时，会自动向Server端注册自己的节点信息，而Server端则负责存储这些节点信息，供服务调用者查询；</li>
+<li>Client端一般和微服务集成，为微服务提供注册服务到Server端的能力，并从Server端获取最新的已注册服务列表的信息<strong>缓存</strong>到微服务端；</li>
+<li>微服务启动后，会周期性（默认30s）向Server端发送心跳以防止被注销；</li>
+<li>同时，Server端也会周期性（默认90s）的检查已注册的各个微服务是否仍然存活，如果超时，则注销该微服务的注册信息；</li>
+</ol>
+</li>
+</ul>
+<h2 id="Eureka的基础实现"><a href="#Eureka的基础实现" class="headerlink" title="Eureka的基础实现"></a>Eureka的基础实现</h2><ul>
+<li>Server端实现</li>
+</ul>
+<p>首先创建一个基础的SpringBoot工程，假设是Maven工程，在POM文件中引入如下依赖：</p>
+<figure class="highlight xml"><table><tr><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">dependencies</span>&gt;</span></span><br><span class="line">	<span class="tag">&lt;<span class="name">dependency</span>&gt;</span></span><br><span class="line">    	<span class="tag">&lt;<span class="name">groupId</span>&gt;</span>org.springframework.cloud<span class="tag">&lt;/<span class="name">groupId</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">artifactId</span>&gt;</span>spring-cloud-starter-netflix-eureka-server<span class="tag">&lt;/<span class="name">artifactId</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">dependency</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">dependencies</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+<p>在启动类中加入注解<code>@EnableEurekaService</code>，声明这是一个Server实例。</p>
+<p>在<code>application.yml</code>中加入如下内容：</p>
+<figure class="highlight yaml"><table><tr><td class="code"><pre><span class="line"><span class="attr">server:</span></span><br><span class="line">	<span class="attr">port:</span> <span class="number">8761</span></span><br><span class="line"><span class="attr">eureka:</span></span><br><span class="line">	<span class="attr">client:</span></span><br><span class="line">		<span class="attr">registerWithEureka:</span> <span class="literal">false</span></span><br><span class="line">	<span class="attr">fetchRegistry:</span> <span class="literal">false</span></span><br><span class="line">	<span class="attr">serviceUrl:</span></span><br><span class="line">		<span class="attr">defaultZone:</span> <span class="string">http://localhost:8761/eureka/</span></span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>Client端实现</li>
+</ul>
+<p>首先创建一个基础的SpringBoot工程，假设是Maven工程，在POM文件中引入如下依赖：</p>
+<figure class="highlight xml"><table><tr><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">dependencies</span>&gt;</span></span><br><span class="line">	<span class="tag">&lt;<span class="name">dependency</span>&gt;</span></span><br><span class="line">    	<span class="tag">&lt;<span class="name">groupId</span>&gt;</span>org.springframework.cloud<span class="tag">&lt;/<span class="name">groupId</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">artifactId</span>&gt;</span>spring-cloud-starter-netflix-eureka-client<span class="tag">&lt;/<span class="name">artifactId</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">dependency</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">dependencies</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+<p>在<code>application.yml</code>中加入如下内容：</p>
+<figure class="highlight yaml"><table><tr><td class="code"><pre><span class="line"><span class="attr">spring:</span></span><br><span class="line">	<span class="attr">application:</span></span><br><span class="line">		<span class="attr">name:</span> <span class="string">microsoftservice-provider-user</span></span><br><span class="line"><span class="attr">eureka:</span></span><br><span class="line">	<span class="attr">client:</span></span><br><span class="line">		<span class="attr">serviceUrl:</span></span><br><span class="line">			<span class="attr">defaultZone:</span> <span class="string">http://localhost:8761/eureka/</span></span><br><span class="line"><span class="attr">instance:</span></span><br><span class="line">	<span class="attr">prefer-ip-address:</span> <span class="literal">true</span></span><br></pre></td></tr></table></figure>
+
+<h2 id="高可用Eureka实现"><a href="#高可用Eureka实现" class="headerlink" title="高可用Eureka实现"></a>高可用Eureka实现</h2><p>单节点的Eureka无法满足线上环境高可用的要求。一旦发生故障，轻则影响服务的可达性，重则引发服务瘫痪，因此，以集群的方式部署Eureka是非常必要的。</p>
+<h2 id="Eureka主页访问认证实现"><a href="#Eureka主页访问认证实现" class="headerlink" title="Eureka主页访问认证实现"></a>Eureka主页访问认证实现</h2><h2 id="非JVM的微服务注册与发现"><a href="#非JVM的微服务注册与发现" class="headerlink" title="非JVM的微服务注册与发现"></a>非JVM的微服务注册与发现</h2><h2 id="Eureka的自我保护模式实现"><a href="#Eureka的自我保护模式实现" class="headerlink" title="Eureka的自我保护模式实现"></a>Eureka的自我保护模式实现</h2>]]></content>
+      <categories>
+        <category>spring cloud</category>
+      </categories>
+      <tags>
+        <tag>eureka</tag>
       </tags>
   </entry>
 </search>

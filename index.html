@@ -84,9 +84,9 @@
   <ul class="main-menu menu">
         <li class="menu-item menu-item-home"><a href="/" rel="section"><i class="fa fa-home fa-fw"></i>首页</a></li>
         <li class="menu-item menu-item-about"><a href="/about/" rel="section"><i class="fa fa-user fa-fw"></i>关于</a></li>
-        <li class="menu-item menu-item-tags"><a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>标签<span class="badge">64</span></a></li>
-        <li class="menu-item menu-item-categories"><a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>分类<span class="badge">29</span></a></li>
-        <li class="menu-item menu-item-archives"><a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档<span class="badge">47</span></a></li>
+        <li class="menu-item menu-item-tags"><a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>标签<span class="badge">68</span></a></li>
+        <li class="menu-item menu-item-categories"><a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>分类<span class="badge">32</span></a></li>
+        <li class="menu-item menu-item-archives"><a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档<span class="badge">50</span></a></li>
       <li class="menu-item menu-item-search">
         <a role="button" class="popup-trigger"><i class="fa fa-search fa-fw"></i>搜索
         </a>
@@ -155,18 +155,18 @@
   <nav class="site-state">
       <div class="site-state-item site-state-posts">
         <a href="/archives/">
-          <span class="site-state-item-count">47</span>
+          <span class="site-state-item-count">50</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
       <div class="site-state-item site-state-categories">
           <a href="/categories/">
-        <span class="site-state-item-count">29</span>
+        <span class="site-state-item-count">32</span>
         <span class="site-state-item-name">分类</span></a>
       </div>
       <div class="site-state-item site-state-tags">
           <a href="/tags/">
-        <span class="site-state-item-count">64</span>
+        <span class="site-state-item-count">68</span>
         <span class="site-state-item-name">标签</span></a>
       </div>
   </nav>
@@ -195,6 +195,292 @@
 
 
     <div class="main-inner index posts-expand">
+
+    
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
+    <link itemprop="mainEntityOfPage" href="http://kylepeng93.github.io/2021/12/12/it-laoqi-architecture-cache/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/imagesUse%20GitHub%20issues%20for%20blog%20comments,%20wik/avatar.gif">
+      <meta itemprop="name" content="彭凯">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="成长日记">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          <a href="/2021/12/12/it-laoqi-architecture-cache/" class="post-title-link" itemprop="url">IT老齐的架构课程之缓存</a>
+        </h2>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">发表于</span>
+      
+
+      <time title="创建时间：2021-12-12 21:09:10 / 修改时间：21:31:49" itemprop="dateCreated datePublished" datetime="2021-12-12T21:09:10+08:00">2021-12-12</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">分类于</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/it%E8%80%81%E9%BD%90/" itemprop="url" rel="index"><span itemprop="name">it老齐</span></a>
+        </span>
+    </span>
+
+  
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+          <h2 id="使用缓存的目的"><a href="#使用缓存的目的" class="headerlink" title="使用缓存的目的"></a>使用缓存的目的</h2><p>提升性能</p>
+<h2 id="缓存分类"><a href="#缓存分类" class="headerlink" title="缓存分类"></a>缓存分类</h2><ul>
+<li><p>客户端</p>
+<p>主要对浏览器的静态资源进行缓存，通过在浏览器端设置Expires（过期时间点）或者Cache-Control（时间段）来告诉浏览器将资源缓存到客户端本地，从而减少多次请求同一个静态资源带来的带宽和响应时效上的损耗。</p>
+</li>
+<li><p>应用层</p>
+<ul>
+<li>主要表现形式为CDN（Content Delivery Network），可以有效解决带宽集中占用以及数据分发的问题。</li>
+<li>通过Nginx实现负载均衡，将静态资源存储在Nginx服务器上，并开启压缩功能；</li>
+</ul>
+</li>
+<li><p>服务层</p>
+<ul>
+<li>进程内缓存：比如Mybatis的一二级缓存，或者Spring框架中的@EnableCache注解。</li>
+<li>进程外缓存：典型的使用redis作为分布式缓存技术。</li>
+</ul>
+</li>
+<li><p>数据层</p>
+</li>
+</ul>
+<h2 id="分布式缓存引入的问题"><a href="#分布式缓存引入的问题" class="headerlink" title="分布式缓存引入的问题"></a>分布式缓存引入的问题</h2><p>数据一致性</p>
+<h2 id="如何保证数据一致性"><a href="#如何保证数据一致性" class="headerlink" title="如何保证数据一致性"></a>如何保证数据一致性</h2><p>引入消息队列的主动推送功能，推送变更消息</p>
+<h2 id="什么情况下适用多级缓存架构"><a href="#什么情况下适用多级缓存架构" class="headerlink" title="什么情况下适用多级缓存架构"></a>什么情况下适用多级缓存架构</h2><ol>
+<li>缓存数据稳定</li>
+<li>可能产生高并发场景，应用启动时进行预热处理，访问前将热点数据先缓存，减少后端压力</li>
+<li>一定程度上允许数据不一致不重要的信息更新处理方式：T+1，ETL日中处理。</li>
+</ol>
+
+      
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+</div>
+
+
+
+
+    
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
+    <link itemprop="mainEntityOfPage" href="http://kylepeng93.github.io/2021/11/29/spring-cloud-component-eureka/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/imagesUse%20GitHub%20issues%20for%20blog%20comments,%20wik/avatar.gif">
+      <meta itemprop="name" content="彭凯">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="成长日记">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          <a href="/2021/11/29/spring-cloud-component-eureka/" class="post-title-link" itemprop="url">spring-cloud服务注册与发现组件——Eureka</a>
+        </h2>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">发表于</span>
+      
+
+      <time title="创建时间：2021-11-29 20:26:15 / 修改时间：21:19:00" itemprop="dateCreated datePublished" datetime="2021-11-29T20:26:15+08:00">2021-11-29</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">分类于</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/spring-cloud/" itemprop="url" rel="index"><span itemprop="name">spring cloud</span></a>
+        </span>
+    </span>
+
+  
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+          <h2 id="Spring-Cloud之服务发现——Eureka-发音为-juә’ri-kә"><a href="#Spring-Cloud之服务发现——Eureka-发音为-juә’ri-kә" class="headerlink" title="Spring Cloud之服务发现——Eureka(发音为[juә’ri:kә])"></a>Spring Cloud之服务发现——Eureka(发音为[juә’ri:kә])</h2><ul>
+<li><p>服务注册与发现以及反馈的实现流程：</p>
+<ol>
+<li>Provider将自己的节点信息发送到指定的服务注册机上；</li>
+<li>服务注册机将Provider发送过来的信息保存在指定区域，等待Consumer查询；</li>
+<li>Provider通过定期向服务注册机发送消息确保自己不会被注销，而当服务注册机长时间未收到某个Provider发送过来的信息时，会自动将该Provider注销。</li>
+<li>当Provider网络地址发生变更时，会自动重新注册节点信息到服务注册机，避免了人工修改配置的问题。</li>
+</ol>
+</li>
+<li><p>Eureka的实现机制:</p>
+<ol>
+<li>Eureka分为Server端和Client端，Server端提供服务发现的能力，当微服务节点启动时，会自动向Server端注册自己的节点信息，而Server端则负责存储这些节点信息，供服务调用者查询；</li>
+<li>Client端一般和微服务集成，为微服务提供注册服务到Server端的能力，并从Server端获取最新的已注册服务列表的信息<strong>缓存</strong>到微服务端；</li>
+<li>微服务启动后，会周期性（默认30s）向Server端发送心跳以防止被注销；</li>
+<li>同时，Server端也会周期性（默认90s）的检查已注册的各个微服务是否仍然存活，如果超时，则注销该微服务的注册信息；</li>
+</ol>
+</li>
+</ul>
+<h2 id="Eureka的基础实现"><a href="#Eureka的基础实现" class="headerlink" title="Eureka的基础实现"></a>Eureka的基础实现</h2><ul>
+<li>Server端实现</li>
+</ul>
+<p>首先创建一个基础的SpringBoot工程，假设是Maven工程，在POM文件中引入如下依赖：</p>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">dependencies</span>&gt;</span></span><br><span class="line">	<span class="tag">&lt;<span class="name">dependency</span>&gt;</span></span><br><span class="line">    	<span class="tag">&lt;<span class="name">groupId</span>&gt;</span>org.springframework.cloud<span class="tag">&lt;/<span class="name">groupId</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">artifactId</span>&gt;</span>spring-cloud-starter-netflix-eureka-server<span class="tag">&lt;/<span class="name">artifactId</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">dependency</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">dependencies</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+<p>在启动类中加入注解<code>@EnableEurekaService</code>，声明这是一个Server实例。</p>
+<p>在<code>application.yml</code>中加入如下内容：</p>
+<figure class="highlight yaml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="attr">server:</span></span><br><span class="line">	<span class="attr">port:</span> <span class="number">8761</span></span><br><span class="line"><span class="attr">eureka:</span></span><br><span class="line">	<span class="attr">client:</span></span><br><span class="line">		<span class="attr">registerWithEureka:</span> <span class="literal">false</span></span><br><span class="line">	<span class="attr">fetchRegistry:</span> <span class="literal">false</span></span><br><span class="line">	<span class="attr">serviceUrl:</span></span><br><span class="line">		<span class="attr">defaultZone:</span> <span class="string">http://localhost:8761/eureka/</span></span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>Client端实现</li>
+</ul>
+<p>首先创建一个基础的SpringBoot工程，假设是Maven工程，在POM文件中引入如下依赖：</p>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">dependencies</span>&gt;</span></span><br><span class="line">	<span class="tag">&lt;<span class="name">dependency</span>&gt;</span></span><br><span class="line">    	<span class="tag">&lt;<span class="name">groupId</span>&gt;</span>org.springframework.cloud<span class="tag">&lt;/<span class="name">groupId</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">artifactId</span>&gt;</span>spring-cloud-starter-netflix-eureka-client<span class="tag">&lt;/<span class="name">artifactId</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">dependency</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">dependencies</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+<p>在<code>application.yml</code>中加入如下内容：</p>
+<figure class="highlight yaml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="attr">spring:</span></span><br><span class="line">	<span class="attr">application:</span></span><br><span class="line">		<span class="attr">name:</span> <span class="string">microsoftservice-provider-user</span></span><br><span class="line"><span class="attr">eureka:</span></span><br><span class="line">	<span class="attr">client:</span></span><br><span class="line">		<span class="attr">serviceUrl:</span></span><br><span class="line">			<span class="attr">defaultZone:</span> <span class="string">http://localhost:8761/eureka/</span></span><br><span class="line"><span class="attr">instance:</span></span><br><span class="line">	<span class="attr">prefer-ip-address:</span> <span class="literal">true</span></span><br></pre></td></tr></table></figure>
+
+<h2 id="高可用Eureka实现"><a href="#高可用Eureka实现" class="headerlink" title="高可用Eureka实现"></a>高可用Eureka实现</h2><p>单节点的Eureka无法满足线上环境高可用的要求。一旦发生故障，轻则影响服务的可达性，重则引发服务瘫痪，因此，以集群的方式部署Eureka是非常必要的。</p>
+<h2 id="Eureka主页访问认证实现"><a href="#Eureka主页访问认证实现" class="headerlink" title="Eureka主页访问认证实现"></a>Eureka主页访问认证实现</h2><h2 id="非JVM的微服务注册与发现"><a href="#非JVM的微服务注册与发现" class="headerlink" title="非JVM的微服务注册与发现"></a>非JVM的微服务注册与发现</h2><h2 id="Eureka的自我保护模式实现"><a href="#Eureka的自我保护模式实现" class="headerlink" title="Eureka的自我保护模式实现"></a>Eureka的自我保护模式实现</h2>
+      
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+</div>
+
+
+
+
+    
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
+    <link itemprop="mainEntityOfPage" href="http://kylepeng93.github.io/2021/11/23/microservices-theory-guide/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/imagesUse%20GitHub%20issues%20for%20blog%20comments,%20wik/avatar.gif">
+      <meta itemprop="name" content="彭凯">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="成长日记">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          <a href="/2021/11/23/microservices-theory-guide/" class="post-title-link" itemprop="url">微服务导论</a>
+        </h2>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">发表于</span>
+      
+
+      <time title="创建时间：2021-11-23 13:35:34 / 修改时间：15:27:43" itemprop="dateCreated datePublished" datetime="2021-11-23T13:35:34+08:00">2021-11-23</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">分类于</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/%E5%BE%AE%E6%9C%8D%E5%8A%A1/" itemprop="url" rel="index"><span itemprop="name">微服务</span></a>
+        </span>
+    </span>
+
+  
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+          <p>“微服务”——一个在当前种类繁多的软件架构中出现的新术语。虽然我们对这种事的自然反应一般都是轻蔑的瞥一眼，但真正能吸引我们的其实是术语中描述的一种软件系统风格。我们在过去的几年中看到了有一些项目使用了这种风格，迄今为止，他们的结果大部分都是正面的，因此，我们很多的同事也将它作为了一种构建企业级应用的默认风格。但是，并没有太多的的信息来告诉我们微服务风格究竟是什么，以及怎么去实现它。</p>
+<p>简而言之，微服务架构风格是一种由多个微小服务集合组成的单应用开发风格，其中的每一个微小服务都拥有自己的进程以及轻量级的交互机制，通常是一个基于HTTP的API。这些服务围绕业务能力单独构建，并且可以被全自动化部署机制实现各自独立部署。对于这些服务也有一个纯粹的最小集中化管理，通常他们可以用不同的编程语言以及不同的数据存储技术来实现。</p>
+
+      
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+</div>
+
+
+
 
     
 
@@ -765,307 +1051,6 @@
 
 </li>
 </ul>
-
-      
-    </div>
-
-    
-    
-    
-
-    <footer class="post-footer">
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-</div>
-
-
-
-
-    
-
-
-<div class="post-block">
-  
-  
-
-  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
-    <link itemprop="mainEntityOfPage" href="http://kylepeng93.github.io/2021/10/02/chat-with-netcat-between-linux-host/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/imagesUse%20GitHub%20issues%20for%20blog%20comments,%20wik/avatar.gif">
-      <meta itemprop="name" content="彭凯">
-      <meta itemprop="description" content="">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="成长日记">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          <a href="/2021/10/02/chat-with-netcat-between-linux-host/" class="post-title-link" itemprop="url">使用netcat工具在两台linux主机之间通信</a>
-        </h2>
-
-        <div class="post-meta-container">
-          <div class="post-meta">
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-calendar"></i>
-      </span>
-      <span class="post-meta-item-text">发表于</span>
-      
-
-      <time title="创建时间：2021-10-02 20:39:36 / 修改时间：21:36:11" itemprop="dateCreated datePublished" datetime="2021-10-02T20:39:36+08:00">2021-10-02</time>
-    </span>
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-folder"></i>
-      </span>
-      <span class="post-meta-item-text">分类于</span>
-        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-          <a href="/categories/linux/" itemprop="url" rel="index"><span itemprop="name">linux</span></a>
-        </span>
-    </span>
-
-  
-</div>
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-          <h2 id="为什么我们不使用当下流行的即时通讯工具在PC间通信或者传输文件"><a href="#为什么我们不使用当下流行的即时通讯工具在PC间通信或者传输文件" class="headerlink" title="为什么我们不使用当下流行的即时通讯工具在PC间通信或者传输文件"></a>为什么我们不使用当下流行的即时通讯工具在PC间通信或者传输文件</h2><p>目前国内使用率最高的两款即时通讯工具莫过于鹅厂的两款工具——微信和QQ。因为某些众所周知的原因，这两款工具在linux平台要么直接没有，要么只有一个复古的阉割版，功能少的让人怀疑是不是鹅厂直接把10年前的产品直接拿来用了。基于这些现实的问题，对于linux用户来说，其实可替换方案也不是没有，最好的办法就是使用telegram，但在中国，这种方案并不是人人都能够直接拿来用，最直接的原因就是使用这款软件必须要学会科学上网（比如访问谷歌或者油管）。而科学上网在中国处于法律的灰色地带，一般人没有途径也不愿意承担这样的风险。那么作为一名linux用户，只要具备基本的使用命令行的能力，其实方法还是有很多的。这里介绍一种非常方便而且直观的通讯工具——netcat，供大家参考。</p>
-<h2 id="netcat是个什么样的工具"><a href="#netcat是个什么样的工具" class="headerlink" title="netcat是个什么样的工具"></a>netcat是个什么样的工具</h2><p>netcat是一款网络工具，可以在基于TCP和UDP网络连接的基础上执行读写操作。</p>
-<p>它被设计为一个可靠的后端工具，可以直接在其他程序或者脚本中被使用。同时，它还是一个用来调试和探测网络的工具。因为它可以创建几乎所有你可能需要的连接类型。</p>
-<h2 id="netcat有哪些特性"><a href="#netcat有哪些特性" class="headerlink" title="netcat有哪些特性"></a>netcat有哪些特性</h2><ul>
-<li>流出和流入连接：例如来自基于TCP或者UDP的任意端口的连接。</li>
-<li>隧道模式：它允许创建特殊的隧道，如 UDP 到 TCP，并且可以指定所有网络参数（源主机端口/接受主机端口、监听端口/接口和允许连接到隧道的远程主机）。</li>
-<li>使用随机发生器进行端口扫描</li>
-<li>高级使用选项：例如传输和接收数据的缓冲发送模式（每 N 秒一行）和 hexdump（到 stderr 或到指定文件）。</li>
-<li>可选的 RFC854 telnet 代码解析器和响应器。</li>
-</ul>
-<h2 id="如何将netcat作为一款即时通讯工具呢"><a href="#如何将netcat作为一款即时通讯工具呢" class="headerlink" title="如何将netcat作为一款即时通讯工具呢"></a>如何将netcat作为一款即时通讯工具呢</h2><ol>
-<li><p>首先，我们需要在需要建立通讯的主机上安装netcat工具，使用linux自带的包管理器安装即可。</p>
-</li>
-<li><p>然后选择一台已经安装好netcat的机器，在终端中执行如下命令：</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">nc -l -vv -p 12345</span><br></pre></td></tr></table></figure>
-
-<p>其中<code>-l</code>和<code>p</code>表示在本机的12345端口进行监听，并创建一个TCP连接。<code>-vv</code>表示尽可能的展示运行过程中的系统消息，<code>-p</code>表示要监听的端口号。</p>
-</li>
-<li><p>选择要与监听主机建立连接的机器，在终端中执行如下命令：</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">nc 步骤2中创建监听的主机ip 步骤2中创建的监听端口</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>执行完2、3之后，一条连接已经创建完成，可以开始互发消息了。</p>
-</li>
-</ol>
-<blockquote>
-<p>需要注意的是，连接双方发送的消息会全部展示在各自的屏幕上，如果有多于两个以上的连接方则无法区分消息的来源。</p>
-</blockquote>
-<h2 id="使用netcat传输文件"><a href="#使用netcat传输文件" class="headerlink" title="使用netcat传输文件"></a>使用netcat传输文件</h2><p>netcat还可以用来传输文件</p>
-<ol>
-<li><p>对接收方执行如下命立：</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">nc -l -vv -p 12345 &gt; received_file</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>在发送方执行如下命令</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">nc 接收方的ip地址 12345 &lt; received_file</span><br></pre></td></tr></table></figure>
-
-</li>
-</ol>
-<blockquote>
-<p>需要注意的是，这里创建监听的动作是由接收方发起的，而发送方需要和接收方建立连接并发送文件。</p>
-</blockquote>
-
-      
-    </div>
-
-    
-    
-    
-
-    <footer class="post-footer">
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-</div>
-
-
-
-
-    
-
-
-<div class="post-block">
-  
-  
-
-  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
-    <link itemprop="mainEntityOfPage" href="http://kylepeng93.github.io/2021/10/02/archlinux-install-guide/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/imagesUse%20GitHub%20issues%20for%20blog%20comments,%20wik/avatar.gif">
-      <meta itemprop="name" content="彭凯">
-      <meta itemprop="description" content="">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="成长日记">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          <a href="/2021/10/02/archlinux-install-guide/" class="post-title-link" itemprop="url">archlinux安装指南</a>
-        </h2>
-
-        <div class="post-meta-container">
-          <div class="post-meta">
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-calendar"></i>
-      </span>
-      <span class="post-meta-item-text">发表于</span>
-      
-
-      <time title="创建时间：2021-10-02 15:54:24 / 修改时间：21:51:03" itemprop="dateCreated datePublished" datetime="2021-10-02T15:54:24+08:00">2021-10-02</time>
-    </span>
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-folder"></i>
-      </span>
-      <span class="post-meta-item-text">分类于</span>
-        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-          <a href="/categories/linux/" itemprop="url" rel="index"><span itemprop="name">linux</span></a>
-        </span>
-    </span>
-
-  
-</div>
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-          <h2 id="Arch-Linux是什么"><a href="#Arch-Linux是什么" class="headerlink" title="Arch Linux是什么"></a>Arch Linux是什么</h2><p>Arch Linux是一款滚动更新的GNU/Linux发行版，致力于提供最新的稳定版软件，相较于其他图形界面的发行版，Arch Linux只能在命令行界面进行安装，且默认不带任何桌面环境。（非特别说明，后文将GNU/Linux简称为Linux）</p>
-<h2 id="Arch-Linux有什么优势"><a href="#Arch-Linux有什么优势" class="headerlink" title="Arch Linux有什么优势"></a>Arch Linux有什么优势</h2><p>相较于其他基于Debian或者Redhat的发行版，Arch Linux提供了自己的包管理器——pacman，而且支持用户软件仓库（AUR）。基于这个特性，大大增加了Arch Linux系统原生软件的数量。而良好的软件生态正是Arch Linux的一大利器。</p>
-<h2 id="Arch-Linux的安装"><a href="#Arch-Linux的安装" class="headerlink" title="Arch Linux的安装"></a>Arch Linux的安装</h2><p>对于大部分非专业人士而言，习惯了Windows的图形界面之后，突然使用命令行操作软件往往变得非常困难，更不用说安装系统了，尽管Arch Linux拥有详细的由社区维护的安装指南Wiki，但也因此劝退了一些习惯了windows之后想要尝试linux系统的新手，基于此，本文特地将自己安装Arch Linux过程中的经历以及出现的问题做个说明，作为Arch Linux安装wiki的补充，不失为帮助更多的人能够接触到linux的一种方法（windows固然很优秀，但<strong>自由/开源软件</strong>才是软件开发的未来）。</p>
-<h3 id="1、获取最新版镜像"><a href="#1、获取最新版镜像" class="headerlink" title="1、获取最新版镜像"></a>1、获取最新版镜像</h3><p>官方下载网站：<a target="_blank" rel="noopener" href="https://archlinux.org/download/">https://archlinux.org/download/</a></p>
-<h2 id="2、制作启动盘"><a href="#2、制作启动盘" class="headerlink" title="2、制作启动盘"></a>2、制作启动盘</h2><p>准备一个空的U盘，和一台已安装好linux系统的机器，使用如下命令进行写盘：</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo dd bs=4MB <span class="keyword">if</span>=你的安装镜像路径 of=你的U盘路径 status=progress</span><br></pre></td></tr></table></figure>
-
-<blockquote>
-<p>of参数通常是/dev/sdb，其中sdb是你的U盘路径，注意不要带数字后缀，类似sdb1。另外，写盘之前必须使用umount命令卸载的U盘（如果被自动挂载的话）。</p>
-</blockquote>
-<h3 id="3、从U盘启动，开始安装"><a href="#3、从U盘启动，开始安装" class="headerlink" title="3、从U盘启动，开始安装"></a>3、从U盘启动，开始安装</h3><p>需要注意的是，为了确保可以正常从启动盘引导，需要关闭主板的安全启动选项（可以在安装完成之后重新打开），关闭方式因主板厂商不同而有所差异。具体如何关闭可以自行百度。</p>
-<p>重启主机之后，进入BIOS或者直接通过功能键选择启动顺序，将USB设备作为第一启动项，启动之后选择<code>Arch Linux install medium</code>进入系统安装界面。</p>
-<h3 id="4、验证启动模式"><a href="#4、验证启动模式" class="headerlink" title="4、验证启动模式"></a>4、验证启动模式</h3><p>如果使用的是UEFI模式，则可以使用如下命令验证:</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ls /sys/firmware/efi/efivars</span><br></pre></td></tr></table></figure>
-
-<p>如果命令正常打印出一系列文件和目录，且没有任何错误，则表明当前是以UEFI模式启动。否则则是以BIOS或者CMS模式启动。</p>
-<h2 id="5、联网"><a href="#5、联网" class="headerlink" title="5、联网"></a>5、联网</h2><p>一般来说，我们可以直接插入网线联网，或者使用外置网卡。比如手机的USB网络共享。</p>
-<h2 id="6、调整时区"><a href="#6、调整时区" class="headerlink" title="6、调整时区"></a>6、调整时区</h2><p>使用<code>timedatectl</code>可以查看并设置时区。</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 启用ntp（网络时间协议）</span></span><br><span class="line">timedatectl set-ntp <span class="literal">true</span></span><br><span class="line"><span class="comment"># 列出当前可用的时区</span></span><br><span class="line">timedatectl list-timezones</span><br><span class="line"><span class="comment"># 设置选择的时区</span></span><br><span class="line">timedatectl set-timezone Asia/Shanghai</span><br></pre></td></tr></table></figure>
-
-<h2 id="7、磁盘分区"><a href="#7、磁盘分区" class="headerlink" title="7、磁盘分区"></a>7、磁盘分区</h2><p>查看当前可用磁盘</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">fdisk -l</span><br></pre></td></tr></table></figure>
-
-<p>选择将要使用的磁盘，假设是<code>/dev/sda</code>，执行如下命令</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">fdisk /dev/sda</span><br></pre></td></tr></table></figure>
-
-<p>进入分区界面之后，使用<code>m</code>查看具体的分区指令。一般步骤如下：</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 创建分区表</span></span><br><span class="line"></span><br></pre></td></tr></table></figure>
-
-
-      
-    </div>
-
-    
-    
-    
-
-    <footer class="post-footer">
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-</div>
-
-
-
-
-    
-
-
-<div class="post-block">
-  
-  
-
-  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
-    <link itemprop="mainEntityOfPage" href="http://kylepeng93.github.io/2021/09/28/ultraman-classic/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/imagesUse%20GitHub%20issues%20for%20blog%20comments,%20wik/avatar.gif">
-      <meta itemprop="name" content="彭凯">
-      <meta itemprop="description" content="">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="成长日记">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          <a href="/2021/09/28/ultraman-classic/" class="post-title-link" itemprop="url">迪迦奥特曼带给我的思考</a>
-        </h2>
-
-        <div class="post-meta-container">
-          <div class="post-meta">
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-calendar"></i>
-      </span>
-      <span class="post-meta-item-text">发表于</span>
-
-      <time title="创建时间：2021-09-28 22:26:34" itemprop="dateCreated datePublished" datetime="2021-09-28T22:26:34+08:00">2021-09-28</time>
-    </span>
-      <span class="post-meta-item">
-        <span class="post-meta-item-icon">
-          <i class="far fa-calendar-check"></i>
-        </span>
-        <span class="post-meta-item-text">更新于</span>
-        <time title="修改时间：2021-09-29 00:45:15" itemprop="dateModified" datetime="2021-09-29T00:45:15+08:00">2021-09-29</time>
-      </span>
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-folder"></i>
-      </span>
-      <span class="post-meta-item-text">分类于</span>
-        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-          <a href="/categories/%E8%BF%AA%E8%BF%A6/" itemprop="url" rel="index"><span itemprop="name">迪迦</span></a>
-        </span>
-    </span>
-
-  
-</div>
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-          <h1 id="第49集——奥特之星"><a href="#第49集——奥特之星" class="headerlink" title="第49集——奥特之星"></a>第49集——奥特之星</h1><h2 id="剧情演说"><a href="#剧情演说" class="headerlink" title="剧情演说"></a>剧情演说</h2><p>在这一集中，大古追踪穿越时空回到过去寻找怪兽的外星人查利加，和他一同回到了圆古英二导演还在世时的1965年。随后，大古在不经意间误闯进了圆古英二导演的摄影棚，临时充当了本该由长野（博）担任的场务一职，令人没想到的是，看到一身胜利队队服的大古，愣是没有一个人发现大古其实并不是长野（博），当然，在现实中，大古的扮演者就叫做长野博，这也是导演刻意给我们开的一个玩笑，不算剧情bug。</p>
-<p>离开摄影棚之后，大古找到了查利加，并质问他的真正意图，但查利加并不想告诉大古，反而向他发起了攻击，愤怒的大古拿出武器击退了查利加，而查利加也随之消失不见了。</p>
-<p>接下来的剧情中，还出现了真正的长野和大古见面的场景，不得不说，这种虚实相间的拍摄手法的确能够触动观众的情绪，带给观众一种说不出的感动。</p>
-<p>镜头给到初代奥特曼剧本创作人的金城哲夫，此时的他还在苦苦构思如何写出一个另圆古一导演（圆古英二导演的儿子）满意的剧本，但反复改了8次还是不能让导演满意，最后一次勉强让导演满意了，可是随后的一句“这故事有趣吗”再次让金城陷入了重写剧本的境遇。正当金城绞尽脑汁想剧本的时候，圆古英二导演主动和他聊起了剧本创作遇到的困难，并将自己的一颗红宝石拿给金城看，还告诉他这是外星人送给他的，而自己和这个外星人是好朋友。原来圆古英二导演曾经遇到过一个来自M78星云的奥特曼，而当时这个奥特曼正将一只怪兽沉到湖底，后来，为了表示对地球人的友好，他将一颗奥特之星送给了圆古英二导演，并告诉他这颗奥特之星会对他产生帮助。然而他们之间的对话被躲在门外的查利加偷听到了，而圆古英二提到的被奥特曼沉到湖底的怪兽正是他所要寻找的亚那加基。</p>
-<p>得到消息的查利加立刻赶到龙森湖救出被封印的亚那加基，并命令怪兽破坏人类的住所。怪兽的出现引起了大古的注意，为了阻止怪兽继续破坏地球，大古拿起神光棒，变身成了迪迦奥特曼，和怪兽展开了搏斗，谁知怪兽丝毫不落下风，反而挟持住了迪迦，并吸取他的能量，眼看迪迦就要被打败，一旁观战的圆古英二导演凭借自己的意念竟然也变成了一道光，朝着怪兽发动攻击，击退了正在吸取迪迦能量的怪兽之后，这道光居然变成了奥特曼，并将迪迦被吸取的能量重新输入到了他的体内。得到能量后的迪迦再次回到战斗，和另一个奥特曼同时发动光线技能，一举打败了怪兽。而操纵怪兽的查利加则放出一句“后会有期”之后就逃跑了。圆古英二看着两位巨人，说道“我们需要一个英雄，金城，英雄是必要的“。而此时的金城正在埋头书写关于英雄的故事。</p>
-<p>最后一幕是圆古英二导演拿着金城写出来的奥特英雄的剧本开始了初代奥特曼剧集的拍摄。之后的事情我们也都知道了。从此，奥特曼宇宙开启了崭新的一页。</p>
-<h2 id="观后感"><a href="#观后感" class="headerlink" title="观后感"></a>观后感</h2><p>作为一部平成年代的开山之作，《迪迦奥特曼》与圆谷制作的上一部奥特曼剧集中间已经整整间隔了16年，而16年前观看奥特曼的小孩子很多都已经长大成人，主打孩童向的奥特曼似乎已经和他们渐行渐远。或许正是基于这一考量，《迪迦奥特曼》从一开始面向的就是成人观众。还记得小时候看迪迦，更多的是关注奥特曼打小怪兽，至于为什么要打怪兽以及人类未来的命运则完全不加考虑，只知道这个奥特曼长得特别好看，还能变身成其他两种形态，真的太酷了。当我们长大后再次打开《迪迦奥特曼》，我们突然发现这个奥特曼似乎有点不一样，曾经我们心中无敌的奥特曼似乎也在慢慢变得不那么无敌，原来，奥特曼也是人变的，他也会受伤，甚至奥特曼还需要我们人类的帮助才能打败那些怪兽，不仅是奥特曼，那些被他打的怪兽也变了，似乎没有天生就是怪兽的，都是因为人类肆意破坏地球，盲目发展高科技，才使我们的身边多了这么多怪兽，而来自外太空的外星人之所以要侵略地球，毁灭人类，只是因为他们想活下去，而奥特曼既是光，同时也是人类，为了人类的生存，奥特曼必须站出来打倒怪兽。即使面对一个根本赢不了的敌人，奥特曼也要以人类的身份战斗到最后一刻。很难想象一向主打孩童向的特摄片居然能在短短的一集20多分钟的剧情中注入如此崇高的立意，也让长大后的我们知道原来《迪迦奥特曼》根本就不是一部面向孩童的特摄片。我们都误会他了。作为连接昭和和平成奥特曼的桥梁，迪迦在奥特之星中完成了这一神圣的交接仪式，当我们看到初代奥特曼和迪迦在圆谷英二导演面前握手时，我们知道，随着圆谷英二导演的去世以及平成时代的到来，未来的奥特曼系列将开启新的篇章，而这一切都将从迪迦奥特曼开始。——谨以此文献给我们的童年，永远的迪迦奥特曼。</p>
 
       
     </div>

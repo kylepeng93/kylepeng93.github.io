@@ -29,7 +29,7 @@
 <meta property="og:description" content="redis存储string类型的值 存值： 1set key value  取值： 1get key  返回key中的部分字符串: 1getrange key start end  start从0开始，且返回的内容中包含索引为end的字符。   取出旧值并返回新值： 1getset key new_value  取出key对应的值，并返回指定偏移量上的位(bit)： 1getbit key off">
 <meta property="og:locale" content="zh_CN">
 <meta property="article:published_time" content="2021-01-03T14:29:48.000Z">
-<meta property="article:modified_time" content="2021-11-20T13:29:04.895Z">
+<meta property="article:modified_time" content="2021-11-20T13:37:34.549Z">
 <meta property="article:author" content="彭凯">
 <meta property="article:tag" content="redis">
 <meta name="twitter:card" content="summary">
@@ -89,9 +89,9 @@
   <ul class="main-menu menu">
         <li class="menu-item menu-item-home"><a href="/" rel="section"><i class="fa fa-home fa-fw"></i>首页</a></li>
         <li class="menu-item menu-item-about"><a href="/about/" rel="section"><i class="fa fa-user fa-fw"></i>关于</a></li>
-        <li class="menu-item menu-item-tags"><a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>标签<span class="badge">64</span></a></li>
-        <li class="menu-item menu-item-categories"><a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>分类<span class="badge">29</span></a></li>
-        <li class="menu-item menu-item-archives"><a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档<span class="badge">47</span></a></li>
+        <li class="menu-item menu-item-tags"><a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>标签<span class="badge">68</span></a></li>
+        <li class="menu-item menu-item-categories"><a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>分类<span class="badge">32</span></a></li>
+        <li class="menu-item menu-item-archives"><a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档<span class="badge">50</span></a></li>
       <li class="menu-item menu-item-search">
         <a role="button" class="popup-trigger"><i class="fa fa-search fa-fw"></i>搜索
         </a>
@@ -148,7 +148,7 @@
       <div class="sidebar-panel-container">
         <!--noindex-->
         <div class="post-toc-wrap sidebar-panel">
-            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#redis%E5%AD%98%E5%82%A8string%E7%B1%BB%E5%9E%8B%E7%9A%84%E5%80%BC"><span class="nav-number">1.</span> <span class="nav-text">redis存储string类型的值</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#redis%E7%B3%BB%E7%BB%9F%E7%AE%A1%E7%90%86%E5%91%BD%E4%BB%A4"><span class="nav-number">2.</span> <span class="nav-text">redis系统管理命令</span></a></li></ol></div>
+            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#redis%E5%AD%98%E5%82%A8string%E7%B1%BB%E5%9E%8B%E7%9A%84%E5%80%BC"><span class="nav-number">1.</span> <span class="nav-text">redis存储string类型的值</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#redis%E7%B3%BB%E7%BB%9F%E7%AE%A1%E7%90%86%E5%91%BD%E4%BB%A4"><span class="nav-number">2.</span> <span class="nav-text">redis系统管理命令</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#redis%E6%A8%A1%E7%B3%8A%E6%9F%A5%E8%AF%A2"><span class="nav-number">3.</span> <span class="nav-text">redis模糊查询</span></a></li></ol></div>
         </div>
         <!--/noindex-->
 
@@ -161,18 +161,18 @@
   <nav class="site-state">
       <div class="site-state-item site-state-posts">
         <a href="/archives/">
-          <span class="site-state-item-count">47</span>
+          <span class="site-state-item-count">50</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
       <div class="site-state-item site-state-categories">
           <a href="/categories/">
-        <span class="site-state-item-count">29</span>
+        <span class="site-state-item-count">32</span>
         <span class="site-state-item-name">分类</span></a>
       </div>
       <div class="site-state-item site-state-tags">
           <a href="/tags/">
-        <span class="site-state-item-count">64</span>
+        <span class="site-state-item-count">68</span>
         <span class="site-state-item-name">标签</span></a>
       </div>
   </nav>
@@ -242,7 +242,7 @@
           <i class="far fa-calendar-check"></i>
         </span>
         <span class="post-meta-item-text">更新于</span>
-        <time title="修改时间：2021-11-20 21:29:04" itemprop="dateModified" datetime="2021-11-20T21:29:04+08:00">2021-11-20</time>
+        <time title="修改时间：2021-11-20 21:37:34" itemprop="dateModified" datetime="2021-11-20T21:37:34+08:00">2021-11-20</time>
       </span>
     <span class="post-meta-item">
       <span class="post-meta-item-icon">
@@ -288,8 +288,15 @@
 </li>
 <li><p>当key不存在时才设值：</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">setnx key value</span><br></pre></td></tr></table></figure>
-
-
+</li>
+<li><p>删除指定key</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">del key</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>返回给定key的超时时间</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ttl key</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>查看key的类型</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">type</span> key</span><br></pre></td></tr></table></figure>
 
 </li>
 </ol>
@@ -306,6 +313,21 @@
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">requirepass my_password</span><br></pre></td></tr></table></figure>
 
 <p>保存之后重启redis服务器即可生效。</p>
+<h2 id="redis模糊查询"><a href="#redis模糊查询" class="headerlink" title="redis模糊查询"></a>redis模糊查询</h2><ol>
+<li><p>查询所有的key</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">keys *</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>单字符匹配</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">keys h?llo <span class="comment"># 可以匹配hello、hallo和hxllo等</span></span><br></pre></td></tr></table></figure>
+</li>
+<li><p>多字符匹配</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">keys h*llo <span class="comment"># 可以匹配hello、heeeello等</span></span><br></pre></td></tr></table></figure>
+</li>
+<li><p>范围内匹配</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">keys h[ae]llo <span class="comment"># 可以匹配hallo、hello</span></span><br></pre></td></tr></table></figure>
+
+</li>
+</ol>
 
     </div>
 
