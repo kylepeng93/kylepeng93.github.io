@@ -260,6 +260,19 @@
 </blockquote>
 </li>
 </ol>
+<ul>
+<li>发送GET请求</li>
+</ul>
+<ol>
+<li><p>常规用法：</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">curl -X GET http://localhost:8080/user/info?id=1</span><br></pre></td></tr></table></figure>
+
+<blockquote>
+<p>如果需要显示响应头信息，则可以加上<code>-i</code>参数。</p>
+</blockquote>
+</li>
+<li></li>
+</ol>
 ]]></content>
       <categories>
         <category>linux命令</category>
@@ -1540,6 +1553,34 @@ dict是客户端，dictd是dict的后台服务器。默认安装之后是不带�
       </categories>
       <tags>
         <tag>eureka</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>postgresql学习资源</title>
+    <url>/2021/12/22/postgresql-study-resource/</url>
+    <content><![CDATA[<h2 id="1-postgresql在arch-linux上的安装和初始化"><a href="#1-postgresql在arch-linux上的安装和初始化" class="headerlink" title="1. postgresql在arch linux上的安装和初始化"></a>1. postgresql在arch linux上的安装和初始化</h2><p><a href="https://www.cnblogs.com/lemos/p/11605557.html">https://www.cnblogs.com/lemos/p/11605557.html</a></p>
+<h2 id="2-postgresql语法"><a href="#2-postgresql语法" class="headerlink" title="2. postgresql语法"></a>2. postgresql语法</h2><p><a href="https://www.runoob.com/postgresql/postgresql-syntax.html">https://www.runoob.com/postgresql/postgresql-syntax.html</a></p>
+]]></content>
+      <categories>
+        <category>postgresql</category>
+      </categories>
+      <tags>
+        <tag>resource</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>什么是jwt</title>
+    <url>/2021/12/18/what-is-jwt-in-java/</url>
+    <content><![CDATA[<h2 id="什么是JWT"><a href="#什么是JWT" class="headerlink" title="什么是JWT"></a>什么是JWT</h2><p>JWT（Json Web Token）以JSON的格式传输网络安全认证消息，以一种轻量级的消息传输格式来确保服务端的安全。而被传输的JSON信息可以被认证和信任，因为它拥有可信的数字签名。</p>
+<p>客户端只需要使用凭证在服务器端认证一次，认证成功之后，服务端会给客户端返回一个JWT，客户端未来的请求都可以使用这个JWT来通过服务端的认证,并且不需要再次发送认证信息，比如说用户名和密码。</p>
+<p><img src="/home/pengkai/.config/Typora/typora-user-images/image-20211218220701216.png" alt="image-20211218220701216"></p>
+<p>需要注意的是，JWT中的payload对每个人都是可见的，因此我们不应该放任何敏感信息比如说密码在其中。我们可以加密payload数据，这样可以让它更加安全。然而我们可以确保没有人可以篡改payload中的信息。</p>
+]]></content>
+      <categories>
+        <category>java</category>
+      </categories>
+      <tags>
+        <tag>authenticate</tag>
       </tags>
   </entry>
 </search>
