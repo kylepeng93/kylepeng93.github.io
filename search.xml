@@ -1560,6 +1560,7 @@ dict是客户端，dictd是dict的后台服务器。默认安装之后是不带�
     <url>/2021/12/22/postgresql-study-resource/</url>
     <content><![CDATA[<h2 id="1-postgresql在arch-linux上的安装和初始化"><a href="#1-postgresql在arch-linux上的安装和初始化" class="headerlink" title="1. postgresql在arch linux上的安装和初始化"></a>1. postgresql在arch linux上的安装和初始化</h2><p><a href="https://www.cnblogs.com/lemos/p/11605557.html">https://www.cnblogs.com/lemos/p/11605557.html</a></p>
 <h2 id="2-postgresql语法"><a href="#2-postgresql语法" class="headerlink" title="2. postgresql语法"></a>2. postgresql语法</h2><p><a href="https://www.runoob.com/postgresql/postgresql-syntax.html">https://www.runoob.com/postgresql/postgresql-syntax.html</a></p>
+<h2 id="3-postgresql官方文档"><a href="#3-postgresql官方文档" class="headerlink" title="3. postgresql官方文档"></a>3. postgresql官方文档</h2><p><a href="https://www.postgresql.org/docs/current/sql-createfunction.html">https://www.postgresql.org/docs/current/sql-createfunction.html</a></p>
 ]]></content>
       <categories>
         <category>postgresql</category>
