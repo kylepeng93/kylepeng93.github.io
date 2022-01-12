@@ -84,9 +84,9 @@
   <ul class="main-menu menu">
         <li class="menu-item menu-item-home"><a href="/" rel="section"><i class="fa fa-home fa-fw"></i>首页</a></li>
         <li class="menu-item menu-item-about"><a href="/about/" rel="section"><i class="fa fa-user fa-fw"></i>关于</a></li>
-        <li class="menu-item menu-item-tags"><a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>标签<span class="badge">71</span></a></li>
-        <li class="menu-item menu-item-categories"><a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>分类<span class="badge">33</span></a></li>
-        <li class="menu-item menu-item-archives"><a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档<span class="badge">53</span></a></li>
+        <li class="menu-item menu-item-tags"><a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>标签<span class="badge">75</span></a></li>
+        <li class="menu-item menu-item-categories"><a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>分类<span class="badge">37</span></a></li>
+        <li class="menu-item menu-item-archives"><a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档<span class="badge">59</span></a></li>
       <li class="menu-item menu-item-search">
         <a role="button" class="popup-trigger"><i class="fa fa-search fa-fw"></i>搜索
         </a>
@@ -155,18 +155,18 @@
   <nav class="site-state">
       <div class="site-state-item site-state-posts">
         <a href="/archives/">
-          <span class="site-state-item-count">53</span>
+          <span class="site-state-item-count">59</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
       <div class="site-state-item site-state-categories">
           <a href="/categories/">
-        <span class="site-state-item-count">33</span>
+        <span class="site-state-item-count">37</span>
         <span class="site-state-item-name">分类</span></a>
       </div>
       <div class="site-state-item site-state-tags">
           <a href="/tags/">
-        <span class="site-state-item-count">71</span>
+        <span class="site-state-item-count">75</span>
         <span class="site-state-item-name">标签</span></a>
       </div>
   </nav>
@@ -195,6 +195,594 @@
 
 
     <div class="main-inner index posts-expand">
+
+    
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
+    <link itemprop="mainEntityOfPage" href="http://kylepeng93.github.io/2021/10/02/archlinux-install-guide/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/imagesUse%20GitHub%20issues%20for%20blog%20comments,%20wik/avatar.gif">
+      <meta itemprop="name" content="彭凯">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="成长日记">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          <a href="/2021/10/02/archlinux-install-guide/" class="post-title-link" itemprop="url">archlinux安装指南</a>
+        </h2>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">发表于</span>
+      
+
+      <time title="创建时间：2021-10-02 15:54:24 / 修改时间：21:51:03" itemprop="dateCreated datePublished" datetime="2021-10-02T15:54:24+08:00">2021-10-02</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">分类于</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/linux/" itemprop="url" rel="index"><span itemprop="name">linux</span></a>
+        </span>
+    </span>
+
+  
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+          <h2 id="Arch-Linux是什么"><a href="#Arch-Linux是什么" class="headerlink" title="Arch Linux是什么"></a>Arch Linux是什么</h2><p>Arch Linux是一款滚动更新的GNU/Linux发行版，致力于提供最新的稳定版软件，相较于其他图形界面的发行版，Arch Linux只能在命令行界面进行安装，且默认不带任何桌面环境。（非特别说明，后文将GNU/Linux简称为Linux）</p>
+<h2 id="Arch-Linux有什么优势"><a href="#Arch-Linux有什么优势" class="headerlink" title="Arch Linux有什么优势"></a>Arch Linux有什么优势</h2><p>相较于其他基于Debian或者Redhat的发行版，Arch Linux提供了自己的包管理器——pacman，而且支持用户软件仓库（AUR）。基于这个特性，大大增加了Arch Linux系统原生软件的数量。而良好的软件生态正是Arch Linux的一大利器。</p>
+<h2 id="Arch-Linux的安装"><a href="#Arch-Linux的安装" class="headerlink" title="Arch Linux的安装"></a>Arch Linux的安装</h2><p>对于大部分非专业人士而言，习惯了Windows的图形界面之后，突然使用命令行操作软件往往变得非常困难，更不用说安装系统了，尽管Arch Linux拥有详细的由社区维护的安装指南Wiki，但也因此劝退了一些习惯了windows之后想要尝试linux系统的新手，基于此，本文特地将自己安装Arch Linux过程中的经历以及出现的问题做个说明，作为Arch Linux安装wiki的补充，不失为帮助更多的人能够接触到linux的一种方法（windows固然很优秀，但<strong>自由/开源软件</strong>才是软件开发的未来）。</p>
+<h3 id="1、获取最新版镜像"><a href="#1、获取最新版镜像" class="headerlink" title="1、获取最新版镜像"></a>1、获取最新版镜像</h3><p>官方下载网站：<a target="_blank" rel="noopener" href="https://archlinux.org/download/">https://archlinux.org/download/</a></p>
+<h2 id="2、制作启动盘"><a href="#2、制作启动盘" class="headerlink" title="2、制作启动盘"></a>2、制作启动盘</h2><p>准备一个空的U盘，和一台已安装好linux系统的机器，使用如下命令进行写盘：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo dd bs=4MB <span class="keyword">if</span>=你的安装镜像路径 of=你的U盘路径 status=progress</span><br></pre></td></tr></table></figure>
+
+<blockquote>
+<p>of参数通常是/dev/sdb，其中sdb是你的U盘路径，注意不要带数字后缀，类似sdb1。另外，写盘之前必须使用umount命令卸载的U盘（如果被自动挂载的话）。</p>
+</blockquote>
+<h3 id="3、从U盘启动，开始安装"><a href="#3、从U盘启动，开始安装" class="headerlink" title="3、从U盘启动，开始安装"></a>3、从U盘启动，开始安装</h3><p>需要注意的是，为了确保可以正常从启动盘引导，需要关闭主板的安全启动选项（可以在安装完成之后重新打开），关闭方式因主板厂商不同而有所差异。具体如何关闭可以自行百度。</p>
+<p>重启主机之后，进入BIOS或者直接通过功能键选择启动顺序，将USB设备作为第一启动项，启动之后选择<code>Arch Linux install medium</code>进入系统安装界面。</p>
+<h3 id="4、验证启动模式"><a href="#4、验证启动模式" class="headerlink" title="4、验证启动模式"></a>4、验证启动模式</h3><p>如果使用的是UEFI模式，则可以使用如下命令验证:</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ls /sys/firmware/efi/efivars</span><br></pre></td></tr></table></figure>
+
+<p>如果命令正常打印出一系列文件和目录，且没有任何错误，则表明当前是以UEFI模式启动。否则则是以BIOS或者CMS模式启动。</p>
+<h2 id="5、联网"><a href="#5、联网" class="headerlink" title="5、联网"></a>5、联网</h2><p>一般来说，我们可以直接插入网线联网，或者使用外置网卡。比如手机的USB网络共享。</p>
+<h2 id="6、调整时区"><a href="#6、调整时区" class="headerlink" title="6、调整时区"></a>6、调整时区</h2><p>使用<code>timedatectl</code>可以查看并设置时区。</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 启用ntp（网络时间协议）</span></span><br><span class="line">timedatectl set-ntp <span class="literal">true</span></span><br><span class="line"><span class="comment"># 列出当前可用的时区</span></span><br><span class="line">timedatectl list-timezones</span><br><span class="line"><span class="comment"># 设置选择的时区</span></span><br><span class="line">timedatectl set-timezone Asia/Shanghai</span><br></pre></td></tr></table></figure>
+
+<h2 id="7、磁盘分区"><a href="#7、磁盘分区" class="headerlink" title="7、磁盘分区"></a>7、磁盘分区</h2><p>查看当前可用磁盘</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">fdisk -l</span><br></pre></td></tr></table></figure>
+
+<p>选择将要使用的磁盘，假设是<code>/dev/sda</code>，执行如下命令</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">fdisk /dev/sda</span><br></pre></td></tr></table></figure>
+
+<p>进入分区界面之后，使用<code>m</code>查看具体的分区指令。一般步骤如下：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 创建分区表</span></span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+
+      
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+</div>
+
+
+
+
+    
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
+    <link itemprop="mainEntityOfPage" href="http://kylepeng93.github.io/2021/09/28/ultraman-classic/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/imagesUse%20GitHub%20issues%20for%20blog%20comments,%20wik/avatar.gif">
+      <meta itemprop="name" content="彭凯">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="成长日记">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          <a href="/2021/09/28/ultraman-classic/" class="post-title-link" itemprop="url">迪迦奥特曼带给我的思考</a>
+        </h2>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">发表于</span>
+
+      <time title="创建时间：2021-09-28 22:26:34" itemprop="dateCreated datePublished" datetime="2021-09-28T22:26:34+08:00">2021-09-28</time>
+    </span>
+      <span class="post-meta-item">
+        <span class="post-meta-item-icon">
+          <i class="far fa-calendar-check"></i>
+        </span>
+        <span class="post-meta-item-text">更新于</span>
+        <time title="修改时间：2021-09-29 00:45:15" itemprop="dateModified" datetime="2021-09-29T00:45:15+08:00">2021-09-29</time>
+      </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">分类于</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/%E8%BF%AA%E8%BF%A6/" itemprop="url" rel="index"><span itemprop="name">迪迦</span></a>
+        </span>
+    </span>
+
+  
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+          <h1 id="第49集——奥特之星"><a href="#第49集——奥特之星" class="headerlink" title="第49集——奥特之星"></a>第49集——奥特之星</h1><h2 id="剧情演说"><a href="#剧情演说" class="headerlink" title="剧情演说"></a>剧情演说</h2><p>在这一集中，大古追踪穿越时空回到过去寻找怪兽的外星人查利加，和他一同回到了圆古英二导演还在世时的1965年。随后，大古在不经意间误闯进了圆古英二导演的摄影棚，临时充当了本该由长野（博）担任的场务一职，令人没想到的是，看到一身胜利队队服的大古，愣是没有一个人发现大古其实并不是长野（博），当然，在现实中，大古的扮演者就叫做长野博，这也是导演刻意给我们开的一个玩笑，不算剧情bug。</p>
+<p>离开摄影棚之后，大古找到了查利加，并质问他的真正意图，但查利加并不想告诉大古，反而向他发起了攻击，愤怒的大古拿出武器击退了查利加，而查利加也随之消失不见了。</p>
+<p>接下来的剧情中，还出现了真正的长野和大古见面的场景，不得不说，这种虚实相间的拍摄手法的确能够触动观众的情绪，带给观众一种说不出的感动。</p>
+<p>镜头给到初代奥特曼剧本创作人的金城哲夫，此时的他还在苦苦构思如何写出一个另圆古一导演（圆古英二导演的儿子）满意的剧本，但反复改了8次还是不能让导演满意，最后一次勉强让导演满意了，可是随后的一句“这故事有趣吗”再次让金城陷入了重写剧本的境遇。正当金城绞尽脑汁想剧本的时候，圆古英二导演主动和他聊起了剧本创作遇到的困难，并将自己的一颗红宝石拿给金城看，还告诉他这是外星人送给他的，而自己和这个外星人是好朋友。原来圆古英二导演曾经遇到过一个来自M78星云的奥特曼，而当时这个奥特曼正将一只怪兽沉到湖底，后来，为了表示对地球人的友好，他将一颗奥特之星送给了圆古英二导演，并告诉他这颗奥特之星会对他产生帮助。然而他们之间的对话被躲在门外的查利加偷听到了，而圆古英二提到的被奥特曼沉到湖底的怪兽正是他所要寻找的亚那加基。</p>
+<p>得到消息的查利加立刻赶到龙森湖救出被封印的亚那加基，并命令怪兽破坏人类的住所。怪兽的出现引起了大古的注意，为了阻止怪兽继续破坏地球，大古拿起神光棒，变身成了迪迦奥特曼，和怪兽展开了搏斗，谁知怪兽丝毫不落下风，反而挟持住了迪迦，并吸取他的能量，眼看迪迦就要被打败，一旁观战的圆古英二导演凭借自己的意念竟然也变成了一道光，朝着怪兽发动攻击，击退了正在吸取迪迦能量的怪兽之后，这道光居然变成了奥特曼，并将迪迦被吸取的能量重新输入到了他的体内。得到能量后的迪迦再次回到战斗，和另一个奥特曼同时发动光线技能，一举打败了怪兽。而操纵怪兽的查利加则放出一句“后会有期”之后就逃跑了。圆古英二看着两位巨人，说道“我们需要一个英雄，金城，英雄是必要的“。而此时的金城正在埋头书写关于英雄的故事。</p>
+<p>最后一幕是圆古英二导演拿着金城写出来的奥特英雄的剧本开始了初代奥特曼剧集的拍摄。之后的事情我们也都知道了。从此，奥特曼宇宙开启了崭新的一页。</p>
+<h2 id="观后感"><a href="#观后感" class="headerlink" title="观后感"></a>观后感</h2><p>作为一部平成年代的开山之作，《迪迦奥特曼》与圆谷制作的上一部奥特曼剧集中间已经整整间隔了16年，而16年前观看奥特曼的小孩子很多都已经长大成人，主打孩童向的奥特曼似乎已经和他们渐行渐远。或许正是基于这一考量，《迪迦奥特曼》从一开始面向的就是成人观众。还记得小时候看迪迦，更多的是关注奥特曼打小怪兽，至于为什么要打怪兽以及人类未来的命运则完全不加考虑，只知道这个奥特曼长得特别好看，还能变身成其他两种形态，真的太酷了。当我们长大后再次打开《迪迦奥特曼》，我们突然发现这个奥特曼似乎有点不一样，曾经我们心中无敌的奥特曼似乎也在慢慢变得不那么无敌，原来，奥特曼也是人变的，他也会受伤，甚至奥特曼还需要我们人类的帮助才能打败那些怪兽，不仅是奥特曼，那些被他打的怪兽也变了，似乎没有天生就是怪兽的，都是因为人类肆意破坏地球，盲目发展高科技，才使我们的身边多了这么多怪兽，而来自外太空的外星人之所以要侵略地球，毁灭人类，只是因为他们想活下去，而奥特曼既是光，同时也是人类，为了人类的生存，奥特曼必须站出来打倒怪兽。即使面对一个根本赢不了的敌人，奥特曼也要以人类的身份战斗到最后一刻。很难想象一向主打孩童向的特摄片居然能在短短的一集20多分钟的剧情中注入如此崇高的立意，也让长大后的我们知道原来《迪迦奥特曼》根本就不是一部面向孩童的特摄片。我们都误会他了。作为连接昭和和平成奥特曼的桥梁，迪迦在奥特之星中完成了这一神圣的交接仪式，当我们看到初代奥特曼和迪迦在圆谷英二导演面前握手时，我们知道，随着圆谷英二导演的去世以及平成时代的到来，未来的奥特曼系列将开启新的篇章，而这一切都将从迪迦奥特曼开始。——谨以此文献给我们的童年，永远的迪迦奥特曼。</p>
+
+      
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+</div>
+
+
+
+
+    
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
+    <link itemprop="mainEntityOfPage" href="http://kylepeng93.github.io/2021/09/26/why-we-like-ultraman-tiga/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/imagesUse%20GitHub%20issues%20for%20blog%20comments,%20wik/avatar.gif">
+      <meta itemprop="name" content="彭凯">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="成长日记">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          <a href="/2021/09/26/why-we-like-ultraman-tiga/" class="post-title-link" itemprop="url">我们为什么喜欢迪迦奥特曼——迪迦被禁播后的感想</a>
+        </h2>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">发表于</span>
+      
+
+      <time title="创建时间：2021-09-26 22:50:17 / 修改时间：23:23:03" itemprop="dateCreated datePublished" datetime="2021-09-26T22:50:17+08:00">2021-09-26</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">分类于</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/%E5%A5%A5%E7%89%B9%E6%9B%BC/" itemprop="url" rel="index"><span itemprop="name">奥特曼</span></a>
+        </span>
+    </span>
+
+  
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+          <h1 id="谁能想到，2021年的9月24日，这个看似格外普通的日子，却也是陪伴我们童年一路走来的特摄剧《迪迦奥特曼》上映25周年，居然在一片举报声中无声无息的全网下架，对于奥迷来说，这是一个值得被记住的日子，而对于期盼国产动漫能早日赶超国际水平的国人而言，这次的禁令不能不让我们心寒，或许我们希望的那一天永远都不会到来了。"><a href="#谁能想到，2021年的9月24日，这个看似格外普通的日子，却也是陪伴我们童年一路走来的特摄剧《迪迦奥特曼》上映25周年，居然在一片举报声中无声无息的全网下架，对于奥迷来说，这是一个值得被记住的日子，而对于期盼国产动漫能早日赶超国际水平的国人而言，这次的禁令不能不让我们心寒，或许我们希望的那一天永远都不会到来了。" class="headerlink" title="谁能想到，2021年的9月24日，这个看似格外普通的日子，却也是陪伴我们童年一路走来的特摄剧《迪迦奥特曼》上映25周年，居然在一片举报声中无声无息的全网下架，对于奥迷来说，这是一个值得被记住的日子，而对于期盼国产动漫能早日赶超国际水平的国人而言，这次的禁令不能不让我们心寒，或许我们希望的那一天永远都不会到来了。"></a>谁能想到，2021年的9月24日，这个看似格外普通的日子，却也是陪伴我们童年一路走来的特摄剧《迪迦奥特曼》上映25周年，居然在一片举报声中无声无息的全网下架，对于奥迷来说，这是一个值得被记住的日子，而对于期盼国产动漫能早日赶超国际水平的国人而言，这次的禁令不能不让我们心寒，或许我们希望的那一天永远都不会到来了。</h1><p><img src="/assets/tiga-ultraman.png"></p>
+<h2 id="迪迦带给我们的感动"><a href="#迪迦带给我们的感动" class="headerlink" title="迪迦带给我们的感动"></a>迪迦带给我们的感动</h2><p>我们总说迪迦代表的是<strong>光</strong>，其实我们喜欢迪迦的真正原因是我们信仰迪迦带给我们的<strong>希望</strong>和<strong>与黑暗势力抗争到底的决心和勇气</strong>。</p>
+<p>在迪迦奥特曼中，人类不停的被外来生物入侵，作为承担保护地球责任的地球防卫队——GUTS组织，在正面对抗体型庞大的怪兽和拥有高科技的外星人时根本也是无能为力，如果没有迪迦奥特曼的帮助，人类早就被毁灭几十次了，即使在面对没有丝毫破坏力的奇杰拉时，人类的表现也是令人失望的，因为人类宁愿活在虚无缥缈的幻境中，去逃避现实中的种种不堪，也不愿为了人类的未来去努力拼搏，积极进取，人类到底是一种软弱的生物。即便是迪迦之前的超古代奥特战士在看到这样的人类之后也只能任其毁灭，因为他们不是人类，对于浩瀚的宇宙而言，人类也只是其中渺小的一份子，如同大部分宇宙生物一样，自生自灭就是最好的生存法则。但是，这一切在迪迦出现后就完全变了，作为人类的大古机缘巧合之下获得了迪迦留在地球的巨人身躯，从一个普通的人类变成了保护地球的奥特战士，一次次以人类的身份比肩神明，为了人类的生存义无反顾的同凶残的巨型怪兽和邪恶的外星生物进行战斗，甚至在人类对奥特曼失去信任，反而帮助外星人诋毁奥特曼时也坚持维护人类免受灭顶之灾，如果这样的迪迦奥特曼都不能称之为英雄，并受到人类的尊敬和爱戴，那这人间或许本就该成为奇杰拉的墓场，这样的文明即使毁灭也无妨。迪迦奥特曼不仅带给我们希望，还教会了我们很多的道理，其中不乏对于人与人，人与科技，人与环境，人与地球，人与宇宙的深度思考，而这些看似宏大的人生理念，却在迪迦奥特曼中得到了很好的诠释。如果对于这样的一部作品都要冠以暴力的称谓而加以禁播，可想而知我们的社会中还有多少看似人模狗样，实则满肚子鸡鸣狗盗，阳奉阴违之人。这样的人无论是作为个人还是父母，对于人类的进步和社会的稳定都是一大阻碍，因为在他们眼中任何表达美好事物的东西都会被他们过滤在外，而最终留给他们的只能是暴力，于人于己，这样的人都是社会的毒瘤，而为他们提供滋生土壤的人也难辞其咎。此时此刻，迪迦或许只是暂时的离开，但他的精神会永远留在我们心中。迪迦奥特曼保护人类，更是为了保护我们人类赖以生存的美丽地球。</p>
+
+      
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+</div>
+
+
+
+
+    
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
+    <link itemprop="mainEntityOfPage" href="http://kylepeng93.github.io/2021/09/26/how-raspberry-pi-connect-to-wifi-without-boot/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/imagesUse%20GitHub%20issues%20for%20blog%20comments,%20wik/avatar.gif">
+      <meta itemprop="name" content="彭凯">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="成长日记">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          <a href="/2021/09/26/how-raspberry-pi-connect-to-wifi-without-boot/" class="post-title-link" itemprop="url">怎么在不开机的情况下让树莓派自动连接上wifi</a>
+        </h2>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">发表于</span>
+      
+
+      <time title="创建时间：2021-09-26 21:47:07 / 修改时间：22:46:16" itemprop="dateCreated datePublished" datetime="2021-09-26T21:47:07+08:00">2021-09-26</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">分类于</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/raspberry-pi/" itemprop="url" rel="index"><span itemprop="name">raspberry pi</span></a>
+        </span>
+    </span>
+
+  
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+          <p><img src="/assets/raspberry_pi.jpg" alt="树莓派"></p>
+<h2 id="什么是树莓派"><a href="#什么是树莓派" class="headerlink" title="什么是树莓派"></a>什么是树莓派</h2><p>树莓派（Raspberry Pi）是一款只有巴掌大小的微型计算机开发板，别看它体积小，但它确实是一个功能完备的计算机，可以做绝大部分我们个人电脑（PC）可以做的事情。而且功耗更小。</p>
+<h2 id="树莓派支持的系统"><a href="#树莓派支持的系统" class="headerlink" title="树莓派支持的系统"></a>树莓派支持的系统</h2><p>目前除了官方主推的Raspberry Pi OS ，还有其他第三方系统，比如基于ubuntu和debian的arm发行版，理论上可以安装微软的Windows，但不推荐，毕竟Windows是收费软件，而且对系统资源相较于linux有更高的要求，作为一款主打轻量级的开发版，Windows显然太重了。</p>
+<h2 id="树莓派怎么联网"><a href="#树莓派怎么联网" class="headerlink" title="树莓派怎么联网"></a>树莓派怎么联网</h2><ol>
+<li>树莓派自带支持802.11n的以太网网卡，因此可以直接使用支持RJ45的标准网口连接上网；</li>
+<li>从Model 3开始，树莓派自带支持802.11n的无线网卡，对于无法通过网线直连的场合，wifi变成了我们唯一的途径。</li>
+</ol>
+<p>下面具体就怎么在不开机的情况下配置无线连接做个介绍，方便大家在无线环境中使用树莓派。</p>
+<blockquote>
+<p>不得不说，树莓派自带的无线网卡的性能确实很弱，对于大流量的场景不推荐使用，最好自备外接无线网卡。</p>
+</blockquote>
+<h3 id="安装系统"><a href="#安装系统" class="headerlink" title="安装系统"></a>安装系统</h3><p>本教程基于Raspberry Pi OS，其他发行版系统可能不适用。下载地址：<a target="_blank" rel="noopener" href="https://downloads.raspberrypi.org/raspios_armhf/images/raspios_armhf-2021-05-28/2021-05-07-raspios-buster-armhf.zip%E3%80%82">https://downloads.raspberrypi.org/raspios_armhf/images/raspios_armhf-2021-05-28/2021-05-07-raspios-buster-armhf.zip。</a></p>
+<h3 id="制作启动盘"><a href="#制作启动盘" class="headerlink" title="制作启动盘"></a>制作启动盘</h3><p>在linux下面可以使用如下命令</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo dd <span class="keyword">if</span>=/home/your_home/raspberryOS.iso of=/dev/sd&#123;x&#125; bs=4MB status=progress</span><br></pre></td></tr></table></figure>
+
+<p>注意，使用上面的命令时必须确保of参数对应的值是你要写入的SD卡，一般以sd开头，if参数对应的是你下载解压后的原始镜像地址。</p>
+<blockquote>
+<p>windows上的启动盘制作请自行百度</p>
+</blockquote>
+<h3 id="写入wifi配置"><a href="#写入wifi配置" class="headerlink" title="写入wifi配置"></a>写入wifi配置</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">country=CN <span class="comment">#这里是我们位于的国家的缩写</span></span><br><span class="line">ctrl_interface=DIR=/var/run/wpa_supplicant GROUP=netdev</span><br><span class="line">update_config=1 <span class="comment">#更新现有配置</span></span><br><span class="line">network=&#123;</span><br><span class="line">  ssid=<span class="string">&quot;你的wifi名称&quot;</span></span><br><span class="line">  scan_ssid=1</span><br><span class="line">  psk=<span class="string">&quot;你的wifi密码&quot;</span></span><br><span class="line">  key_mgmt=WPA-PSK</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>将该文件命名为<code>wpa_supplicant.conf</code>，并将其保存到制作好的启动盘的最外层的boot目录下。</p>
+<h3 id="允许ssh访问"><a href="#允许ssh访问" class="headerlink" title="允许ssh访问"></a>允许ssh访问</h3><p>在启动盘的最外层的boot目录下创建ssh文件，不需要向里面写入内容。</p>
+<p><strong>最后将制作好的sd卡插入到树莓派中启动即可自动连接wifi,然后我们在路由器管理页面查看已连接设备中就能看到带有raspberry pi标签的设备了，找出其ip地址，尝试下使用ssh连接并管理树莓派，如果一切顺利的话，你将可以通过远程访问来管理你的树莓派设备了。</strong></p>
+<h2 id="使用静态ip地址"><a href="#使用静态ip地址" class="headerlink" title="使用静态ip地址"></a>使用静态ip地址</h2><p>由于树莓派内置了DHCP服务，所以，当我们每次连接上wifi时可能会被分配到不同的ip地址，这显然不利于配置外部对于树莓派后台服务的访问，因此，我们在连接上wifi之后，可以给树莓派配置一个静态ip。</p>
+<p>打开<code>/etc/dhcpcd.conf</code>文件，向里面追加如下配置</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">interface wlan0</span><br><span class="line">static ip_address=192.168.0.193/24</span><br><span class="line">static routers=192.168.0.1</span><br><span class="line">static domain_name_servers=192.168.0.1 192.168.1.1</span><br></pre></td></tr></table></figure>
+
+<p>其中<code>wlan0</code>是我们无线网卡的系统名称，后面的<code>ip_address</code>则是我们自定义的ip地址，<code>routers</code>是我们的路由，<code>domain_name_server</code>是我们的DNS地址，多个DNS的场合使用空格隔开。</p>
+
+      
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+</div>
+
+
+
+
+    
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
+    <link itemprop="mainEntityOfPage" href="http://kylepeng93.github.io/2021/09/03/shiro-permission-guide/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/imagesUse%20GitHub%20issues%20for%20blog%20comments,%20wik/avatar.gif">
+      <meta itemprop="name" content="彭凯">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="成长日记">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          <a href="/2021/09/03/shiro-permission-guide/" class="post-title-link" itemprop="url">shiro的权限管理之访问许可（permission）</a>
+        </h2>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">发表于</span>
+      
+
+      <time title="创建时间：2021-09-03 00:43:53 / 修改时间：01:30:33" itemprop="dateCreated datePublished" datetime="2021-09-03T00:43:53+08:00">2021-09-03</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">分类于</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/java/" itemprop="url" rel="index"><span itemprop="name">java</span></a>
+        </span>
+    </span>
+
+  
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+          <p><img src="/assets/lock.jpg"></p>
+<h2 id="1-Apache-Shiro中的permission是什么"><a href="#1-Apache-Shiro中的permission是什么" class="headerlink" title="1. Apache Shiro中的permission是什么"></a>1. Apache Shiro中的permission是什么</h2><p>Shiro 将 Permission 定义为代表某个明确行为或动作的语句。 它是应用程序中原始功能的声明，仅此而已。 权限是安全策略中最低级别的结构，它们仅明确定义应用程序可以做什么，而不会描述谁可以做这些动作。（和subject即认证主体无关）</p>
+<h2 id="2-permission体现在哪些地方"><a href="#2-permission体现在哪些地方" class="headerlink" title="2. permission体现在哪些地方"></a>2. permission体现在哪些地方</h2><ul>
+<li><p>打开一个文件</p>
+</li>
+<li><p>访问<code>/user/list</code>路径下的网页</p>
+</li>
+<li><p>打印文档</p>
+</li>
+<li><p>删除某个用户</p>
+</li>
+</ul>
+<p>定义“谁”（用户）被允许做“什么”（权限）是一种以某种方式为用户分配权限的运用，这始终由应用程序的数据模型完成，并且可能因应用程序而异。</p>
+<p>例如，权限可以归入一个角色，并且该角色可以与一个或多个用户对象相关联。 或者一些应用程序可以有一个用户组，一个组可以分配一个角色，通过传递关联意味着该组中的所有用户都被隐式授予角色中的权限。</p>
+<p>向用户授予权限的方式有多种变化——应用程序根据应用程序要求确定如何对此进行建模。</p>
+<h2 id="3-通配符权限"><a href="#3-通配符权限" class="headerlink" title="3. 通配符权限"></a>3. 通配符权限</h2><p>上面的权限示例中，“打开文件”，“查看‘用户/列表’网页”等都是有效的权限声明。 然而，在计算上解释这些自然语言字符串并确定是否允许用户执行该行为将是非常困难的。因此，为了实现易于处理但仍然可读的权限语句，Shiro 提供了强大而直观的权限语法，我们称之为通配符权限。</p>
+<h3 id="3-1-简单应用"><a href="#3-1-简单应用" class="headerlink" title="3.1 简单应用"></a>3.1 简单应用</h3><p>假设您想保护对公司打印机的访问，以便某些人可以打印到特定的打印机，而其他人可以查询当前队列中的作业。</p>
+<p>一种极其简单的方法是授予用户“queryPrinter”权限。 然后您可以通过调用来检查用户是否具有 queryPrinter 权限：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">subject.isPermitted(<span class="string">&quot;queryPrinter&quot;</span>)</span><br></pre></td></tr></table></figure>
+
+<p>这等价于：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">subject.isPermitted( <span class="keyword">new</span> WildcardPermission(<span class="string">&quot;queryPrinter&quot;</span>) )</span><br></pre></td></tr></table></figure>
+
+<p>这还不够，简单权限字符串可能适用于简单的应用程序，但它需要您拥有“printPrinter”、“queryPrinter”、“managePrinter”等权限。您也可以使用通配符授予用户“*”权限（授予此权限） 构造其名称），这意味着它们拥有整个应用程序的所有权限。</p>
+<p>但是使用这种方法，不能只说用户拥有“所有打印机权限”。 因此，通配符权限支持多级权限。</p>
+<h3 id="3-2-多个部件"><a href="#3-2-多个部件" class="headerlink" title="3.2 多个部件"></a>3.2 多个部件</h3><p>通配符权限支持多个级别或部分的概念。 例如，您可以通过授予用户权限来重构前面的简单示例</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">printer:query</span><br></pre></td></tr></table></figure>
+
+<p>本示例中的冒号是一个特殊字符，用于分隔权限字符串中的下一部分。</p>
+<p>在此示例中，第一部分是正在操作的域（打印机），第二部分是正在执行的操作（查询）。 上面的其他示例将更改为：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">printer:print</span><br><span class="line">printer:manage</span><br></pre></td></tr></table></figure>
+
+<p>可以使用的部件数量没有限制，因此就可以在您的应用程序中使用它的方式而言，这取决于您的想象力。</p>
+<h4 id="3-2-1-多个值"><a href="#3-2-1-多个值" class="headerlink" title="3.2.1 多个值"></a>3.2.1 多个值</h4><p>每个部分可以包含多个值。 因此，与其同时授予用户“printer:print”和“printer:query”权限，您还可以简单地授予他们一个权限：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">printer:print,query</span><br></pre></td></tr></table></figure>
+
+<p>这使他们能够打印和查询打印机。 并且由于他们被授予了这两个操作，您可以检查用户是否有能力通过调用来查询打印机：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">subject.isPermitted(<span class="string">&quot;printer:query&quot;</span>)</span><br></pre></td></tr></table></figure>
+
+<p>这将返回 true。</p>
+<h4 id="3-2-2-全部的值"><a href="#3-2-2-全部的值" class="headerlink" title="3.2.2 全部的值"></a>3.2.2 全部的值</h4><p>如果您想授予用户特定部分的所有值怎么办？ 这样做比手动列出每个值更方便。 同样，基于通配符，我们可以做到这一点。 如果打印机域有 3 个可能的操作（查询、打印和管理），则：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">printer:query,print,manage</span><br></pre></td></tr></table></figure>
+
+<p>可以简化为：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">printer:*</span><br></pre></td></tr></table></figure>
+
+<p>然后，对“printer:XXX”的任何权限检查都将返回 true。 以这种方式使用通配符比显式列出操作更有效，因为如果稍后向应用程序添加新操作，则无需更新在该部分使用通配符的权限。</p>
+<p>最后，还可以在通配符权限字符串的任何部分使用通配符标记。 例如，如果您想授予用户跨所有域（不仅仅是打印机）的“查看”操作，您可以授予以下权限：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">*:view</span><br></pre></td></tr></table></figure>
+
+<p>然后对“foo:view”的任何权限检查都将返回true。</p>
+<p><strong>未完待续：<a target="_blank" rel="noopener" href="https://shiro.apache.org/permissions.html">https://shiro.apache.org/permissions.html</a></strong></p>
+
+      
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+</div>
+
+
+
+
+    
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
+    <link itemprop="mainEntityOfPage" href="http://kylepeng93.github.io/2021/08/20/study-resource-collection/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/imagesUse%20GitHub%20issues%20for%20blog%20comments,%20wik/avatar.gif">
+      <meta itemprop="name" content="彭凯">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="成长日记">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          <a href="/2021/08/20/study-resource-collection/" class="post-title-link" itemprop="url">学习资源汇总</a>
+        </h2>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">发表于</span>
+
+      <time title="创建时间：2021-08-20 00:15:09" itemprop="dateCreated datePublished" datetime="2021-08-20T00:15:09+08:00">2021-08-20</time>
+    </span>
+      <span class="post-meta-item">
+        <span class="post-meta-item-icon">
+          <i class="far fa-calendar-check"></i>
+        </span>
+        <span class="post-meta-item-text">更新于</span>
+        <time title="修改时间：2021-09-03 01:33:00" itemprop="dateModified" datetime="2021-09-03T01:33:00+08:00">2021-09-03</time>
+      </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">分类于</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/%E8%87%AA%E5%AD%A6/" itemprop="url" rel="index"><span itemprop="name">自学</span></a>
+        </span>
+    </span>
+
+  
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+          <ol>
+<li><p>分布式搜索引擎elasticsearch学习教程——<a target="_blank" rel="noopener" href="https://www.tutorialspoint.com/elasticsearch/elasticsearch_populate.htm">https://www.tutorialspoint.com/elasticsearch/elasticsearch_populate.htm</a></p>
+</li>
+<li><p>java权限认证框架shiro——<a target="_blank" rel="noopener" href="https://shiro.apache.org/authentication.html">https://shiro.apache.org/authentication.html</a></p>
+</li>
+<li><p>vue+bootstrap4学习——<a target="_blank" rel="noopener" href="https://www.remotestack.io/build-vue-login-signup-ui-auth-template-with-bootstrap/">https://www.remotestack.io/build-vue-login-signup-ui-auth-template-with-bootstrap/</a></p>
+</li>
+<li><p>druid学习资源——<a target="_blank" rel="noopener" href="https://druid.apache.org/docs/latest/configuration/index.html">https://druid.apache.org/docs/latest/configuration/index.html</a></p>
+</li>
+<li><p>java日志框架logback——<a target="_blank" rel="noopener" href="https://dennis-xlc.gitbooks.io/the-logback-manual/content/en/chapter-4-appenders/logback-core/rollingfileappender/size-and-time-based-rolling-policy.html">https://dennis-xlc.gitbooks.io/the-logback-manual/content/en/chapter-4-appenders/logback-core/rollingfileappender/size-and-time-based-rolling-policy.html</a></p>
+</li>
+<li><p>springboot官方文档——<a target="_blank" rel="noopener" href="https://docs.spring.io/spring-boot/docs/current/reference/htmlsingle/#legal">https://docs.spring.io/spring-boot/docs/current/reference/htmlsingle/#legal</a></p>
+</li>
+<li><p>java缩写解释：<a target="_blank" rel="noopener" href="https://www.allacronyms.com/EIS/Enterprise_Information_Server">https://www.allacronyms.com/EIS/Enterprise_Information_Server</a></p>
+</li>
+<li><p>hexo使用文档：<a target="_blank" rel="noopener" href="https://hexo.io/docs/writing.html">https://hexo.io/docs/writing.html</a></p>
+</li>
+</ol>
+
+      
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+</div>
+
+
+
 
     
 
@@ -582,586 +1170,6 @@
 
 
 
-    
-
-
-<div class="post-block">
-  
-  
-
-  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
-    <link itemprop="mainEntityOfPage" href="http://kylepeng93.github.io/2021/08/08/samba-server-tutorial/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/imagesUse%20GitHub%20issues%20for%20blog%20comments,%20wik/avatar.gif">
-      <meta itemprop="name" content="彭凯">
-      <meta itemprop="description" content="">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="成长日记">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          <a href="/2021/08/08/samba-server-tutorial/" class="post-title-link" itemprop="url">在ubuntu上创建自己的samba服务器</a>
-        </h2>
-
-        <div class="post-meta-container">
-          <div class="post-meta">
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-calendar"></i>
-      </span>
-      <span class="post-meta-item-text">发表于</span>
-      
-
-      <time title="创建时间：2021-08-08 19:23:12 / 修改时间：21:51:03" itemprop="dateCreated datePublished" datetime="2021-08-08T19:23:12+08:00">2021-08-08</time>
-    </span>
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-folder"></i>
-      </span>
-      <span class="post-meta-item-text">分类于</span>
-        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-          <a href="/categories/%E6%96%87%E4%BB%B6%E5%85%B1%E4%BA%AB%E6%9C%8D%E5%8A%A1/" itemprop="url" rel="index"><span itemprop="name">文件共享服务</span></a>
-        </span>
-    </span>
-
-  
-</div>
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-          <h2 id="samba"><a href="#samba" class="headerlink" title="samba"></a>samba</h2><p>类Unix（Gnu/Linux）操作系统上用来和标准Windows文件系统互相通信的一种程序套件；Samba允许类Unix系统和Windows系统共享文件和打印机，忽略两个系统间的差异性，从而实现共存。</p>
-<h2 id="在ubuntu上安装Samba"><a href="#在ubuntu上安装Samba" class="headerlink" title="在ubuntu上安装Samba"></a>在ubuntu上安装Samba</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo apt update &amp;&amp; sudo apt install -y samba</span><br></pre></td></tr></table></figure>
-
-<h2 id="修改配置文件，设置共享目录"><a href="#修改配置文件，设置共享目录" class="headerlink" title="修改配置文件，设置共享目录"></a>修改配置文件，设置共享目录</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 创建共享目录</span></span><br><span class="line">$ mkdir /tmp/share</span><br></pre></td></tr></table></figure>
-
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 将共享目录添加到配置文件中</span></span><br><span class="line">$ sudo vim /etc/samba/smb.conf</span><br></pre></td></tr></table></figure>
-
-<p>将下面的内容追加到文件末尾：</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">[share]</span><br><span class="line">	comment = Samba share directory # 共享目录说明</span><br><span class="line">	path = /tmp/share # 共享目录的系统路径</span><br><span class="line">	read only = yes # 是否只读 </span><br><span class="line">    browsable = yes # 是否可浏览</span><br></pre></td></tr></table></figure>
-
-<h2 id="修改默认端口（适用于公网访问的场景，内网访问可以不用修改）"><a href="#修改默认端口（适用于公网访问的场景，内网访问可以不用修改）" class="headerlink" title="修改默认端口（适用于公网访问的场景，内网访问可以不用修改）"></a>修改默认端口（适用于公网访问的场景，内网访问可以不用修改）</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ sudo vim /etc/samba/smb.conf</span><br></pre></td></tr></table></figure>
-
-<p>将下面的内容追加到<code>[global]</code>部分的末尾（如果端口配置已存在，则直接修改端口号）</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">[global]</span><br><span class="line">	...</span><br><span class="line">	smb ports = 4450 1390 #想要指定的端口号，原本为445 139</span><br></pre></td></tr></table></figure>
-
-<h2 id="重启smbd守护进程"><a href="#重启smbd守护进程" class="headerlink" title="重启smbd守护进程"></a>重启smbd守护进程</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ sudo systemctl restart smbd</span><br></pre></td></tr></table></figure>
-
-<h2 id="查看修改后的端口号是否生效"><a href="#查看修改后的端口号是否生效" class="headerlink" title="查看修改后的端口号是否生效"></a>查看修改后的端口号是否生效</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">$ ss -nltp | grep 4450</span><br><span class="line">$ ss -nltp | grep 1390</span><br></pre></td></tr></table></figure>
-
-<h2 id="配置防火墙ufw"><a href="#配置防火墙ufw" class="headerlink" title="配置防火墙ufw"></a>配置防火墙ufw</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 如果开启了ufw,则需要将samba服务添加到允许访问服务列表中</span></span><br><span class="line">sudo ufw allow samba</span><br><span class="line"><span class="comment"># 如果重新配置了端口，则需要指定允许访问的端口号</span></span><br><span class="line">sudo ufw allow [port] <span class="comment"># 可以在端口号后面加上tcp或者udp,如1390/tcp、1390/udp</span></span><br></pre></td></tr></table></figure>
-
-<h2 id="创建samba用户账户"><a href="#创建samba用户账户" class="headerlink" title="创建samba用户账户"></a>创建samba用户账户</h2><p>samba默认不使用系统账户，因此，我们需要为共享目录设置一个用户名和密码：</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">sudo smbpasswd -a <span class="variable">$USER</span></span><br><span class="line"><span class="comment"># 该命令会将当前用户加入到samba的用户中，并提示设置该用户对应的密码</span></span><br></pre></td></tr></table></figure>
-
-<h2 id="验证samba服务的可用性"><a href="#验证samba服务的可用性" class="headerlink" title="验证samba服务的可用性"></a>验证samba服务的可用性</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">sudo apt install smbclient</span><br><span class="line"><span class="comment"># 验证可用的samba共享目录</span></span><br><span class="line">smbclient -L samba_server_ip</span><br><span class="line"><span class="comment"># 如果修改了默认端口号，还需要手动指定端口号</span></span><br><span class="line">smbclient -p 1390 -L samba_server_ip</span><br></pre></td></tr></table></figure>
-
-<p>如果服务正常的话，会出现如下内容：</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">Enter WORKGROUP\pengkai<span class="string">&#x27;s password: </span></span><br><span class="line"><span class="string"></span></span><br><span class="line"><span class="string">	Sharename       Type      Comment</span></span><br><span class="line"><span class="string">	---------       ----      -------</span></span><br><span class="line"><span class="string">	sambashare      Disk      Samba And linux</span></span><br><span class="line"><span class="string">	www-data        Disk      apache web root</span></span><br><span class="line"><span class="string">	print$          Disk      Printer Drivers</span></span><br><span class="line"><span class="string">	IPC$            IPC       IPC Service (kyleVps server (Samba, Ubuntu))</span></span><br><span class="line"><span class="string">SMB1 disabled -- no workgroup available</span></span><br></pre></td></tr></table></figure>
-
-<h2 id="在终端中连接samba共享目录"><a href="#在终端中连接samba共享目录" class="headerlink" title="在终端中连接samba共享目录"></a>在终端中连接samba共享目录</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">smbclient -U [user] [-p port] //[samba_ip]/[share_directory] </span><br><span class="line"><span class="comment"># 上述命令需要指定登陆用户和samba服务器ip以及共享目录，随后系统会提示输入密码</span></span><br><span class="line"><span class="comment"># 密码验证通过之后会进入smb的命令行交互界面：</span></span><br><span class="line">Try <span class="string">&quot;help&quot;</span> to get a list of possible commands.</span><br><span class="line">smb: \&gt; ls</span><br><span class="line">  .                                   D        0  Sun Feb 21 18:42:49 2021</span><br><span class="line">  ..                                  D        0  Sun Feb 21 18:42:18 2021</span><br><span class="line">  Test File                           N       20  Sun Feb 21 18:42:49 2021</span><br><span class="line"> </span><br><span class="line">        971515904 blocks of size 1024. 843676384 blocks available</span><br><span class="line">smb: \&gt; </span><br></pre></td></tr></table></figure>
-
-<h2 id="将samba挂载至指定目录下"><a href="#将samba挂载至指定目录下" class="headerlink" title="将samba挂载至指定目录下"></a>将samba挂载至指定目录下</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">未完待续</span><br></pre></td></tr></table></figure>
-
-
-
-<p>至此，samba的安装、配置和使用就说完了。</p>
-
-      
-    </div>
-
-    
-    
-    
-
-    <footer class="post-footer">
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-</div>
-
-
-
-
-    
-
-
-<div class="post-block">
-  
-  
-
-  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
-    <link itemprop="mainEntityOfPage" href="http://kylepeng93.github.io/2021/08/08/namp-command-tutorial/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/imagesUse%20GitHub%20issues%20for%20blog%20comments,%20wik/avatar.gif">
-      <meta itemprop="name" content="彭凯">
-      <meta itemprop="description" content="">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="成长日记">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          <a href="/2021/08/08/namp-command-tutorial/" class="post-title-link" itemprop="url">nmap命令使用教程</a>
-        </h2>
-
-        <div class="post-meta-container">
-          <div class="post-meta">
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-calendar"></i>
-      </span>
-      <span class="post-meta-item-text">发表于</span>
-      
-
-      <time title="创建时间：2021-08-08 16:19:00 / 修改时间：17:20:43" itemprop="dateCreated datePublished" datetime="2021-08-08T16:19:00+08:00">2021-08-08</time>
-    </span>
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-folder"></i>
-      </span>
-      <span class="post-meta-item-text">分类于</span>
-        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-          <a href="/categories/nmap/" itemprop="url" rel="index"><span itemprop="name">nmap</span></a>
-        </span>
-    </span>
-
-  
-</div>
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-          <ol>
-<li><p>扫描单个目标地址：</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">nmap 192.168.0.100</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>扫描多个目标地址</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">nmap 192.168.0.100 192.168.0.105</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>扫描一个范围内的目标地址</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">nmap 192.168.0.100-200</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>扫描目标地址所在的某个网段：</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">nmap 192.168.0.100/24</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>扫描主机列表targets.txt文件中的所有目标地址</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">nmap -iL ~/targets.txt</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>扫描除某一个目标地址之外的所有目标地址</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">nmap 192.168.0.100/24 -exclude 192.168.0.105</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>扫描除某一文件中的目标地址之外的目标地址</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">nmap 192.168.0.100/24 -exceludefile ~/targets.txt</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>扫描某一目标地址的21、22、23、80端口</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">nmap 192.168.0.100 -p 21,22,23,80</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>对目标地址进行路由跟踪</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">nmap --traceroute 192.168.0.100</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>扫描目标地址所在C段的在线状况</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">nmap -sP 192.168.0.100/24</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>目标地址的操作系统指纹识别</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">nmap -O 192.168.0.100</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>目标地址提供的服务版本检测</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">nmap -sV 192.168.0.105</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>探测防火墙状态</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">nmap -sF -T4 192.168.0.100</span><br></pre></td></tr></table></figure>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-</li>
-</ol>
-
-      
-    </div>
-
-    
-    
-    
-
-    <footer class="post-footer">
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-</div>
-
-
-
-
-    
-
-
-<div class="post-block">
-  
-  
-
-  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
-    <link itemprop="mainEntityOfPage" href="http://kylepeng93.github.io/2021/08/08/string-in-file-search/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/imagesUse%20GitHub%20issues%20for%20blog%20comments,%20wik/avatar.gif">
-      <meta itemprop="name" content="彭凯">
-      <meta itemprop="description" content="">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="成长日记">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          <a href="/2021/08/08/string-in-file-search/" class="post-title-link" itemprop="url">string-in-file-search</a>
-        </h2>
-
-        <div class="post-meta-container">
-          <div class="post-meta">
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-calendar"></i>
-      </span>
-      <span class="post-meta-item-text">发表于</span>
-      
-
-      <time title="创建时间：2021-08-08 12:03:14 / 修改时间：16:11:00" itemprop="dateCreated datePublished" datetime="2021-08-08T12:03:14+08:00">2021-08-08</time>
-    </span>
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-folder"></i>
-      </span>
-      <span class="post-meta-item-text">分类于</span>
-        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-          <a href="/categories/%E5%AD%97%E7%AC%A6%E4%B8%B2%E5%A4%84%E7%90%86/" itemprop="url" rel="index"><span itemprop="name">字符串处理</span></a>
-        </span>
-    </span>
-
-  
-</div>
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-          <h2 id="在指定目下寻找包含指定字符串的文件："><a href="#在指定目下寻找包含指定字符串的文件：" class="headerlink" title="在指定目下寻找包含指定字符串的文件："></a>在指定目下寻找包含指定字符串的文件：</h2><ol>
-<li>输出文件名和内容</li>
-</ol>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">grep mysqli_connect ./</span><br></pre></td></tr></table></figure>
-
-<p>其中，，</p>
-<ul>
-<li><p>加入<code>-r</code>可以递归搜索</p>
-</li>
-<li><p>加入<code>-l</code>可以只打印匹配的文件名</p>
-</li>
-<li><p>加入参数<code>-e</code>可以支持正则表达式</p>
-</li>
-<li><p>加入参数<code>-i</code>可以不区分大小写</p>
-</li>
-<li><p>加入参数<code>-c</code>可以指定匹配的行数</p>
-</li>
-<li><p>加入<code>-v</code>可以查出不匹配指定字符串的行数</p>
-</li>
-</ul>
-<ol start="2">
-<li><p>替换上述匹配命令中的匹配字符串</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sed -i <span class="string">&quot;s/mysqli_connect/mysql_connect/g&quot;</span> `grep mysqli_connect -rl ./`</span><br></pre></td></tr></table></figure>
-
-<p>其中，<code>-i</code>表示替换立即生效</p>
-</li>
-</ol>
-
-      
-    </div>
-
-    
-    
-    
-
-    <footer class="post-footer">
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-</div>
-
-
-
-
-    
-
-
-<div class="post-block">
-  
-  
-
-  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
-    <link itemprop="mainEntityOfPage" href="http://kylepeng93.github.io/2021/08/08/spring-framework-core-thinking-1/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/imagesUse%20GitHub%20issues%20for%20blog%20comments,%20wik/avatar.gif">
-      <meta itemprop="name" content="彭凯">
-      <meta itemprop="description" content="">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="成长日记">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          <a href="/2021/08/08/spring-framework-core-thinking-1/" class="post-title-link" itemprop="url">spring-framework-core-thinking-1</a>
-        </h2>
-
-        <div class="post-meta-container">
-          <div class="post-meta">
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-calendar"></i>
-      </span>
-      <span class="post-meta-item-text">发表于</span>
-      
-
-      <time title="创建时间：2021-08-08 10:56:16 / 修改时间：12:02:41" itemprop="dateCreated datePublished" datetime="2021-08-08T10:56:16+08:00">2021-08-08</time>
-    </span>
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-folder"></i>
-      </span>
-      <span class="post-meta-item-text">分类于</span>
-        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-          <a href="/categories/spring%E6%A1%86%E6%9E%B6/" itemprop="url" rel="index"><span itemprop="name">spring框架</span></a>
-        </span>
-    </span>
-
-  
-</div>
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-          <h2 id="spring框架进阶—Aware接口的原理和使用"><a href="#spring框架进阶—Aware接口的原理和使用" class="headerlink" title="spring框架进阶—Aware接口的原理和使用"></a>spring框架进阶—Aware接口的原理和使用</h2>
-      
-    </div>
-
-    
-    
-    
-
-    <footer class="post-footer">
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-</div>
-
-
-
-
-    
-
-
-<div class="post-block">
-  
-  
-
-  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
-    <link itemprop="mainEntityOfPage" href="http://kylepeng93.github.io/2021/04/01/the-way-of-accessing-wsl-file-system-in-windows/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/imagesUse%20GitHub%20issues%20for%20blog%20comments,%20wik/avatar.gif">
-      <meta itemprop="name" content="彭凯">
-      <meta itemprop="description" content="">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="成长日记">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          <a href="/2021/04/01/the-way-of-accessing-wsl-file-system-in-windows/" class="post-title-link" itemprop="url">在windows 10中访问wsl（linux子系统）的方式（反过来又如何）</a>
-        </h2>
-
-        <div class="post-meta-container">
-          <div class="post-meta">
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-calendar"></i>
-      </span>
-      <span class="post-meta-item-text">发表于</span>
-      
-
-      <time title="创建时间：2021-04-01 21:48:19 / 修改时间：22:05:45" itemprop="dateCreated datePublished" datetime="2021-04-01T21:48:19+08:00">2021-04-01</time>
-    </span>
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-folder"></i>
-      </span>
-      <span class="post-meta-item-text">分类于</span>
-        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-          <a href="/categories/notes/" itemprop="url" rel="index"><span itemprop="name">notes</span></a>
-        </span>
-    </span>
-
-  
-</div>
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-          <h2 id="在windows文件管理器中访问wsl（windows-subsystem-for-linux）文件系统"><a href="#在windows文件管理器中访问wsl（windows-subsystem-for-linux）文件系统" class="headerlink" title="在windows文件管理器中访问wsl（windows subsystem for linux）文件系统"></a>在windows文件管理器中访问wsl（windows subsystem for linux）文件系统</h2><ol>
-<li>进入安装好的wsl终端，输入如下命令： <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ explorer.exe .</span><br></pre></td></tr></table></figure>
- 其中，<code>explorer.exe</code>为文件管理器的可执行文件，<code>.</code>代表当前目录（家目录）。<h2 id="在wsl中访问windows的本地文件"><a href="#在wsl中访问windows的本地文件" class="headerlink" title="在wsl中访问windows的本地文件"></a>在wsl中访问windows的本地文件</h2></li>
-<li>默认情况下，windows的各个分区以盘符作为挂载点，在wsl中可以通过目录<code>/mnt/c</code>进行访问，其中<code>c</code>代表C盘，其他分区依次类推。 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ <span class="built_in">cd</span> /mnt/c</span><br></pre></td></tr></table></figure>
-<blockquote>
-<p>在linux哲学中，一切皆是文件。</p>
-</blockquote>
-</li>
-</ol>
-
-      
-    </div>
-
-    
-    
-    
-
-    <footer class="post-footer">
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-</div>
-
-
-
-
-    
-
-
-<div class="post-block">
-  
-  
-
-  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
-    <link itemprop="mainEntityOfPage" href="http://kylepeng93.github.io/2021/04/01/aria2-manual/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/imagesUse%20GitHub%20issues%20for%20blog%20comments,%20wik/avatar.gif">
-      <meta itemprop="name" content="彭凯">
-      <meta itemprop="description" content="">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="成长日记">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          <a href="/2021/04/01/aria2-manual/" class="post-title-link" itemprop="url">下载神器aria2使用手册</a>
-        </h2>
-
-        <div class="post-meta-container">
-          <div class="post-meta">
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-calendar"></i>
-      </span>
-      <span class="post-meta-item-text">发表于</span>
-      
-
-      <time title="创建时间：2021-04-01 20:04:59 / 修改时间：20:09:12" itemprop="dateCreated datePublished" datetime="2021-04-01T20:04:59+08:00">2021-04-01</time>
-    </span>
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-folder"></i>
-      </span>
-      <span class="post-meta-item-text">分类于</span>
-        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-          <a href="/categories/%E5%B7%A5%E5%85%B7/" itemprop="url" rel="index"><span itemprop="name">工具</span></a>
-        </span>
-    </span>
-
-  
-</div>
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-          <h2 id="aria2是什么东西"><a href="#aria2是什么东西" class="headerlink" title="aria2是什么东西"></a>aria2是什么东西</h2>
-      
-    </div>
-
-    
-    
-    
-
-    <footer class="post-footer">
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-</div>
-
-
-
-
   <nav class="pagination">
     <a class="extend prev" rel="prev" href="/page/2/"><i class="fa fa-angle-left" aria-label="上一页"></i></a><a class="page-number" href="/">1</a><a class="page-number" href="/page/2/">2</a><span class="page-number current">3</span><a class="page-number" href="/page/4/">4</a><span class="space">&hellip;</span><a class="page-number" href="/page/6/">6</a><a class="extend next" rel="next" href="/page/4/"><i class="fa fa-angle-right" aria-label="下一页"></i></a>
   </nav>
@@ -1175,7 +1183,7 @@
 
 <div class="copyright">
   &copy; 
-  <span itemprop="copyrightYear">2021</span>
+  <span itemprop="copyrightYear">2022</span>
   <span class="with-love">
     <i class="fa fa-heart"></i>
   </span>

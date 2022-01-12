@@ -1617,4 +1617,333 @@ dict是客户端，dictd是dict的后台服务器。默认安装之后是不带�
         <tag>常用</tag>
       </tags>
   </entry>
+  <entry>
+    <title>C++学习资源</title>
+    <url>/2021/12/31/c-plus-plus-study-resource/</url>
+    <content><![CDATA[<h2 id="教程"><a href="#教程" class="headerlink" title="教程"></a>教程</h2><p><a href="https://www.softwaretestinghelp.com/cpp-tutorials/">https://www.softwaretestinghelp.com/cpp-tutorials/</a></p>
+]]></content>
+      <categories>
+        <category>C++</category>
+      </categories>
+  </entry>
+  <entry>
+    <title>如何在centos上管理软件包</title>
+    <url>/2022/01/12/centos-software-management/</url>
+    <content><![CDATA[<h2 id="1-使用YUM进行软件的管理"><a href="#1-使用YUM进行软件的管理" class="headerlink" title="1. 使用YUM进行软件的管理"></a>1. 使用YUM进行软件的管理</h2><h3 id="查看软件包的信息"><a href="#查看软件包的信息" class="headerlink" title="查看软件包的信息"></a>查看软件包的信息</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">yum info 包名</span><br></pre></td></tr></table></figure>
+
+<h3 id="查看软件包的依赖列表"><a href="#查看软件包的依赖列表" class="headerlink" title="查看软件包的依赖列表"></a>查看软件包的依赖列表</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">yum deplist 包名</span><br></pre></td></tr></table></figure>
+
+<h3 id="卸载软件包"><a href="#卸载软件包" class="headerlink" title="卸载软件包"></a>卸载软件包</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">yum remove 包名</span><br></pre></td></tr></table></figure>
+
+<h3 id="查看已安装的软件包"><a href="#查看已安装的软件包" class="headerlink" title="查看已安装的软件包"></a>查看已安装的软件包</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">yum list installed</span><br></pre></td></tr></table></figure>
+
+<h3 id="查看仓库内可用的软件包"><a href="#查看仓库内可用的软件包" class="headerlink" title="查看仓库内可用的软件包"></a>查看仓库内可用的软件包</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">yum list available</span><br></pre></td></tr></table></figure>
+
+<h3 id="清除所有的包缓存"><a href="#清除所有的包缓存" class="headerlink" title="清除所有的包缓存"></a>清除所有的包缓存</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">yum clear all</span><br></pre></td></tr></table></figure>
+
+
+
+<h2 id="2-使用RPM进行软件管理"><a href="#2-使用RPM进行软件管理" class="headerlink" title="2. 使用RPM进行软件管理"></a>2. 使用RPM进行软件管理</h2><h3 id="查看已经安装的软件包"><a href="#查看已经安装的软件包" class="headerlink" title="查看已经安装的软件包"></a>查看已经安装的软件包</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">rpm -qa</span><br></pre></td></tr></table></figure>
+
+<h3 id="查看某个已经被安装的软件包的信息"><a href="#查看某个已经被安装的软件包的信息" class="headerlink" title="查看某个已经被安装的软件包的信息"></a>查看某个已经被安装的软件包的信息</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">rpm -qi 包名</span><br></pre></td></tr></table></figure>
+
+<h3 id="查看某个包的安装文件列表"><a href="#查看某个包的安装文件列表" class="headerlink" title="查看某个包的安装文件列表"></a>查看某个包的安装文件列表</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">rpm -ql 包名</span><br></pre></td></tr></table></figure>
+
+<h3 id="查看某个rpm包的详细信息"><a href="#查看某个rpm包的详细信息" class="headerlink" title="查看某个rpm包的详细信息"></a>查看某个rpm包的详细信息</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">rpm -qip 包名.rpm</span><br></pre></td></tr></table></figure>
+
+<h3 id="查看某个rpm包中将要被安装的文件列表"><a href="#查看某个rpm包中将要被安装的文件列表" class="headerlink" title="查看某个rpm包中将要被安装的文件列表"></a>查看某个rpm包中将要被安装的文件列表</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">rpm -qlp 包名.rpm</span><br></pre></td></tr></table></figure>
+
+<h3 id="查看某个目录或者文件对应的包"><a href="#查看某个目录或者文件对应的包" class="headerlink" title="查看某个目录或者文件对应的包"></a>查看某个目录或者文件对应的包</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">rpm -qf 文件或者目录</span><br></pre></td></tr></table></figure>
+
+<h3 id="查看某个已经安装的包的依赖"><a href="#查看某个已经安装的包的依赖" class="headerlink" title="查看某个已经安装的包的依赖"></a>查看某个已经安装的包的依赖</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">rpm -qR 包名</span><br></pre></td></tr></table></figure>
+
+<h3 id="查看某个没有被安装的包的依赖项"><a href="#查看某个没有被安装的包的依赖项" class="headerlink" title="查看某个没有被安装的包的依赖项"></a>查看某个没有被安装的包的依赖项</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">rpm -qRp 包名.rpm</span><br></pre></td></tr></table></figure>
+
+<h3 id="验证某个包的文件是否被正确安装"><a href="#验证某个包的文件是否被正确安装" class="headerlink" title="验证某个包的文件是否被正确安装"></a>验证某个包的文件是否被正确安装</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">rpm -V 包名</span><br></pre></td></tr></table></figure>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+]]></content>
+      <categories>
+        <category>centos</category>
+      </categories>
+      <tags>
+        <tag>software</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>java中常用的文件操作工具</title>
+    <url>/2022/01/10/common-file-util-of-java/</url>
+    <content><![CDATA[<h2 id="使用的类库"><a href="#使用的类库" class="headerlink" title="使用的类库"></a>使用的类库</h2><p>apache的公共工具包</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="comment">## build.gradle</span></span><br><span class="line">implementation <span class="string">&#x27;commons-io:commons-io:2.11.0&#x27;</span></span><br></pre></td></tr></table></figure>
+
+<h2 id="文件和目录操作类"><a href="#文件和目录操作类" class="headerlink" title="文件和目录操作类"></a>文件和目录操作类</h2><ol>
+<li><p>FileUtils</p>
+<ul>
+<li><strong>[private]</strong> addCopyAttributes:如果原copy option中不存在复制选项，则在赋值选项中追加一个<code>StandardCopyOption.COPY_ATTRIBUTES</code></li>
+<li></li>
+</ul>
+</li>
+<li></li>
+</ol>
+]]></content>
+      <categories>
+        <category>util</category>
+      </categories>
+      <tags>
+        <tag>java</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>makefile在C++中的使用</title>
+    <url>/2021/12/30/how-makefile-is-working-in-c-plus-plus/</url>
+    <content><![CDATA[<h2 id="Make工具"><a href="#Make工具" class="headerlink" title="Make工具"></a>Make工具</h2><p>Make是unix上被用来简化为一个工程中的各个不同模块构建可执行程序的工具。在Makefile中有各种各样的规则来指定目标入口。make工具则读取所有的这些规则并依照行事。</p>
+<p>例如，如果一个规则指定了某个依赖，那么make工具将在编译时包含这个依赖。make命令利用makefile来完成模块构建和文件清理的工作。</p>
+<p>make的常用语法如下：</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">make target_label <span class="comment"># target_label是在makefile中指定的目标</span></span><br></pre></td></tr></table></figure>
+
+<p>例如，如果我们想要执行清理文件的操作，那么我们可以这么做：</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">make clean <span class="comment"># 注意，clean实际上是指定了rm作为执行命令</span></span><br></pre></td></tr></table></figure>
+
+<h2 id="C-Makefile"><a href="#C-Makefile" class="headerlink" title="C++ Makefile"></a>C++ Makefile</h2><p>Makefile是一个由make命令来使用并用来构建目标的纯文本文件。一个Makefile也包含了一些源码级别的依赖信息以及构建顺序。</p>
+<p>现在让我们看看Makefile的通用结构：</p>
+<p>一个典型的Makefile通常以一个变量声明开头，后面紧跟着一串用来构建指定目标的目标入口。这些目标可能是<code>.o</code>或者是其他的可执行文件，比如说<code>C</code>或者<code>C++</code>或者<code>java</code>的<code>.class</code>文件。</p>
+<p>我们还可以有一串被目标标识（target label)所指定并被用来执行一系列命令的目标入口。</p>
+<p>因此一个通用的makefile大致如下：</p>
+<figure class="highlight makefile"><table><tr><td class="code"><pre><span class="line"><span class="comment"># comment</span></span><br><span class="line"><span class="section">target: dependency1 dependency2 ... dependencyn</span></span><br><span class="line">	command</span><br><span class="line"><span class="comment"># 注意，command前面的tab缩进对于make来说是必要的</span></span><br></pre></td></tr></table></figure>
+
+<figure class="highlight makefile"><table><tr><td class="code"><pre><span class="line"><span class="comment"># 指定编译器，g++代表C++编译器，gcc代表C编译器</span></span><br><span class="line">CC = g++</span><br><span class="line"><span class="comment"># 编译器flags</span></span><br><span class="line"><span class="comment"># -g表示需要添加debug信息到可执行文件中</span></span><br><span class="line"><span class="comment"># -Wall表示打开大多数编译器警告</span></span><br><span class="line">CFLAGS = -g -Wall</span><br><span class="line"><span class="comment"># </span></span><br><span class="line">TARGET = main</span><br><span class="line"></span><br><span class="line"><span class="section">all: <span class="variable">$(TARGET)</span></span></span><br><span class="line"><span class="variable">$(TARGET)</span>: <span class="variable">$(TARGET)</span>.cpp</span><br><span class="line">			<span class="variable">$(CC)</span> <span class="variable">$(CFLAGS)</span> -o <span class="variable">$(TARGET)</span> <span class="variable">$(TARGET)</span>.cpp</span><br><span class="line"><span class="section">clean: </span></span><br><span class="line">		<span class="variable">$(RM)</span> <span class="variable">$(TARGET)</span></span><br></pre></td></tr></table></figure>
+
+<h2 id="Make和Makefile的例子"><a href="#Make和Makefile的例子" class="headerlink" title="Make和Makefile的例子"></a>Make和Makefile的例子</h2><p>假设我们的工程有如下几个文件：</p>
+<ul>
+<li>Main.cpp：主程序</li>
+<li>Point.h：point类的头文件</li>
+<li>Point.cpp：Point类的实现类</li>
+<li>Square.h：square的头文件</li>
+<li>Square.cpp：square类的实现类</li>
+</ul>
+<p>对于上面的几个文件，我们需要将这些文件各自编译并生成<code>.o</code>文件，然后将它们<code>link</code>成一个叫做<code>main</code>的可执行文件。</p>
+<p>接下来我们将各自编译这些文件：</p>
+<ul>
+<li>g++ -c main.cpp：生成main.o</li>
+<li>g++ -c point.cpp：生成point.o</li>
+<li>g++ -c square.cpp：生成square.o</li>
+</ul>
+<p>接下来，我们需要将这些<code>.o</code>文件<code>link</code>成一个可执行文件：</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">g++ -o main main.o point.o square.o</span><br></pre></td></tr></table></figure>
+
+<p>接下来，我们需要确定当某个文件发生变更时需要重新编译和重新生成的其他关联文件。下图描述了这种依赖关系。</p>
+<p><img src="/home/pengkai/.config/Typora/typora-user-images/image-20211230234102091.png" alt="image-20211230234102091"></p>
+<p>在上面的依赖图中，我们可以看到<code>main</code>位于根部，而<code>main</code>又包含了对象文件<code>main.o</code>、<code>point.o</code>、<code>square.o</code>，它们分别由各自的cpp文件编译生成。</p>
+<p>所有的cpp实现都使用了它们自己的头文件，而<code>main.cpp</code>又引用了<code>point.h</code>和<code>square.h</code>。</p>
+<p>接下来<code>point.cpp</code>引用了<code>point.h</code>。<code>square.cpp</code>引用了<code>square.h</code>和<code>point.h</code>。</p>
+<p>如果我们的工程中只有少数几个文件，那么我们可以不用关系它们之间的依赖关系，但是，实际项目中，我们可能会有成百上千个文件，如果我们每次修改完一个文件之后都要手动编译和生成所有文件，那无疑是令人崩溃的。因此，我们需要使用make工具来帮我们简化这个流程。</p>
+<blockquote>
+<p> 注意，必须使用Makefile作为文件名，不区分大小写，且放在源代码的根目录。</p>
+</blockquote>
+<figure class="highlight makefile"><table><tr><td class="code"><pre><span class="line">CC = g++</span><br><span class="line">CFLAGS = -wall -g</span><br><span class="line"><span class="comment"># 确定依赖关系</span></span><br><span class="line"><span class="section">main: main.o Point.o Square.o</span></span><br><span class="line">	<span class="variable">$(CC)</span> <span class="variable">$(CFLAGS)</span> -o main main.o Point.o Square.o</span><br></pre></td></tr></table></figure>
+
+<blockquote>
+<p>上面的命令实际上等价于我们在终端中执行</p>
+<p>g++ -wall -g -o main main.o point.o square.o</p>
+</blockquote>
+<p>接下来我们需要生成对象文件：main.o、point.o、square.o</p>
+<figure class="highlight makefile"><table><tr><td class="code"><pre><span class="line"><span class="section">main.o: main.cpp point.h square.h</span></span><br><span class="line">	<span class="variable">$(CC)</span> <span class="variable">$(CFLAGS)</span> -c main.cpp</span><br><span class="line"><span class="section">Point.o: Point.h</span></span><br><span class="line"><span class="section">Square.o: Square.h Point.h</span></span><br></pre></td></tr></table></figure>
+
+<h2 id="Makefile的优点"><a href="#Makefile的优点" class="headerlink" title="Makefile的优点"></a>Makefile的优点</h2><ul>
+<li>对于大项目，可以让我们以系统性和更有效的方式呈现项目；</li>
+<li>可以让源代码更加有效和易读，并利于debug；</li>
+<li>Makefile可以自动编译那些被修改过的文件，因此当发生文件变更时我们不需要手动重新生成整个项目。</li>
+<li>Makefile允许我们一次编译多个文件，因此我们只需要一个步骤就可以完成整个项目的编译。</li>
+</ul>
+]]></content>
+      <categories>
+        <category>C++</category>
+      </categories>
+  </entry>
+  <entry>
+    <title>java和c++的区别</title>
+    <url>/2022/01/03/java-cpp-difference/</url>
+    <content><![CDATA[<h2 id="java和c-的不同点"><a href="#java和c-的不同点" class="headerlink" title="java和c++的不同点"></a>java和c++的不同点</h2><table>
+<thead>
+<tr>
+<th><strong>BASIS FOR</strong> <strong>COMPARISON</strong></th>
+<th><strong>C++</strong></th>
+<th><strong>Java</strong></th>
+</tr>
+</thead>
+<tbody><tr>
+<td><strong>Memory Management</strong></td>
+<td>Managed by developers using pointers. Supports structures and union</td>
+<td>Controlled by the system, does not use pointers. Supports Threads and Interfaces</td>
+</tr>
+<tr>
+<td><strong>Inheritance</strong></td>
+<td>Provide single and multiple inheritances both</td>
+<td>Does not support multiple inheritances. Uses the concept of Interface to achieve</td>
+</tr>
+<tr>
+<td><strong>Runtime error detection mechanism</strong></td>
+<td>Programmer’s responsibility</td>
+<td>System’s responsibility</td>
+</tr>
+<tr>
+<td><strong>Libraries</strong></td>
+<td>Comparatively available with low-level functionalities</td>
+<td>Provide a wide range of classes for various high-level services</td>
+</tr>
+<tr>
+<td><strong>Program Handling</strong></td>
+<td>Methods and data can reside outside classes. The concept of a global file, namespace scopes available</td>
+<td>All methods and data reside in the class itself. Concept od Package is used.</td>
+</tr>
+<tr>
+<td><strong>Type Semantics</strong></td>
+<td>Supports consistent support between primitive and object types</td>
+<td>Different from primitive and object types</td>
+</tr>
+<tr>
+<td><strong>Portability</strong></td>
+<td>Platform dependent as source code must be recompiled for different platform.</td>
+<td>It uses the concept of bytecode which is platform-independent and can be used with platform-specific JVM.</td>
+</tr>
+<tr>
+<td><strong>Polymorphism</strong></td>
+<td>Explicit for methods supports mixed hierarchies</td>
+<td>Automatic uses static and dynamic binding</td>
+</tr>
+</tbody></table>
+<p>参考文章：<a href="https://www.educba.com/c-plus-plus-vs-java/">https://www.educba.com/c-plus-plus-vs-java/</a></p>
+]]></content>
+      <categories>
+        <category>cpp</category>
+      </categories>
+      <tags>
+        <tag>java</tag>
+        <tag>cpp</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>C++中指针和引用的使用</title>
+    <url>/2022/01/03/pointer-and-reference-in-cpp/</url>
+    <content><![CDATA[<h2 id="指针和引用的区别"><a href="#指针和引用的区别" class="headerlink" title="指针和引用的区别"></a>指针和引用的区别</h2><p>指针是一个持有某个变量内存地址的特殊变量，使用<code>*</code>号表示。</p>
+<p>引用类似于指针，一般可以认为是持有某个值的变量的别名，它被用来关联被赋值给它的变量，使用<code>&amp;</code>表示。</p>
+<p>引用存储的是变量的地址。</p>
+<p>语法层面的区别如下：</p>
+<table>
+<thead>
+<tr>
+<th></th>
+<th>指针</th>
+<th>引用</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>是否可以为null</td>
+<td>可以指向一个null</td>
+<td>不能为null，否则会报异常</td>
+</tr>
+<tr>
+<td>声明方式</td>
+<td>使用<code>*</code>号声明</td>
+<td>使用<code>&amp;</code>声明</td>
+</tr>
+<tr>
+<td>是否可以级联</td>
+<td>可以级联声明<br />int *ptr;<br />int **ptr1;<br />int x = 10;<br />int y = 20;<br />ptr = &x;<br />ptr1 = &ptr;</td>
+<td></td>
+</tr>
+<tr>
+<td>是否可以重新赋值</td>
+<td>可以</td>
+<td>一旦变量被赋值给引用变量，那么这个引用变量将不能重新被赋值</td>
+</tr>
+<tr>
+<td>是否可以做算术运算</td>
+<td>可以</td>
+<td>不可以</td>
+</tr>
+</tbody></table>
+<table>
+<thead>
+<tr>
+<th><strong>S.No.</strong></th>
+<th><strong>Pointer</strong></th>
+<th><strong>Reference</strong></th>
+</tr>
+</thead>
+<tbody><tr>
+<td>1.</td>
+<td>Pointers in C++ can be assigned to NULL values.</td>
+<td>References in C++ can never be NULL else; it will throw an exception.</td>
+</tr>
+<tr>
+<td>2.</td>
+<td>To dereference a variable in the case of pointers, (*) operator is used</td>
+<td>There is no need for referencing the variable; the variable name is simply used in case of reference in C++.</td>
+</tr>
+<tr>
+<td>3.</td>
+<td>Pointers allow multiple levels of indirection, which  means that pointer to pointer to pointer assigning and targeting is  possible. For example: int *ptr, int **ptr1; int x= 10; int y= 20; ptr = &x; ptr1 = &ptr;</td>
+<td>No multiple levels of indirection are possible in the  case of references. Only a single level is applicable in references.  Implementing multiple levels in references in C++ throws a compiler  error to the user. For example, int a = 13; int &amp;ref = a; int &amp;&amp;ref1 = ref;</td>
+</tr>
+<tr>
+<td>4.</td>
+<td>A pointer can be reassigned to point to another variable. But the variable needs to be of the same type of variable. For example: int *p; Int x, y; p = &x; p = &y;</td>
+<td>Once the variable is referred to by the reference variable, it cannot be reassigned to refer to another variable.</td>
+</tr>
+<tr>
+<td>5.</td>
+<td>All the arithmetic operations like addition,  subtraction, increment, etc., are possible in the case of pointers in  C++. This is known as Pointer arithmetic. For example: int arr [5] = {10, 20, 30, 40, 50}; int p = arr; for (int i =0; i&lt;5; i++) { cout &lt;&lt; *p &lt;&lt; endl; p++; }</td>
+<td>Arithmetic operations are not possible in the case of  references. In C++, it will throw a compiler time error when it tries to do so. For example: int x = 10; int &amp;ref = x; cout &lt;&lt; ref++ &lt;&lt; endl;</td>
+</tr>
+<tr>
+<td>6.</td>
+<td>In the case of declaring a pointer in a C++ program, (*) operator is used before the pointer name. For example: int *ptr;</td>
+<td>In the case of reference, the reference variable is  declared by using the (&amp;) operator before the reference variable,  which stands for the address. For example: Int a= 10; int &amp;ref = a;</td>
+</tr>
+<tr>
+<td>7.</td>
+<td>The pointer variable returns the value whose address it is pointing to. Value can be retrieved using the (*) operator.</td>
+<td>The reference variable returns the address of the  address it is referring to. The address can be retrieved using the  (&amp;) operator.</td>
+</tr>
+<tr>
+<td>8.</td>
+<td>The pointer variable in C++ has its own address in computer memory, and it also occupies space in the stack.</td>
+<td>The reference variable does not have its own memory  address; instead, it only points to the variable and shares the same  address as the original variable.</td>
+</tr>
+</tbody></table>
+]]></content>
+      <categories>
+        <category>cpp</category>
+      </categories>
+      <tags>
+        <tag>指针</tag>
+        <tag>引用</tag>
+      </tags>
+  </entry>
 </search>

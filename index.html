@@ -84,9 +84,9 @@
   <ul class="main-menu menu">
         <li class="menu-item menu-item-home"><a href="/" rel="section"><i class="fa fa-home fa-fw"></i>首页</a></li>
         <li class="menu-item menu-item-about"><a href="/about/" rel="section"><i class="fa fa-user fa-fw"></i>关于</a></li>
-        <li class="menu-item menu-item-tags"><a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>标签<span class="badge">71</span></a></li>
-        <li class="menu-item menu-item-categories"><a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>分类<span class="badge">33</span></a></li>
-        <li class="menu-item menu-item-archives"><a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档<span class="badge">53</span></a></li>
+        <li class="menu-item menu-item-tags"><a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>标签<span class="badge">75</span></a></li>
+        <li class="menu-item menu-item-categories"><a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>分类<span class="badge">37</span></a></li>
+        <li class="menu-item menu-item-archives"><a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档<span class="badge">59</span></a></li>
       <li class="menu-item menu-item-search">
         <a role="button" class="popup-trigger"><i class="fa fa-search fa-fw"></i>搜索
         </a>
@@ -155,18 +155,18 @@
   <nav class="site-state">
       <div class="site-state-item site-state-posts">
         <a href="/archives/">
-          <span class="site-state-item-count">53</span>
+          <span class="site-state-item-count">59</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
       <div class="site-state-item site-state-categories">
           <a href="/categories/">
-        <span class="site-state-item-count">33</span>
+        <span class="site-state-item-count">37</span>
         <span class="site-state-item-name">分类</span></a>
       </div>
       <div class="site-state-item site-state-tags">
           <a href="/tags/">
-        <span class="site-state-item-count">71</span>
+        <span class="site-state-item-count">75</span>
         <span class="site-state-item-name">标签</span></a>
       </div>
   </nav>
@@ -195,6 +195,723 @@
 
 
     <div class="main-inner index posts-expand">
+
+    
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
+    <link itemprop="mainEntityOfPage" href="http://kylepeng93.github.io/2022/01/12/centos-software-management/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/imagesUse%20GitHub%20issues%20for%20blog%20comments,%20wik/avatar.gif">
+      <meta itemprop="name" content="彭凯">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="成长日记">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          <a href="/2022/01/12/centos-software-management/" class="post-title-link" itemprop="url">如何在centos上管理软件包</a>
+        </h2>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">发表于</span>
+      
+
+      <time title="创建时间：2022-01-12 22:31:06 / 修改时间：23:06:33" itemprop="dateCreated datePublished" datetime="2022-01-12T22:31:06+08:00">2022-01-12</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">分类于</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/centos/" itemprop="url" rel="index"><span itemprop="name">centos</span></a>
+        </span>
+    </span>
+
+  
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+          <h2 id="1-使用YUM进行软件的管理"><a href="#1-使用YUM进行软件的管理" class="headerlink" title="1. 使用YUM进行软件的管理"></a>1. 使用YUM进行软件的管理</h2><h3 id="查看软件包的信息"><a href="#查看软件包的信息" class="headerlink" title="查看软件包的信息"></a>查看软件包的信息</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">yum info 包名</span><br></pre></td></tr></table></figure>
+
+<h3 id="查看软件包的依赖列表"><a href="#查看软件包的依赖列表" class="headerlink" title="查看软件包的依赖列表"></a>查看软件包的依赖列表</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">yum deplist 包名</span><br></pre></td></tr></table></figure>
+
+<h3 id="卸载软件包"><a href="#卸载软件包" class="headerlink" title="卸载软件包"></a>卸载软件包</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">yum remove 包名</span><br></pre></td></tr></table></figure>
+
+<h3 id="查看已安装的软件包"><a href="#查看已安装的软件包" class="headerlink" title="查看已安装的软件包"></a>查看已安装的软件包</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">yum list installed</span><br></pre></td></tr></table></figure>
+
+<h3 id="查看仓库内可用的软件包"><a href="#查看仓库内可用的软件包" class="headerlink" title="查看仓库内可用的软件包"></a>查看仓库内可用的软件包</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">yum list available</span><br></pre></td></tr></table></figure>
+
+<h3 id="清除所有的包缓存"><a href="#清除所有的包缓存" class="headerlink" title="清除所有的包缓存"></a>清除所有的包缓存</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">yum clear all</span><br></pre></td></tr></table></figure>
+
+
+
+<h2 id="2-使用RPM进行软件管理"><a href="#2-使用RPM进行软件管理" class="headerlink" title="2. 使用RPM进行软件管理"></a>2. 使用RPM进行软件管理</h2><h3 id="查看已经安装的软件包"><a href="#查看已经安装的软件包" class="headerlink" title="查看已经安装的软件包"></a>查看已经安装的软件包</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">rpm -qa</span><br></pre></td></tr></table></figure>
+
+<h3 id="查看某个已经被安装的软件包的信息"><a href="#查看某个已经被安装的软件包的信息" class="headerlink" title="查看某个已经被安装的软件包的信息"></a>查看某个已经被安装的软件包的信息</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">rpm -qi 包名</span><br></pre></td></tr></table></figure>
+
+<h3 id="查看某个包的安装文件列表"><a href="#查看某个包的安装文件列表" class="headerlink" title="查看某个包的安装文件列表"></a>查看某个包的安装文件列表</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">rpm -ql 包名</span><br></pre></td></tr></table></figure>
+
+<h3 id="查看某个rpm包的详细信息"><a href="#查看某个rpm包的详细信息" class="headerlink" title="查看某个rpm包的详细信息"></a>查看某个rpm包的详细信息</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">rpm -qip 包名.rpm</span><br></pre></td></tr></table></figure>
+
+<h3 id="查看某个rpm包中将要被安装的文件列表"><a href="#查看某个rpm包中将要被安装的文件列表" class="headerlink" title="查看某个rpm包中将要被安装的文件列表"></a>查看某个rpm包中将要被安装的文件列表</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">rpm -qlp 包名.rpm</span><br></pre></td></tr></table></figure>
+
+<h3 id="查看某个目录或者文件对应的包"><a href="#查看某个目录或者文件对应的包" class="headerlink" title="查看某个目录或者文件对应的包"></a>查看某个目录或者文件对应的包</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">rpm -qf 文件或者目录</span><br></pre></td></tr></table></figure>
+
+<h3 id="查看某个已经安装的包的依赖"><a href="#查看某个已经安装的包的依赖" class="headerlink" title="查看某个已经安装的包的依赖"></a>查看某个已经安装的包的依赖</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">rpm -qR 包名</span><br></pre></td></tr></table></figure>
+
+<h3 id="查看某个没有被安装的包的依赖项"><a href="#查看某个没有被安装的包的依赖项" class="headerlink" title="查看某个没有被安装的包的依赖项"></a>查看某个没有被安装的包的依赖项</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">rpm -qRp 包名.rpm</span><br></pre></td></tr></table></figure>
+
+<h3 id="验证某个包的文件是否被正确安装"><a href="#验证某个包的文件是否被正确安装" class="headerlink" title="验证某个包的文件是否被正确安装"></a>验证某个包的文件是否被正确安装</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">rpm -V 包名</span><br></pre></td></tr></table></figure>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+      
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+</div>
+
+
+
+
+    
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
+    <link itemprop="mainEntityOfPage" href="http://kylepeng93.github.io/2022/01/10/common-file-util-of-java/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/imagesUse%20GitHub%20issues%20for%20blog%20comments,%20wik/avatar.gif">
+      <meta itemprop="name" content="彭凯">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="成长日记">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          <a href="/2022/01/10/common-file-util-of-java/" class="post-title-link" itemprop="url">java中常用的文件操作工具</a>
+        </h2>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">发表于</span>
+
+      <time title="创建时间：2022-01-10 23:38:06" itemprop="dateCreated datePublished" datetime="2022-01-10T23:38:06+08:00">2022-01-10</time>
+    </span>
+      <span class="post-meta-item">
+        <span class="post-meta-item-icon">
+          <i class="far fa-calendar-check"></i>
+        </span>
+        <span class="post-meta-item-text">更新于</span>
+        <time title="修改时间：2022-01-11 00:28:55" itemprop="dateModified" datetime="2022-01-11T00:28:55+08:00">2022-01-11</time>
+      </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">分类于</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/util/" itemprop="url" rel="index"><span itemprop="name">util</span></a>
+        </span>
+    </span>
+
+  
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+          <h2 id="使用的类库"><a href="#使用的类库" class="headerlink" title="使用的类库"></a>使用的类库</h2><p>apache的公共工具包</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">## build.gradle</span></span><br><span class="line">implementation <span class="string">&#x27;commons-io:commons-io:2.11.0&#x27;</span></span><br></pre></td></tr></table></figure>
+
+<h2 id="文件和目录操作类"><a href="#文件和目录操作类" class="headerlink" title="文件和目录操作类"></a>文件和目录操作类</h2><ol>
+<li><p>FileUtils</p>
+<ul>
+<li><strong>[private]</strong> addCopyAttributes:如果原copy option中不存在复制选项，则在赋值选项中追加一个<code>StandardCopyOption.COPY_ATTRIBUTES</code></li>
+<li></li>
+</ul>
+</li>
+<li></li>
+</ol>
+
+      
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+</div>
+
+
+
+
+    
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
+    <link itemprop="mainEntityOfPage" href="http://kylepeng93.github.io/2022/01/03/java-cpp-difference/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/imagesUse%20GitHub%20issues%20for%20blog%20comments,%20wik/avatar.gif">
+      <meta itemprop="name" content="彭凯">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="成长日记">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          <a href="/2022/01/03/java-cpp-difference/" class="post-title-link" itemprop="url">java和c++的区别</a>
+        </h2>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">发表于</span>
+      
+
+      <time title="创建时间：2022-01-03 23:03:13 / 修改时间：23:04:26" itemprop="dateCreated datePublished" datetime="2022-01-03T23:03:13+08:00">2022-01-03</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">分类于</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/cpp/" itemprop="url" rel="index"><span itemprop="name">cpp</span></a>
+        </span>
+    </span>
+
+  
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+          <h2 id="java和c-的不同点"><a href="#java和c-的不同点" class="headerlink" title="java和c++的不同点"></a>java和c++的不同点</h2><table>
+<thead>
+<tr>
+<th><strong>BASIS FOR</strong> <strong>COMPARISON</strong></th>
+<th><strong>C++</strong></th>
+<th><strong>Java</strong></th>
+</tr>
+</thead>
+<tbody><tr>
+<td><strong>Memory Management</strong></td>
+<td>Managed by developers using pointers. Supports structures and union</td>
+<td>Controlled by the system, does not use pointers. Supports Threads and Interfaces</td>
+</tr>
+<tr>
+<td><strong>Inheritance</strong></td>
+<td>Provide single and multiple inheritances both</td>
+<td>Does not support multiple inheritances. Uses the concept of Interface to achieve</td>
+</tr>
+<tr>
+<td><strong>Runtime error detection mechanism</strong></td>
+<td>Programmer’s responsibility</td>
+<td>System’s responsibility</td>
+</tr>
+<tr>
+<td><strong>Libraries</strong></td>
+<td>Comparatively available with low-level functionalities</td>
+<td>Provide a wide range of classes for various high-level services</td>
+</tr>
+<tr>
+<td><strong>Program Handling</strong></td>
+<td>Methods and data can reside outside classes. The concept of a global file, namespace scopes available</td>
+<td>All methods and data reside in the class itself. Concept od Package is used.</td>
+</tr>
+<tr>
+<td><strong>Type Semantics</strong></td>
+<td>Supports consistent support between primitive and object types</td>
+<td>Different from primitive and object types</td>
+</tr>
+<tr>
+<td><strong>Portability</strong></td>
+<td>Platform dependent as source code must be recompiled for different platform.</td>
+<td>It uses the concept of bytecode which is platform-independent and can be used with platform-specific JVM.</td>
+</tr>
+<tr>
+<td><strong>Polymorphism</strong></td>
+<td>Explicit for methods supports mixed hierarchies</td>
+<td>Automatic uses static and dynamic binding</td>
+</tr>
+</tbody></table>
+<p>参考文章：<a target="_blank" rel="noopener" href="https://www.educba.com/c-plus-plus-vs-java/">https://www.educba.com/c-plus-plus-vs-java/</a></p>
+
+      
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+</div>
+
+
+
+
+    
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
+    <link itemprop="mainEntityOfPage" href="http://kylepeng93.github.io/2022/01/03/pointer-and-reference-in-cpp/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/imagesUse%20GitHub%20issues%20for%20blog%20comments,%20wik/avatar.gif">
+      <meta itemprop="name" content="彭凯">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="成长日记">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          <a href="/2022/01/03/pointer-and-reference-in-cpp/" class="post-title-link" itemprop="url">C++中指针和引用的使用</a>
+        </h2>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">发表于</span>
+      
+
+      <time title="创建时间：2022-01-03 21:32:02 / 修改时间：23:00:09" itemprop="dateCreated datePublished" datetime="2022-01-03T21:32:02+08:00">2022-01-03</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">分类于</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/cpp/" itemprop="url" rel="index"><span itemprop="name">cpp</span></a>
+        </span>
+    </span>
+
+  
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+          <h2 id="指针和引用的区别"><a href="#指针和引用的区别" class="headerlink" title="指针和引用的区别"></a>指针和引用的区别</h2><p>指针是一个持有某个变量内存地址的特殊变量，使用<code>*</code>号表示。</p>
+<p>引用类似于指针，一般可以认为是持有某个值的变量的别名，它被用来关联被赋值给它的变量，使用<code>&amp;</code>表示。</p>
+<p>引用存储的是变量的地址。</p>
+<p>语法层面的区别如下：</p>
+<table>
+<thead>
+<tr>
+<th></th>
+<th>指针</th>
+<th>引用</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>是否可以为null</td>
+<td>可以指向一个null</td>
+<td>不能为null，否则会报异常</td>
+</tr>
+<tr>
+<td>声明方式</td>
+<td>使用<code>*</code>号声明</td>
+<td>使用<code>&amp;</code>声明</td>
+</tr>
+<tr>
+<td>是否可以级联</td>
+<td>可以级联声明<br />int *ptr;<br />int **ptr1;<br />int x = 10;<br />int y = 20;<br />ptr = &x;<br />ptr1 = &ptr;</td>
+<td></td>
+</tr>
+<tr>
+<td>是否可以重新赋值</td>
+<td>可以</td>
+<td>一旦变量被赋值给引用变量，那么这个引用变量将不能重新被赋值</td>
+</tr>
+<tr>
+<td>是否可以做算术运算</td>
+<td>可以</td>
+<td>不可以</td>
+</tr>
+</tbody></table>
+<table>
+<thead>
+<tr>
+<th><strong>S.No.</strong></th>
+<th><strong>Pointer</strong></th>
+<th><strong>Reference</strong></th>
+</tr>
+</thead>
+<tbody><tr>
+<td>1.</td>
+<td>Pointers in C++ can be assigned to NULL values.</td>
+<td>References in C++ can never be NULL else; it will throw an exception.</td>
+</tr>
+<tr>
+<td>2.</td>
+<td>To dereference a variable in the case of pointers, (*) operator is used</td>
+<td>There is no need for referencing the variable; the variable name is simply used in case of reference in C++.</td>
+</tr>
+<tr>
+<td>3.</td>
+<td>Pointers allow multiple levels of indirection, which  means that pointer to pointer to pointer assigning and targeting is  possible. For example: int *ptr, int **ptr1; int x= 10; int y= 20; ptr = &x; ptr1 = &ptr;</td>
+<td>No multiple levels of indirection are possible in the  case of references. Only a single level is applicable in references.  Implementing multiple levels in references in C++ throws a compiler  error to the user. For example, int a = 13; int &amp;ref = a; int &amp;&amp;ref1 = ref;</td>
+</tr>
+<tr>
+<td>4.</td>
+<td>A pointer can be reassigned to point to another variable. But the variable needs to be of the same type of variable. For example: int *p; Int x, y; p = &x; p = &y;</td>
+<td>Once the variable is referred to by the reference variable, it cannot be reassigned to refer to another variable.</td>
+</tr>
+<tr>
+<td>5.</td>
+<td>All the arithmetic operations like addition,  subtraction, increment, etc., are possible in the case of pointers in  C++. This is known as Pointer arithmetic. For example: int arr [5] = {10, 20, 30, 40, 50}; int p = arr; for (int i =0; i&lt;5; i++) { cout &lt;&lt; *p &lt;&lt; endl; p++; }</td>
+<td>Arithmetic operations are not possible in the case of  references. In C++, it will throw a compiler time error when it tries to do so. For example: int x = 10; int &amp;ref = x; cout &lt;&lt; ref++ &lt;&lt; endl;</td>
+</tr>
+<tr>
+<td>6.</td>
+<td>In the case of declaring a pointer in a C++ program, (*) operator is used before the pointer name. For example: int *ptr;</td>
+<td>In the case of reference, the reference variable is  declared by using the (&amp;) operator before the reference variable,  which stands for the address. For example: Int a= 10; int &amp;ref = a;</td>
+</tr>
+<tr>
+<td>7.</td>
+<td>The pointer variable returns the value whose address it is pointing to. Value can be retrieved using the (*) operator.</td>
+<td>The reference variable returns the address of the  address it is referring to. The address can be retrieved using the  (&amp;) operator.</td>
+</tr>
+<tr>
+<td>8.</td>
+<td>The pointer variable in C++ has its own address in computer memory, and it also occupies space in the stack.</td>
+<td>The reference variable does not have its own memory  address; instead, it only points to the variable and shares the same  address as the original variable.</td>
+</tr>
+</tbody></table>
+
+      
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+</div>
+
+
+
+
+    
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
+    <link itemprop="mainEntityOfPage" href="http://kylepeng93.github.io/2021/12/31/c-plus-plus-study-resource/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/imagesUse%20GitHub%20issues%20for%20blog%20comments,%20wik/avatar.gif">
+      <meta itemprop="name" content="彭凯">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="成长日记">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          <a href="/2021/12/31/c-plus-plus-study-resource/" class="post-title-link" itemprop="url">C++学习资源</a>
+        </h2>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">发表于</span>
+      
+
+      <time title="创建时间：2021-12-31 00:12:06 / 修改时间：00:13:01" itemprop="dateCreated datePublished" datetime="2021-12-31T00:12:06+08:00">2021-12-31</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">分类于</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/C/" itemprop="url" rel="index"><span itemprop="name">C++</span></a>
+        </span>
+    </span>
+
+  
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+          <h2 id="教程"><a href="#教程" class="headerlink" title="教程"></a>教程</h2><p><a target="_blank" rel="noopener" href="https://www.softwaretestinghelp.com/cpp-tutorials/">https://www.softwaretestinghelp.com/cpp-tutorials/</a></p>
+
+      
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+</div>
+
+
+
+
+    
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
+    <link itemprop="mainEntityOfPage" href="http://kylepeng93.github.io/2021/12/30/how-makefile-is-working-in-c-plus-plus/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/imagesUse%20GitHub%20issues%20for%20blog%20comments,%20wik/avatar.gif">
+      <meta itemprop="name" content="彭凯">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="成长日记">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          <a href="/2021/12/30/how-makefile-is-working-in-c-plus-plus/" class="post-title-link" itemprop="url">makefile在C++中的使用</a>
+        </h2>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">发表于</span>
+
+      <time title="创建时间：2021-12-30 22:48:48" itemprop="dateCreated datePublished" datetime="2021-12-30T22:48:48+08:00">2021-12-30</time>
+    </span>
+      <span class="post-meta-item">
+        <span class="post-meta-item-icon">
+          <i class="far fa-calendar-check"></i>
+        </span>
+        <span class="post-meta-item-text">更新于</span>
+        <time title="修改时间：2021-12-31 00:13:20" itemprop="dateModified" datetime="2021-12-31T00:13:20+08:00">2021-12-31</time>
+      </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">分类于</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/C/" itemprop="url" rel="index"><span itemprop="name">C++</span></a>
+        </span>
+    </span>
+
+  
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+          <h2 id="Make工具"><a href="#Make工具" class="headerlink" title="Make工具"></a>Make工具</h2><p>Make是unix上被用来简化为一个工程中的各个不同模块构建可执行程序的工具。在Makefile中有各种各样的规则来指定目标入口。make工具则读取所有的这些规则并依照行事。</p>
+<p>例如，如果一个规则指定了某个依赖，那么make工具将在编译时包含这个依赖。make命令利用makefile来完成模块构建和文件清理的工作。</p>
+<p>make的常用语法如下：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">make target_label <span class="comment"># target_label是在makefile中指定的目标</span></span><br></pre></td></tr></table></figure>
+
+<p>例如，如果我们想要执行清理文件的操作，那么我们可以这么做：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">make clean <span class="comment"># 注意，clean实际上是指定了rm作为执行命令</span></span><br></pre></td></tr></table></figure>
+
+<h2 id="C-Makefile"><a href="#C-Makefile" class="headerlink" title="C++ Makefile"></a>C++ Makefile</h2><p>Makefile是一个由make命令来使用并用来构建目标的纯文本文件。一个Makefile也包含了一些源码级别的依赖信息以及构建顺序。</p>
+<p>现在让我们看看Makefile的通用结构：</p>
+<p>一个典型的Makefile通常以一个变量声明开头，后面紧跟着一串用来构建指定目标的目标入口。这些目标可能是<code>.o</code>或者是其他的可执行文件，比如说<code>C</code>或者<code>C++</code>或者<code>java</code>的<code>.class</code>文件。</p>
+<p>我们还可以有一串被目标标识（target label)所指定并被用来执行一系列命令的目标入口。</p>
+<p>因此一个通用的makefile大致如下：</p>
+<figure class="highlight makefile"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># comment</span></span><br><span class="line"><span class="section">target: dependency1 dependency2 ... dependencyn</span></span><br><span class="line">	command</span><br><span class="line"><span class="comment"># 注意，command前面的tab缩进对于make来说是必要的</span></span><br></pre></td></tr></table></figure>
+
+<figure class="highlight makefile"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 指定编译器，g++代表C++编译器，gcc代表C编译器</span></span><br><span class="line">CC = g++</span><br><span class="line"><span class="comment"># 编译器flags</span></span><br><span class="line"><span class="comment"># -g表示需要添加debug信息到可执行文件中</span></span><br><span class="line"><span class="comment"># -Wall表示打开大多数编译器警告</span></span><br><span class="line">CFLAGS = -g -Wall</span><br><span class="line"><span class="comment"># </span></span><br><span class="line">TARGET = main</span><br><span class="line"></span><br><span class="line"><span class="section">all: <span class="variable">$(TARGET)</span></span></span><br><span class="line"><span class="variable">$(TARGET)</span>: <span class="variable">$(TARGET)</span>.cpp</span><br><span class="line">			<span class="variable">$(CC)</span> <span class="variable">$(CFLAGS)</span> -o <span class="variable">$(TARGET)</span> <span class="variable">$(TARGET)</span>.cpp</span><br><span class="line"><span class="section">clean: </span></span><br><span class="line">		<span class="variable">$(RM)</span> <span class="variable">$(TARGET)</span></span><br></pre></td></tr></table></figure>
+
+<h2 id="Make和Makefile的例子"><a href="#Make和Makefile的例子" class="headerlink" title="Make和Makefile的例子"></a>Make和Makefile的例子</h2><p>假设我们的工程有如下几个文件：</p>
+<ul>
+<li>Main.cpp：主程序</li>
+<li>Point.h：point类的头文件</li>
+<li>Point.cpp：Point类的实现类</li>
+<li>Square.h：square的头文件</li>
+<li>Square.cpp：square类的实现类</li>
+</ul>
+<p>对于上面的几个文件，我们需要将这些文件各自编译并生成<code>.o</code>文件，然后将它们<code>link</code>成一个叫做<code>main</code>的可执行文件。</p>
+<p>接下来我们将各自编译这些文件：</p>
+<ul>
+<li>g++ -c main.cpp：生成main.o</li>
+<li>g++ -c point.cpp：生成point.o</li>
+<li>g++ -c square.cpp：生成square.o</li>
+</ul>
+<p>接下来，我们需要将这些<code>.o</code>文件<code>link</code>成一个可执行文件：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">g++ -o main main.o point.o square.o</span><br></pre></td></tr></table></figure>
+
+<p>接下来，我们需要确定当某个文件发生变更时需要重新编译和重新生成的其他关联文件。下图描述了这种依赖关系。</p>
+<p><img src="/home/pengkai/.config/Typora/typora-user-images/image-20211230234102091.png" alt="image-20211230234102091"></p>
+<p>在上面的依赖图中，我们可以看到<code>main</code>位于根部，而<code>main</code>又包含了对象文件<code>main.o</code>、<code>point.o</code>、<code>square.o</code>，它们分别由各自的cpp文件编译生成。</p>
+<p>所有的cpp实现都使用了它们自己的头文件，而<code>main.cpp</code>又引用了<code>point.h</code>和<code>square.h</code>。</p>
+<p>接下来<code>point.cpp</code>引用了<code>point.h</code>。<code>square.cpp</code>引用了<code>square.h</code>和<code>point.h</code>。</p>
+<p>如果我们的工程中只有少数几个文件，那么我们可以不用关系它们之间的依赖关系，但是，实际项目中，我们可能会有成百上千个文件，如果我们每次修改完一个文件之后都要手动编译和生成所有文件，那无疑是令人崩溃的。因此，我们需要使用make工具来帮我们简化这个流程。</p>
+<blockquote>
+<p> 注意，必须使用Makefile作为文件名，不区分大小写，且放在源代码的根目录。</p>
+</blockquote>
+<figure class="highlight makefile"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">CC = g++</span><br><span class="line">CFLAGS = -wall -g</span><br><span class="line"><span class="comment"># 确定依赖关系</span></span><br><span class="line"><span class="section">main: main.o Point.o Square.o</span></span><br><span class="line">	<span class="variable">$(CC)</span> <span class="variable">$(CFLAGS)</span> -o main main.o Point.o Square.o</span><br></pre></td></tr></table></figure>
+
+<blockquote>
+<p>上面的命令实际上等价于我们在终端中执行</p>
+<p>g++ -wall -g -o main main.o point.o square.o</p>
+</blockquote>
+<p>接下来我们需要生成对象文件：main.o、point.o、square.o</p>
+<figure class="highlight makefile"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="section">main.o: main.cpp point.h square.h</span></span><br><span class="line">	<span class="variable">$(CC)</span> <span class="variable">$(CFLAGS)</span> -c main.cpp</span><br><span class="line"><span class="section">Point.o: Point.h</span></span><br><span class="line"><span class="section">Square.o: Square.h Point.h</span></span><br></pre></td></tr></table></figure>
+
+<h2 id="Makefile的优点"><a href="#Makefile的优点" class="headerlink" title="Makefile的优点"></a>Makefile的优点</h2><ul>
+<li>对于大项目，可以让我们以系统性和更有效的方式呈现项目；</li>
+<li>可以让源代码更加有效和易读，并利于debug；</li>
+<li>Makefile可以自动编译那些被修改过的文件，因此当发生文件变更时我们不需要手动重新生成整个项目。</li>
+<li>Makefile允许我们一次编译多个文件，因此我们只需要一个步骤就可以完成整个项目的编译。</li>
+</ul>
+
+      
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+</div>
+
+
+
 
     
 
@@ -556,524 +1273,6 @@
 
 
 
-    
-
-
-<div class="post-block">
-  
-  
-
-  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
-    <link itemprop="mainEntityOfPage" href="http://kylepeng93.github.io/2021/11/29/spring-cloud-component-eureka/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/imagesUse%20GitHub%20issues%20for%20blog%20comments,%20wik/avatar.gif">
-      <meta itemprop="name" content="彭凯">
-      <meta itemprop="description" content="">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="成长日记">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          <a href="/2021/11/29/spring-cloud-component-eureka/" class="post-title-link" itemprop="url">spring-cloud服务注册与发现组件——Eureka</a>
-        </h2>
-
-        <div class="post-meta-container">
-          <div class="post-meta">
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-calendar"></i>
-      </span>
-      <span class="post-meta-item-text">发表于</span>
-      
-
-      <time title="创建时间：2021-11-29 20:26:15 / 修改时间：21:19:00" itemprop="dateCreated datePublished" datetime="2021-11-29T20:26:15+08:00">2021-11-29</time>
-    </span>
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-folder"></i>
-      </span>
-      <span class="post-meta-item-text">分类于</span>
-        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-          <a href="/categories/spring-cloud/" itemprop="url" rel="index"><span itemprop="name">spring cloud</span></a>
-        </span>
-    </span>
-
-  
-</div>
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-          <h2 id="Spring-Cloud之服务发现——Eureka-发音为-juә’ri-kә"><a href="#Spring-Cloud之服务发现——Eureka-发音为-juә’ri-kә" class="headerlink" title="Spring Cloud之服务发现——Eureka(发音为[juә’ri:kә])"></a>Spring Cloud之服务发现——Eureka(发音为[juә’ri:kә])</h2><ul>
-<li><p>服务注册与发现以及反馈的实现流程：</p>
-<ol>
-<li>Provider将自己的节点信息发送到指定的服务注册机上；</li>
-<li>服务注册机将Provider发送过来的信息保存在指定区域，等待Consumer查询；</li>
-<li>Provider通过定期向服务注册机发送消息确保自己不会被注销，而当服务注册机长时间未收到某个Provider发送过来的信息时，会自动将该Provider注销。</li>
-<li>当Provider网络地址发生变更时，会自动重新注册节点信息到服务注册机，避免了人工修改配置的问题。</li>
-</ol>
-</li>
-<li><p>Eureka的实现机制:</p>
-<ol>
-<li>Eureka分为Server端和Client端，Server端提供服务发现的能力，当微服务节点启动时，会自动向Server端注册自己的节点信息，而Server端则负责存储这些节点信息，供服务调用者查询；</li>
-<li>Client端一般和微服务集成，为微服务提供注册服务到Server端的能力，并从Server端获取最新的已注册服务列表的信息<strong>缓存</strong>到微服务端；</li>
-<li>微服务启动后，会周期性（默认30s）向Server端发送心跳以防止被注销；</li>
-<li>同时，Server端也会周期性（默认90s）的检查已注册的各个微服务是否仍然存活，如果超时，则注销该微服务的注册信息；</li>
-</ol>
-</li>
-</ul>
-<h2 id="Eureka的基础实现"><a href="#Eureka的基础实现" class="headerlink" title="Eureka的基础实现"></a>Eureka的基础实现</h2><ul>
-<li>Server端实现</li>
-</ul>
-<p>首先创建一个基础的SpringBoot工程，假设是Maven工程，在POM文件中引入如下依赖：</p>
-<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">dependencies</span>&gt;</span></span><br><span class="line">	<span class="tag">&lt;<span class="name">dependency</span>&gt;</span></span><br><span class="line">    	<span class="tag">&lt;<span class="name">groupId</span>&gt;</span>org.springframework.cloud<span class="tag">&lt;/<span class="name">groupId</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">artifactId</span>&gt;</span>spring-cloud-starter-netflix-eureka-server<span class="tag">&lt;/<span class="name">artifactId</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">dependency</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">dependencies</span>&gt;</span></span><br></pre></td></tr></table></figure>
-
-<p>在启动类中加入注解<code>@EnableEurekaService</code>，声明这是一个Server实例。</p>
-<p>在<code>application.yml</code>中加入如下内容：</p>
-<figure class="highlight yaml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="attr">server:</span></span><br><span class="line">	<span class="attr">port:</span> <span class="number">8761</span></span><br><span class="line"><span class="attr">eureka:</span></span><br><span class="line">	<span class="attr">client:</span></span><br><span class="line">		<span class="attr">registerWithEureka:</span> <span class="literal">false</span></span><br><span class="line">	<span class="attr">fetchRegistry:</span> <span class="literal">false</span></span><br><span class="line">	<span class="attr">serviceUrl:</span></span><br><span class="line">		<span class="attr">defaultZone:</span> <span class="string">http://localhost:8761/eureka/</span></span><br></pre></td></tr></table></figure>
-
-<ul>
-<li>Client端实现</li>
-</ul>
-<p>首先创建一个基础的SpringBoot工程，假设是Maven工程，在POM文件中引入如下依赖：</p>
-<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">dependencies</span>&gt;</span></span><br><span class="line">	<span class="tag">&lt;<span class="name">dependency</span>&gt;</span></span><br><span class="line">    	<span class="tag">&lt;<span class="name">groupId</span>&gt;</span>org.springframework.cloud<span class="tag">&lt;/<span class="name">groupId</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">artifactId</span>&gt;</span>spring-cloud-starter-netflix-eureka-client<span class="tag">&lt;/<span class="name">artifactId</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">dependency</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">dependencies</span>&gt;</span></span><br></pre></td></tr></table></figure>
-
-<p>在<code>application.yml</code>中加入如下内容：</p>
-<figure class="highlight yaml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="attr">spring:</span></span><br><span class="line">	<span class="attr">application:</span></span><br><span class="line">		<span class="attr">name:</span> <span class="string">microsoftservice-provider-user</span></span><br><span class="line"><span class="attr">eureka:</span></span><br><span class="line">	<span class="attr">client:</span></span><br><span class="line">		<span class="attr">serviceUrl:</span></span><br><span class="line">			<span class="attr">defaultZone:</span> <span class="string">http://localhost:8761/eureka/</span></span><br><span class="line"><span class="attr">instance:</span></span><br><span class="line">	<span class="attr">prefer-ip-address:</span> <span class="literal">true</span></span><br></pre></td></tr></table></figure>
-
-<h2 id="高可用Eureka实现"><a href="#高可用Eureka实现" class="headerlink" title="高可用Eureka实现"></a>高可用Eureka实现</h2><p>单节点的Eureka无法满足线上环境高可用的要求。一旦发生故障，轻则影响服务的可达性，重则引发服务瘫痪，因此，以集群的方式部署Eureka是非常必要的。</p>
-<h2 id="Eureka主页访问认证实现"><a href="#Eureka主页访问认证实现" class="headerlink" title="Eureka主页访问认证实现"></a>Eureka主页访问认证实现</h2><h2 id="非JVM的微服务注册与发现"><a href="#非JVM的微服务注册与发现" class="headerlink" title="非JVM的微服务注册与发现"></a>非JVM的微服务注册与发现</h2><h2 id="Eureka的自我保护模式实现"><a href="#Eureka的自我保护模式实现" class="headerlink" title="Eureka的自我保护模式实现"></a>Eureka的自我保护模式实现</h2>
-      
-    </div>
-
-    
-    
-    
-
-    <footer class="post-footer">
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-</div>
-
-
-
-
-    
-
-
-<div class="post-block">
-  
-  
-
-  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
-    <link itemprop="mainEntityOfPage" href="http://kylepeng93.github.io/2021/11/23/microservices-theory-guide/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/imagesUse%20GitHub%20issues%20for%20blog%20comments,%20wik/avatar.gif">
-      <meta itemprop="name" content="彭凯">
-      <meta itemprop="description" content="">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="成长日记">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          <a href="/2021/11/23/microservices-theory-guide/" class="post-title-link" itemprop="url">微服务导论</a>
-        </h2>
-
-        <div class="post-meta-container">
-          <div class="post-meta">
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-calendar"></i>
-      </span>
-      <span class="post-meta-item-text">发表于</span>
-      
-
-      <time title="创建时间：2021-11-23 13:35:34 / 修改时间：15:27:43" itemprop="dateCreated datePublished" datetime="2021-11-23T13:35:34+08:00">2021-11-23</time>
-    </span>
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-folder"></i>
-      </span>
-      <span class="post-meta-item-text">分类于</span>
-        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-          <a href="/categories/%E5%BE%AE%E6%9C%8D%E5%8A%A1/" itemprop="url" rel="index"><span itemprop="name">微服务</span></a>
-        </span>
-    </span>
-
-  
-</div>
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-          <p>“微服务”——一个在当前种类繁多的软件架构中出现的新术语。虽然我们对这种事的自然反应一般都是轻蔑的瞥一眼，但真正能吸引我们的其实是术语中描述的一种软件系统风格。我们在过去的几年中看到了有一些项目使用了这种风格，迄今为止，他们的结果大部分都是正面的，因此，我们很多的同事也将它作为了一种构建企业级应用的默认风格。但是，并没有太多的的信息来告诉我们微服务风格究竟是什么，以及怎么去实现它。</p>
-<p>简而言之，微服务架构风格是一种由多个微小服务集合组成的单应用开发风格，其中的每一个微小服务都拥有自己的进程以及轻量级的交互机制，通常是一个基于HTTP的API。这些服务围绕业务能力单独构建，并且可以被全自动化部署机制实现各自独立部署。对于这些服务也有一个纯粹的最小集中化管理，通常他们可以用不同的编程语言以及不同的数据存储技术来实现。</p>
-
-      
-    </div>
-
-    
-    
-    
-
-    <footer class="post-footer">
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-</div>
-
-
-
-
-    
-
-
-<div class="post-block">
-  
-  
-
-  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
-    <link itemprop="mainEntityOfPage" href="http://kylepeng93.github.io/2021/11/18/add-china-software-source-for-raspberry-pi/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/imagesUse%20GitHub%20issues%20for%20blog%20comments,%20wik/avatar.gif">
-      <meta itemprop="name" content="彭凯">
-      <meta itemprop="description" content="">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="成长日记">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          <a href="/2021/11/18/add-china-software-source-for-raspberry-pi/" class="post-title-link" itemprop="url">为树莓派配置国内软件源</a>
-        </h2>
-
-        <div class="post-meta-container">
-          <div class="post-meta">
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-calendar"></i>
-      </span>
-      <span class="post-meta-item-text">发表于</span>
-      
-
-      <time title="创建时间：2021-11-18 23:37:11 / 修改时间：23:50:41" itemprop="dateCreated datePublished" datetime="2021-11-18T23:37:11+08:00">2021-11-18</time>
-    </span>
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-folder"></i>
-      </span>
-      <span class="post-meta-item-text">分类于</span>
-        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-          <a href="/categories/raspberry-pi/" itemprop="url" rel="index"><span itemprop="name">raspberry pi</span></a>
-        </span>
-    </span>
-
-  
-</div>
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-          <h2 id="因为众所周知的原因，树莓派的国外软件源在国内访问速度非常考验耐性，所以，为了能让树莓派愉快的更新到最新版本，有必要将默认的软件源替换成国内的同步镜像。下面就以清华大学的镜像站点为例子进行说明"><a href="#因为众所周知的原因，树莓派的国外软件源在国内访问速度非常考验耐性，所以，为了能让树莓派愉快的更新到最新版本，有必要将默认的软件源替换成国内的同步镜像。下面就以清华大学的镜像站点为例子进行说明" class="headerlink" title="因为众所周知的原因，树莓派的国外软件源在国内访问速度非常考验耐性，所以，为了能让树莓派愉快的更新到最新版本，有必要将默认的软件源替换成国内的同步镜像。下面就以清华大学的镜像站点为例子进行说明"></a>因为众所周知的原因，树莓派的国外软件源在国内访问速度非常考验耐性，所以，为了能让树莓派愉快的更新到最新版本，有必要将默认的软件源替换成国内的同步镜像。下面就以清华大学的镜像站点为例子进行说明</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">$ sudo vim /etc/apt/sources.list</span><br><span class="line"><span class="comment"># 将默认的软件源注释掉，新增如下的配置</span></span><br></pre></td></tr></table></figure>
-
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">deb http://mirrors.tuna.tsinghua.edu.cn/raspbian/raspbian/ bullseye main non-free contrib rpi</span><br><span class="line">deb-src http://mirrors.tuna.tsinghua.edu.cn/raspbian/raspbian/ bullseye main non-free contrib rpi</span><br></pre></td></tr></table></figure>
-
-<p>其中<code>bullseye</code>为当前树莓派系统的版本代号，可以参考默认的国外源的镜像配置中的代号，保持一致即可。</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">$ sudo vim /etc/apt/sources.list.d/raspi.list</span><br><span class="line"><span class="comment"># 将默认的软件源注释掉，并新增如下的配置</span></span><br></pre></td></tr></table></figure>
-
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">deb http://mirrors.tuna.tsinghua.edu.cn/raspberrypi/ bullseye main</span><br></pre></td></tr></table></figure>
-
-<p><code>bullseye</code>和默认配置的保持一直即可。</p>
-
-      
-    </div>
-
-    
-    
-    
-
-    <footer class="post-footer">
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-</div>
-
-
-
-
-    
-
-
-<div class="post-block">
-  
-  
-
-  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
-    <link itemprop="mainEntityOfPage" href="http://kylepeng93.github.io/2021/11/15/how-to-discard-output-on-linux/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/imagesUse%20GitHub%20issues%20for%20blog%20comments,%20wik/avatar.gif">
-      <meta itemprop="name" content="彭凯">
-      <meta itemprop="description" content="">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="成长日记">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          <a href="/2021/11/15/how-to-discard-output-on-linux/" class="post-title-link" itemprop="url">怎么在linux上清除命令的输出内容</a>
-        </h2>
-
-        <div class="post-meta-container">
-          <div class="post-meta">
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-calendar"></i>
-      </span>
-      <span class="post-meta-item-text">发表于</span>
-      
-
-      <time title="创建时间：2021-11-15 20:07:42 / 修改时间：21:33:57" itemprop="dateCreated datePublished" datetime="2021-11-15T20:07:42+08:00">2021-11-15</time>
-    </span>
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-folder"></i>
-      </span>
-      <span class="post-meta-item-text">分类于</span>
-        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-          <a href="/categories/linux/" itemprop="url" rel="index"><span itemprop="name">linux</span></a>
-        </span>
-    </span>
-
-  
-</div>
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-          <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ ls -al &gt; /dev/null 2&gt;&amp;1</span><br></pre></td></tr></table></figure>
-
-<p>执行上面的命令之后你会发现终端没有任何输出，为什么会这样呢？</p>
-<p>继续执行下面的命令</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ ls -qwer &gt; /dev/null 2&gt;&amp;1</span><br></pre></td></tr></table></figure>
-
-<p>发现还是没有任何输出，即使该命令是错误的。</p>
-<p>造成这一切的根源在于命令最后面的<code>2&gt;&amp;1</code>。</p>
-<p>我们知道<code>/dev/null</code>是<code>linux</code>系统上的伪设备文件，可以被用来消除来自程序的输出。尤其是对于命令行程序而言有更大的意义。</p>
-<p><code>/dev/null</code>看起来像是一个水漕，比如说一个可写的目标文件，然而只要有任何数据流被写入这个文件，都会被马上删除。</p>
-<p>当用户不需要来自程序的输出信息时，这个命令是有用的。因为程序可能会生成大量的输出内容，而这会给分析日志的工作带来混乱。</p>
-<p>对于<code>/dev/null 2&gt;&amp;1</code>命令，2在linux上代表STDERR（标准错误输出），而1则代表STDOUT（标准输出）。因此，这个命令的最终解释就是将标准错误输出和标准输出重定向到<code>/dev/null</code>，即消除这两种类型的输出。</p>
-<p>我们再来具体分析下这个命令的构成，首先<code>&gt;</code>表示重定向，而被重定向的对象则是<code>/dev/null</code>。而不是打印到终端。</p>
-<p>这是否意味着该命令所有的输出都会被重定向到<code>/dev/null</code>呢，并不是，因为它只会重定向标准输出。</p>
-<p>因此，还需要加上<code>2&gt;&amp;1</code>。表示将2（标准错误输出）重定向到1（标准输出）。那么<code>&amp;</code>代表什么意思呢？如果不加上<code>&amp;</code>的话，标准错误输出将会输出到名字为1的文件中。而<code>&amp;</code>会告诉系统1不是一个文件，而是一个标准输出描述符号。</p>
-<p>最后，我们将标准输出和标准错误输出都重定向到了<code>/dev/null</code>。而<code>/dev/null</code>会将所有的输出内容全部清除掉。</p>
-<blockquote>
-<p>小结：/dev/null是linux系统上一个特殊的设备文件，可以将任何命令的标准输出（不管是标准输出还是错误输出）清除掉。</p>
-</blockquote>
-
-      
-    </div>
-
-    
-    
-    
-
-    <footer class="post-footer">
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-</div>
-
-
-
-
-    
-
-
-<div class="post-block">
-  
-  
-
-  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
-    <link itemprop="mainEntityOfPage" href="http://kylepeng93.github.io/2021/10/26/fix-chinese-luan-ma-in-deepin-wine-wechat/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/imagesUse%20GitHub%20issues%20for%20blog%20comments,%20wik/avatar.gif">
-      <meta itemprop="name" content="彭凯">
-      <meta itemprop="description" content="">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="成长日记">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          <a href="/2021/10/26/fix-chinese-luan-ma-in-deepin-wine-wechat/" class="post-title-link" itemprop="url">在manjaro中修复deepin-wine-wechat对话框输入中文乱码的问题</a>
-        </h2>
-
-        <div class="post-meta-container">
-          <div class="post-meta">
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-calendar"></i>
-      </span>
-      <span class="post-meta-item-text">发表于</span>
-      
-
-      <time title="创建时间：2021-10-26 22:22:17 / 修改时间：22:48:35" itemprop="dateCreated datePublished" datetime="2021-10-26T22:22:17+08:00">2021-10-26</time>
-    </span>
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-folder"></i>
-      </span>
-      <span class="post-meta-item-text">分类于</span>
-        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-          <a href="/categories/linux/" itemprop="url" rel="index"><span itemprop="name">linux</span></a>
-        </span>
-    </span>
-
-  
-</div>
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-          <h2 id="最近在manjaro上安装了deepin-wine-wechat，毕竟生活中用微信还是挺多的，但腾讯貌似短期内并没有将微信移植到linux桌面平台的打算，所以，作为替代方案，只能使用deepin基于wine定制的微信客户端"><a href="#最近在manjaro上安装了deepin-wine-wechat，毕竟生活中用微信还是挺多的，但腾讯貌似短期内并没有将微信移植到linux桌面平台的打算，所以，作为替代方案，只能使用deepin基于wine定制的微信客户端" class="headerlink" title="最近在manjaro上安装了deepin-wine-wechat，毕竟生活中用微信还是挺多的，但腾讯貌似短期内并没有将微信移植到linux桌面平台的打算，所以，作为替代方案，只能使用deepin基于wine定制的微信客户端"></a>最近在manjaro上安装了deepin-wine-wechat，毕竟生活中用微信还是挺多的，但腾讯貌似短期内并没有将微信移植到linux桌面平台的打算，所以，作为替代方案，只能使用deepin基于wine定制的微信客户端</h2><p>首先GNU/Linux操作系统作为一款世界流行的操作系统，其稳定性和可定制性都是非常优秀的。但由于众多linux发行版大部分都是从国外发展起来的，虽然近几年来国内也有几家比较优秀的linux厂商，但终究起步别别人晚，所以还是有很多需要提升的地方。对于打着国产操作系统旗号的Deepin团队而言，想要在国内推广他们定制的Deepin Linux发行版，首先在通讯软件方面就要能够提供最常用的几款即时通讯软件的移植版，毕竟国内通讯软件市场还是腾讯一家独大，奈何鹅厂迟迟不将linux平台的QQ、微信的开发提上日程，而目前能够最大限度移植Windows程序到linux上执行的莫过于使用Wine了。所以，基于Wine提供linux版的微信和QQ也成为了最为方便快捷的选择。</p>
-<p>这次安装完deepin-wine-wechat之后，正常启动没问题，但当我打开和好友聊天的对话框时发现我输入的中文在内容栏里面都变成了一个个空心的小方块。但当我将消息发送出去之后，我的消息又变成了正常的中文。经过查找资料后发现，是因为wine模拟的windows环境里面缺少了宋体的字体文件，所以，只需要将宋体文件复制到对应的字体目录下就可以了。步骤如下：</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">1.下载宋体字符集文件：https://www.freefonts.io/downloads/simsun/</span><br><span class="line">2.将解压后的文件复制如下路径：cp ~/Downloads/SIMSUN.ttf ~/.deepinwine/Deepin-WeChat/drive_c/windows/Fonts/</span><br><span class="line">3.重启微信即可解决。</span><br></pre></td></tr></table></figure>
-
-      
-    </div>
-
-    
-    
-    
-
-    <footer class="post-footer">
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-</div>
-
-
-
-
-    
-
-
-<div class="post-block">
-  
-  
-
-  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
-    <link itemprop="mainEntityOfPage" href="http://kylepeng93.github.io/2021/10/20/how-to-set-default-file-manager-for-gnome/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/imagesUse%20GitHub%20issues%20for%20blog%20comments,%20wik/avatar.gif">
-      <meta itemprop="name" content="彭凯">
-      <meta itemprop="description" content="">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="成长日记">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          <a href="/2021/10/20/how-to-set-default-file-manager-for-gnome/" class="post-title-link" itemprop="url">在gnome桌面环境下设置默认文件管理器</a>
-        </h2>
-
-        <div class="post-meta-container">
-          <div class="post-meta">
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-calendar"></i>
-      </span>
-      <span class="post-meta-item-text">发表于</span>
-      
-
-      <time title="创建时间：2021-10-20 19:55:32 / 修改时间：20:04:09" itemprop="dateCreated datePublished" datetime="2021-10-20T19:55:32+08:00">2021-10-20</time>
-    </span>
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-folder"></i>
-      </span>
-      <span class="post-meta-item-text">分类于</span>
-        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-          <a href="/categories/gnome/" itemprop="url" rel="index"><span itemprop="name">gnome</span></a>
-        </span>
-    </span>
-
-  
-</div>
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-          <h3 id="gnome桌面设置工具中默认无法设置默认的文件管理器，所以，当我们在kde桌面环境下设置了dolphin为文件管理器之后，重新切回到gnome之后会发现dolphin仍然是默认的文件管理器，所以，我们需要将gnome桌面默认的Nautilus文件管理器重新设为默认值，以下命令可以帮助我们做到这一点："><a href="#gnome桌面设置工具中默认无法设置默认的文件管理器，所以，当我们在kde桌面环境下设置了dolphin为文件管理器之后，重新切回到gnome之后会发现dolphin仍然是默认的文件管理器，所以，我们需要将gnome桌面默认的Nautilus文件管理器重新设为默认值，以下命令可以帮助我们做到这一点：" class="headerlink" title="gnome桌面设置工具中默认无法设置默认的文件管理器，所以，当我们在kde桌面环境下设置了dolphin为文件管理器之后，重新切回到gnome之后会发现dolphin仍然是默认的文件管理器，所以，我们需要将gnome桌面默认的Nautilus文件管理器重新设为默认值，以下命令可以帮助我们做到这一点："></a>gnome桌面设置工具中默认无法设置默认的文件管理器，所以，当我们在kde桌面环境下设置了dolphin为文件管理器之后，重新切回到gnome之后会发现dolphin仍然是默认的文件管理器，所以，我们需要将gnome桌面默认的Nautilus文件管理器重新设为默认值，以下命令可以帮助我们做到这一点：</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">xdg-mime default org.gnome.Nautilus.desktop inode/directory</span><br></pre></td></tr></table></figure>
-
-<blockquote>
-<p>上述命令会修改<code>~/.config/mimeapps.list</code>的内容，具体内容如下：</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">inode/directory=org.gnome.Nautilus.desktop</span><br></pre></td></tr></table></figure>
-
-<p>分别对应<code>[Default Applications]</code>和<code>[Added Associations]</code>目录。</p>
-</blockquote>
-
-      
-    </div>
-
-    
-    
-    
-
-    <footer class="post-footer">
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-</div>
-
-
-
-
   <nav class="pagination">
     <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><span class="space">&hellip;</span><a class="page-number" href="/page/6/">6</a><a class="extend next" rel="next" href="/page/2/"><i class="fa fa-angle-right" aria-label="下一页"></i></a>
   </nav>
@@ -1087,7 +1286,7 @@
 
 <div class="copyright">
   &copy; 
-  <span itemprop="copyrightYear">2021</span>
+  <span itemprop="copyrightYear">2022</span>
   <span class="with-love">
     <i class="fa fa-heart"></i>
   </span>
