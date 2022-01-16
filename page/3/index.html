@@ -84,9 +84,9 @@
   <ul class="main-menu menu">
         <li class="menu-item menu-item-home"><a href="/" rel="section"><i class="fa fa-home fa-fw"></i>首页</a></li>
         <li class="menu-item menu-item-about"><a href="/about/" rel="section"><i class="fa fa-user fa-fw"></i>关于</a></li>
-        <li class="menu-item menu-item-tags"><a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>标签<span class="badge">75</span></a></li>
-        <li class="menu-item menu-item-categories"><a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>分类<span class="badge">37</span></a></li>
-        <li class="menu-item menu-item-archives"><a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档<span class="badge">59</span></a></li>
+        <li class="menu-item menu-item-tags"><a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>标签<span class="badge">76</span></a></li>
+        <li class="menu-item menu-item-categories"><a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>分类<span class="badge">38</span></a></li>
+        <li class="menu-item menu-item-archives"><a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档<span class="badge">61</span></a></li>
       <li class="menu-item menu-item-search">
         <a role="button" class="popup-trigger"><i class="fa fa-search fa-fw"></i>搜索
         </a>
@@ -155,18 +155,18 @@
   <nav class="site-state">
       <div class="site-state-item site-state-posts">
         <a href="/archives/">
-          <span class="site-state-item-count">59</span>
+          <span class="site-state-item-count">61</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
       <div class="site-state-item site-state-categories">
           <a href="/categories/">
-        <span class="site-state-item-count">37</span>
+        <span class="site-state-item-count">38</span>
         <span class="site-state-item-name">分类</span></a>
       </div>
       <div class="site-state-item site-state-tags">
           <a href="/tags/">
-        <span class="site-state-item-count">75</span>
+        <span class="site-state-item-count">76</span>
         <span class="site-state-item-name">标签</span></a>
       </div>
   </nav>
@@ -195,6 +195,221 @@
 
 
     <div class="main-inner index posts-expand">
+
+    
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
+    <link itemprop="mainEntityOfPage" href="http://kylepeng93.github.io/2021/10/05/hardware-info-cmd/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/imagesUse%20GitHub%20issues%20for%20blog%20comments,%20wik/avatar.gif">
+      <meta itemprop="name" content="彭凯">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="成长日记">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          <a href="/2021/10/05/hardware-info-cmd/" class="post-title-link" itemprop="url">在linux系统终端查看硬件信息</a>
+        </h2>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">发表于</span>
+
+      <time title="创建时间：2021-10-05 23:04:53" itemprop="dateCreated datePublished" datetime="2021-10-05T23:04:53+08:00">2021-10-05</time>
+    </span>
+      <span class="post-meta-item">
+        <span class="post-meta-item-icon">
+          <i class="far fa-calendar-check"></i>
+        </span>
+        <span class="post-meta-item-text">更新于</span>
+        <time title="修改时间：2021-10-06 11:14:23" itemprop="dateModified" datetime="2021-10-06T11:14:23+08:00">2021-10-06</time>
+      </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">分类于</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/hardware/" itemprop="url" rel="index"><span itemprop="name">hardware</span></a>
+        </span>
+    </span>
+
+  
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+          <h2 id="使用如下命令查看包括CPU、内存、硬盘、主板在内的各种硬件相关的信息"><a href="#使用如下命令查看包括CPU、内存、硬盘、主板在内的各种硬件相关的信息" class="headerlink" title="使用如下命令查看包括CPU、内存、硬盘、主板在内的各种硬件相关的信息"></a>使用如下命令查看包括CPU、内存、硬盘、主板在内的各种硬件相关的信息</h2><ul>
+<li><p>CPU型号</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">cat /proc/cpuinfo | grep <span class="string">&quot;model name&quot;</span> | uniq</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>查看CPU物理个数</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">cat /proc/cpuinfo | grep <span class="string">&quot;physical id&quot;</span> | uniq | wc -l</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>查看内存信息</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 先安装工具软件，以archlinux为例</span></span><br><span class="line">sudo pacman -S dmidecode</span><br><span class="line">sudo dmidecode -t memory | grep Size</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>查看内存条厂家</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo dmidecode -t memory | grep Manufacturer</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>查看硬盘信息</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">fdisk -l | grep <span class="string">&quot;Disk /dev/sd&quot;</span></span><br></pre></td></tr></table></figure>
+</li>
+<li><p>查看主板信息</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo dmidecode | grep -A16 <span class="string">&quot;System Information$&quot;</span></span><br></pre></td></tr></table></figure>
+
+
+
+</li>
+</ul>
+
+      
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+</div>
+
+
+
+
+    
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
+    <link itemprop="mainEntityOfPage" href="http://kylepeng93.github.io/2021/10/02/chat-with-netcat-between-linux-host/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/imagesUse%20GitHub%20issues%20for%20blog%20comments,%20wik/avatar.gif">
+      <meta itemprop="name" content="彭凯">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="成长日记">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          <a href="/2021/10/02/chat-with-netcat-between-linux-host/" class="post-title-link" itemprop="url">使用netcat工具在两台linux主机之间通信</a>
+        </h2>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">发表于</span>
+      
+
+      <time title="创建时间：2021-10-02 20:39:36 / 修改时间：21:36:11" itemprop="dateCreated datePublished" datetime="2021-10-02T20:39:36+08:00">2021-10-02</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">分类于</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/linux/" itemprop="url" rel="index"><span itemprop="name">linux</span></a>
+        </span>
+    </span>
+
+  
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+          <h2 id="为什么我们不使用当下流行的即时通讯工具在PC间通信或者传输文件"><a href="#为什么我们不使用当下流行的即时通讯工具在PC间通信或者传输文件" class="headerlink" title="为什么我们不使用当下流行的即时通讯工具在PC间通信或者传输文件"></a>为什么我们不使用当下流行的即时通讯工具在PC间通信或者传输文件</h2><p>目前国内使用率最高的两款即时通讯工具莫过于鹅厂的两款工具——微信和QQ。因为某些众所周知的原因，这两款工具在linux平台要么直接没有，要么只有一个复古的阉割版，功能少的让人怀疑是不是鹅厂直接把10年前的产品直接拿来用了。基于这些现实的问题，对于linux用户来说，其实可替换方案也不是没有，最好的办法就是使用telegram，但在中国，这种方案并不是人人都能够直接拿来用，最直接的原因就是使用这款软件必须要学会科学上网（比如访问谷歌或者油管）。而科学上网在中国处于法律的灰色地带，一般人没有途径也不愿意承担这样的风险。那么作为一名linux用户，只要具备基本的使用命令行的能力，其实方法还是有很多的。这里介绍一种非常方便而且直观的通讯工具——netcat，供大家参考。</p>
+<h2 id="netcat是个什么样的工具"><a href="#netcat是个什么样的工具" class="headerlink" title="netcat是个什么样的工具"></a>netcat是个什么样的工具</h2><p>netcat是一款网络工具，可以在基于TCP和UDP网络连接的基础上执行读写操作。</p>
+<p>它被设计为一个可靠的后端工具，可以直接在其他程序或者脚本中被使用。同时，它还是一个用来调试和探测网络的工具。因为它可以创建几乎所有你可能需要的连接类型。</p>
+<h2 id="netcat有哪些特性"><a href="#netcat有哪些特性" class="headerlink" title="netcat有哪些特性"></a>netcat有哪些特性</h2><ul>
+<li>流出和流入连接：例如来自基于TCP或者UDP的任意端口的连接。</li>
+<li>隧道模式：它允许创建特殊的隧道，如 UDP 到 TCP，并且可以指定所有网络参数（源主机端口/接受主机端口、监听端口/接口和允许连接到隧道的远程主机）。</li>
+<li>使用随机发生器进行端口扫描</li>
+<li>高级使用选项：例如传输和接收数据的缓冲发送模式（每 N 秒一行）和 hexdump（到 stderr 或到指定文件）。</li>
+<li>可选的 RFC854 telnet 代码解析器和响应器。</li>
+</ul>
+<h2 id="如何将netcat作为一款即时通讯工具呢"><a href="#如何将netcat作为一款即时通讯工具呢" class="headerlink" title="如何将netcat作为一款即时通讯工具呢"></a>如何将netcat作为一款即时通讯工具呢</h2><ol>
+<li><p>首先，我们需要在需要建立通讯的主机上安装netcat工具，使用linux自带的包管理器安装即可。</p>
+</li>
+<li><p>然后选择一台已经安装好netcat的机器，在终端中执行如下命令：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">nc -l -vv -p 12345</span><br></pre></td></tr></table></figure>
+
+<p>其中<code>-l</code>和<code>p</code>表示在本机的12345端口进行监听，并创建一个TCP连接。<code>-vv</code>表示尽可能的展示运行过程中的系统消息，<code>-p</code>表示要监听的端口号。</p>
+</li>
+<li><p>选择要与监听主机建立连接的机器，在终端中执行如下命令：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">nc 步骤2中创建监听的主机ip 步骤2中创建的监听端口</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>执行完2、3之后，一条连接已经创建完成，可以开始互发消息了。</p>
+</li>
+</ol>
+<blockquote>
+<p>需要注意的是，连接双方发送的消息会全部展示在各自的屏幕上，如果有多于两个以上的连接方则无法区分消息的来源。</p>
+</blockquote>
+<h2 id="使用netcat传输文件"><a href="#使用netcat传输文件" class="headerlink" title="使用netcat传输文件"></a>使用netcat传输文件</h2><p>netcat还可以用来传输文件</p>
+<ol>
+<li><p>对接收方执行如下命立：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">nc -l -vv -p 12345 &gt; received_file</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>在发送方执行如下命令</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">nc 接收方的ip地址 12345 &lt; received_file</span><br></pre></td></tr></table></figure>
+
+</li>
+</ol>
+<blockquote>
+<p>需要注意的是，这里创建监听的动作是由接收方发起的，而发送方需要和接收方建立连接并发送文件。</p>
+</blockquote>
+
+      
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+</div>
+
+
+
 
     
 
@@ -1000,178 +1215,8 @@
 
 
 
-    
-
-
-<div class="post-block">
-  
-  
-
-  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
-    <link itemprop="mainEntityOfPage" href="http://kylepeng93.github.io/2021/08/09/spring-bean-post-processor/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/imagesUse%20GitHub%20issues%20for%20blog%20comments,%20wik/avatar.gif">
-      <meta itemprop="name" content="彭凯">
-      <meta itemprop="description" content="">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="成长日记">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          <a href="/2021/08/09/spring-bean-post-processor/" class="post-title-link" itemprop="url">Spring框架中bean的前置处理和后置处理</a>
-        </h2>
-
-        <div class="post-meta-container">
-          <div class="post-meta">
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-calendar"></i>
-      </span>
-      <span class="post-meta-item-text">发表于</span>
-
-      <time title="创建时间：2021-08-09 22:36:30" itemprop="dateCreated datePublished" datetime="2021-08-09T22:36:30+08:00">2021-08-09</time>
-    </span>
-      <span class="post-meta-item">
-        <span class="post-meta-item-icon">
-          <i class="far fa-calendar-check"></i>
-        </span>
-        <span class="post-meta-item-text">更新于</span>
-        <time title="修改时间：2021-08-10 00:03:13" itemprop="dateModified" datetime="2021-08-10T00:03:13+08:00">2021-08-10</time>
-      </span>
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-folder"></i>
-      </span>
-      <span class="post-meta-item-text">分类于</span>
-        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-          <a href="/categories/spring-framework/" itemprop="url" rel="index"><span itemprop="name">spring framework</span></a>
-        </span>
-    </span>
-
-  
-</div>
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-          <h2 id="Spring框架中Bean的创建过程如下："><a href="#Spring框架中Bean的创建过程如下：" class="headerlink" title="Spring框架中Bean的创建过程如下："></a>Spring框架中Bean的创建过程如下：</h2><p><img src="https://springframework.guru/wp-content/uploads/2019/05/aware_interfaces_callbacks_in_bean_lifecycle-1024x545.png" alt="Aware interfaces Callbacks in Bean Lifecycle"></p>
-<p>其中BeanPostProcessor接口包含两个执行过程，分别是在bean执行init方法之前和执行init方法之后执行。代码如下：</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@Configuration</span></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">MyBeanPostProcessor</span> <span class="keyword">implements</span> <span class="title">BeanPostProcessor</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> Object <span class="title">postProcessBeforeInitialization</span><span class="params">(Object bean, String beanName)</span> <span class="keyword">throws</span> BeansException </span>&#123;</span><br><span class="line">        System.out.println(<span class="string">&quot;我在bean初始化前执行&quot;</span>);</span><br><span class="line">        <span class="keyword">return</span> BeanPostProcessor.<span class="keyword">super</span>.postProcessBeforeInitialization(bean, beanName);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> Object <span class="title">postProcessAfterInitialization</span><span class="params">(Object bean, String beanName)</span> <span class="keyword">throws</span> BeansException </span>&#123;</span><br><span class="line">        System.out.println(<span class="string">&quot;我在bean初始化之后执行&quot;</span>);</span><br><span class="line">        <span class="keyword">return</span> BeanPostProcessor.<span class="keyword">super</span>.postProcessAfterInitialization(bean, beanName);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Bean(name = &quot;DBConnection&quot;, initMethod = &quot;init&quot;, destroyMethod = &quot;destroy&quot;)</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> DatabaseConfig <span class="title">mysqlConnection</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        Properties properties = System.getProperties();</span><br><span class="line">        String url = properties.getProperty(<span class="string">&quot;url&quot;</span>);</span><br><span class="line">        String driverName = properties.getProperty(<span class="string">&quot;driverName&quot;</span>);</span><br><span class="line">        String userName = properties.getProperty(<span class="string">&quot;userName&quot;</span>);</span><br><span class="line">        String password = properties.getProperty(<span class="string">&quot;password&quot;</span>);</span><br><span class="line">        <span class="keyword">return</span> <span class="keyword">new</span> DatabaseConfig(driverName, url, userName, password);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<p>上述代码新建了自定义的<code>MyBeanPostProcessor</code>,并实现了接口<code>BeanPostProcessor</code>中的两个接口（自带default方法），同时，还定义了一个名为<code>DBConnection</code>的bean，指定了初始化方法和销毁前执行的方法。</p>
-<p>其中，<code>DatabaseConfig</code>的定义如下：</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@Data</span></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">DatabaseConfig</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">static</span> Connection connection;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">private</span> String driverName;</span><br><span class="line">    <span class="keyword">private</span> String url;</span><br><span class="line">    <span class="keyword">private</span> String userName;</span><br><span class="line">    <span class="keyword">private</span> String password;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="title">DatabaseConfig</span><span class="params">(String driverName, String url, String userName, String password)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">this</span>.driverName = driverName;</span><br><span class="line">        <span class="keyword">this</span>.url = url;</span><br><span class="line">        <span class="keyword">this</span>.userName = userName;</span><br><span class="line">        <span class="keyword">this</span>.password = password;</span><br><span class="line">        System.out.println(<span class="string">&quot;构造连接参数...&quot;</span>);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">init</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        System.out.println(<span class="string">&quot;初始化数据库连接&quot;</span>);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">destroy</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        System.out.println(<span class="string">&quot;销毁数据库连接&quot;</span>);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
-
-<p>为了方便识别执行阶段，分别在构造器和<code>init</code>以及<code>destroy</code>方法中加入了文字说明。</p>
-<p>最后的执行结果如下：</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">构造连接参数...</span><br><span class="line">我在bean初始化前执行</span><br><span class="line">初始化数据库连接</span><br><span class="line">我在bean初始化之后执行</span><br><span class="line">...</span><br><span class="line">销毁数据库连接</span><br></pre></td></tr></table></figure>
-
-<p>由此可见，构造器内的代码是最先执行的，属于填充属性阶段（即<code>Populate properties</code>），接着执行<code>MyBeanPostProcessor#postProcessBeforeInitialization</code>方法，然后执行<code>init方法</code>，之后执行<code>MyBeanPostProcessor#postProcessBeforeInitialization</code>，最后在关闭应用时执行<code>destroy</code>方法。</p>
-
-      
-    </div>
-
-    
-    
-    
-
-    <footer class="post-footer">
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-</div>
-
-
-
-
-    
-
-
-<div class="post-block">
-  
-  
-
-  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
-    <link itemprop="mainEntityOfPage" href="http://kylepeng93.github.io/2021/08/09/spring-bean-init-and-destroy/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/imagesUse%20GitHub%20issues%20for%20blog%20comments,%20wik/avatar.gif">
-      <meta itemprop="name" content="彭凯">
-      <meta itemprop="description" content="">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="成长日记">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          <a href="/2021/08/09/spring-bean-init-and-destroy/" class="post-title-link" itemprop="url">Spring框架中bean的生命周期</a>
-        </h2>
-
-        <div class="post-meta-container">
-          <div class="post-meta">
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-calendar"></i>
-      </span>
-      <span class="post-meta-item-text">发表于</span>
-      
-
-      <time title="创建时间：2021-08-09 22:23:53 / 修改时间：22:35:31" itemprop="dateCreated datePublished" datetime="2021-08-09T22:23:53+08:00">2021-08-09</time>
-    </span>
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-folder"></i>
-      </span>
-      <span class="post-meta-item-text">分类于</span>
-        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-          <a href="/categories/spring-framework/" itemprop="url" rel="index"><span itemprop="name">spring framework</span></a>
-        </span>
-    </span>
-
-  
-</div>
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-          <h2 id="使用-PostConstruct和-PreDestroy注解在同一个配置类中执行bean的初始化前和销毁前的配置"><a href="#使用-PostConstruct和-PreDestroy注解在同一个配置类中执行bean的初始化前和销毁前的配置" class="headerlink" title="使用@PostConstruct和@PreDestroy注解在同一个配置类中执行bean的初始化前和销毁前的配置"></a>使用<code>@PostConstruct</code>和<code>@PreDestroy</code>注解在同一个配置类中执行bean的初始化前和销毁前的配置</h2><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@Configuration</span></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">MyBeanPostProcessor</span> </span>&#123;</span><br><span class="line">    <span class="meta">@Bean</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> String <span class="title">helloWorld</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="string">&quot;hello world&quot;</span>;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@PostConstruct</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">init</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        System.out.println(<span class="string">&quot;我是初始化前执行的方法&quot;</span>);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@PreDestroy</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">destroy</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        System.out.println(<span class="string">&quot;我是销毁前执行的方法&quot;</span>);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<p>上面的配置类中只定义了一个bean，且是字符串类型（方便举例），大部分情况下应该是返回一个对象。</p>
-<h2 id="使用-Bean-initMethod-quot-init-quot-destroyMethod-quot-destroy-quot-注解执行bean初始化前和销毁前的配置"><a href="#使用-Bean-initMethod-quot-init-quot-destroyMethod-quot-destroy-quot-注解执行bean初始化前和销毁前的配置" class="headerlink" title="使用@Bean(initMethod = &quot;init&quot;, destroyMethod = &quot;destroy&quot;)注解执行bean初始化前和销毁前的配置"></a>使用<code>@Bean(initMethod = &quot;init&quot;, destroyMethod = &quot;destroy&quot;)</code>注解执行bean初始化前和销毁前的配置</h2><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@Configuration</span></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">ConfigTest</span> </span>&#123;</span><br><span class="line">    <span class="meta">@Bean(initMethod = &quot;init&quot;, destroyMethod = &quot;destroy&quot;)</span></span><br><span class="line">    <span class="function">Test1 <span class="title">test1</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="keyword">new</span> Test1(); <span class="comment">// 使用默认的无参构造器</span></span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">// 定义Bean的内容，本质上是一个普通的java类</span></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Test1</span> </span>&#123;</span><br><span class="line">    <span class="comment">// 初始化前的执行方法</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">init</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        System.out.println(<span class="string">&quot;this is init method&quot;</span>);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="comment">// 销毁前的执行方法</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">destroy</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        System.out.println(<span class="string">&quot;this is destroy method&quot;</span>);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-
-      
-    </div>
-
-    
-    
-    
-
-    <footer class="post-footer">
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-</div>
-
-
-
-
   <nav class="pagination">
-    <a class="extend prev" rel="prev" href="/page/2/"><i class="fa fa-angle-left" aria-label="上一页"></i></a><a class="page-number" href="/">1</a><a class="page-number" href="/page/2/">2</a><span class="page-number current">3</span><a class="page-number" href="/page/4/">4</a><span class="space">&hellip;</span><a class="page-number" href="/page/6/">6</a><a class="extend next" rel="next" href="/page/4/"><i class="fa fa-angle-right" aria-label="下一页"></i></a>
+    <a class="extend prev" rel="prev" href="/page/2/"><i class="fa fa-angle-left" aria-label="上一页"></i></a><a class="page-number" href="/">1</a><a class="page-number" href="/page/2/">2</a><span class="page-number current">3</span><a class="page-number" href="/page/4/">4</a><span class="space">&hellip;</span><a class="page-number" href="/page/7/">7</a><a class="extend next" rel="next" href="/page/4/"><i class="fa fa-angle-right" aria-label="下一页"></i></a>
   </nav>
 
 </div>

@@ -84,9 +84,9 @@
   <ul class="main-menu menu">
         <li class="menu-item menu-item-home"><a href="/" rel="section"><i class="fa fa-home fa-fw"></i>首页</a></li>
         <li class="menu-item menu-item-about"><a href="/about/" rel="section"><i class="fa fa-user fa-fw"></i>关于</a></li>
-        <li class="menu-item menu-item-tags"><a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>标签<span class="badge">75</span></a></li>
-        <li class="menu-item menu-item-categories"><a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>分类<span class="badge">37</span></a></li>
-        <li class="menu-item menu-item-archives"><a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档<span class="badge">59</span></a></li>
+        <li class="menu-item menu-item-tags"><a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>标签<span class="badge">76</span></a></li>
+        <li class="menu-item menu-item-categories"><a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>分类<span class="badge">38</span></a></li>
+        <li class="menu-item menu-item-archives"><a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档<span class="badge">61</span></a></li>
       <li class="menu-item menu-item-search">
         <a role="button" class="popup-trigger"><i class="fa fa-search fa-fw"></i>搜索
         </a>
@@ -155,18 +155,18 @@
   <nav class="site-state">
       <div class="site-state-item site-state-posts">
         <a href="/archives/">
-          <span class="site-state-item-count">59</span>
+          <span class="site-state-item-count">61</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
       <div class="site-state-item site-state-categories">
           <a href="/categories/">
-        <span class="site-state-item-count">37</span>
+        <span class="site-state-item-count">38</span>
         <span class="site-state-item-name">分类</span></a>
       </div>
       <div class="site-state-item site-state-tags">
           <a href="/tags/">
-        <span class="site-state-item-count">75</span>
+        <span class="site-state-item-count">76</span>
         <span class="site-state-item-name">标签</span></a>
       </div>
   </nav>
@@ -195,6 +195,197 @@
 
 
     <div class="main-inner index posts-expand">
+
+    
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
+    <link itemprop="mainEntityOfPage" href="http://kylepeng93.github.io/2021/01/10/formattingConversionService/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/imagesUse%20GitHub%20issues%20for%20blog%20comments,%20wik/avatar.gif">
+      <meta itemprop="name" content="彭凯">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="成长日记">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          <a href="/2021/01/10/formattingConversionService/" class="post-title-link" itemprop="url">FormattingConversionService类的使用</a>
+        </h2>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">发表于</span>
+      
+
+      <time title="创建时间：2021-01-10 12:49:48 / 修改时间：13:14:19" itemprop="dateCreated datePublished" datetime="2021-01-10T12:49:48+08:00">2021-01-10</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">分类于</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/spring%E5%8E%9F%E7%90%86/" itemprop="url" rel="index"><span itemprop="name">spring原理</span></a>
+        </span>
+    </span>
+
+  
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+          <h2 id="它是什么"><a href="#它是什么" class="headerlink" title="它是什么"></a>它是什么</h2><p>Spring MVC框架中用来解析方法参数的service类。</p>
+<h2 id="它有什么用"><a href="#它有什么用" class="headerlink" title="它有什么用"></a>它有什么用</h2><p>当我们在Spring的配置文件中添加<code><mvc:annotation-driven /></code>时，如果我们没有明确指定<code>conversion-service</code>属性的值，那么Spring MVC框架会自动使用默认的FormattingConversionService类，它包含了常用的转换方法，将字段转换成标准的JDK类型，另外，如果我们需要<code>date/time</code>的转换器，可以在类路径下引入<code>Joda Time</code>的时间库，它会被默认识别。</p>
+<h2 id="使用场合"><a href="#使用场合" class="headerlink" title="使用场合"></a>使用场合</h2><p>如果我们不需要在字段绑定期间使用自定义的类型转换器，那么我们完全可以使用默认的类。</p>
+<p>如果我们需要自定义格式转换器类的话，我们可以继承该类，并将<code><mvc:annotation /></code>注解中<code>conversion-service</code>属性的值设为我们自己的类（使用类路径引入）。</p>
+<p>如果使用的是SpringBoot自动装配的话，则需要在自定义的类上加上<code>@Configuration</code>注解，并使用<code>DateTimeFormatterRegistrar</code>注册器注册我们自定义的日期解析器。然后使用<code>@Autowired</code>添加到Spring容器中。</p>
+
+      
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+</div>
+
+
+
+
+    
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
+    <link itemprop="mainEntityOfPage" href="http://kylepeng93.github.io/2021/01/10/spring-mvc-annotation/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/imagesUse%20GitHub%20issues%20for%20blog%20comments,%20wik/avatar.gif">
+      <meta itemprop="name" content="彭凯">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="成长日记">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          <a href="/2021/01/10/spring-mvc-annotation/" class="post-title-link" itemprop="url">springmvc注解学习</a>
+        </h2>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">发表于</span>
+      
+
+      <time title="创建时间：2021-01-10 12:40:33 / 修改时间：14:59:21" itemprop="dateCreated datePublished" datetime="2021-01-10T12:40:33+08:00">2021-01-10</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">分类于</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/spring%E6%A1%86%E6%9E%B6/" itemprop="url" rel="index"><span itemprop="name">spring框架</span></a>
+        </span>
+    </span>
+
+  
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+          <h2 id="annotation-driven"><a href="#annotation-driven" class="headerlink" title="annotation-driven"></a>annotation-driven</h2><p>配置注解驱动的Spring MVC控制器编程模型。</p>
+<p>可选参数：</p>
+<ul>
+<li>conversion-service：指定字段转换服务</li>
+<li>validator：指定自定义的校验类，用来校验控制器中的model对象，默认使用<code>JSR-303</code>校验</li>
+</ul>
+<h2 id="resources"><a href="#resources" class="headerlink" title="resources"></a>resources</h2><p>配置静态资源的处理器，比如说图片、js、css，通过对缓存头进行优化，提升浏览器的加载速度。允许Spring资源处理器能够识别任何指定路径下的静态资源。</p>
+<p>可选参数：</p>
+<ul>
+<li>mapping：必须，指定URL的映射方式，基于当前的Servlet上下文，比如<code>/resources/**</code>则表示需要在url中加上resources，然后追加静态资源相对于根路经的目录结构路径。</li>
+<li>location：必须，指定静态资源的物理路径，多个路径可以使用逗号隔开，放在前面的会被优先读取（如果有两个同名的文件，会优先读取放在前面的路径下的文件），例如：<code>/,classpath:/META-INF/public-web-resources/</code>，将会读取位于web应用根路径下的静态资源以及类路径下的所有Jar包中<code>/META-INF/public-web-resources</code>目录下的文件，而web应用根路径下的文件优先级更高。</li>
+<li>cache-period：可选，指定静态资源的缓存策略。以秒为单位。默认情况下不会发送任何缓存头，而是取决于文件上次修改的时间戳。如果将该属性的值设为0,则会发送值为<code>prevent-cacheing</code>的缓存头。如果是大于0的值，则会发送<code>max-age</code>为该值的缓存头。</li>
+<li>order：可选，指定资源处理器的顺序。</li>
+</ul>
+<h2 id="default-servlet-handler"><a href="#default-servlet-handler" class="headerlink" title="default-servlet-handler"></a>default-servlet-handler</h2><p>用来配置处理静态资源的处理器（handler），通过将请求重定向到容器默认的servlet。使用这个处理器允许<code>/</code>映射与<code>DispatcherServlet</code>一起使用，同时仍利用Servlet容器提供静态资源服务。</p>
+<p>可用属性：</p>
+<ul>
+<li><p>default-servlet-name：可以重定向客户端静态资源请求的默认Servlet。默认的处理器在启动时会自动检测容器默认的Servlet（通过一个预定义的名字列表）。只有在默认但Servlet无法被检测到的情况下，才需要明确指定默认Servlet的名字。</p>
+</li>
+<li><p>interceptors：注册自定义的拦截器（父标签）</p>
+<ul>
+<li><p>interceptor：自定义拦截器必须继承HandlerInterceptor类或者实现WebRequestInterceptor接口。</p>
+<p>可用属性</p>
+<ul>
+<li>mapping：<ul>
+<li>path：指定被拦截的url路径，例如<code>/myPath</code>或者<code>/myPath/**</code></li>
+<li>ref：指定bean的引用。</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<h2 id="view-controller"><a href="#view-controller" class="headerlink" title="view-controller"></a>view-controller</h2><p>用来定义渲染返回视图的简单控制器</p>
+<p>可用属性：</p>
+<ul>
+<li>path：必须。被映射的URL路径。</li>
+<li>view-name：可选。被渲染的视图名，如果不指定，则通过当前HttpServletRequest对应的DispatcherServlet的RequestToViewNameTranslator来决定。</li>
+</ul>
+
+      
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+</div>
+
+
+
 
     
 
@@ -955,101 +1146,8 @@
 
 
 
-    
-
-
-<div class="post-block">
-  
-  
-
-  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
-    <link itemprop="mainEntityOfPage" href="http://kylepeng93.github.io/2020/12/27/ssh-manual/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/imagesUse%20GitHub%20issues%20for%20blog%20comments,%20wik/avatar.gif">
-      <meta itemprop="name" content="彭凯">
-      <meta itemprop="description" content="">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="成长日记">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          <a href="/2020/12/27/ssh-manual/" class="post-title-link" itemprop="url">如何使用openssh进行远程连接</a>
-        </h2>
-
-        <div class="post-meta-container">
-          <div class="post-meta">
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-calendar"></i>
-      </span>
-      <span class="post-meta-item-text">发表于</span>
-
-      <time title="创建时间：2020-12-27 00:38:29" itemprop="dateCreated datePublished" datetime="2020-12-27T00:38:29+08:00">2020-12-27</time>
-    </span>
-      <span class="post-meta-item">
-        <span class="post-meta-item-icon">
-          <i class="far fa-calendar-check"></i>
-        </span>
-        <span class="post-meta-item-text">更新于</span>
-        <time title="修改时间：2020-12-31 11:21:19" itemprop="dateModified" datetime="2020-12-31T11:21:19+08:00">2020-12-31</time>
-      </span>
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-folder"></i>
-      </span>
-      <span class="post-meta-item-text">分类于</span>
-        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-          <a href="/categories/%E7%94%9F%E6%B6%AF-SSH%E8%BF%9E%E6%8E%A5%E7%9A%84%E5%BB%BA%E7%AB%8B%E6%96%B9%E5%BC%8F/" itemprop="url" rel="index"><span itemprop="name">生涯 SSH连接的建立方式</span></a>
-        </span>
-    </span>
-
-  
-</div>
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-          <h2 id="SSH连接的建立方式"><a href="#SSH连接的建立方式" class="headerlink" title="SSH连接的建立方式"></a>SSH连接的建立方式</h2><p>ssh可以通过密码和密钥（更加安全）这两种方式建立起客户端与 服务端的连接。</p>
-<h2 id="SSH连接的实现过程（假设通过密钥的方式连接）"><a href="#SSH连接的实现过程（假设通过密钥的方式连接）" class="headerlink" title="SSH连接的实现过程（假设通过密钥的方式连接）"></a>SSH连接的实现过程（假设通过密钥的方式连接）</h2><ol>
-<li>当客户端发起一个ssh连接请求时，它首先会告诉服务端需要使用的公钥；</li>
-<li>然后服务端会检查它的<code>~/authorized_keys</code>文件，这个文件中包含了所有已经保存的客户端公钥，一个公钥占据一行，这些公钥所对应的客户端可以实现免验证登录。</li>
-<li>服务端如果在文件中找到了请求客户端所对应的公钥，就会生成一个随机字符串，并使用找到的公钥进行加密。这个加密后的信息只能被请求客户端的私钥所解密，然后服务端将这个加密后的字符串发送给请求客户端，以此来验证该客户端是否拥有私钥。</li>
-<li>客户端收到来自服务端的加密字符串之后，会立即使用自己的私钥进行解密，并将解密后的随机字符串与之前协商好的会话id结合，生成一个md5加密的hash值，并回传给服务端。</li>
-<li>由于服务端已经知道加密之前的随机字符串和会话id，因此，服务端会在本地将这个随机字符串和会话id进行hash，然后和客户端传过来的值进行比较，如果一致，则表示请求客户端确实拥有私钥，并允许建立连接。
-          <!--noindex-->
-            <div class="post-button">
-              <a class="btn" href="/2020/12/27/ssh-manual/#more" rel="contents">
-                阅读全文 &raquo;
-              </a>
-            </div>
-          <!--/noindex-->
-        
-      
-    </div>
-
-    
-    
-    
-
-    <footer class="post-footer">
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-</div>
-
-
-
-
   <nav class="pagination">
-    <a class="extend prev" rel="prev" href="/page/5/"><i class="fa fa-angle-left" aria-label="上一页"></i></a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/5/">5</a><span class="page-number current">6</span>
+    <a class="extend prev" rel="prev" href="/page/5/"><i class="fa fa-angle-left" aria-label="上一页"></i></a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/5/">5</a><span class="page-number current">6</span><a class="page-number" href="/page/7/">7</a><a class="extend next" rel="next" href="/page/7/"><i class="fa fa-angle-right" aria-label="下一页"></i></a>
   </nav>
 
 </div>
