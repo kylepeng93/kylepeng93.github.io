@@ -2031,4 +2031,19 @@ dict是客户端，dictd是dict的后台服务器。默认安装之后是不带�
         <tag>mirror</tag>
       </tags>
   </entry>
+  <entry>
+    <title>工具资源</title>
+    <url>/2022/01/19/tool-resources/</url>
+    <content><![CDATA[<h2 id="debian软件包下载仓库"><a href="#debian软件包下载仓库" class="headerlink" title="debian软件包下载仓库"></a>debian软件包下载仓库</h2><p><a href="https://debian.pkgs.org/">https://debian.pkgs.org/</a></p>
+<blockquote>
+<p>持续更新……</p>
+</blockquote>
+]]></content>
+      <categories>
+        <category>resource</category>
+      </categories>
+      <tags>
+        <tag>tool</tag>
+      </tags>
+  </entry>
 </search>

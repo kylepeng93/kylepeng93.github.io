@@ -84,9 +84,9 @@
   <ul class="main-menu menu">
         <li class="menu-item menu-item-home"><a href="/" rel="section"><i class="fa fa-home fa-fw"></i>首页</a></li>
         <li class="menu-item menu-item-about"><a href="/about/" rel="section"><i class="fa fa-user fa-fw"></i>关于</a></li>
-        <li class="menu-item menu-item-tags"><a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>标签<span class="badge">79</span></a></li>
-        <li class="menu-item menu-item-categories"><a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>分类<span class="badge">40</span></a></li>
-        <li class="menu-item menu-item-archives"><a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档<span class="badge">65</span></a></li>
+        <li class="menu-item menu-item-tags"><a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>标签<span class="badge">80</span></a></li>
+        <li class="menu-item menu-item-categories"><a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>分类<span class="badge">41</span></a></li>
+        <li class="menu-item menu-item-archives"><a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档<span class="badge">66</span></a></li>
       <li class="menu-item menu-item-search">
         <a role="button" class="popup-trigger"><i class="fa fa-search fa-fw"></i>搜索
         </a>
@@ -155,18 +155,18 @@
   <nav class="site-state">
       <div class="site-state-item site-state-posts">
         <a href="/archives/">
-          <span class="site-state-item-count">65</span>
+          <span class="site-state-item-count">66</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
       <div class="site-state-item site-state-categories">
           <a href="/categories/">
-        <span class="site-state-item-count">40</span>
+        <span class="site-state-item-count">41</span>
         <span class="site-state-item-name">分类</span></a>
       </div>
       <div class="site-state-item site-state-tags">
           <a href="/tags/">
-        <span class="site-state-item-count">79</span>
+        <span class="site-state-item-count">80</span>
         <span class="site-state-item-name">标签</span></a>
       </div>
   </nav>
@@ -195,6 +195,166 @@
 
 
     <div class="main-inner index posts-expand">
+
+    
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
+    <link itemprop="mainEntityOfPage" href="http://kylepeng93.github.io/2022/01/03/pointer-and-reference-in-cpp/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/imagesUse%20GitHub%20issues%20for%20blog%20comments,%20wik/avatar.gif">
+      <meta itemprop="name" content="彭凯">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="成长日记">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          <a href="/2022/01/03/pointer-and-reference-in-cpp/" class="post-title-link" itemprop="url">C++中指针和引用的使用</a>
+        </h2>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">发表于</span>
+      
+
+      <time title="创建时间：2022-01-03 21:32:02 / 修改时间：23:00:09" itemprop="dateCreated datePublished" datetime="2022-01-03T21:32:02+08:00">2022-01-03</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">分类于</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/cpp/" itemprop="url" rel="index"><span itemprop="name">cpp</span></a>
+        </span>
+    </span>
+
+  
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+          <h2 id="指针和引用的区别"><a href="#指针和引用的区别" class="headerlink" title="指针和引用的区别"></a>指针和引用的区别</h2><p>指针是一个持有某个变量内存地址的特殊变量，使用<code>*</code>号表示。</p>
+<p>引用类似于指针，一般可以认为是持有某个值的变量的别名，它被用来关联被赋值给它的变量，使用<code>&amp;</code>表示。</p>
+<p>引用存储的是变量的地址。</p>
+<p>语法层面的区别如下：</p>
+<table>
+<thead>
+<tr>
+<th></th>
+<th>指针</th>
+<th>引用</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>是否可以为null</td>
+<td>可以指向一个null</td>
+<td>不能为null，否则会报异常</td>
+</tr>
+<tr>
+<td>声明方式</td>
+<td>使用<code>*</code>号声明</td>
+<td>使用<code>&amp;</code>声明</td>
+</tr>
+<tr>
+<td>是否可以级联</td>
+<td>可以级联声明<br />int *ptr;<br />int **ptr1;<br />int x = 10;<br />int y = 20;<br />ptr = &x;<br />ptr1 = &ptr;</td>
+<td></td>
+</tr>
+<tr>
+<td>是否可以重新赋值</td>
+<td>可以</td>
+<td>一旦变量被赋值给引用变量，那么这个引用变量将不能重新被赋值</td>
+</tr>
+<tr>
+<td>是否可以做算术运算</td>
+<td>可以</td>
+<td>不可以</td>
+</tr>
+</tbody></table>
+<table>
+<thead>
+<tr>
+<th><strong>S.No.</strong></th>
+<th><strong>Pointer</strong></th>
+<th><strong>Reference</strong></th>
+</tr>
+</thead>
+<tbody><tr>
+<td>1.</td>
+<td>Pointers in C++ can be assigned to NULL values.</td>
+<td>References in C++ can never be NULL else; it will throw an exception.</td>
+</tr>
+<tr>
+<td>2.</td>
+<td>To dereference a variable in the case of pointers, (*) operator is used</td>
+<td>There is no need for referencing the variable; the variable name is simply used in case of reference in C++.</td>
+</tr>
+<tr>
+<td>3.</td>
+<td>Pointers allow multiple levels of indirection, which  means that pointer to pointer to pointer assigning and targeting is  possible. For example: int *ptr, int **ptr1; int x= 10; int y= 20; ptr = &x; ptr1 = &ptr;</td>
+<td>No multiple levels of indirection are possible in the  case of references. Only a single level is applicable in references.  Implementing multiple levels in references in C++ throws a compiler  error to the user. For example, int a = 13; int &amp;ref = a; int &amp;&amp;ref1 = ref;</td>
+</tr>
+<tr>
+<td>4.</td>
+<td>A pointer can be reassigned to point to another variable. But the variable needs to be of the same type of variable. For example: int *p; Int x, y; p = &x; p = &y;</td>
+<td>Once the variable is referred to by the reference variable, it cannot be reassigned to refer to another variable.</td>
+</tr>
+<tr>
+<td>5.</td>
+<td>All the arithmetic operations like addition,  subtraction, increment, etc., are possible in the case of pointers in  C++. This is known as Pointer arithmetic. For example: int arr [5] = {10, 20, 30, 40, 50}; int p = arr; for (int i =0; i&lt;5; i++) { cout &lt;&lt; *p &lt;&lt; endl; p++; }</td>
+<td>Arithmetic operations are not possible in the case of  references. In C++, it will throw a compiler time error when it tries to do so. For example: int x = 10; int &amp;ref = x; cout &lt;&lt; ref++ &lt;&lt; endl;</td>
+</tr>
+<tr>
+<td>6.</td>
+<td>In the case of declaring a pointer in a C++ program, (*) operator is used before the pointer name. For example: int *ptr;</td>
+<td>In the case of reference, the reference variable is  declared by using the (&amp;) operator before the reference variable,  which stands for the address. For example: Int a= 10; int &amp;ref = a;</td>
+</tr>
+<tr>
+<td>7.</td>
+<td>The pointer variable returns the value whose address it is pointing to. Value can be retrieved using the (*) operator.</td>
+<td>The reference variable returns the address of the  address it is referring to. The address can be retrieved using the  (&amp;) operator.</td>
+</tr>
+<tr>
+<td>8.</td>
+<td>The pointer variable in C++ has its own address in computer memory, and it also occupies space in the stack.</td>
+<td>The reference variable does not have its own memory  address; instead, it only points to the variable and shares the same  address as the original variable.</td>
+</tr>
+</tbody></table>
+
+      
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+</div>
+
+
+
 
     
 
@@ -1019,98 +1179,6 @@
 <figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">deb http://mirrors.tuna.tsinghua.edu.cn/raspberrypi/ bullseye main</span><br></pre></td></tr></table></figure>
 
 <p><code>bullseye</code>和默认配置的保持一直即可。</p>
-
-      
-    </div>
-
-    
-    
-    
-
-    <footer class="post-footer">
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-</div>
-
-
-
-
-    
-
-
-<div class="post-block">
-  
-  
-
-  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
-    <link itemprop="mainEntityOfPage" href="http://kylepeng93.github.io/2021/11/15/how-to-discard-output-on-linux/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/imagesUse%20GitHub%20issues%20for%20blog%20comments,%20wik/avatar.gif">
-      <meta itemprop="name" content="彭凯">
-      <meta itemprop="description" content="">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="成长日记">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          <a href="/2021/11/15/how-to-discard-output-on-linux/" class="post-title-link" itemprop="url">怎么在linux上清除命令的输出内容</a>
-        </h2>
-
-        <div class="post-meta-container">
-          <div class="post-meta">
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-calendar"></i>
-      </span>
-      <span class="post-meta-item-text">发表于</span>
-      
-
-      <time title="创建时间：2021-11-15 20:07:42 / 修改时间：21:33:57" itemprop="dateCreated datePublished" datetime="2021-11-15T20:07:42+08:00">2021-11-15</time>
-    </span>
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-folder"></i>
-      </span>
-      <span class="post-meta-item-text">分类于</span>
-        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-          <a href="/categories/linux/" itemprop="url" rel="index"><span itemprop="name">linux</span></a>
-        </span>
-    </span>
-
-  
-</div>
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-          <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ ls -al &gt; /dev/null 2&gt;&amp;1</span><br></pre></td></tr></table></figure>
-
-<p>执行上面的命令之后你会发现终端没有任何输出，为什么会这样呢？</p>
-<p>继续执行下面的命令</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ ls -qwer &gt; /dev/null 2&gt;&amp;1</span><br></pre></td></tr></table></figure>
-
-<p>发现还是没有任何输出，即使该命令是错误的。</p>
-<p>造成这一切的根源在于命令最后面的<code>2&gt;&amp;1</code>。</p>
-<p>我们知道<code>/dev/null</code>是<code>linux</code>系统上的伪设备文件，可以被用来消除来自程序的输出。尤其是对于命令行程序而言有更大的意义。</p>
-<p><code>/dev/null</code>看起来像是一个水漕，比如说一个可写的目标文件，然而只要有任何数据流被写入这个文件，都会被马上删除。</p>
-<p>当用户不需要来自程序的输出信息时，这个命令是有用的。因为程序可能会生成大量的输出内容，而这会给分析日志的工作带来混乱。</p>
-<p>对于<code>/dev/null 2&gt;&amp;1</code>命令，2在linux上代表STDERR（标准错误输出），而1则代表STDOUT（标准输出）。因此，这个命令的最终解释就是将标准错误输出和标准输出重定向到<code>/dev/null</code>，即消除这两种类型的输出。</p>
-<p>我们再来具体分析下这个命令的构成，首先<code>&gt;</code>表示重定向，而被重定向的对象则是<code>/dev/null</code>。而不是打印到终端。</p>
-<p>这是否意味着该命令所有的输出都会被重定向到<code>/dev/null</code>呢，并不是，因为它只会重定向标准输出。</p>
-<p>因此，还需要加上<code>2&gt;&amp;1</code>。表示将2（标准错误输出）重定向到1（标准输出）。那么<code>&amp;</code>代表什么意思呢？如果不加上<code>&amp;</code>的话，标准错误输出将会输出到名字为1的文件中。而<code>&amp;</code>会告诉系统1不是一个文件，而是一个标准输出描述符号。</p>
-<p>最后，我们将标准输出和标准错误输出都重定向到了<code>/dev/null</code>。而<code>/dev/null</code>会将所有的输出内容全部清除掉。</p>
-<blockquote>
-<p>小结：/dev/null是linux系统上一个特殊的设备文件，可以将任何命令的标准输出（不管是标准输出还是错误输出）清除掉。</p>
-</blockquote>
 
       
     </div>
