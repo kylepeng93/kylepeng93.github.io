@@ -84,9 +84,9 @@
   <ul class="main-menu menu">
         <li class="menu-item menu-item-home"><a href="/" rel="section"><i class="fa fa-home fa-fw"></i>首页</a></li>
         <li class="menu-item menu-item-about"><a href="/about/" rel="section"><i class="fa fa-user fa-fw"></i>关于</a></li>
-        <li class="menu-item menu-item-tags"><a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>标签<span class="badge">78</span></a></li>
+        <li class="menu-item menu-item-tags"><a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>标签<span class="badge">79</span></a></li>
         <li class="menu-item menu-item-categories"><a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>分类<span class="badge">40</span></a></li>
-        <li class="menu-item menu-item-archives"><a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档<span class="badge">64</span></a></li>
+        <li class="menu-item menu-item-archives"><a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档<span class="badge">65</span></a></li>
       <li class="menu-item menu-item-search">
         <a role="button" class="popup-trigger"><i class="fa fa-search fa-fw"></i>搜索
         </a>
@@ -155,7 +155,7 @@
   <nav class="site-state">
       <div class="site-state-item site-state-posts">
         <a href="/archives/">
-          <span class="site-state-item-count">64</span>
+          <span class="site-state-item-count">65</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
@@ -166,7 +166,7 @@
       </div>
       <div class="site-state-item site-state-tags">
           <a href="/tags/">
-        <span class="site-state-item-count">78</span>
+        <span class="site-state-item-count">79</span>
         <span class="site-state-item-name">标签</span></a>
       </div>
   </nav>
@@ -195,6 +195,82 @@
 
 
     <div class="main-inner index posts-expand">
+
+    
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
+    <link itemprop="mainEntityOfPage" href="http://kylepeng93.github.io/2021/10/26/fix-chinese-luan-ma-in-deepin-wine-wechat/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/imagesUse%20GitHub%20issues%20for%20blog%20comments,%20wik/avatar.gif">
+      <meta itemprop="name" content="彭凯">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="成长日记">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          <a href="/2021/10/26/fix-chinese-luan-ma-in-deepin-wine-wechat/" class="post-title-link" itemprop="url">在manjaro中修复deepin-wine-wechat对话框输入中文乱码的问题</a>
+        </h2>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">发表于</span>
+      
+
+      <time title="创建时间：2021-10-26 22:22:17 / 修改时间：22:48:35" itemprop="dateCreated datePublished" datetime="2021-10-26T22:22:17+08:00">2021-10-26</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">分类于</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/linux/" itemprop="url" rel="index"><span itemprop="name">linux</span></a>
+        </span>
+    </span>
+
+  
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+          <h2 id="最近在manjaro上安装了deepin-wine-wechat，毕竟生活中用微信还是挺多的，但腾讯貌似短期内并没有将微信移植到linux桌面平台的打算，所以，作为替代方案，只能使用deepin基于wine定制的微信客户端"><a href="#最近在manjaro上安装了deepin-wine-wechat，毕竟生活中用微信还是挺多的，但腾讯貌似短期内并没有将微信移植到linux桌面平台的打算，所以，作为替代方案，只能使用deepin基于wine定制的微信客户端" class="headerlink" title="最近在manjaro上安装了deepin-wine-wechat，毕竟生活中用微信还是挺多的，但腾讯貌似短期内并没有将微信移植到linux桌面平台的打算，所以，作为替代方案，只能使用deepin基于wine定制的微信客户端"></a>最近在manjaro上安装了deepin-wine-wechat，毕竟生活中用微信还是挺多的，但腾讯貌似短期内并没有将微信移植到linux桌面平台的打算，所以，作为替代方案，只能使用deepin基于wine定制的微信客户端</h2><p>首先GNU/Linux操作系统作为一款世界流行的操作系统，其稳定性和可定制性都是非常优秀的。但由于众多linux发行版大部分都是从国外发展起来的，虽然近几年来国内也有几家比较优秀的linux厂商，但终究起步别别人晚，所以还是有很多需要提升的地方。对于打着国产操作系统旗号的Deepin团队而言，想要在国内推广他们定制的Deepin Linux发行版，首先在通讯软件方面就要能够提供最常用的几款即时通讯软件的移植版，毕竟国内通讯软件市场还是腾讯一家独大，奈何鹅厂迟迟不将linux平台的QQ、微信的开发提上日程，而目前能够最大限度移植Windows程序到linux上执行的莫过于使用Wine了。所以，基于Wine提供linux版的微信和QQ也成为了最为方便快捷的选择。</p>
+<p>这次安装完deepin-wine-wechat之后，正常启动没问题，但当我打开和好友聊天的对话框时发现我输入的中文在内容栏里面都变成了一个个空心的小方块。但当我将消息发送出去之后，我的消息又变成了正常的中文。经过查找资料后发现，是因为wine模拟的windows环境里面缺少了宋体的字体文件，所以，只需要将宋体文件复制到对应的字体目录下就可以了。步骤如下：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">1.下载宋体字符集文件：https://www.freefonts.io/downloads/simsun/</span><br><span class="line">2.将解压后的文件复制如下路径：cp ~/Downloads/SIMSUN.ttf ~/.deepinwine/Deepin-WeChat/drive_c/windows/Fonts/</span><br><span class="line">3.重启微信即可解决。</span><br></pre></td></tr></table></figure>
+
+      
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+</div>
+
+
+
 
     
 
@@ -993,131 +1069,6 @@
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">interface wlan0</span><br><span class="line">static ip_address=192.168.0.193/24</span><br><span class="line">static routers=192.168.0.1</span><br><span class="line">static domain_name_servers=192.168.0.1 192.168.1.1</span><br></pre></td></tr></table></figure>
 
 <p>其中<code>wlan0</code>是我们无线网卡的系统名称，后面的<code>ip_address</code>则是我们自定义的ip地址，<code>routers</code>是我们的路由，<code>domain_name_server</code>是我们的DNS地址，多个DNS的场合使用空格隔开。</p>
-
-      
-    </div>
-
-    
-    
-    
-
-    <footer class="post-footer">
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-</div>
-
-
-
-
-    
-
-
-<div class="post-block">
-  
-  
-
-  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
-    <link itemprop="mainEntityOfPage" href="http://kylepeng93.github.io/2021/09/03/shiro-permission-guide/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/imagesUse%20GitHub%20issues%20for%20blog%20comments,%20wik/avatar.gif">
-      <meta itemprop="name" content="彭凯">
-      <meta itemprop="description" content="">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="成长日记">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          <a href="/2021/09/03/shiro-permission-guide/" class="post-title-link" itemprop="url">shiro的权限管理之访问许可（permission）</a>
-        </h2>
-
-        <div class="post-meta-container">
-          <div class="post-meta">
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-calendar"></i>
-      </span>
-      <span class="post-meta-item-text">发表于</span>
-      
-
-      <time title="创建时间：2021-09-03 00:43:53 / 修改时间：01:30:33" itemprop="dateCreated datePublished" datetime="2021-09-03T00:43:53+08:00">2021-09-03</time>
-    </span>
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-folder"></i>
-      </span>
-      <span class="post-meta-item-text">分类于</span>
-        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-          <a href="/categories/java/" itemprop="url" rel="index"><span itemprop="name">java</span></a>
-        </span>
-    </span>
-
-  
-</div>
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-          <p><img src="/assets/lock.jpg"></p>
-<h2 id="1-Apache-Shiro中的permission是什么"><a href="#1-Apache-Shiro中的permission是什么" class="headerlink" title="1. Apache Shiro中的permission是什么"></a>1. Apache Shiro中的permission是什么</h2><p>Shiro 将 Permission 定义为代表某个明确行为或动作的语句。 它是应用程序中原始功能的声明，仅此而已。 权限是安全策略中最低级别的结构，它们仅明确定义应用程序可以做什么，而不会描述谁可以做这些动作。（和subject即认证主体无关）</p>
-<h2 id="2-permission体现在哪些地方"><a href="#2-permission体现在哪些地方" class="headerlink" title="2. permission体现在哪些地方"></a>2. permission体现在哪些地方</h2><ul>
-<li><p>打开一个文件</p>
-</li>
-<li><p>访问<code>/user/list</code>路径下的网页</p>
-</li>
-<li><p>打印文档</p>
-</li>
-<li><p>删除某个用户</p>
-</li>
-</ul>
-<p>定义“谁”（用户）被允许做“什么”（权限）是一种以某种方式为用户分配权限的运用，这始终由应用程序的数据模型完成，并且可能因应用程序而异。</p>
-<p>例如，权限可以归入一个角色，并且该角色可以与一个或多个用户对象相关联。 或者一些应用程序可以有一个用户组，一个组可以分配一个角色，通过传递关联意味着该组中的所有用户都被隐式授予角色中的权限。</p>
-<p>向用户授予权限的方式有多种变化——应用程序根据应用程序要求确定如何对此进行建模。</p>
-<h2 id="3-通配符权限"><a href="#3-通配符权限" class="headerlink" title="3. 通配符权限"></a>3. 通配符权限</h2><p>上面的权限示例中，“打开文件”，“查看‘用户/列表’网页”等都是有效的权限声明。 然而，在计算上解释这些自然语言字符串并确定是否允许用户执行该行为将是非常困难的。因此，为了实现易于处理但仍然可读的权限语句，Shiro 提供了强大而直观的权限语法，我们称之为通配符权限。</p>
-<h3 id="3-1-简单应用"><a href="#3-1-简单应用" class="headerlink" title="3.1 简单应用"></a>3.1 简单应用</h3><p>假设您想保护对公司打印机的访问，以便某些人可以打印到特定的打印机，而其他人可以查询当前队列中的作业。</p>
-<p>一种极其简单的方法是授予用户“queryPrinter”权限。 然后您可以通过调用来检查用户是否具有 queryPrinter 权限：</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">subject.isPermitted(<span class="string">&quot;queryPrinter&quot;</span>)</span><br></pre></td></tr></table></figure>
-
-<p>这等价于：</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">subject.isPermitted( <span class="keyword">new</span> WildcardPermission(<span class="string">&quot;queryPrinter&quot;</span>) )</span><br></pre></td></tr></table></figure>
-
-<p>这还不够，简单权限字符串可能适用于简单的应用程序，但它需要您拥有“printPrinter”、“queryPrinter”、“managePrinter”等权限。您也可以使用通配符授予用户“*”权限（授予此权限） 构造其名称），这意味着它们拥有整个应用程序的所有权限。</p>
-<p>但是使用这种方法，不能只说用户拥有“所有打印机权限”。 因此，通配符权限支持多级权限。</p>
-<h3 id="3-2-多个部件"><a href="#3-2-多个部件" class="headerlink" title="3.2 多个部件"></a>3.2 多个部件</h3><p>通配符权限支持多个级别或部分的概念。 例如，您可以通过授予用户权限来重构前面的简单示例</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">printer:query</span><br></pre></td></tr></table></figure>
-
-<p>本示例中的冒号是一个特殊字符，用于分隔权限字符串中的下一部分。</p>
-<p>在此示例中，第一部分是正在操作的域（打印机），第二部分是正在执行的操作（查询）。 上面的其他示例将更改为：</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">printer:print</span><br><span class="line">printer:manage</span><br></pre></td></tr></table></figure>
-
-<p>可以使用的部件数量没有限制，因此就可以在您的应用程序中使用它的方式而言，这取决于您的想象力。</p>
-<h4 id="3-2-1-多个值"><a href="#3-2-1-多个值" class="headerlink" title="3.2.1 多个值"></a>3.2.1 多个值</h4><p>每个部分可以包含多个值。 因此，与其同时授予用户“printer:print”和“printer:query”权限，您还可以简单地授予他们一个权限：</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">printer:print,query</span><br></pre></td></tr></table></figure>
-
-<p>这使他们能够打印和查询打印机。 并且由于他们被授予了这两个操作，您可以检查用户是否有能力通过调用来查询打印机：</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">subject.isPermitted(<span class="string">&quot;printer:query&quot;</span>)</span><br></pre></td></tr></table></figure>
-
-<p>这将返回 true。</p>
-<h4 id="3-2-2-全部的值"><a href="#3-2-2-全部的值" class="headerlink" title="3.2.2 全部的值"></a>3.2.2 全部的值</h4><p>如果您想授予用户特定部分的所有值怎么办？ 这样做比手动列出每个值更方便。 同样，基于通配符，我们可以做到这一点。 如果打印机域有 3 个可能的操作（查询、打印和管理），则：</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">printer:query,print,manage</span><br></pre></td></tr></table></figure>
-
-<p>可以简化为：</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">printer:*</span><br></pre></td></tr></table></figure>
-
-<p>然后，对“printer:XXX”的任何权限检查都将返回 true。 以这种方式使用通配符比显式列出操作更有效，因为如果稍后向应用程序添加新操作，则无需更新在该部分使用通配符的权限。</p>
-<p>最后，还可以在通配符权限字符串的任何部分使用通配符标记。 例如，如果您想授予用户跨所有域（不仅仅是打印机）的“查看”操作，您可以授予以下权限：</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">*:view</span><br></pre></td></tr></table></figure>
-
-<p>然后对“foo:view”的任何权限检查都将返回true。</p>
-<p><strong>未完待续：<a target="_blank" rel="noopener" href="https://shiro.apache.org/permissions.html">https://shiro.apache.org/permissions.html</a></strong></p>
 
       
     </div>

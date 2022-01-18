@@ -84,9 +84,9 @@
   <ul class="main-menu menu">
         <li class="menu-item menu-item-home"><a href="/" rel="section"><i class="fa fa-home fa-fw"></i>首页</a></li>
         <li class="menu-item menu-item-about"><a href="/about/" rel="section"><i class="fa fa-user fa-fw"></i>关于</a></li>
-        <li class="menu-item menu-item-tags"><a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>标签<span class="badge">78</span></a></li>
+        <li class="menu-item menu-item-tags"><a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>标签<span class="badge">79</span></a></li>
         <li class="menu-item menu-item-categories"><a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>分类<span class="badge">40</span></a></li>
-        <li class="menu-item menu-item-archives"><a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档<span class="badge">64</span></a></li>
+        <li class="menu-item menu-item-archives"><a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档<span class="badge">65</span></a></li>
       <li class="menu-item menu-item-search">
         <a role="button" class="popup-trigger"><i class="fa fa-search fa-fw"></i>搜索
         </a>
@@ -155,7 +155,7 @@
   <nav class="site-state">
       <div class="site-state-item site-state-posts">
         <a href="/archives/">
-          <span class="site-state-item-count">64</span>
+          <span class="site-state-item-count">65</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
@@ -166,7 +166,7 @@
       </div>
       <div class="site-state-item site-state-tags">
           <a href="/tags/">
-        <span class="site-state-item-count">78</span>
+        <span class="site-state-item-count">79</span>
         <span class="site-state-item-name">标签</span></a>
       </div>
   </nav>
@@ -195,6 +195,88 @@
 
 
     <div class="main-inner index posts-expand">
+
+    
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
+    <link itemprop="mainEntityOfPage" href="http://kylepeng93.github.io/2021/04/01/the-way-of-accessing-wsl-file-system-in-windows/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/imagesUse%20GitHub%20issues%20for%20blog%20comments,%20wik/avatar.gif">
+      <meta itemprop="name" content="彭凯">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="成长日记">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          <a href="/2021/04/01/the-way-of-accessing-wsl-file-system-in-windows/" class="post-title-link" itemprop="url">在windows 10中访问wsl（linux子系统）的方式（反过来又如何）</a>
+        </h2>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">发表于</span>
+      
+
+      <time title="创建时间：2021-04-01 21:48:19 / 修改时间：22:05:45" itemprop="dateCreated datePublished" datetime="2021-04-01T21:48:19+08:00">2021-04-01</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">分类于</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/notes/" itemprop="url" rel="index"><span itemprop="name">notes</span></a>
+        </span>
+    </span>
+
+  
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+          <h2 id="在windows文件管理器中访问wsl（windows-subsystem-for-linux）文件系统"><a href="#在windows文件管理器中访问wsl（windows-subsystem-for-linux）文件系统" class="headerlink" title="在windows文件管理器中访问wsl（windows subsystem for linux）文件系统"></a>在windows文件管理器中访问wsl（windows subsystem for linux）文件系统</h2><ol>
+<li>进入安装好的wsl终端，输入如下命令： <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ explorer.exe .</span><br></pre></td></tr></table></figure>
+ 其中，<code>explorer.exe</code>为文件管理器的可执行文件，<code>.</code>代表当前目录（家目录）。<h2 id="在wsl中访问windows的本地文件"><a href="#在wsl中访问windows的本地文件" class="headerlink" title="在wsl中访问windows的本地文件"></a>在wsl中访问windows的本地文件</h2></li>
+<li>默认情况下，windows的各个分区以盘符作为挂载点，在wsl中可以通过目录<code>/mnt/c</code>进行访问，其中<code>c</code>代表C盘，其他分区依次类推。 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ <span class="built_in">cd</span> /mnt/c</span><br></pre></td></tr></table></figure>
+<blockquote>
+<p>在linux哲学中，一切皆是文件。</p>
+</blockquote>
+</li>
+</ol>
+
+      
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+</div>
+
+
+
 
     
 
@@ -945,101 +1027,6 @@
 <li>解压缩目录下的所有压缩文件<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">gzip -dr 你的目录</span><br></pre></td></tr></table></figure></li>
 <li>查看压缩文件的内容<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">gzip -l 你的文件</span><br></pre></td></tr></table></figure>
 使用<code>-v</code>可以得到更加详细的信息。</li>
-</ul>
-
-      
-    </div>
-
-    
-    
-    
-
-    <footer class="post-footer">
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-</div>
-
-
-
-
-    
-
-
-<div class="post-block">
-  
-  
-
-  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
-    <link itemprop="mainEntityOfPage" href="http://kylepeng93.github.io/2021/03/12/design-pattern-tutorial/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/imagesUse%20GitHub%20issues%20for%20blog%20comments,%20wik/avatar.gif">
-      <meta itemprop="name" content="彭凯">
-      <meta itemprop="description" content="">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="成长日记">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          <a href="/2021/03/12/design-pattern-tutorial/" class="post-title-link" itemprop="url">设计模式学习手册</a>
-        </h2>
-
-        <div class="post-meta-container">
-          <div class="post-meta">
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-calendar"></i>
-      </span>
-      <span class="post-meta-item-text">发表于</span>
-
-      <time title="创建时间：2021-03-12 22:41:53" itemprop="dateCreated datePublished" datetime="2021-03-12T22:41:53+08:00">2021-03-12</time>
-    </span>
-      <span class="post-meta-item">
-        <span class="post-meta-item-icon">
-          <i class="far fa-calendar-check"></i>
-        </span>
-        <span class="post-meta-item-text">更新于</span>
-        <time title="修改时间：2021-03-13 16:15:42" itemprop="dateModified" datetime="2021-03-13T16:15:42+08:00">2021-03-13</time>
-      </span>
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-folder"></i>
-      </span>
-      <span class="post-meta-item-text">分类于</span>
-        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-          <a href="/categories/java/" itemprop="url" rel="index"><span itemprop="name">java</span></a>
-        </span>
-    </span>
-
-  
-</div>
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-          <h2 id="设计模式的类别"><a href="#设计模式的类别" class="headerlink" title="设计模式的类别"></a>设计模式的类别</h2><ul>
-<li>创造性模式（creational）<blockquote>
-<p>创造型模式控制了对象的创建和类的实例化；</p>
-</blockquote>
-</li>
-<li>结构性模式（structural）<blockquote>
-<p>结构型设计模式控制了类和对象之间的关系</p>
-</blockquote>
-</li>
-<li>表现型模式（behavioral)<blockquote>
-<p>表现型设计模式控制了对象之间的交流和交互</p>
-</blockquote>
-<h2 id="设计模式带来的影响范围——确定了解决方案的关注点"><a href="#设计模式带来的影响范围——确定了解决方案的关注点" class="headerlink" title="设计模式带来的影响范围——确定了解决方案的关注点"></a>设计模式带来的影响范围——确定了解决方案的关注点</h2></li>
-<li>对象层面的影响范围——解决对象关系的问题<br>作用于运行期间，对象拥有动态的行为</li>
-<li>类层面的影响范围——解决类关系的问题<br>作用于编译期间，类拥有静态的行为<h2 id=""><a href="#" class="headerlink" title=""></a></h2></li>
 </ul>
 
       
