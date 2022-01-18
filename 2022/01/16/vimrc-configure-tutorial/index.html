@@ -29,7 +29,7 @@
 <meta property="og:description" content="基础配置 set nocompatible：设置为不兼容vi filetype on：自动检测文件类型 filetype plugin on：自动加载插件 filetype indent on：自动缩进 syntax on：语法高亮 set nu：开启行号 set cursorline：高亮光标所在的当前行 set cursorcolumn：高亮光标所在的当前列 set shiftwidth&#x3D;4：">
 <meta property="og:locale" content="zh_CN">
 <meta property="article:published_time" content="2022-01-16T11:22:41.000Z">
-<meta property="article:modified_time" content="2022-01-16T14:28:50.302Z">
+<meta property="article:modified_time" content="2022-01-18T16:22:25.165Z">
 <meta property="article:author" content="彭凯">
 <meta property="article:tag" content="vimrc">
 <meta name="twitter:card" content="summary">
@@ -89,9 +89,9 @@
   <ul class="main-menu menu">
         <li class="menu-item menu-item-home"><a href="/" rel="section"><i class="fa fa-home fa-fw"></i>首页</a></li>
         <li class="menu-item menu-item-about"><a href="/about/" rel="section"><i class="fa fa-user fa-fw"></i>关于</a></li>
-        <li class="menu-item menu-item-tags"><a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>标签<span class="badge">77</span></a></li>
-        <li class="menu-item menu-item-categories"><a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>分类<span class="badge">39</span></a></li>
-        <li class="menu-item menu-item-archives"><a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档<span class="badge">62</span></a></li>
+        <li class="menu-item menu-item-tags"><a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>标签<span class="badge">78</span></a></li>
+        <li class="menu-item menu-item-categories"><a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>分类<span class="badge">40</span></a></li>
+        <li class="menu-item menu-item-archives"><a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档<span class="badge">64</span></a></li>
       <li class="menu-item menu-item-search">
         <a role="button" class="popup-trigger"><i class="fa fa-search fa-fw"></i>搜索
         </a>
@@ -161,18 +161,18 @@
   <nav class="site-state">
       <div class="site-state-item site-state-posts">
         <a href="/archives/">
-          <span class="site-state-item-count">62</span>
+          <span class="site-state-item-count">64</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
       <div class="site-state-item site-state-categories">
           <a href="/categories/">
-        <span class="site-state-item-count">39</span>
+        <span class="site-state-item-count">40</span>
         <span class="site-state-item-name">分类</span></a>
       </div>
       <div class="site-state-item site-state-tags">
           <a href="/tags/">
-        <span class="site-state-item-count">77</span>
+        <span class="site-state-item-count">78</span>
         <span class="site-state-item-name">标签</span></a>
       </div>
   </nav>
@@ -234,10 +234,16 @@
         <i class="far fa-calendar"></i>
       </span>
       <span class="post-meta-item-text">发表于</span>
-      
 
-      <time title="创建时间：2022-01-16 19:22:41 / 修改时间：22:28:50" itemprop="dateCreated datePublished" datetime="2022-01-16T19:22:41+08:00">2022-01-16</time>
+      <time title="创建时间：2022-01-16 19:22:41" itemprop="dateCreated datePublished" datetime="2022-01-16T19:22:41+08:00">2022-01-16</time>
     </span>
+      <span class="post-meta-item">
+        <span class="post-meta-item-icon">
+          <i class="far fa-calendar-check"></i>
+        </span>
+        <span class="post-meta-item-text">更新于</span>
+        <time title="修改时间：2022-01-19 00:22:25" itemprop="dateModified" datetime="2022-01-19T00:22:25+08:00">2022-01-19</time>
+      </span>
     <span class="post-meta-item">
       <span class="post-meta-item-icon">
         <i class="far fa-folder"></i>
@@ -277,6 +283,7 @@
 <blockquote>
 <p>参考资料：<a target="_blank" rel="noopener" href="https://www.freecodecamp.org/news/vimrc-configuration-guide-customize-your-vim-editor/">https://www.freecodecamp.org/news/vimrc-configuration-guide-customize-your-vim-editor/</a></p>
 </blockquote>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br></pre></td><td class="code"><pre><span class="line"><span class="string">&quot; 设置一个tab等于4个空格</span></span><br><span class="line"><span class="string">set shiftwidth=4</span></span><br><span class="line"><span class="string">set tabstop=4</span></span><br><span class="line"><span class="string">&quot;</span> 智能使用tab键</span><br><span class="line"><span class="built_in">set</span> smarttab</span><br><span class="line"><span class="string">&quot; 使用空格代替tab</span></span><br><span class="line"><span class="string">set expandtab</span></span><br><span class="line"><span class="string">&quot;</span> 打开行号</span><br><span class="line"><span class="built_in">set</span> nu</span><br><span class="line"><span class="string">&quot; 开启自动缩进</span></span><br><span class="line"><span class="string">set ai</span></span><br><span class="line"><span class="string">&quot;</span> 开启智能缩进</span><br><span class="line"><span class="built_in">set</span> si</span><br><span class="line"><span class="string">&quot; 开启自动换行</span></span><br><span class="line"><span class="string">set wrap</span></span><br><span class="line"><span class="string">&quot;</span> 开启语法高亮</span><br><span class="line">syntax <span class="built_in">enable</span></span><br><span class="line"><span class="string">&quot; 高亮查询结果</span></span><br><span class="line"><span class="string">set hlsearch</span></span><br><span class="line"><span class="string">&quot;</span> 查询时，智能判定大小写</span><br><span class="line"><span class="string">&quot; set smartcase(会覆盖ignorecase)</span></span><br><span class="line"><span class="string">&quot;</span> 查询时，忽略大小写</span><br><span class="line"><span class="built_in">set</span> ignorecase</span><br><span class="line"><span class="string">&quot; 显示文件名</span></span><br><span class="line"><span class="string">set laststatus=2</span></span><br><span class="line"><span class="string">if &amp;compatible</span></span><br><span class="line"><span class="string">    &quot;</span> 如果处于兼容模式，则设为非兼容模式，否则保持默认设置</span><br><span class="line">    <span class="built_in">set</span> nocompatible</span><br><span class="line">endif</span><br><span class="line"></span><br><span class="line"><span class="string">&quot; 设置jj为esc的快捷键</span></span><br><span class="line"><span class="string">inoremap jj &lt;esc&gt;</span></span><br><span class="line"><span class="string"></span></span><br><span class="line"><span class="string">&quot;</span> 按需添加插件管理器</span><br><span class="line"><span class="keyword">function</span>! PackInit() abort</span><br><span class="line">    packadd minpac</span><br><span class="line">    call minpac<span class="comment">#init()</span></span><br><span class="line">    call minpac<span class="comment">#add(&#x27;tpope/vim-scriptease&#x27;,&#123;&#x27;type&#x27;:&#x27;opt&#x27;&#125;)</span></span><br><span class="line">    call minpac<span class="comment">#add(&#x27;k-takata/minpac&#x27;,&#123;&#x27;type&#x27;:&#x27;opt&#x27;&#125;)</span></span><br><span class="line">    call minpac<span class="comment">#add(&#x27;plasticboy/vim-markdown&#x27;)</span></span><br><span class="line">endfunction</span><br><span class="line"><span class="string">&quot; 快捷键，实时更新插件、实时删除插件、实时查看插件状态</span></span><br><span class="line"><span class="string">command! PackUpdate source <span class="variable">$MYVIMRC</span> | call PackInit() | call minpac#update()</span></span><br><span class="line"><span class="string">command! PackClean source <span class="variable">$MYVIMRC</span> | call PackInit() | call minpac#clean()</span></span><br><span class="line"><span class="string">command! PackStatus packadd minpac | call minpac#status()</span></span><br><span class="line"><span class="string">command! PackList packadd minpac | call minpac#status()</span></span><br><span class="line"><span class="string">nnoremap &lt;C-p&gt; :&lt;C-u&gt;FZF&lt;CR&gt;</span></span><br><span class="line"><span class="string">nnoremap &lt;C-s&gt; :&lt;C-u&gt;w&lt;CR&gt;</span></span><br></pre></td></tr></table></figure>
 
     </div>
 
