@@ -227,10 +227,16 @@
         <i class="far fa-calendar"></i>
       </span>
       <span class="post-meta-item-text">发表于</span>
-      
 
-      <time title="创建时间：2022-01-19 00:44:12 / 修改时间：00:49:25" itemprop="dateCreated datePublished" datetime="2022-01-19T00:44:12+08:00">2022-01-19</time>
+      <time title="创建时间：2022-01-19 00:44:12" itemprop="dateCreated datePublished" datetime="2022-01-19T00:44:12+08:00">2022-01-19</time>
     </span>
+      <span class="post-meta-item">
+        <span class="post-meta-item-icon">
+          <i class="far fa-calendar-check"></i>
+        </span>
+        <span class="post-meta-item-text">更新于</span>
+        <time title="修改时间：2022-01-20 00:39:42" itemprop="dateModified" datetime="2022-01-20T00:39:42+08:00">2022-01-20</time>
+      </span>
     <span class="post-meta-item">
       <span class="post-meta-item-icon">
         <i class="far fa-folder"></i>
@@ -251,10 +257,14 @@
     
     
     <div class="post-body" itemprop="articleBody">
-          <h2 id="debian软件包下载仓库"><a href="#debian软件包下载仓库" class="headerlink" title="debian软件包下载仓库"></a>debian软件包下载仓库</h2><p><a target="_blank" rel="noopener" href="https://debian.pkgs.org/">https://debian.pkgs.org/</a></p>
-<h2 id="debian管理员手册"><a href="#debian管理员手册" class="headerlink" title="debian管理员手册"></a>debian管理员手册</h2><p><a target="_blank" rel="noopener" href="https://www.debian.org/doc/manuals/debian-handbook/">https://www.debian.org/doc/manuals/debian-handbook/</a></p>
-<blockquote>
-<p>持续更新……</p>
+          <h2 id="debian软件包下载仓库"><a href="#debian软件包下载仓库" class="headerlink" title="debian软件包下载仓库"></a>debian软件包下载仓库</h2><blockquote>
+<p><a target="_blank" rel="noopener" href="https://debian.pkgs.org/">https://debian.pkgs.org/</a></p>
+</blockquote>
+<h2 id="debian管理员手册"><a href="#debian管理员手册" class="headerlink" title="debian管理员手册"></a>debian管理员手册</h2><blockquote>
+<p><a target="_blank" rel="noopener" href="https://www.debian.org/doc/manuals/debian-handbook/">https://www.debian.org/doc/manuals/debian-handbook/</a></p>
+</blockquote>
+<h2 id="spring-session-redis集成文档"><a href="#spring-session-redis集成文档" class="headerlink" title="spring-session-redis集成文档"></a>spring-session-redis集成文档</h2><blockquote>
+<p><a target="_blank" rel="noopener" href="https://docs.spring.io/spring-session/reference/guides/boot-redis.html">https://docs.spring.io/spring-session/reference/guides/boot-redis.html</a><br>持续更新……</p>
 </blockquote>
 
       
@@ -387,7 +397,7 @@
           <i class="far fa-calendar-check"></i>
         </span>
         <span class="post-meta-item-text">更新于</span>
-        <time title="修改时间：2022-01-19 00:34:28" itemprop="dateModified" datetime="2022-01-19T00:34:28+08:00">2022-01-19</time>
+        <time title="修改时间：2022-01-19 23:55:14" itemprop="dateModified" datetime="2022-01-19T23:55:14+08:00">2022-01-19</time>
       </span>
     <span class="post-meta-item">
       <span class="post-meta-item-icon">
@@ -414,8 +424,16 @@
 <ul>
 <li>debian-binary<br>  用来标识deb文件包的格式版本的文本文件，在Buster发行版中仍然是2.0。</li>
 <li>control.tar.xz<br>  这个档案里面包含了所有的元信息，比如说包名和版本，以及一些安装之前或者中途或者之后的执行脚本。其中的一些元信息甚至允许包管理器工具根据包中列举出的文件是否已经安装或者有些文件是否已经被本地修改来决定能否安装或者卸载该软件。</li>
-<li>data.tar.xz,data.tar.bz2,data.tar.gz<br>  这个档案中包含了所有将会从包中提取出来的文件，比如可执行文件，类库，文档等等。该档案可以使用不同的压缩格式，相应的，档案的名字也会根据压缩类型选择合适的后缀，比如<code>xz</code>，<code>bzip2</code>，<code>gzip</code>。<h2 id="软件包元信息"><a href="#软件包元信息" class="headerlink" title="软件包元信息"></a>软件包元信息</h2>未完待续…</li>
+<li>data.tar.xz,data.tar.bz2,data.tar.gz<br>  这个档案中包含了所有将会从包中提取出来的文件，比如可执行文件，类库，文档等等。该档案可以使用不同的压缩格式，相应的，档案的名字也会根据压缩类型选择合适的后缀，比如<code>xz</code>，<code>bzip2</code>，<code>gzip</code>。<h2 id="软件包元信息"><a href="#软件包元信息" class="headerlink" title="软件包元信息"></a>软件包元信息</h2></li>
 </ul>
+<h2 id="APT工具"><a href="#APT工具" class="headerlink" title="APT工具"></a>APT工具</h2><ul>
+<li>查看系统所有已经安装好包和对应的版本<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ apt-show-versions</span><br></pre></td></tr></table></figure>
+
+</li>
+</ul>
+<blockquote>
+<p><a target="_blank" rel="noopener" href="https://www.debian.org/doc/manuals/debian-handbook/apt.zh-cn.html">https://www.debian.org/doc/manuals/debian-handbook/apt.zh-cn.html</a><br>未完待续…</p>
+</blockquote>
 
       
     </div>
