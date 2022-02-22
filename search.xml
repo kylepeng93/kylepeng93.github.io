@@ -2059,4 +2059,41 @@ dict是客户端，dictd是dict的后台服务器。默认安装之后是不带�
         <tag>tool</tag>
       </tags>
   </entry>
+  <entry>
+    <title>在idea中自定义注释模板</title>
+    <url>/2022/02/22/idea-use-notes/</url>
+    <content><![CDATA[<h2 id="intellij-idea中设置自定义代码模板"><a href="#intellij-idea中设置自定义代码模板" class="headerlink" title="intellij idea中设置自定义代码模板"></a>intellij idea中设置自定义代码模板</h2><p>首先，在自定义代码模板中新增快捷方式<code>*</code>，并选择触发按键为<code>Enter</code></p>
+<p>代码注释模板定义如下：</p>
+<ul>
+<li>$description$:定义方法描述字段</li>
+<li>$author$:定义方法作者</li>
+<li>$date$:定义方法定义日期</li>
+<li>$param$:定义方法参数，该参数需要使用自定义groovy脚本</li>
+<li>$return$:定义方法返回值，该参数需要使用自定义groovy脚本</li>
+</ul>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line">*</span><br><span class="line"> * </span><br><span class="line"> * <span class="meta">@description</span> $description$</span><br><span class="line"> * <span class="meta">@author</span> $author$</span><br><span class="line"> * <span class="meta">@date</span> $date$ $time$</span><br><span class="line">$param$ $<span class="keyword">return</span>$</span><br><span class="line"> */</span><br></pre></td></tr></table></figure>
+
+<p>变量赋值：</p>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line">description = <span class="string">&quot;&quot;</span></span><br></pre></td></tr></table></figure>
+
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line">author = user()</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line">date = time()</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="keyword">return</span> = groovyScript(<span class="string">&quot;</span></span><br><span class="line"><span class="string">	def param=\&quot;$&#123;_1&#125;\&quot;;</span></span><br><span class="line"><span class="string">	if(param == \&#x27;\&#x27; || param == \&#x27;void\&#x27;) return \&#x27;\&#x27;;</span></span><br><span class="line"><span class="string">	return \&#x27; \\n * @return \&#x27; + param&quot;</span>, methodReturnType())</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight groovy"><table><tr><td class="code"><pre><span class="line">param =  groovyScript(<span class="string">&quot;</span></span><br><span class="line"><span class="string"> 	def result=&#x27;&#x27;;</span></span><br><span class="line"><span class="string"> 	def params=\&quot;$&#123;_1&#125;\&quot;.replaceAll(\&#x27;[\\\\[|\\\\]|\\\\s]\&#x27;, \&#x27;\&#x27;).split(\&#x27;,\&#x27;).toList();</span></span><br><span class="line"><span class="string"> 	for(i = 0; i &lt; params.size(); i++) &#123;</span></span><br><span class="line"><span class="string"> 		if(params[i] == \&#x27;\&#x27;) return \&#x27; \&#x27;;</span></span><br><span class="line"><span class="string"> 		result+=\&#x27; * @param \&#x27; + params[i] + \&#x27; \&#x27; + params[i] + ((i &lt; params.size() - 1) ? \&#x27; \\n\&#x27; : \&#x27; \&#x27;)</span></span><br><span class="line"><span class="string"> 	&#125;; </span></span><br><span class="line"><span class="string"> 	return result&quot;</span>, methodParameters())</span><br><span class="line">	</span><br></pre></td></tr></table></figure>
+
+<p>在<code>java</code>代码中敲入<code>/**</code>，按下<code>Enter</code>键即可看到自动生成的注释</p>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment">    * </span></span><br><span class="line"><span class="comment">    * <span class="doctag">@description</span> </span></span><br><span class="line"><span class="comment">    * <span class="doctag">@author</span> pengkai</span></span><br><span class="line"><span class="comment">    * <span class="doctag">@date</span> 2022/02/22 下午7:33 </span></span><br><span class="line"><span class="comment">    * <span class="doctag">@param</span> username username</span></span><br><span class="line"><span class="comment">    * <span class="doctag">@param</span> password password</span></span><br><span class="line"><span class="comment">    * <span class="doctag">@return</span> org.springframework.security.core.userdetails.UserDetails</span></span><br><span class="line"><span class="comment">    */</span></span><br></pre></td></tr></table></figure>
+
+]]></content>
+      <categories>
+        <category>idea</category>
+      </categories>
+      <tags>
+        <tag>java</tag>
+        <tag>comment</tag>
+      </tags>
+  </entry>
 </search>

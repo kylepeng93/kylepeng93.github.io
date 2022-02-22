@@ -84,9 +84,9 @@
   <ul class="main-menu menu">
         <li class="menu-item menu-item-home"><a href="/" rel="section"><i class="fa fa-home fa-fw"></i>首页</a></li>
         <li class="menu-item menu-item-about"><a href="/about/" rel="section"><i class="fa fa-user fa-fw"></i>关于</a></li>
-        <li class="menu-item menu-item-tags"><a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>标签<span class="badge">80</span></a></li>
-        <li class="menu-item menu-item-categories"><a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>分类<span class="badge">41</span></a></li>
-        <li class="menu-item menu-item-archives"><a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档<span class="badge">66</span></a></li>
+        <li class="menu-item menu-item-tags"><a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>标签<span class="badge">81</span></a></li>
+        <li class="menu-item menu-item-categories"><a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>分类<span class="badge">42</span></a></li>
+        <li class="menu-item menu-item-archives"><a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档<span class="badge">67</span></a></li>
       <li class="menu-item menu-item-search">
         <a role="button" class="popup-trigger"><i class="fa fa-search fa-fw"></i>搜索
         </a>
@@ -155,18 +155,18 @@
   <nav class="site-state">
       <div class="site-state-item site-state-posts">
         <a href="/archives/">
-          <span class="site-state-item-count">66</span>
+          <span class="site-state-item-count">67</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
       <div class="site-state-item site-state-categories">
           <a href="/categories/">
-        <span class="site-state-item-count">41</span>
+        <span class="site-state-item-count">42</span>
         <span class="site-state-item-name">分类</span></a>
       </div>
       <div class="site-state-item site-state-tags">
           <a href="/tags/">
-        <span class="site-state-item-count">80</span>
+        <span class="site-state-item-count">81</span>
         <span class="site-state-item-name">标签</span></a>
       </div>
   </nav>
@@ -195,6 +195,89 @@
 
 
     <div class="main-inner index posts-expand">
+
+    
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
+    <link itemprop="mainEntityOfPage" href="http://kylepeng93.github.io/2021/11/18/add-china-software-source-for-raspberry-pi/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/imagesUse%20GitHub%20issues%20for%20blog%20comments,%20wik/avatar.gif">
+      <meta itemprop="name" content="彭凯">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="成长日记">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          <a href="/2021/11/18/add-china-software-source-for-raspberry-pi/" class="post-title-link" itemprop="url">为树莓派配置国内软件源</a>
+        </h2>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">发表于</span>
+      
+
+      <time title="创建时间：2021-11-18 23:37:11 / 修改时间：23:50:41" itemprop="dateCreated datePublished" datetime="2021-11-18T23:37:11+08:00">2021-11-18</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">分类于</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/raspberry-pi/" itemprop="url" rel="index"><span itemprop="name">raspberry pi</span></a>
+        </span>
+    </span>
+
+  
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+          <h2 id="因为众所周知的原因，树莓派的国外软件源在国内访问速度非常考验耐性，所以，为了能让树莓派愉快的更新到最新版本，有必要将默认的软件源替换成国内的同步镜像。下面就以清华大学的镜像站点为例子进行说明"><a href="#因为众所周知的原因，树莓派的国外软件源在国内访问速度非常考验耐性，所以，为了能让树莓派愉快的更新到最新版本，有必要将默认的软件源替换成国内的同步镜像。下面就以清华大学的镜像站点为例子进行说明" class="headerlink" title="因为众所周知的原因，树莓派的国外软件源在国内访问速度非常考验耐性，所以，为了能让树莓派愉快的更新到最新版本，有必要将默认的软件源替换成国内的同步镜像。下面就以清华大学的镜像站点为例子进行说明"></a>因为众所周知的原因，树莓派的国外软件源在国内访问速度非常考验耐性，所以，为了能让树莓派愉快的更新到最新版本，有必要将默认的软件源替换成国内的同步镜像。下面就以清华大学的镜像站点为例子进行说明</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">$ sudo vim /etc/apt/sources.list</span><br><span class="line"><span class="comment"># 将默认的软件源注释掉，新增如下的配置</span></span><br></pre></td></tr></table></figure>
+
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">deb http://mirrors.tuna.tsinghua.edu.cn/raspbian/raspbian/ bullseye main non-free contrib rpi</span><br><span class="line">deb-src http://mirrors.tuna.tsinghua.edu.cn/raspbian/raspbian/ bullseye main non-free contrib rpi</span><br></pre></td></tr></table></figure>
+
+<p>其中<code>bullseye</code>为当前树莓派系统的版本代号，可以参考默认的国外源的镜像配置中的代号，保持一致即可。</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">$ sudo vim /etc/apt/sources.list.d/raspi.list</span><br><span class="line"><span class="comment"># 将默认的软件源注释掉，并新增如下的配置</span></span><br></pre></td></tr></table></figure>
+
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">deb http://mirrors.tuna.tsinghua.edu.cn/raspberrypi/ bullseye main</span><br></pre></td></tr></table></figure>
+
+<p><code>bullseye</code>和默认配置的保持一直即可。</p>
+
+      
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+</div>
+
+
+
 
     
 
@@ -983,82 +1066,6 @@
 <p>得到消息的查利加立刻赶到龙森湖救出被封印的亚那加基，并命令怪兽破坏人类的住所。怪兽的出现引起了大古的注意，为了阻止怪兽继续破坏地球，大古拿起神光棒，变身成了迪迦奥特曼，和怪兽展开了搏斗，谁知怪兽丝毫不落下风，反而挟持住了迪迦，并吸取他的能量，眼看迪迦就要被打败，一旁观战的圆古英二导演凭借自己的意念竟然也变成了一道光，朝着怪兽发动攻击，击退了正在吸取迪迦能量的怪兽之后，这道光居然变成了奥特曼，并将迪迦被吸取的能量重新输入到了他的体内。得到能量后的迪迦再次回到战斗，和另一个奥特曼同时发动光线技能，一举打败了怪兽。而操纵怪兽的查利加则放出一句“后会有期”之后就逃跑了。圆古英二看着两位巨人，说道“我们需要一个英雄，金城，英雄是必要的“。而此时的金城正在埋头书写关于英雄的故事。</p>
 <p>最后一幕是圆古英二导演拿着金城写出来的奥特英雄的剧本开始了初代奥特曼剧集的拍摄。之后的事情我们也都知道了。从此，奥特曼宇宙开启了崭新的一页。</p>
 <h2 id="观后感"><a href="#观后感" class="headerlink" title="观后感"></a>观后感</h2><p>作为一部平成年代的开山之作，《迪迦奥特曼》与圆谷制作的上一部奥特曼剧集中间已经整整间隔了16年，而16年前观看奥特曼的小孩子很多都已经长大成人，主打孩童向的奥特曼似乎已经和他们渐行渐远。或许正是基于这一考量，《迪迦奥特曼》从一开始面向的就是成人观众。还记得小时候看迪迦，更多的是关注奥特曼打小怪兽，至于为什么要打怪兽以及人类未来的命运则完全不加考虑，只知道这个奥特曼长得特别好看，还能变身成其他两种形态，真的太酷了。当我们长大后再次打开《迪迦奥特曼》，我们突然发现这个奥特曼似乎有点不一样，曾经我们心中无敌的奥特曼似乎也在慢慢变得不那么无敌，原来，奥特曼也是人变的，他也会受伤，甚至奥特曼还需要我们人类的帮助才能打败那些怪兽，不仅是奥特曼，那些被他打的怪兽也变了，似乎没有天生就是怪兽的，都是因为人类肆意破坏地球，盲目发展高科技，才使我们的身边多了这么多怪兽，而来自外太空的外星人之所以要侵略地球，毁灭人类，只是因为他们想活下去，而奥特曼既是光，同时也是人类，为了人类的生存，奥特曼必须站出来打倒怪兽。即使面对一个根本赢不了的敌人，奥特曼也要以人类的身份战斗到最后一刻。很难想象一向主打孩童向的特摄片居然能在短短的一集20多分钟的剧情中注入如此崇高的立意，也让长大后的我们知道原来《迪迦奥特曼》根本就不是一部面向孩童的特摄片。我们都误会他了。作为连接昭和和平成奥特曼的桥梁，迪迦在奥特之星中完成了这一神圣的交接仪式，当我们看到初代奥特曼和迪迦在圆谷英二导演面前握手时，我们知道，随着圆谷英二导演的去世以及平成时代的到来，未来的奥特曼系列将开启新的篇章，而这一切都将从迪迦奥特曼开始。——谨以此文献给我们的童年，永远的迪迦奥特曼。</p>
-
-      
-    </div>
-
-    
-    
-    
-
-    <footer class="post-footer">
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-</div>
-
-
-
-
-    
-
-
-<div class="post-block">
-  
-  
-
-  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
-    <link itemprop="mainEntityOfPage" href="http://kylepeng93.github.io/2021/09/26/why-we-like-ultraman-tiga/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/imagesUse%20GitHub%20issues%20for%20blog%20comments,%20wik/avatar.gif">
-      <meta itemprop="name" content="彭凯">
-      <meta itemprop="description" content="">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="成长日记">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          <a href="/2021/09/26/why-we-like-ultraman-tiga/" class="post-title-link" itemprop="url">我们为什么喜欢迪迦奥特曼——迪迦被禁播后的感想</a>
-        </h2>
-
-        <div class="post-meta-container">
-          <div class="post-meta">
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-calendar"></i>
-      </span>
-      <span class="post-meta-item-text">发表于</span>
-      
-
-      <time title="创建时间：2021-09-26 22:50:17 / 修改时间：23:23:03" itemprop="dateCreated datePublished" datetime="2021-09-26T22:50:17+08:00">2021-09-26</time>
-    </span>
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-folder"></i>
-      </span>
-      <span class="post-meta-item-text">分类于</span>
-        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-          <a href="/categories/%E5%A5%A5%E7%89%B9%E6%9B%BC/" itemprop="url" rel="index"><span itemprop="name">奥特曼</span></a>
-        </span>
-    </span>
-
-  
-</div>
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-          <h1 id="谁能想到，2021年的9月24日，这个看似格外普通的日子，却也是陪伴我们童年一路走来的特摄剧《迪迦奥特曼》上映25周年，居然在一片举报声中无声无息的全网下架，对于奥迷来说，这是一个值得被记住的日子，而对于期盼国产动漫能早日赶超国际水平的国人而言，这次的禁令不能不让我们心寒，或许我们希望的那一天永远都不会到来了。"><a href="#谁能想到，2021年的9月24日，这个看似格外普通的日子，却也是陪伴我们童年一路走来的特摄剧《迪迦奥特曼》上映25周年，居然在一片举报声中无声无息的全网下架，对于奥迷来说，这是一个值得被记住的日子，而对于期盼国产动漫能早日赶超国际水平的国人而言，这次的禁令不能不让我们心寒，或许我们希望的那一天永远都不会到来了。" class="headerlink" title="谁能想到，2021年的9月24日，这个看似格外普通的日子，却也是陪伴我们童年一路走来的特摄剧《迪迦奥特曼》上映25周年，居然在一片举报声中无声无息的全网下架，对于奥迷来说，这是一个值得被记住的日子，而对于期盼国产动漫能早日赶超国际水平的国人而言，这次的禁令不能不让我们心寒，或许我们希望的那一天永远都不会到来了。"></a>谁能想到，2021年的9月24日，这个看似格外普通的日子，却也是陪伴我们童年一路走来的特摄剧《迪迦奥特曼》上映25周年，居然在一片举报声中无声无息的全网下架，对于奥迷来说，这是一个值得被记住的日子，而对于期盼国产动漫能早日赶超国际水平的国人而言，这次的禁令不能不让我们心寒，或许我们希望的那一天永远都不会到来了。</h1><p><img src="/assets/tiga-ultraman.png"></p>
-<h2 id="迪迦带给我们的感动"><a href="#迪迦带给我们的感动" class="headerlink" title="迪迦带给我们的感动"></a>迪迦带给我们的感动</h2><p>我们总说迪迦代表的是<strong>光</strong>，其实我们喜欢迪迦的真正原因是我们信仰迪迦带给我们的<strong>希望</strong>和<strong>与黑暗势力抗争到底的决心和勇气</strong>。</p>
-<p>在迪迦奥特曼中，人类不停的被外来生物入侵，作为承担保护地球责任的地球防卫队——GUTS组织，在正面对抗体型庞大的怪兽和拥有高科技的外星人时根本也是无能为力，如果没有迪迦奥特曼的帮助，人类早就被毁灭几十次了，即使在面对没有丝毫破坏力的奇杰拉时，人类的表现也是令人失望的，因为人类宁愿活在虚无缥缈的幻境中，去逃避现实中的种种不堪，也不愿为了人类的未来去努力拼搏，积极进取，人类到底是一种软弱的生物。即便是迪迦之前的超古代奥特战士在看到这样的人类之后也只能任其毁灭，因为他们不是人类，对于浩瀚的宇宙而言，人类也只是其中渺小的一份子，如同大部分宇宙生物一样，自生自灭就是最好的生存法则。但是，这一切在迪迦出现后就完全变了，作为人类的大古机缘巧合之下获得了迪迦留在地球的巨人身躯，从一个普通的人类变成了保护地球的奥特战士，一次次以人类的身份比肩神明，为了人类的生存义无反顾的同凶残的巨型怪兽和邪恶的外星生物进行战斗，甚至在人类对奥特曼失去信任，反而帮助外星人诋毁奥特曼时也坚持维护人类免受灭顶之灾，如果这样的迪迦奥特曼都不能称之为英雄，并受到人类的尊敬和爱戴，那这人间或许本就该成为奇杰拉的墓场，这样的文明即使毁灭也无妨。迪迦奥特曼不仅带给我们希望，还教会了我们很多的道理，其中不乏对于人与人，人与科技，人与环境，人与地球，人与宇宙的深度思考，而这些看似宏大的人生理念，却在迪迦奥特曼中得到了很好的诠释。如果对于这样的一部作品都要冠以暴力的称谓而加以禁播，可想而知我们的社会中还有多少看似人模狗样，实则满肚子鸡鸣狗盗，阳奉阴违之人。这样的人无论是作为个人还是父母，对于人类的进步和社会的稳定都是一大阻碍，因为在他们眼中任何表达美好事物的东西都会被他们过滤在外，而最终留给他们的只能是暴力，于人于己，这样的人都是社会的毒瘤，而为他们提供滋生土壤的人也难辞其咎。此时此刻，迪迦或许只是暂时的离开，但他的精神会永远留在我们心中。迪迦奥特曼保护人类，更是为了保护我们人类赖以生存的美丽地球。</p>
 
       
     </div>
