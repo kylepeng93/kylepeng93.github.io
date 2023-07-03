@@ -84,9 +84,9 @@
   <ul class="main-menu menu">
         <li class="menu-item menu-item-home"><a href="/" rel="section"><i class="fa fa-home fa-fw"></i>首页</a></li>
         <li class="menu-item menu-item-about"><a href="/about/" rel="section"><i class="fa fa-user fa-fw"></i>关于</a></li>
-        <li class="menu-item menu-item-tags"><a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>标签<span class="badge">81</span></a></li>
-        <li class="menu-item menu-item-categories"><a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>分类<span class="badge">42</span></a></li>
-        <li class="menu-item menu-item-archives"><a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档<span class="badge">67</span></a></li>
+        <li class="menu-item menu-item-tags"><a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>标签<span class="badge">83</span></a></li>
+        <li class="menu-item menu-item-categories"><a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>分类<span class="badge">43</span></a></li>
+        <li class="menu-item menu-item-archives"><a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档<span class="badge">69</span></a></li>
       <li class="menu-item menu-item-search">
         <a role="button" class="popup-trigger"><i class="fa fa-search fa-fw"></i>搜索
         </a>
@@ -155,18 +155,18 @@
   <nav class="site-state">
       <div class="site-state-item site-state-posts">
         <a href="/archives/">
-          <span class="site-state-item-count">67</span>
+          <span class="site-state-item-count">69</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
       <div class="site-state-item site-state-categories">
           <a href="/categories/">
-        <span class="site-state-item-count">42</span>
+        <span class="site-state-item-count">43</span>
         <span class="site-state-item-name">分类</span></a>
       </div>
       <div class="site-state-item site-state-tags">
           <a href="/tags/">
-        <span class="site-state-item-count">81</span>
+        <span class="site-state-item-count">83</span>
         <span class="site-state-item-name">标签</span></a>
       </div>
   </nav>
@@ -195,6 +195,228 @@
 
 
     <div class="main-inner index posts-expand">
+
+    
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
+    <link itemprop="mainEntityOfPage" href="http://kylepeng93.github.io/2022/01/12/centos-software-management/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/imagesUse%20GitHub%20issues%20for%20blog%20comments,%20wik/avatar.gif">
+      <meta itemprop="name" content="彭凯">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="成长日记">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          <a href="/2022/01/12/centos-software-management/" class="post-title-link" itemprop="url">如何在centos上管理软件包</a>
+        </h2>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">发表于</span>
+      
+
+      <time title="创建时间：2022-01-12 22:31:06 / 修改时间：23:06:33" itemprop="dateCreated datePublished" datetime="2022-01-12T22:31:06+08:00">2022-01-12</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">分类于</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/centos/" itemprop="url" rel="index"><span itemprop="name">centos</span></a>
+        </span>
+    </span>
+
+  
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+          <h2 id="1-使用YUM进行软件的管理"><a href="#1-使用YUM进行软件的管理" class="headerlink" title="1. 使用YUM进行软件的管理"></a>1. 使用YUM进行软件的管理</h2><h3 id="查看软件包的信息"><a href="#查看软件包的信息" class="headerlink" title="查看软件包的信息"></a>查看软件包的信息</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">yum info 包名</span><br></pre></td></tr></table></figure>
+
+<h3 id="查看软件包的依赖列表"><a href="#查看软件包的依赖列表" class="headerlink" title="查看软件包的依赖列表"></a>查看软件包的依赖列表</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">yum deplist 包名</span><br></pre></td></tr></table></figure>
+
+<h3 id="卸载软件包"><a href="#卸载软件包" class="headerlink" title="卸载软件包"></a>卸载软件包</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">yum remove 包名</span><br></pre></td></tr></table></figure>
+
+<h3 id="查看已安装的软件包"><a href="#查看已安装的软件包" class="headerlink" title="查看已安装的软件包"></a>查看已安装的软件包</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">yum list installed</span><br></pre></td></tr></table></figure>
+
+<h3 id="查看仓库内可用的软件包"><a href="#查看仓库内可用的软件包" class="headerlink" title="查看仓库内可用的软件包"></a>查看仓库内可用的软件包</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">yum list available</span><br></pre></td></tr></table></figure>
+
+<h3 id="清除所有的包缓存"><a href="#清除所有的包缓存" class="headerlink" title="清除所有的包缓存"></a>清除所有的包缓存</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">yum clear all</span><br></pre></td></tr></table></figure>
+
+
+
+<h2 id="2-使用RPM进行软件管理"><a href="#2-使用RPM进行软件管理" class="headerlink" title="2. 使用RPM进行软件管理"></a>2. 使用RPM进行软件管理</h2><h3 id="查看已经安装的软件包"><a href="#查看已经安装的软件包" class="headerlink" title="查看已经安装的软件包"></a>查看已经安装的软件包</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">rpm -qa</span><br></pre></td></tr></table></figure>
+
+<h3 id="查看某个已经被安装的软件包的信息"><a href="#查看某个已经被安装的软件包的信息" class="headerlink" title="查看某个已经被安装的软件包的信息"></a>查看某个已经被安装的软件包的信息</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">rpm -qi 包名</span><br></pre></td></tr></table></figure>
+
+<h3 id="查看某个包的安装文件列表"><a href="#查看某个包的安装文件列表" class="headerlink" title="查看某个包的安装文件列表"></a>查看某个包的安装文件列表</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">rpm -ql 包名</span><br></pre></td></tr></table></figure>
+
+<h3 id="查看某个rpm包的详细信息"><a href="#查看某个rpm包的详细信息" class="headerlink" title="查看某个rpm包的详细信息"></a>查看某个rpm包的详细信息</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">rpm -qip 包名.rpm</span><br></pre></td></tr></table></figure>
+
+<h3 id="查看某个rpm包中将要被安装的文件列表"><a href="#查看某个rpm包中将要被安装的文件列表" class="headerlink" title="查看某个rpm包中将要被安装的文件列表"></a>查看某个rpm包中将要被安装的文件列表</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">rpm -qlp 包名.rpm</span><br></pre></td></tr></table></figure>
+
+<h3 id="查看某个目录或者文件对应的包"><a href="#查看某个目录或者文件对应的包" class="headerlink" title="查看某个目录或者文件对应的包"></a>查看某个目录或者文件对应的包</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">rpm -qf 文件或者目录</span><br></pre></td></tr></table></figure>
+
+<h3 id="查看某个已经安装的包的依赖"><a href="#查看某个已经安装的包的依赖" class="headerlink" title="查看某个已经安装的包的依赖"></a>查看某个已经安装的包的依赖</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">rpm -qR 包名</span><br></pre></td></tr></table></figure>
+
+<h3 id="查看某个没有被安装的包的依赖项"><a href="#查看某个没有被安装的包的依赖项" class="headerlink" title="查看某个没有被安装的包的依赖项"></a>查看某个没有被安装的包的依赖项</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">rpm -qRp 包名.rpm</span><br></pre></td></tr></table></figure>
+
+<h3 id="验证某个包的文件是否被正确安装"><a href="#验证某个包的文件是否被正确安装" class="headerlink" title="验证某个包的文件是否被正确安装"></a>验证某个包的文件是否被正确安装</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">rpm -V 包名</span><br></pre></td></tr></table></figure>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+      
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+</div>
+
+
+
+
+    
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
+    <link itemprop="mainEntityOfPage" href="http://kylepeng93.github.io/2022/01/10/common-file-util-of-java/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/imagesUse%20GitHub%20issues%20for%20blog%20comments,%20wik/avatar.gif">
+      <meta itemprop="name" content="彭凯">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="成长日记">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          <a href="/2022/01/10/common-file-util-of-java/" class="post-title-link" itemprop="url">java中常用的文件操作工具</a>
+        </h2>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">发表于</span>
+
+      <time title="创建时间：2022-01-10 23:38:06" itemprop="dateCreated datePublished" datetime="2022-01-10T23:38:06+08:00">2022-01-10</time>
+    </span>
+      <span class="post-meta-item">
+        <span class="post-meta-item-icon">
+          <i class="far fa-calendar-check"></i>
+        </span>
+        <span class="post-meta-item-text">更新于</span>
+        <time title="修改时间：2022-01-11 00:28:55" itemprop="dateModified" datetime="2022-01-11T00:28:55+08:00">2022-01-11</time>
+      </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">分类于</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/util/" itemprop="url" rel="index"><span itemprop="name">util</span></a>
+        </span>
+    </span>
+
+  
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+          <h2 id="使用的类库"><a href="#使用的类库" class="headerlink" title="使用的类库"></a>使用的类库</h2><p>apache的公共工具包</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">## build.gradle</span></span><br><span class="line">implementation <span class="string">&#x27;commons-io:commons-io:2.11.0&#x27;</span></span><br></pre></td></tr></table></figure>
+
+<h2 id="文件和目录操作类"><a href="#文件和目录操作类" class="headerlink" title="文件和目录操作类"></a>文件和目录操作类</h2><ol>
+<li><p>FileUtils</p>
+<ul>
+<li><strong>[private]</strong> addCopyAttributes:如果原copy option中不存在复制选项，则在赋值选项中追加一个<code>StandardCopyOption.COPY_ATTRIBUTES</code></li>
+<li></li>
+</ul>
+</li>
+<li></li>
+</ol>
+
+      
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+</div>
+
+
+
 
     
 
@@ -1051,192 +1273,6 @@
 
 
 
-    
-
-
-<div class="post-block">
-  
-  
-
-  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
-    <link itemprop="mainEntityOfPage" href="http://kylepeng93.github.io/2021/11/29/spring-cloud-component-eureka/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/imagesUse%20GitHub%20issues%20for%20blog%20comments,%20wik/avatar.gif">
-      <meta itemprop="name" content="彭凯">
-      <meta itemprop="description" content="">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="成长日记">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          <a href="/2021/11/29/spring-cloud-component-eureka/" class="post-title-link" itemprop="url">spring-cloud服务注册与发现组件——Eureka</a>
-        </h2>
-
-        <div class="post-meta-container">
-          <div class="post-meta">
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-calendar"></i>
-      </span>
-      <span class="post-meta-item-text">发表于</span>
-      
-
-      <time title="创建时间：2021-11-29 20:26:15 / 修改时间：21:19:00" itemprop="dateCreated datePublished" datetime="2021-11-29T20:26:15+08:00">2021-11-29</time>
-    </span>
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-folder"></i>
-      </span>
-      <span class="post-meta-item-text">分类于</span>
-        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-          <a href="/categories/spring-cloud/" itemprop="url" rel="index"><span itemprop="name">spring cloud</span></a>
-        </span>
-    </span>
-
-  
-</div>
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-          <h2 id="Spring-Cloud之服务发现——Eureka-发音为-juә’ri-kә"><a href="#Spring-Cloud之服务发现——Eureka-发音为-juә’ri-kә" class="headerlink" title="Spring Cloud之服务发现——Eureka(发音为[juә’ri:kә])"></a>Spring Cloud之服务发现——Eureka(发音为[juә’ri:kә])</h2><ul>
-<li><p>服务注册与发现以及反馈的实现流程：</p>
-<ol>
-<li>Provider将自己的节点信息发送到指定的服务注册机上；</li>
-<li>服务注册机将Provider发送过来的信息保存在指定区域，等待Consumer查询；</li>
-<li>Provider通过定期向服务注册机发送消息确保自己不会被注销，而当服务注册机长时间未收到某个Provider发送过来的信息时，会自动将该Provider注销。</li>
-<li>当Provider网络地址发生变更时，会自动重新注册节点信息到服务注册机，避免了人工修改配置的问题。</li>
-</ol>
-</li>
-<li><p>Eureka的实现机制:</p>
-<ol>
-<li>Eureka分为Server端和Client端，Server端提供服务发现的能力，当微服务节点启动时，会自动向Server端注册自己的节点信息，而Server端则负责存储这些节点信息，供服务调用者查询；</li>
-<li>Client端一般和微服务集成，为微服务提供注册服务到Server端的能力，并从Server端获取最新的已注册服务列表的信息<strong>缓存</strong>到微服务端；</li>
-<li>微服务启动后，会周期性（默认30s）向Server端发送心跳以防止被注销；</li>
-<li>同时，Server端也会周期性（默认90s）的检查已注册的各个微服务是否仍然存活，如果超时，则注销该微服务的注册信息；</li>
-</ol>
-</li>
-</ul>
-<h2 id="Eureka的基础实现"><a href="#Eureka的基础实现" class="headerlink" title="Eureka的基础实现"></a>Eureka的基础实现</h2><ul>
-<li>Server端实现</li>
-</ul>
-<p>首先创建一个基础的SpringBoot工程，假设是Maven工程，在POM文件中引入如下依赖：</p>
-<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">dependencies</span>&gt;</span></span><br><span class="line">	<span class="tag">&lt;<span class="name">dependency</span>&gt;</span></span><br><span class="line">    	<span class="tag">&lt;<span class="name">groupId</span>&gt;</span>org.springframework.cloud<span class="tag">&lt;/<span class="name">groupId</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">artifactId</span>&gt;</span>spring-cloud-starter-netflix-eureka-server<span class="tag">&lt;/<span class="name">artifactId</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">dependency</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">dependencies</span>&gt;</span></span><br></pre></td></tr></table></figure>
-
-<p>在启动类中加入注解<code>@EnableEurekaService</code>，声明这是一个Server实例。</p>
-<p>在<code>application.yml</code>中加入如下内容：</p>
-<figure class="highlight yaml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="attr">server:</span></span><br><span class="line">	<span class="attr">port:</span> <span class="number">8761</span></span><br><span class="line"><span class="attr">eureka:</span></span><br><span class="line">	<span class="attr">client:</span></span><br><span class="line">		<span class="attr">registerWithEureka:</span> <span class="literal">false</span></span><br><span class="line">	<span class="attr">fetchRegistry:</span> <span class="literal">false</span></span><br><span class="line">	<span class="attr">serviceUrl:</span></span><br><span class="line">		<span class="attr">defaultZone:</span> <span class="string">http://localhost:8761/eureka/</span></span><br></pre></td></tr></table></figure>
-
-<ul>
-<li>Client端实现</li>
-</ul>
-<p>首先创建一个基础的SpringBoot工程，假设是Maven工程，在POM文件中引入如下依赖：</p>
-<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">dependencies</span>&gt;</span></span><br><span class="line">	<span class="tag">&lt;<span class="name">dependency</span>&gt;</span></span><br><span class="line">    	<span class="tag">&lt;<span class="name">groupId</span>&gt;</span>org.springframework.cloud<span class="tag">&lt;/<span class="name">groupId</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">artifactId</span>&gt;</span>spring-cloud-starter-netflix-eureka-client<span class="tag">&lt;/<span class="name">artifactId</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">dependency</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">dependencies</span>&gt;</span></span><br></pre></td></tr></table></figure>
-
-<p>在<code>application.yml</code>中加入如下内容：</p>
-<figure class="highlight yaml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="attr">spring:</span></span><br><span class="line">	<span class="attr">application:</span></span><br><span class="line">		<span class="attr">name:</span> <span class="string">microsoftservice-provider-user</span></span><br><span class="line"><span class="attr">eureka:</span></span><br><span class="line">	<span class="attr">client:</span></span><br><span class="line">		<span class="attr">serviceUrl:</span></span><br><span class="line">			<span class="attr">defaultZone:</span> <span class="string">http://localhost:8761/eureka/</span></span><br><span class="line"><span class="attr">instance:</span></span><br><span class="line">	<span class="attr">prefer-ip-address:</span> <span class="literal">true</span></span><br></pre></td></tr></table></figure>
-
-<h2 id="高可用Eureka实现"><a href="#高可用Eureka实现" class="headerlink" title="高可用Eureka实现"></a>高可用Eureka实现</h2><p>单节点的Eureka无法满足线上环境高可用的要求。一旦发生故障，轻则影响服务的可达性，重则引发服务瘫痪，因此，以集群的方式部署Eureka是非常必要的。</p>
-<h2 id="Eureka主页访问认证实现"><a href="#Eureka主页访问认证实现" class="headerlink" title="Eureka主页访问认证实现"></a>Eureka主页访问认证实现</h2><h2 id="非JVM的微服务注册与发现"><a href="#非JVM的微服务注册与发现" class="headerlink" title="非JVM的微服务注册与发现"></a>非JVM的微服务注册与发现</h2><h2 id="Eureka的自我保护模式实现"><a href="#Eureka的自我保护模式实现" class="headerlink" title="Eureka的自我保护模式实现"></a>Eureka的自我保护模式实现</h2>
-      
-    </div>
-
-    
-    
-    
-
-    <footer class="post-footer">
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-</div>
-
-
-
-
-    
-
-
-<div class="post-block">
-  
-  
-
-  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
-    <link itemprop="mainEntityOfPage" href="http://kylepeng93.github.io/2021/11/23/microservices-theory-guide/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/imagesUse%20GitHub%20issues%20for%20blog%20comments,%20wik/avatar.gif">
-      <meta itemprop="name" content="彭凯">
-      <meta itemprop="description" content="">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="成长日记">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          <a href="/2021/11/23/microservices-theory-guide/" class="post-title-link" itemprop="url">微服务导论</a>
-        </h2>
-
-        <div class="post-meta-container">
-          <div class="post-meta">
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-calendar"></i>
-      </span>
-      <span class="post-meta-item-text">发表于</span>
-      
-
-      <time title="创建时间：2021-11-23 13:35:34 / 修改时间：15:27:43" itemprop="dateCreated datePublished" datetime="2021-11-23T13:35:34+08:00">2021-11-23</time>
-    </span>
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-folder"></i>
-      </span>
-      <span class="post-meta-item-text">分类于</span>
-        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-          <a href="/categories/%E5%BE%AE%E6%9C%8D%E5%8A%A1/" itemprop="url" rel="index"><span itemprop="name">微服务</span></a>
-        </span>
-    </span>
-
-  
-</div>
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-          <p>“微服务”——一个在当前种类繁多的软件架构中出现的新术语。虽然我们对这种事的自然反应一般都是轻蔑的瞥一眼，但真正能吸引我们的其实是术语中描述的一种软件系统风格。我们在过去的几年中看到了有一些项目使用了这种风格，迄今为止，他们的结果大部分都是正面的，因此，我们很多的同事也将它作为了一种构建企业级应用的默认风格。但是，并没有太多的的信息来告诉我们微服务风格究竟是什么，以及怎么去实现它。</p>
-<p>简而言之，微服务架构风格是一种由多个微小服务集合组成的单应用开发风格，其中的每一个微小服务都拥有自己的进程以及轻量级的交互机制，通常是一个基于HTTP的API。这些服务围绕业务能力单独构建，并且可以被全自动化部署机制实现各自独立部署。对于这些服务也有一个纯粹的最小集中化管理，通常他们可以用不同的编程语言以及不同的数据存储技术来实现。</p>
-
-      
-    </div>
-
-    
-    
-    
-
-    <footer class="post-footer">
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-</div>
-
-
-
-
   <nav class="pagination">
     <a class="extend prev" rel="prev" href="/"><i class="fa fa-angle-left" aria-label="上一页"></i></a><a class="page-number" href="/">1</a><span class="page-number current">2</span><a class="page-number" href="/page/3/">3</a><span class="space">&hellip;</span><a class="page-number" href="/page/7/">7</a><a class="extend next" rel="next" href="/page/3/"><i class="fa fa-angle-right" aria-label="下一页"></i></a>
   </nav>
@@ -1250,7 +1286,7 @@
 
 <div class="copyright">
   &copy; 
-  <span itemprop="copyrightYear">2022</span>
+  <span itemprop="copyrightYear">2023</span>
   <span class="with-love">
     <i class="fa fa-heart"></i>
   </span>

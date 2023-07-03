@@ -2096,4 +2096,45 @@ dict是客户端，dictd是dict的后台服务器。默认安装之后是不带�
         <tag>comment</tag>
       </tags>
   </entry>
+  <entry>
+    <title></title>
+    <url>/2023/04/17/docker-common-use-commands/</url>
+    <content><![CDATA[<p>title: docker常用编辑操作命令<br>date: 2023-03-06 14:39:00<br>tags:</p>
+<ul>
+<li>docker</li>
+<li>images</li>
+</ul>
+<p>categories:</p>
+<ul>
+<li>docker</li>
+</ul>
+<h2 id="1-（批量）删除镜像的命令"><a href="#1-（批量）删除镜像的命令" class="headerlink" title="1. （批量）删除镜像的命令"></a>1. （批量）删除镜像的命令</h2><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ docker rmi xxx</span><br></pre></td></tr></table></figure>
+
+<p>当镜像被容器使用的时候删除会失败，因此，需要先将容器删除</p>
+<p>比如我们想要批量将所有处于’Exited’状态的容器删掉，则可以使用如下命令：</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="comment"># 1、停止容器</span></span><br><span class="line">$ docker stop $(docker ps -a | grep <span class="string">&quot;Exited&quot;</span> | awk <span class="string">&#x27;&#123;print $1 &#125;&#x27;</span>)</span><br><span class="line"><span class="comment"># 2、删除容器</span></span><br><span class="line">$ docker rm $(docker ps -a | grep <span class="string">&quot;Exited&quot;</span> | awk <span class="string">&#x27;&#123;print $1 &#125;&#x27;</span>)</span><br></pre></td></tr></table></figure>
+
+<p>当我们想要将不再使用的镜像删掉的时候，或者仓库中有大量的REPOSITORY和TAG为none的镜像时，可以通过下面的命令将符合过滤条件的镜像批量删除：</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="comment"># 批量删除满足条件的镜像</span></span><br><span class="line">$ docker rmi $(docker images | grep <span class="string">&quot;none&quot;</span> | awk <span class="string">&#x27;&#123;print $3&#125;&#x27;</span>)</span><br></pre></td></tr></table></figure>
+
+
+
+]]></content>
+  </entry>
+  <entry>
+    <title>maozedong_quotes</title>
+    <url>/2023/07/03/maozedong-quotes/</url>
+    <content><![CDATA[<p>原文地址：<a href="https://www.marxists.org/chinese/maozedong/marxist.org-chinese-mao-193708.htm">https://www.marxists.org/chinese/maozedong/marxist.org-chinese-mao-193708.htm</a></p>
+<h2 id="矛盾的特殊性"><a href="#矛盾的特殊性" class="headerlink" title="矛盾的特殊性"></a>矛盾的特殊性</h2><blockquote>
+<p>我们的教条主义者是懒汉，他们拒绝对于具体事物做任何艰苦的研究工作，他们把一般真理看成是凭空出现的东西，把它变成为人们所不能够捉摸的纯粹抽象的公式，完全否定了并且颠覆了这个人类认识真理的正常秩序。他们也不懂得人类认识的两个过程的互相联结——由特殊到一般，又由一般到特殊，他们完全不懂得马克思主义的认识论。</p>
+</blockquote>
+]]></content>
+      <categories>
+        <category>maozedong</category>
+      </categories>
+      <tags>
+        <tag>Contradiction theory</tag>
+        <tag>Materialism</tag>
+      </tags>
+  </entry>
 </search>

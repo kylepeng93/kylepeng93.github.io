@@ -84,9 +84,9 @@
   <ul class="main-menu menu">
         <li class="menu-item menu-item-home"><a href="/" rel="section"><i class="fa fa-home fa-fw"></i>首页</a></li>
         <li class="menu-item menu-item-about"><a href="/about/" rel="section"><i class="fa fa-user fa-fw"></i>关于</a></li>
-        <li class="menu-item menu-item-tags"><a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>标签<span class="badge">81</span></a></li>
-        <li class="menu-item menu-item-categories"><a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>分类<span class="badge">42</span></a></li>
-        <li class="menu-item menu-item-archives"><a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档<span class="badge">67</span></a></li>
+        <li class="menu-item menu-item-tags"><a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>标签<span class="badge">83</span></a></li>
+        <li class="menu-item menu-item-categories"><a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>分类<span class="badge">43</span></a></li>
+        <li class="menu-item menu-item-archives"><a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档<span class="badge">69</span></a></li>
       <li class="menu-item menu-item-search">
         <a role="button" class="popup-trigger"><i class="fa fa-search fa-fw"></i>搜索
         </a>
@@ -155,18 +155,18 @@
   <nav class="site-state">
       <div class="site-state-item site-state-posts">
         <a href="/archives/">
-          <span class="site-state-item-count">67</span>
+          <span class="site-state-item-count">69</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
       <div class="site-state-item site-state-categories">
           <a href="/categories/">
-        <span class="site-state-item-count">42</span>
+        <span class="site-state-item-count">43</span>
         <span class="site-state-item-name">分类</span></a>
       </div>
       <div class="site-state-item site-state-tags">
           <a href="/tags/">
-        <span class="site-state-item-count">81</span>
+        <span class="site-state-item-count">83</span>
         <span class="site-state-item-name">标签</span></a>
       </div>
   </nav>
@@ -195,6 +195,194 @@
 
 
     <div class="main-inner index posts-expand">
+
+    
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
+    <link itemprop="mainEntityOfPage" href="http://kylepeng93.github.io/2021/10/02/archlinux-install-guide/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/imagesUse%20GitHub%20issues%20for%20blog%20comments,%20wik/avatar.gif">
+      <meta itemprop="name" content="彭凯">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="成长日记">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          <a href="/2021/10/02/archlinux-install-guide/" class="post-title-link" itemprop="url">archlinux安装指南</a>
+        </h2>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">发表于</span>
+      
+
+      <time title="创建时间：2021-10-02 15:54:24 / 修改时间：21:51:03" itemprop="dateCreated datePublished" datetime="2021-10-02T15:54:24+08:00">2021-10-02</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">分类于</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/linux/" itemprop="url" rel="index"><span itemprop="name">linux</span></a>
+        </span>
+    </span>
+
+  
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+          <h2 id="Arch-Linux是什么"><a href="#Arch-Linux是什么" class="headerlink" title="Arch Linux是什么"></a>Arch Linux是什么</h2><p>Arch Linux是一款滚动更新的GNU/Linux发行版，致力于提供最新的稳定版软件，相较于其他图形界面的发行版，Arch Linux只能在命令行界面进行安装，且默认不带任何桌面环境。（非特别说明，后文将GNU/Linux简称为Linux）</p>
+<h2 id="Arch-Linux有什么优势"><a href="#Arch-Linux有什么优势" class="headerlink" title="Arch Linux有什么优势"></a>Arch Linux有什么优势</h2><p>相较于其他基于Debian或者Redhat的发行版，Arch Linux提供了自己的包管理器——pacman，而且支持用户软件仓库（AUR）。基于这个特性，大大增加了Arch Linux系统原生软件的数量。而良好的软件生态正是Arch Linux的一大利器。</p>
+<h2 id="Arch-Linux的安装"><a href="#Arch-Linux的安装" class="headerlink" title="Arch Linux的安装"></a>Arch Linux的安装</h2><p>对于大部分非专业人士而言，习惯了Windows的图形界面之后，突然使用命令行操作软件往往变得非常困难，更不用说安装系统了，尽管Arch Linux拥有详细的由社区维护的安装指南Wiki，但也因此劝退了一些习惯了windows之后想要尝试linux系统的新手，基于此，本文特地将自己安装Arch Linux过程中的经历以及出现的问题做个说明，作为Arch Linux安装wiki的补充，不失为帮助更多的人能够接触到linux的一种方法（windows固然很优秀，但<strong>自由/开源软件</strong>才是软件开发的未来）。</p>
+<h3 id="1、获取最新版镜像"><a href="#1、获取最新版镜像" class="headerlink" title="1、获取最新版镜像"></a>1、获取最新版镜像</h3><p>官方下载网站：<a target="_blank" rel="noopener" href="https://archlinux.org/download/">https://archlinux.org/download/</a></p>
+<h2 id="2、制作启动盘"><a href="#2、制作启动盘" class="headerlink" title="2、制作启动盘"></a>2、制作启动盘</h2><p>准备一个空的U盘，和一台已安装好linux系统的机器，使用如下命令进行写盘：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo dd bs=4MB <span class="keyword">if</span>=你的安装镜像路径 of=你的U盘路径 status=progress</span><br></pre></td></tr></table></figure>
+
+<blockquote>
+<p>of参数通常是/dev/sdb，其中sdb是你的U盘路径，注意不要带数字后缀，类似sdb1。另外，写盘之前必须使用umount命令卸载的U盘（如果被自动挂载的话）。</p>
+</blockquote>
+<h3 id="3、从U盘启动，开始安装"><a href="#3、从U盘启动，开始安装" class="headerlink" title="3、从U盘启动，开始安装"></a>3、从U盘启动，开始安装</h3><p>需要注意的是，为了确保可以正常从启动盘引导，需要关闭主板的安全启动选项（可以在安装完成之后重新打开），关闭方式因主板厂商不同而有所差异。具体如何关闭可以自行百度。</p>
+<p>重启主机之后，进入BIOS或者直接通过功能键选择启动顺序，将USB设备作为第一启动项，启动之后选择<code>Arch Linux install medium</code>进入系统安装界面。</p>
+<h3 id="4、验证启动模式"><a href="#4、验证启动模式" class="headerlink" title="4、验证启动模式"></a>4、验证启动模式</h3><p>如果使用的是UEFI模式，则可以使用如下命令验证:</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ls /sys/firmware/efi/efivars</span><br></pre></td></tr></table></figure>
+
+<p>如果命令正常打印出一系列文件和目录，且没有任何错误，则表明当前是以UEFI模式启动。否则则是以BIOS或者CMS模式启动。</p>
+<h2 id="5、联网"><a href="#5、联网" class="headerlink" title="5、联网"></a>5、联网</h2><p>一般来说，我们可以直接插入网线联网，或者使用外置网卡。比如手机的USB网络共享。</p>
+<h2 id="6、调整时区"><a href="#6、调整时区" class="headerlink" title="6、调整时区"></a>6、调整时区</h2><p>使用<code>timedatectl</code>可以查看并设置时区。</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 启用ntp（网络时间协议）</span></span><br><span class="line">timedatectl set-ntp <span class="literal">true</span></span><br><span class="line"><span class="comment"># 列出当前可用的时区</span></span><br><span class="line">timedatectl list-timezones</span><br><span class="line"><span class="comment"># 设置选择的时区</span></span><br><span class="line">timedatectl set-timezone Asia/Shanghai</span><br></pre></td></tr></table></figure>
+
+<h2 id="7、磁盘分区"><a href="#7、磁盘分区" class="headerlink" title="7、磁盘分区"></a>7、磁盘分区</h2><p>查看当前可用磁盘</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">fdisk -l</span><br></pre></td></tr></table></figure>
+
+<p>选择将要使用的磁盘，假设是<code>/dev/sda</code>，执行如下命令</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">fdisk /dev/sda</span><br></pre></td></tr></table></figure>
+
+<p>进入分区界面之后，使用<code>m</code>查看具体的分区指令。一般步骤如下：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 创建分区表</span></span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+
+      
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+</div>
+
+
+
+
+    
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
+    <link itemprop="mainEntityOfPage" href="http://kylepeng93.github.io/2021/09/28/ultraman-classic/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/imagesUse%20GitHub%20issues%20for%20blog%20comments,%20wik/avatar.gif">
+      <meta itemprop="name" content="彭凯">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="成长日记">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          <a href="/2021/09/28/ultraman-classic/" class="post-title-link" itemprop="url">迪迦奥特曼带给我的思考</a>
+        </h2>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">发表于</span>
+
+      <time title="创建时间：2021-09-28 22:26:34" itemprop="dateCreated datePublished" datetime="2021-09-28T22:26:34+08:00">2021-09-28</time>
+    </span>
+      <span class="post-meta-item">
+        <span class="post-meta-item-icon">
+          <i class="far fa-calendar-check"></i>
+        </span>
+        <span class="post-meta-item-text">更新于</span>
+        <time title="修改时间：2021-09-29 00:45:15" itemprop="dateModified" datetime="2021-09-29T00:45:15+08:00">2021-09-29</time>
+      </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">分类于</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/%E8%BF%AA%E8%BF%A6/" itemprop="url" rel="index"><span itemprop="name">迪迦</span></a>
+        </span>
+    </span>
+
+  
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+          <h1 id="第49集——奥特之星"><a href="#第49集——奥特之星" class="headerlink" title="第49集——奥特之星"></a>第49集——奥特之星</h1><h2 id="剧情演说"><a href="#剧情演说" class="headerlink" title="剧情演说"></a>剧情演说</h2><p>在这一集中，大古追踪穿越时空回到过去寻找怪兽的外星人查利加，和他一同回到了圆古英二导演还在世时的1965年。随后，大古在不经意间误闯进了圆古英二导演的摄影棚，临时充当了本该由长野（博）担任的场务一职，令人没想到的是，看到一身胜利队队服的大古，愣是没有一个人发现大古其实并不是长野（博），当然，在现实中，大古的扮演者就叫做长野博，这也是导演刻意给我们开的一个玩笑，不算剧情bug。</p>
+<p>离开摄影棚之后，大古找到了查利加，并质问他的真正意图，但查利加并不想告诉大古，反而向他发起了攻击，愤怒的大古拿出武器击退了查利加，而查利加也随之消失不见了。</p>
+<p>接下来的剧情中，还出现了真正的长野和大古见面的场景，不得不说，这种虚实相间的拍摄手法的确能够触动观众的情绪，带给观众一种说不出的感动。</p>
+<p>镜头给到初代奥特曼剧本创作人的金城哲夫，此时的他还在苦苦构思如何写出一个另圆古一导演（圆古英二导演的儿子）满意的剧本，但反复改了8次还是不能让导演满意，最后一次勉强让导演满意了，可是随后的一句“这故事有趣吗”再次让金城陷入了重写剧本的境遇。正当金城绞尽脑汁想剧本的时候，圆古英二导演主动和他聊起了剧本创作遇到的困难，并将自己的一颗红宝石拿给金城看，还告诉他这是外星人送给他的，而自己和这个外星人是好朋友。原来圆古英二导演曾经遇到过一个来自M78星云的奥特曼，而当时这个奥特曼正将一只怪兽沉到湖底，后来，为了表示对地球人的友好，他将一颗奥特之星送给了圆古英二导演，并告诉他这颗奥特之星会对他产生帮助。然而他们之间的对话被躲在门外的查利加偷听到了，而圆古英二提到的被奥特曼沉到湖底的怪兽正是他所要寻找的亚那加基。</p>
+<p>得到消息的查利加立刻赶到龙森湖救出被封印的亚那加基，并命令怪兽破坏人类的住所。怪兽的出现引起了大古的注意，为了阻止怪兽继续破坏地球，大古拿起神光棒，变身成了迪迦奥特曼，和怪兽展开了搏斗，谁知怪兽丝毫不落下风，反而挟持住了迪迦，并吸取他的能量，眼看迪迦就要被打败，一旁观战的圆古英二导演凭借自己的意念竟然也变成了一道光，朝着怪兽发动攻击，击退了正在吸取迪迦能量的怪兽之后，这道光居然变成了奥特曼，并将迪迦被吸取的能量重新输入到了他的体内。得到能量后的迪迦再次回到战斗，和另一个奥特曼同时发动光线技能，一举打败了怪兽。而操纵怪兽的查利加则放出一句“后会有期”之后就逃跑了。圆古英二看着两位巨人，说道“我们需要一个英雄，金城，英雄是必要的“。而此时的金城正在埋头书写关于英雄的故事。</p>
+<p>最后一幕是圆古英二导演拿着金城写出来的奥特英雄的剧本开始了初代奥特曼剧集的拍摄。之后的事情我们也都知道了。从此，奥特曼宇宙开启了崭新的一页。</p>
+<h2 id="观后感"><a href="#观后感" class="headerlink" title="观后感"></a>观后感</h2><p>作为一部平成年代的开山之作，《迪迦奥特曼》与圆谷制作的上一部奥特曼剧集中间已经整整间隔了16年，而16年前观看奥特曼的小孩子很多都已经长大成人，主打孩童向的奥特曼似乎已经和他们渐行渐远。或许正是基于这一考量，《迪迦奥特曼》从一开始面向的就是成人观众。还记得小时候看迪迦，更多的是关注奥特曼打小怪兽，至于为什么要打怪兽以及人类未来的命运则完全不加考虑，只知道这个奥特曼长得特别好看，还能变身成其他两种形态，真的太酷了。当我们长大后再次打开《迪迦奥特曼》，我们突然发现这个奥特曼似乎有点不一样，曾经我们心中无敌的奥特曼似乎也在慢慢变得不那么无敌，原来，奥特曼也是人变的，他也会受伤，甚至奥特曼还需要我们人类的帮助才能打败那些怪兽，不仅是奥特曼，那些被他打的怪兽也变了，似乎没有天生就是怪兽的，都是因为人类肆意破坏地球，盲目发展高科技，才使我们的身边多了这么多怪兽，而来自外太空的外星人之所以要侵略地球，毁灭人类，只是因为他们想活下去，而奥特曼既是光，同时也是人类，为了人类的生存，奥特曼必须站出来打倒怪兽。即使面对一个根本赢不了的敌人，奥特曼也要以人类的身份战斗到最后一刻。很难想象一向主打孩童向的特摄片居然能在短短的一集20多分钟的剧情中注入如此崇高的立意，也让长大后的我们知道原来《迪迦奥特曼》根本就不是一部面向孩童的特摄片。我们都误会他了。作为连接昭和和平成奥特曼的桥梁，迪迦在奥特之星中完成了这一神圣的交接仪式，当我们看到初代奥特曼和迪迦在圆谷英二导演面前握手时，我们知道，随着圆谷英二导演的去世以及平成时代的到来，未来的奥特曼系列将开启新的篇章，而这一切都将从迪迦奥特曼开始。——谨以此文献给我们的童年，永远的迪迦奥特曼。</p>
+
+      
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+</div>
+
+
+
 
     
 
@@ -982,258 +1170,6 @@
 
 
 
-    
-
-
-<div class="post-block">
-  
-  
-
-  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
-    <link itemprop="mainEntityOfPage" href="http://kylepeng93.github.io/2021/08/08/samba-server-tutorial/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/imagesUse%20GitHub%20issues%20for%20blog%20comments,%20wik/avatar.gif">
-      <meta itemprop="name" content="彭凯">
-      <meta itemprop="description" content="">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="成长日记">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          <a href="/2021/08/08/samba-server-tutorial/" class="post-title-link" itemprop="url">在ubuntu上创建自己的samba服务器</a>
-        </h2>
-
-        <div class="post-meta-container">
-          <div class="post-meta">
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-calendar"></i>
-      </span>
-      <span class="post-meta-item-text">发表于</span>
-      
-
-      <time title="创建时间：2021-08-08 19:23:12 / 修改时间：21:51:03" itemprop="dateCreated datePublished" datetime="2021-08-08T19:23:12+08:00">2021-08-08</time>
-    </span>
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-folder"></i>
-      </span>
-      <span class="post-meta-item-text">分类于</span>
-        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-          <a href="/categories/%E6%96%87%E4%BB%B6%E5%85%B1%E4%BA%AB%E6%9C%8D%E5%8A%A1/" itemprop="url" rel="index"><span itemprop="name">文件共享服务</span></a>
-        </span>
-    </span>
-
-  
-</div>
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-          <h2 id="samba"><a href="#samba" class="headerlink" title="samba"></a>samba</h2><p>类Unix（Gnu/Linux）操作系统上用来和标准Windows文件系统互相通信的一种程序套件；Samba允许类Unix系统和Windows系统共享文件和打印机，忽略两个系统间的差异性，从而实现共存。</p>
-<h2 id="在ubuntu上安装Samba"><a href="#在ubuntu上安装Samba" class="headerlink" title="在ubuntu上安装Samba"></a>在ubuntu上安装Samba</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo apt update &amp;&amp; sudo apt install -y samba</span><br></pre></td></tr></table></figure>
-
-<h2 id="修改配置文件，设置共享目录"><a href="#修改配置文件，设置共享目录" class="headerlink" title="修改配置文件，设置共享目录"></a>修改配置文件，设置共享目录</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 创建共享目录</span></span><br><span class="line">$ mkdir /tmp/share</span><br></pre></td></tr></table></figure>
-
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 将共享目录添加到配置文件中</span></span><br><span class="line">$ sudo vim /etc/samba/smb.conf</span><br></pre></td></tr></table></figure>
-
-<p>将下面的内容追加到文件末尾：</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">[share]</span><br><span class="line">	comment = Samba share directory # 共享目录说明</span><br><span class="line">	path = /tmp/share # 共享目录的系统路径</span><br><span class="line">	read only = yes # 是否只读 </span><br><span class="line">    browsable = yes # 是否可浏览</span><br></pre></td></tr></table></figure>
-
-<h2 id="修改默认端口（适用于公网访问的场景，内网访问可以不用修改）"><a href="#修改默认端口（适用于公网访问的场景，内网访问可以不用修改）" class="headerlink" title="修改默认端口（适用于公网访问的场景，内网访问可以不用修改）"></a>修改默认端口（适用于公网访问的场景，内网访问可以不用修改）</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ sudo vim /etc/samba/smb.conf</span><br></pre></td></tr></table></figure>
-
-<p>将下面的内容追加到<code>[global]</code>部分的末尾（如果端口配置已存在，则直接修改端口号）</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">[global]</span><br><span class="line">	...</span><br><span class="line">	smb ports = 4450 1390 #想要指定的端口号，原本为445 139</span><br></pre></td></tr></table></figure>
-
-<h2 id="重启smbd守护进程"><a href="#重启smbd守护进程" class="headerlink" title="重启smbd守护进程"></a>重启smbd守护进程</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ sudo systemctl restart smbd</span><br></pre></td></tr></table></figure>
-
-<h2 id="查看修改后的端口号是否生效"><a href="#查看修改后的端口号是否生效" class="headerlink" title="查看修改后的端口号是否生效"></a>查看修改后的端口号是否生效</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">$ ss -nltp | grep 4450</span><br><span class="line">$ ss -nltp | grep 1390</span><br></pre></td></tr></table></figure>
-
-<h2 id="配置防火墙ufw"><a href="#配置防火墙ufw" class="headerlink" title="配置防火墙ufw"></a>配置防火墙ufw</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 如果开启了ufw,则需要将samba服务添加到允许访问服务列表中</span></span><br><span class="line">sudo ufw allow samba</span><br><span class="line"><span class="comment"># 如果重新配置了端口，则需要指定允许访问的端口号</span></span><br><span class="line">sudo ufw allow [port] <span class="comment"># 可以在端口号后面加上tcp或者udp,如1390/tcp、1390/udp</span></span><br></pre></td></tr></table></figure>
-
-<h2 id="创建samba用户账户"><a href="#创建samba用户账户" class="headerlink" title="创建samba用户账户"></a>创建samba用户账户</h2><p>samba默认不使用系统账户，因此，我们需要为共享目录设置一个用户名和密码：</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">sudo smbpasswd -a <span class="variable">$USER</span></span><br><span class="line"><span class="comment"># 该命令会将当前用户加入到samba的用户中，并提示设置该用户对应的密码</span></span><br></pre></td></tr></table></figure>
-
-<h2 id="验证samba服务的可用性"><a href="#验证samba服务的可用性" class="headerlink" title="验证samba服务的可用性"></a>验证samba服务的可用性</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">sudo apt install smbclient</span><br><span class="line"><span class="comment"># 验证可用的samba共享目录</span></span><br><span class="line">smbclient -L samba_server_ip</span><br><span class="line"><span class="comment"># 如果修改了默认端口号，还需要手动指定端口号</span></span><br><span class="line">smbclient -p 1390 -L samba_server_ip</span><br></pre></td></tr></table></figure>
-
-<p>如果服务正常的话，会出现如下内容：</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">Enter WORKGROUP\pengkai<span class="string">&#x27;s password: </span></span><br><span class="line"><span class="string"></span></span><br><span class="line"><span class="string">	Sharename       Type      Comment</span></span><br><span class="line"><span class="string">	---------       ----      -------</span></span><br><span class="line"><span class="string">	sambashare      Disk      Samba And linux</span></span><br><span class="line"><span class="string">	www-data        Disk      apache web root</span></span><br><span class="line"><span class="string">	print$          Disk      Printer Drivers</span></span><br><span class="line"><span class="string">	IPC$            IPC       IPC Service (kyleVps server (Samba, Ubuntu))</span></span><br><span class="line"><span class="string">SMB1 disabled -- no workgroup available</span></span><br></pre></td></tr></table></figure>
-
-<h2 id="在终端中连接samba共享目录"><a href="#在终端中连接samba共享目录" class="headerlink" title="在终端中连接samba共享目录"></a>在终端中连接samba共享目录</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">smbclient -U [user] [-p port] //[samba_ip]/[share_directory] </span><br><span class="line"><span class="comment"># 上述命令需要指定登陆用户和samba服务器ip以及共享目录，随后系统会提示输入密码</span></span><br><span class="line"><span class="comment"># 密码验证通过之后会进入smb的命令行交互界面：</span></span><br><span class="line">Try <span class="string">&quot;help&quot;</span> to get a list of possible commands.</span><br><span class="line">smb: \&gt; ls</span><br><span class="line">  .                                   D        0  Sun Feb 21 18:42:49 2021</span><br><span class="line">  ..                                  D        0  Sun Feb 21 18:42:18 2021</span><br><span class="line">  Test File                           N       20  Sun Feb 21 18:42:49 2021</span><br><span class="line"> </span><br><span class="line">        971515904 blocks of size 1024. 843676384 blocks available</span><br><span class="line">smb: \&gt; </span><br></pre></td></tr></table></figure>
-
-<h2 id="将samba挂载至指定目录下"><a href="#将samba挂载至指定目录下" class="headerlink" title="将samba挂载至指定目录下"></a>将samba挂载至指定目录下</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">未完待续</span><br></pre></td></tr></table></figure>
-
-
-
-<p>至此，samba的安装、配置和使用就说完了。</p>
-
-      
-    </div>
-
-    
-    
-    
-
-    <footer class="post-footer">
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-</div>
-
-
-
-
-    
-
-
-<div class="post-block">
-  
-  
-
-  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
-    <link itemprop="mainEntityOfPage" href="http://kylepeng93.github.io/2021/08/08/namp-command-tutorial/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/imagesUse%20GitHub%20issues%20for%20blog%20comments,%20wik/avatar.gif">
-      <meta itemprop="name" content="彭凯">
-      <meta itemprop="description" content="">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="成长日记">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          <a href="/2021/08/08/namp-command-tutorial/" class="post-title-link" itemprop="url">nmap命令使用教程</a>
-        </h2>
-
-        <div class="post-meta-container">
-          <div class="post-meta">
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-calendar"></i>
-      </span>
-      <span class="post-meta-item-text">发表于</span>
-      
-
-      <time title="创建时间：2021-08-08 16:19:00 / 修改时间：17:20:43" itemprop="dateCreated datePublished" datetime="2021-08-08T16:19:00+08:00">2021-08-08</time>
-    </span>
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-folder"></i>
-      </span>
-      <span class="post-meta-item-text">分类于</span>
-        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-          <a href="/categories/nmap/" itemprop="url" rel="index"><span itemprop="name">nmap</span></a>
-        </span>
-    </span>
-
-  
-</div>
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-          <ol>
-<li><p>扫描单个目标地址：</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">nmap 192.168.0.100</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>扫描多个目标地址</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">nmap 192.168.0.100 192.168.0.105</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>扫描一个范围内的目标地址</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">nmap 192.168.0.100-200</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>扫描目标地址所在的某个网段：</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">nmap 192.168.0.100/24</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>扫描主机列表targets.txt文件中的所有目标地址</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">nmap -iL ~/targets.txt</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>扫描除某一个目标地址之外的所有目标地址</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">nmap 192.168.0.100/24 -exclude 192.168.0.105</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>扫描除某一文件中的目标地址之外的目标地址</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">nmap 192.168.0.100/24 -exceludefile ~/targets.txt</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>扫描某一目标地址的21、22、23、80端口</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">nmap 192.168.0.100 -p 21,22,23,80</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>对目标地址进行路由跟踪</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">nmap --traceroute 192.168.0.100</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>扫描目标地址所在C段的在线状况</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">nmap -sP 192.168.0.100/24</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>目标地址的操作系统指纹识别</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">nmap -O 192.168.0.100</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>目标地址提供的服务版本检测</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">nmap -sV 192.168.0.105</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>探测防火墙状态</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">nmap -sF -T4 192.168.0.100</span><br></pre></td></tr></table></figure>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-</li>
-</ol>
-
-      
-    </div>
-
-    
-    
-    
-
-    <footer class="post-footer">
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-</div>
-
-
-
-
   <nav class="pagination">
     <a class="extend prev" rel="prev" href="/page/3/"><i class="fa fa-angle-left" aria-label="上一页"></i></a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/3/">3</a><span class="page-number current">4</span><a class="page-number" href="/page/5/">5</a><span class="space">&hellip;</span><a class="page-number" href="/page/7/">7</a><a class="extend next" rel="next" href="/page/5/"><i class="fa fa-angle-right" aria-label="下一页"></i></a>
   </nav>
@@ -1247,7 +1183,7 @@
 
 <div class="copyright">
   &copy; 
-  <span itemprop="copyrightYear">2022</span>
+  <span itemprop="copyrightYear">2023</span>
   <span class="with-love">
     <i class="fa fa-heart"></i>
   </span>
