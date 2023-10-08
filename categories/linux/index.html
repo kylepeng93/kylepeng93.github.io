@@ -1,427 +1,243 @@
-<!DOCTYPE html>
-<html lang="zh-CN">
-<head>
-  <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width">
-<meta name="theme-color" content="#222" media="(prefers-color-scheme: light)">
-<meta name="theme-color" content="#222" media="(prefers-color-scheme: dark)">
-<meta name="generator" content="Hexo 5.4.0">
-
-
-  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon.png">
-  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32.png">
-  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16.png">
-  <link rel="mask-icon" href="/images/logo.svg" color="#222">
-
-<link rel="stylesheet" href="/css/main.css">
-
-
-
-<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@5.15.4/css/all.min.css" integrity="sha256-mUZM63G8m73Mcidfrv5E+Y61y7a12O5mW4ezU3bxqW4=" crossorigin="anonymous">
-  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/animate.css@3.1.1/animate.min.css" integrity="sha256-PR7ttpcvz8qrF57fur/yAx1qXMFJeJFiA6pSzWi0OIE=" crossorigin="anonymous">
-
-<script class="next-config" data-name="main" type="application/json">{"hostname":"kylepeng93.github.io","root":"/","images":"/imagesUse%20GitHub%20issues%20for%20blog%20comments,%20wik","scheme":"Pisces","darkmode":true,"version":"8.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12},"copycode":false,"bookmark":{"enable":false,"color":"#222","save":"auto"},"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"buttons","active":"utterances","storage":true,"lazyload":false,"nav":{"utterances":{"text":"comment here","order":-1}},"activeClass":"utterances"},"stickytabs":false,"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"prism":false,"i18n":{"placeholder":"搜索...","empty":"没有找到任何搜索结果：${query}","hits_time":"找到 ${hits} 个搜索结果（用时 ${time} 毫秒）","hits":"找到 ${hits} 个搜索结果"},"path":"/search.xml","localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false}}</script><script src="/js/config.js"></script>
-<meta property="og:type" content="website">
-<meta property="og:title" content="成长日记">
-<meta property="og:url" content="http://kylepeng93.github.io/categories/linux/index.html">
-<meta property="og:site_name" content="成长日记">
-<meta property="og:locale" content="zh_CN">
-<meta property="article:author" content="彭凯">
-<meta name="twitter:card" content="summary">
-
-
-<link rel="canonical" href="http://kylepeng93.github.io/categories/linux/">
-
-
-
-<script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":false,"isPost":false,"lang":"zh-CN","comments":"","permalink":"","path":"categories/linux/index.html","title":""}</script>
-
-<script class="next-config" data-name="calendar" type="application/json">""</script>
-<title>分类: linux | 成长日记</title>
-  
-
-
-
-
-  <noscript>
-    <link rel="stylesheet" href="/css/noscript.css">
-  </noscript>
-</head>
-
-<body itemscope itemtype="http://schema.org/WebPage" class="use-motion">
-  <div class="headband"></div>
-
-  <main class="main">
-    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
-      <div class="header-inner"><div class="site-brand-container">
-  <div class="site-nav-toggle">
-    <div class="toggle" aria-label="切换导航栏" role="button">
-        <span class="toggle-line"></span>
-        <span class="toggle-line"></span>
-        <span class="toggle-line"></span>
-    </div>
-  </div>
-
-  <div class="site-meta">
-
-    <a href="/" class="brand" rel="start">
-      <i class="logo-line"></i>
-      <h1 class="site-title">成长日记</h1>
-      <i class="logo-line"></i>
-    </a>
-  </div>
-
-  <div class="site-nav-right">
-    <div class="toggle popup-trigger">
-        <i class="fa fa-search fa-fw fa-lg"></i>
-    </div>
-  </div>
-</div>
-
-
-
-<nav class="site-nav">
-  <ul class="main-menu menu">
-        <li class="menu-item menu-item-home"><a href="/" rel="section"><i class="fa fa-home fa-fw"></i>首页</a></li>
-        <li class="menu-item menu-item-about"><a href="/about/" rel="section"><i class="fa fa-user fa-fw"></i>关于</a></li>
-        <li class="menu-item menu-item-tags"><a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>标签<span class="badge">83</span></a></li>
-        <li class="menu-item menu-item-categories"><a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>分类<span class="badge">43</span></a></li>
-        <li class="menu-item menu-item-archives"><a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档<span class="badge">69</span></a></li>
-      <li class="menu-item menu-item-search">
-        <a role="button" class="popup-trigger"><i class="fa fa-search fa-fw"></i>搜索
-        </a>
-      </li>
-  </ul>
-</nav>
-
-
-
-  <div class="search-pop-overlay">
-    <div class="popup search-popup"><div class="search-header">
-  <span class="search-icon">
-    <i class="fa fa-search"></i>
-  </span>
-  <div class="search-input-container">
-    <input autocomplete="off" autocapitalize="off" maxlength="80"
-           placeholder="搜索..." spellcheck="false"
-           type="search" class="search-input">
-  </div>
-  <span class="popup-btn-close" role="button">
-    <i class="fa fa-times-circle"></i>
-  </span>
-</div>
-<div class="search-result-container no-result">
-  <div class="search-result-icon">
-    <i class="fa fa-spinner fa-pulse fa-5x"></i>
-  </div>
-</div>
-
-    </div>
-  </div>
-
-</div>
-        
-  
-  <div class="toggle sidebar-toggle" role="button">
-    <span class="toggle-line"></span>
-    <span class="toggle-line"></span>
-    <span class="toggle-line"></span>
-  </div>
-
-  <aside class="sidebar">
-
-    <div class="sidebar-inner sidebar-overview-active">
-      <ul class="sidebar-nav">
-        <li class="sidebar-nav-toc">
-          文章目录
-        </li>
-        <li class="sidebar-nav-overview">
-          站点概览
-        </li>
-      </ul>
-
-      <div class="sidebar-panel-container">
-        <!--noindex-->
-        <div class="post-toc-wrap sidebar-panel">
-        </div>
-        <!--/noindex-->
-
-        <div class="site-overview-wrap sidebar-panel">
-          <div class="site-author site-overview-item animated" itemprop="author" itemscope itemtype="http://schema.org/Person">
-  <p class="site-author-name" itemprop="name">彭凯</p>
-  <div class="site-description" itemprop="description"></div>
-</div>
-<div class="site-state-wrap site-overview-item animated">
-  <nav class="site-state">
-      <div class="site-state-item site-state-posts">
-        <a href="/archives/">
-          <span class="site-state-item-count">69</span>
-          <span class="site-state-item-name">日志</span>
-        </a>
-      </div>
-      <div class="site-state-item site-state-categories">
-          <a href="/categories/">
-        <span class="site-state-item-count">43</span>
-        <span class="site-state-item-name">分类</span></a>
-      </div>
-      <div class="site-state-item site-state-tags">
-          <a href="/tags/">
-        <span class="site-state-item-count">83</span>
-        <span class="site-state-item-name">标签</span></a>
-      </div>
-  </nav>
-</div>
-
-
-
-        </div>
-      </div>
-    </div>
-  </aside>
-  <div class="sidebar-dimmer"></div>
-
-
-    </header>
-
-    
-  <div class="back-to-top" role="button" aria-label="返回顶部">
-    <i class="fa fa-arrow-up"></i>
-    <span>0%</span>
-  </div>
-
-<noscript>
-  <div class="noscript-warning">Theme NexT works best with JavaScript enabled</div>
-</noscript>
-
-
-    <div class="main-inner category posts-collapse">
-
-
-  
-  
-  
-  <div class="post-block">
-    <div class="post-content">
-      <div class="collection-title">
-        <h2 class="collection-header">linux
-          <small>分类</small>
-        </h2>
-      </div>
-
-      
-    <div class="collection-year">
-      <span class="collection-header">2021</span>
-    </div>
-
-  <article itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
-      <div class="post-meta-container">
-        <time itemprop="dateCreated"
-              datetime="2021-11-15T20:07:42+08:00"
-              content="2021-11-15">
-          11-15
-        </time>
-      </div>
-
-      <div class="post-title">
-          <a class="post-title-link" href="/2021/11/15/how-to-discard-output-on-linux/" itemprop="url">
-            <span itemprop="name">怎么在linux上清除命令的输出内容</span>
-          </a>
-      </div>
-
-      
-    </header>
-  </article>
-
-  <article itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
-      <div class="post-meta-container">
-        <time itemprop="dateCreated"
-              datetime="2021-10-26T22:22:17+08:00"
-              content="2021-10-26">
-          10-26
-        </time>
-      </div>
-
-      <div class="post-title">
-          <a class="post-title-link" href="/2021/10/26/fix-chinese-luan-ma-in-deepin-wine-wechat/" itemprop="url">
-            <span itemprop="name">在manjaro中修复deepin-wine-wechat对话框输入中文乱码的问题</span>
-          </a>
-      </div>
-
-      
-    </header>
-  </article>
-
-  <article itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
-      <div class="post-meta-container">
-        <time itemprop="dateCreated"
-              datetime="2021-10-02T20:39:36+08:00"
-              content="2021-10-02">
-          10-02
-        </time>
-      </div>
-
-      <div class="post-title">
-          <a class="post-title-link" href="/2021/10/02/chat-with-netcat-between-linux-host/" itemprop="url">
-            <span itemprop="name">使用netcat工具在两台linux主机之间通信</span>
-          </a>
-      </div>
-
-      
-    </header>
-  </article>
-
-  <article itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
-      <div class="post-meta-container">
-        <time itemprop="dateCreated"
-              datetime="2021-10-02T15:54:24+08:00"
-              content="2021-10-02">
-          10-02
-        </time>
-      </div>
-
-      <div class="post-title">
-          <a class="post-title-link" href="/2021/10/02/archlinux-install-guide/" itemprop="url">
-            <span itemprop="name">archlinux安装指南</span>
-          </a>
-      </div>
-
-      
-    </header>
-  </article>
-
-  <article itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
-      <div class="post-meta-container">
-        <time itemprop="dateCreated"
-              datetime="2021-03-14T20:51:06+08:00"
-              content="2021-03-14">
-          03-14
-        </time>
-      </div>
-
-      <div class="post-title">
-          <a class="post-title-link" href="/2021/03/14/bash-shortcut-manual/" itemprop="url">
-            <span itemprop="name">bash中的常用快捷方式</span>
-          </a>
-      </div>
-
-      
-    </header>
-  </article>
-
-  <article itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
-      <div class="post-meta-container">
-        <time itemprop="dateCreated"
-              datetime="2021-03-13T14:12:50+08:00"
-              content="2021-03-13">
-          03-13
-        </time>
-      </div>
-
-      <div class="post-title">
-          <a class="post-title-link" href="/2021/03/13/gzip-manual/" itemprop="url">
-            <span itemprop="name">gzip操作手册</span>
-          </a>
-      </div>
-
-      
-    </header>
-  </article>
-
-  <article itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
-      <div class="post-meta-container">
-        <time itemprop="dateCreated"
-              datetime="2021-03-04T22:28:17+08:00"
-              content="2021-03-04">
-          03-04
-        </time>
-      </div>
-
-      <div class="post-title">
-          <a class="post-title-link" href="/2021/03/04/cron-manual/" itemprop="url">
-            <span itemprop="name">linux下使用crontab工具设置定时任务</span>
-          </a>
-      </div>
-
-      
-    </header>
-  </article>
-    <div class="collection-year">
-      <span class="collection-header">2020</span>
-    </div>
-
-  <article itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
-      <div class="post-meta-container">
-        <time itemprop="dateCreated"
-              datetime="2020-12-29T21:45:24+08:00"
-              content="2020-12-29">
-          12-29
-        </time>
-      </div>
-
-      <div class="post-title">
-          <a class="post-title-link" href="/2020/12/29/how-to-set-up-a-private-git-server-on-your-vps/" itemprop="url">
-            <span itemprop="name">如何vps上搭建自己的git服务器</span>
-          </a>
-      </div>
-
-      
-    </header>
-  </article>
-
-    </div>
-  </div>
-  
-  
-  
-
-</div>
-  </main>
-
-  <footer class="footer">
-    <div class="footer-inner">
-
-
-<div class="copyright">
-  &copy; 
-  <span itemprop="copyrightYear">2023</span>
-  <span class="with-love">
-    <i class="fa fa-heart"></i>
-  </span>
-  <span class="author" itemprop="copyrightHolder">彭凯</span>
-</div>
-  <div class="powered-by">由 <a href="https://hexo.io/" rel="noopener" target="_blank">Hexo</a> & <a href="https://theme-next.js.org/pisces/" rel="noopener" target="_blank">NexT.Pisces</a> 强力驱动
-  </div>
-
-    </div>
-  </footer>
-
-  
-  <script src="https://cdn.jsdelivr.net/npm/animejs@3.2.1/lib/anime.min.js" integrity="sha256-XL2inqUJaslATFnHdJOi9GfQ60on8Wx1C2H8DYiN1xY=" crossorigin="anonymous"></script>
-<script src="/js/comments.js"></script><script src="/js/utils.js"></script><script src="/js/motion.js"></script><script src="/js/next-boot.js"></script>
-
-  
-<script src="https://cdn.jsdelivr.net/npm/hexo-generator-searchdb@1.4.0/dist/search.js" integrity="sha256-vXZMYLEqsROAXkEw93GGIvaB2ab+QW6w3+1ahD9nXXA=" crossorigin="anonymous"></script>
-<script src="/js/third-party/search/local-search.js"></script>
-
-
-
-
-
-  
-
-
-
-
-<script class="next-config" data-name="utterances" type="application/json">{"enable":true,"repo":"kylepeng93/blog","issue_term":"pathname","theme":"github-light"}</script>
-<script src="/js/third-party/comments/utterances.js"></script>
-
-</body>
-</html>
+<!doctype html>
+<html lang="zh"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"><meta name="robots" content="noindex"><meta><title>分类: linux - 成长日记</title><link rel="manifest" href="/manifest.json"><meta name="application-name" content="成长日记"><meta name="msapplication-TileImage" content="/img/favicon.svg"><meta name="apple-mobile-web-app-capable" content="yes"><meta name="apple-mobile-web-app-title" content="成长日记"><meta name="apple-mobile-web-app-status-bar-style" content="default"><meta property="og:type" content="blog"><meta property="og:title" content="成长日记"><meta property="og:url" content="http://kylepeng93.github.io/"><meta property="og:site_name" content="成长日记"><meta property="og:locale" content="zh_CN"><meta property="og:image" content="http://kylepeng93.github.io/img/og_image.png"><meta property="article:author" content="彭凯"><meta property="twitter:card" content="summary"><meta property="twitter:image:src" content="http://kylepeng93.github.io/img/og_image.png"><script type="application/ld+json">{"@context":"https://schema.org","@type":"BlogPosting","mainEntityOfPage":{"@type":"WebPage","@id":"http://kylepeng93.github.io"},"headline":"成长日记","image":["http://kylepeng93.github.io/img/og_image.png"],"author":{"@type":"Person","name":"彭凯"},"publisher":{"@type":"Organization","name":"成长日记","logo":{"@type":"ImageObject","url":"http://kylepeng93.github.io/img/logo.svg"}},"description":""}</script><link rel="icon" href="/img/favicon.svg"><link rel="stylesheet" href="https://use.fontawesome.com/releases/v6.0.0/css/all.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/highlight.js@9.12.0/styles/atom-one-light.css"><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Ubuntu:wght@400;600&amp;family=Source+Code+Pro"><link rel="stylesheet" href="/css/default.css"><style>body>.footer,body>.navbar,body>.section{opacity:0}</style><!--!--><!--!--><!--!--><!--!--><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/cookieconsent@3.1.1/build/cookieconsent.min.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/lightgallery@1.10.0/dist/css/lightgallery.min.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/justifiedGallery@3.8.1/dist/css/justifiedGallery.min.css"><!--!--><!--!--><style>.pace{-webkit-pointer-events:none;pointer-events:none;-webkit-user-select:none;-moz-user-select:none;user-select:none}.pace-inactive{display:none}.pace .pace-progress{background:#3273dc;position:fixed;z-index:2000;top:0;right:100%;width:100%;height:2px}</style><script src="https://cdn.jsdelivr.net/npm/pace-js@1.2.4/pace.min.js"></script><!--!--><!--!--><!-- hexo injector head_end start --><script>
+  (function () {
+      function switchTab() {
+          if (!location.hash) {
+            return;
+          }
+
+          const id = '#' + CSS.escape(location.hash.substring(1));
+          const $tabMenu = document.querySelector(`.tabs a[href="${id}"]`);
+          if (!$tabMenu) {
+            return;
+          }
+
+          const $tabMenuContainer = $tabMenu.parentElement.parentElement;
+          Array.from($tabMenuContainer.children).forEach($menu => $menu.classList.remove('is-active'));
+          Array.from($tabMenuContainer.querySelectorAll('a'))
+              .map($menu => document.getElementById($menu.getAttribute("href").substring(1)))
+              .forEach($content => $content.classList.add('is-hidden'));
+
+          if ($tabMenu) {
+              $tabMenu.parentElement.classList.add('is-active');
+          }
+          const $activeTab = document.querySelector(id);
+          if ($activeTab) {
+              $activeTab.classList.remove('is-hidden');
+          }
+      }
+      switchTab();
+      window.addEventListener('hashchange', switchTab, false);
+  })();
+  </script><!-- hexo injector head_end end --><meta name="generator" content="Hexo 5.4.0"></head><body class="is-2-column"><nav class="navbar navbar-main"><div class="container navbar-container"><div class="navbar-brand justify-content-center"><a class="navbar-item navbar-logo" href="/"><img src="/img/logo.svg" alt="成长日记" height="28"></a></div><div class="navbar-menu"><div class="navbar-start"><a class="navbar-item" href="/">Home</a><a class="navbar-item" href="/archives">Archives</a><a class="navbar-item" href="/categories">Categories</a><a class="navbar-item" href="/tags">Tags</a><a class="navbar-item" href="/about">About</a></div><div class="navbar-end"><a class="navbar-item" target="_blank" rel="noopener" title="Download on GitHub" href="https://github.com/ppoffice/hexo-theme-icarus"><i class="fab fa-github"></i></a><a class="navbar-item search" title="搜索" href="javascript:;"><i class="fas fa-search"></i></a></div></div></div></nav><section class="section"><div class="container"><div class="columns"><div class="column order-2 column-main is-8-tablet is-8-desktop is-8-widescreen"><div class="card"><div class="card-content"><nav class="breadcrumb" aria-label="breadcrumbs"><ul><li><a href="/categories">分类</a></li><li class="is-active"><a href="#" aria-current="page">linux</a></li></ul></nav></div></div><div class="card"><article class="card-content article" role="article"><div class="article-meta is-size-7 is-uppercase level is-mobile"><div class="level-left"><span class="level-item"><time dateTime="2021-11-15T12:07:42.000Z" title="2021/11/15 20:07:42">2021-11-15</time>发表</span><span class="level-item"><time dateTime="2021-11-15T13:33:57.000Z" title="2021/11/15 21:33:57">2021-11-15</time>更新</span><span class="level-item"><a class="link-muted" href="/categories/linux/">linux</a></span><span class="level-item">4 分钟读完 (大约606个字)</span></div></div><p class="title is-3 is-size-4-mobile"><a class="link-muted" href="/2021/11/15/how-to-discard-output-on-linux/">怎么在linux上清除命令的输出内容</a></p><div class="content"><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ ls -al &gt; /dev/null 2&gt;&amp;1</span><br></pre></td></tr></table></figure>
+
+<p>执行上面的命令之后你会发现终端没有任何输出，为什么会这样呢？</p>
+<p>继续执行下面的命令</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ ls -qwer &gt; /dev/null 2&gt;&amp;1</span><br></pre></td></tr></table></figure>
+
+<p>发现还是没有任何输出，即使该命令是错误的。</p>
+<p>造成这一切的根源在于命令最后面的<code>2&gt;&amp;1</code>。</p>
+<p>我们知道<code>/dev/null</code>是<code>linux</code>系统上的伪设备文件，可以被用来消除来自程序的输出。尤其是对于命令行程序而言有更大的意义。</p>
+<p><code>/dev/null</code>看起来像是一个水漕，比如说一个可写的目标文件，然而只要有任何数据流被写入这个文件，都会被马上删除。</p>
+<p>当用户不需要来自程序的输出信息时，这个命令是有用的。因为程序可能会生成大量的输出内容，而这会给分析日志的工作带来混乱。</p>
+<p>对于<code>/dev/null 2&gt;&amp;1</code>命令，2在linux上代表STDERR（标准错误输出），而1则代表STDOUT（标准输出）。因此，这个命令的最终解释就是将标准错误输出和标准输出重定向到<code>/dev/null</code>，即消除这两种类型的输出。</p>
+<p>我们再来具体分析下这个命令的构成，首先<code>&gt;</code>表示重定向，而被重定向的对象则是<code>/dev/null</code>。而不是打印到终端。</p>
+<p>这是否意味着该命令所有的输出都会被重定向到<code>/dev/null</code>呢，并不是，因为它只会重定向标准输出。</p>
+<p>因此，还需要加上<code>2&gt;&amp;1</code>。表示将2（标准错误输出）重定向到1（标准输出）。那么<code>&amp;</code>代表什么意思呢？如果不加上<code>&amp;</code>的话，标准错误输出将会输出到名字为1的文件中。而<code>&amp;</code>会告诉系统1不是一个文件，而是一个标准输出描述符号。</p>
+<p>最后，我们将标准输出和标准错误输出都重定向到了<code>/dev/null</code>。而<code>/dev/null</code>会将所有的输出内容全部清除掉。</p>
+<blockquote>
+<p>小结：/dev/null是linux系统上一个特殊的设备文件，可以将任何命令的标准输出（不管是标准输出还是错误输出）清除掉。</p>
+</blockquote>
+</div></article></div><div class="card"><article class="card-content article" role="article"><div class="article-meta is-size-7 is-uppercase level is-mobile"><div class="level-left"><span class="level-item"><time dateTime="2021-10-26T14:22:17.000Z" title="2021/10/26 22:22:17">2021-10-26</time>发表</span><span class="level-item"><time dateTime="2021-10-26T14:48:35.973Z" title="2021/10/26 22:48:35">2021-10-26</time>更新</span><span class="level-item"><a class="link-muted" href="/categories/linux/">linux</a></span><span class="level-item">4 分钟读完 (大约560个字)</span></div></div><p class="title is-3 is-size-4-mobile"><a class="link-muted" href="/2021/10/26/fix-chinese-luan-ma-in-deepin-wine-wechat/">在manjaro中修复deepin-wine-wechat对话框输入中文乱码的问题</a></p><div class="content"><h2 id="最近在manjaro上安装了deepin-wine-wechat，毕竟生活中用微信还是挺多的，但腾讯貌似短期内并没有将微信移植到linux桌面平台的打算，所以，作为替代方案，只能使用deepin基于wine定制的微信客户端"><a href="#最近在manjaro上安装了deepin-wine-wechat，毕竟生活中用微信还是挺多的，但腾讯貌似短期内并没有将微信移植到linux桌面平台的打算，所以，作为替代方案，只能使用deepin基于wine定制的微信客户端" class="headerlink" title="最近在manjaro上安装了deepin-wine-wechat，毕竟生活中用微信还是挺多的，但腾讯貌似短期内并没有将微信移植到linux桌面平台的打算，所以，作为替代方案，只能使用deepin基于wine定制的微信客户端"></a>最近在manjaro上安装了deepin-wine-wechat，毕竟生活中用微信还是挺多的，但腾讯貌似短期内并没有将微信移植到linux桌面平台的打算，所以，作为替代方案，只能使用deepin基于wine定制的微信客户端</h2><p>首先GNU/Linux操作系统作为一款世界流行的操作系统，其稳定性和可定制性都是非常优秀的。但由于众多linux发行版大部分都是从国外发展起来的，虽然近几年来国内也有几家比较优秀的linux厂商，但终究起步别别人晚，所以还是有很多需要提升的地方。对于打着国产操作系统旗号的Deepin团队而言，想要在国内推广他们定制的Deepin Linux发行版，首先在通讯软件方面就要能够提供最常用的几款即时通讯软件的移植版，毕竟国内通讯软件市场还是腾讯一家独大，奈何鹅厂迟迟不将linux平台的QQ、微信的开发提上日程，而目前能够最大限度移植Windows程序到linux上执行的莫过于使用Wine了。所以，基于Wine提供linux版的微信和QQ也成为了最为方便快捷的选择。</p>
+<p>这次安装完deepin-wine-wechat之后，正常启动没问题，但当我打开和好友聊天的对话框时发现我输入的中文在内容栏里面都变成了一个个空心的小方块。但当我将消息发送出去之后，我的消息又变成了正常的中文。经过查找资料后发现，是因为wine模拟的windows环境里面缺少了宋体的字体文件，所以，只需要将宋体文件复制到对应的字体目录下就可以了。步骤如下：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">1.下载宋体字符集文件：https://www.freefonts.io/downloads/simsun/</span><br><span class="line">2.将解压后的文件复制如下路径：cp ~/Downloads/SIMSUN.ttf ~/.deepinwine/Deepin-WeChat/drive_c/windows/Fonts/</span><br><span class="line">3.重启微信即可解决。</span><br></pre></td></tr></table></figure>
+</div></article></div><div class="card"><article class="card-content article" role="article"><div class="article-meta is-size-7 is-uppercase level is-mobile"><div class="level-left"><span class="level-item"><time dateTime="2021-10-02T12:39:36.000Z" title="2021/10/2 20:39:36">2021-10-02</time>发表</span><span class="level-item"><time dateTime="2021-10-02T13:36:11.528Z" title="2021/10/2 21:36:11">2021-10-02</time>更新</span><span class="level-item"><a class="link-muted" href="/categories/linux/">linux</a></span><span class="level-item">7 分钟读完 (大约1002个字)</span></div></div><p class="title is-3 is-size-4-mobile"><a class="link-muted" href="/2021/10/02/chat-with-netcat-between-linux-host/">使用netcat工具在两台linux主机之间通信</a></p><div class="content"><h2 id="为什么我们不使用当下流行的即时通讯工具在PC间通信或者传输文件"><a href="#为什么我们不使用当下流行的即时通讯工具在PC间通信或者传输文件" class="headerlink" title="为什么我们不使用当下流行的即时通讯工具在PC间通信或者传输文件"></a>为什么我们不使用当下流行的即时通讯工具在PC间通信或者传输文件</h2><p>目前国内使用率最高的两款即时通讯工具莫过于鹅厂的两款工具——微信和QQ。因为某些众所周知的原因，这两款工具在linux平台要么直接没有，要么只有一个复古的阉割版，功能少的让人怀疑是不是鹅厂直接把10年前的产品直接拿来用了。基于这些现实的问题，对于linux用户来说，其实可替换方案也不是没有，最好的办法就是使用telegram，但在中国，这种方案并不是人人都能够直接拿来用，最直接的原因就是使用这款软件必须要学会科学上网（比如访问谷歌或者油管）。而科学上网在中国处于法律的灰色地带，一般人没有途径也不愿意承担这样的风险。那么作为一名linux用户，只要具备基本的使用命令行的能力，其实方法还是有很多的。这里介绍一种非常方便而且直观的通讯工具——netcat，供大家参考。</p>
+<h2 id="netcat是个什么样的工具"><a href="#netcat是个什么样的工具" class="headerlink" title="netcat是个什么样的工具"></a>netcat是个什么样的工具</h2><p>netcat是一款网络工具，可以在基于TCP和UDP网络连接的基础上执行读写操作。</p>
+<p>它被设计为一个可靠的后端工具，可以直接在其他程序或者脚本中被使用。同时，它还是一个用来调试和探测网络的工具。因为它可以创建几乎所有你可能需要的连接类型。</p>
+<h2 id="netcat有哪些特性"><a href="#netcat有哪些特性" class="headerlink" title="netcat有哪些特性"></a>netcat有哪些特性</h2><ul>
+<li>流出和流入连接：例如来自基于TCP或者UDP的任意端口的连接。</li>
+<li>隧道模式：它允许创建特殊的隧道，如 UDP 到 TCP，并且可以指定所有网络参数（源主机端口/接受主机端口、监听端口/接口和允许连接到隧道的远程主机）。</li>
+<li>使用随机发生器进行端口扫描</li>
+<li>高级使用选项：例如传输和接收数据的缓冲发送模式（每 N 秒一行）和 hexdump（到 stderr 或到指定文件）。</li>
+<li>可选的 RFC854 telnet 代码解析器和响应器。</li>
+</ul>
+<h2 id="如何将netcat作为一款即时通讯工具呢"><a href="#如何将netcat作为一款即时通讯工具呢" class="headerlink" title="如何将netcat作为一款即时通讯工具呢"></a>如何将netcat作为一款即时通讯工具呢</h2><ol>
+<li><p>首先，我们需要在需要建立通讯的主机上安装netcat工具，使用linux自带的包管理器安装即可。</p>
+</li>
+<li><p>然后选择一台已经安装好netcat的机器，在终端中执行如下命令：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">nc -l -vv -p 12345</span><br></pre></td></tr></table></figure>
+
+<p>其中<code>-l</code>和<code>p</code>表示在本机的12345端口进行监听，并创建一个TCP连接。<code>-vv</code>表示尽可能的展示运行过程中的系统消息，<code>-p</code>表示要监听的端口号。</p>
+</li>
+<li><p>选择要与监听主机建立连接的机器，在终端中执行如下命令：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">nc 步骤2中创建监听的主机ip 步骤2中创建的监听端口</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>执行完2、3之后，一条连接已经创建完成，可以开始互发消息了。</p>
+</li>
+</ol>
+<blockquote>
+<p>需要注意的是，连接双方发送的消息会全部展示在各自的屏幕上，如果有多于两个以上的连接方则无法区分消息的来源。</p>
+</blockquote>
+<h2 id="使用netcat传输文件"><a href="#使用netcat传输文件" class="headerlink" title="使用netcat传输文件"></a>使用netcat传输文件</h2><p>netcat还可以用来传输文件</p>
+<ol>
+<li><p>对接收方执行如下命立：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">nc -l -vv -p 12345 &gt; received_file</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>在发送方执行如下命令</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">nc 接收方的ip地址 12345 &lt; received_file</span><br></pre></td></tr></table></figure>
+
+</li>
+</ol>
+<blockquote>
+<p>需要注意的是，这里创建监听的动作是由接收方发起的，而发送方需要和接收方建立连接并发送文件。</p>
+</blockquote>
+</div></article></div><div class="card"><article class="card-content article" role="article"><div class="article-meta is-size-7 is-uppercase level is-mobile"><div class="level-left"><span class="level-item"><time dateTime="2021-10-02T07:54:24.000Z" title="2021/10/2 15:54:24">2021-10-02</time>发表</span><span class="level-item"><time dateTime="2021-10-02T13:51:03.154Z" title="2021/10/2 21:51:03">2021-10-02</time>更新</span><span class="level-item"><a class="link-muted" href="/categories/linux/">linux</a></span><span class="level-item">6 分钟读完 (大约944个字)</span></div></div><p class="title is-3 is-size-4-mobile"><a class="link-muted" href="/2021/10/02/archlinux-install-guide/">archlinux安装指南</a></p><div class="content"><h2 id="Arch-Linux是什么"><a href="#Arch-Linux是什么" class="headerlink" title="Arch Linux是什么"></a>Arch Linux是什么</h2><p>Arch Linux是一款滚动更新的GNU/Linux发行版，致力于提供最新的稳定版软件，相较于其他图形界面的发行版，Arch Linux只能在命令行界面进行安装，且默认不带任何桌面环境。（非特别说明，后文将GNU/Linux简称为Linux）</p>
+<h2 id="Arch-Linux有什么优势"><a href="#Arch-Linux有什么优势" class="headerlink" title="Arch Linux有什么优势"></a>Arch Linux有什么优势</h2><p>相较于其他基于Debian或者Redhat的发行版，Arch Linux提供了自己的包管理器——pacman，而且支持用户软件仓库（AUR）。基于这个特性，大大增加了Arch Linux系统原生软件的数量。而良好的软件生态正是Arch Linux的一大利器。</p>
+<h2 id="Arch-Linux的安装"><a href="#Arch-Linux的安装" class="headerlink" title="Arch Linux的安装"></a>Arch Linux的安装</h2><p>对于大部分非专业人士而言，习惯了Windows的图形界面之后，突然使用命令行操作软件往往变得非常困难，更不用说安装系统了，尽管Arch Linux拥有详细的由社区维护的安装指南Wiki，但也因此劝退了一些习惯了windows之后想要尝试linux系统的新手，基于此，本文特地将自己安装Arch Linux过程中的经历以及出现的问题做个说明，作为Arch Linux安装wiki的补充，不失为帮助更多的人能够接触到linux的一种方法（windows固然很优秀，但<strong>自由/开源软件</strong>才是软件开发的未来）。</p>
+<h3 id="1、获取最新版镜像"><a href="#1、获取最新版镜像" class="headerlink" title="1、获取最新版镜像"></a>1、获取最新版镜像</h3><p>官方下载网站：<a target="_blank" rel="noopener" href="https://archlinux.org/download/">https://archlinux.org/download/</a></p>
+<h2 id="2、制作启动盘"><a href="#2、制作启动盘" class="headerlink" title="2、制作启动盘"></a>2、制作启动盘</h2><p>准备一个空的U盘，和一台已安装好linux系统的机器，使用如下命令进行写盘：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo dd bs=4MB <span class="keyword">if</span>=你的安装镜像路径 of=你的U盘路径 status=progress</span><br></pre></td></tr></table></figure>
+
+<blockquote>
+<p>of参数通常是/dev/sdb，其中sdb是你的U盘路径，注意不要带数字后缀，类似sdb1。另外，写盘之前必须使用umount命令卸载的U盘（如果被自动挂载的话）。</p>
+</blockquote>
+<h3 id="3、从U盘启动，开始安装"><a href="#3、从U盘启动，开始安装" class="headerlink" title="3、从U盘启动，开始安装"></a>3、从U盘启动，开始安装</h3><p>需要注意的是，为了确保可以正常从启动盘引导，需要关闭主板的安全启动选项（可以在安装完成之后重新打开），关闭方式因主板厂商不同而有所差异。具体如何关闭可以自行百度。</p>
+<p>重启主机之后，进入BIOS或者直接通过功能键选择启动顺序，将USB设备作为第一启动项，启动之后选择<code>Arch Linux install medium</code>进入系统安装界面。</p>
+<h3 id="4、验证启动模式"><a href="#4、验证启动模式" class="headerlink" title="4、验证启动模式"></a>4、验证启动模式</h3><p>如果使用的是UEFI模式，则可以使用如下命令验证:</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ls /sys/firmware/efi/efivars</span><br></pre></td></tr></table></figure>
+
+<p>如果命令正常打印出一系列文件和目录，且没有任何错误，则表明当前是以UEFI模式启动。否则则是以BIOS或者CMS模式启动。</p>
+<h2 id="5、联网"><a href="#5、联网" class="headerlink" title="5、联网"></a>5、联网</h2><p>一般来说，我们可以直接插入网线联网，或者使用外置网卡。比如手机的USB网络共享。</p>
+<h2 id="6、调整时区"><a href="#6、调整时区" class="headerlink" title="6、调整时区"></a>6、调整时区</h2><p>使用<code>timedatectl</code>可以查看并设置时区。</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 启用ntp（网络时间协议）</span></span><br><span class="line">timedatectl set-ntp <span class="literal">true</span></span><br><span class="line"><span class="comment"># 列出当前可用的时区</span></span><br><span class="line">timedatectl list-timezones</span><br><span class="line"><span class="comment"># 设置选择的时区</span></span><br><span class="line">timedatectl set-timezone Asia/Shanghai</span><br></pre></td></tr></table></figure>
+
+<h2 id="7、磁盘分区"><a href="#7、磁盘分区" class="headerlink" title="7、磁盘分区"></a>7、磁盘分区</h2><p>查看当前可用磁盘</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">fdisk -l</span><br></pre></td></tr></table></figure>
+
+<p>选择将要使用的磁盘，假设是<code>/dev/sda</code>，执行如下命令</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">fdisk /dev/sda</span><br></pre></td></tr></table></figure>
+
+<p>进入分区界面之后，使用<code>m</code>查看具体的分区指令。一般步骤如下：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 创建分区表</span></span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+</div></article></div><div class="card"><article class="card-content article" role="article"><div class="article-meta is-size-7 is-uppercase level is-mobile"><div class="level-left"><span class="level-item"><time dateTime="2021-03-14T12:51:06.000Z" title="2021/3/14 20:51:06">2021-03-14</time>发表</span><span class="level-item"><time dateTime="2021-03-14T13:34:06.591Z" title="2021/3/14 21:34:06">2021-03-14</time>更新</span><span class="level-item"><a class="link-muted" href="/categories/linux/">linux</a></span><span class="level-item">3 分钟读完 (大约404个字)</span></div></div><p class="title is-3 is-size-4-mobile"><a class="link-muted" href="/2021/03/14/bash-shortcut-manual/">bash中的常用快捷方式</a></p><div class="content"><h2 id="以alt为辅助键的快捷键"><a href="#以alt为辅助键的快捷键" class="headerlink" title="以alt为辅助键的快捷键"></a>以<code>alt</code>为辅助键的快捷键</h2><ol>
+<li>alt+A 跳转到行首</li>
+<li>alt+B 跳转到光标后面一个单词长度的位置</li>
+<li>alt+C 中断bash中正在执行的任务</li>
+<li>alt+D 删除位于光标后面的所有字符</li>
+<li>alt+F 移动到光标前面一个单词长度的位置</li>
+<li>alt+T 交换光标位置前后的两个单词的位置</li>
+<li>alt+U 将位于光标位置后面的第一个单词全部转换成大写字母</li>
+<li>alt+L 和alt+U相反，将位于光标位置后面的第一个单词全部转换成小写字母</li>
+<li>alt+R 撤销当前命令所有的改变（等同于清空当前所有手动输入过的字符）</li>
+<li>alt+. 使用上一个命令的最后一个单词（以空格来区分）</li>
+</ol>
+<h2 id="以ctrl为辅助键的快捷键"><a href="#以ctrl为辅助键的快捷键" class="headerlink" title="以ctrl为辅助键的快捷键"></a>以<code>ctrl</code>为辅助键的快捷键</h2><ol>
+<li>ctrl+A 移动到行首</li>
+<li>ctrl+B 向光标后面移动一个字符</li>
+<li>ctrl+C 终止正在执行的任务</li>
+<li>ctrl+D 向光标后面删除一个字符</li>
+<li>ctrl+E 移动到行尾</li>
+<li>ctrl+H 删除光标前面的一个字符，相当于退格键</li>
+<li>ctrl+J 相当于<code>enter</code>键</li>
+<li>ctrl+K 删除所有位于光标后面的字符</li>
+<li>ctrl+L 清空屏幕</li>
+<li>ctrl+R 查询历史命令</li>
+<li>ctrl+O 执行ctrl+R查询出来的命令</li>
+<li>ctrl+T 交换最后两个字符</li>
+<li>ctrl+U 删除位于光标位置前的字符</li>
+<li>ctrl+W 删除光标位置前的一个单词</li>
+</ol>
+<h2 id="其他"><a href="#其他" class="headerlink" title="其他"></a>其他</h2><ol>
+<li>!! 重复执行上一条命令</li>
+<li>ESC+T 交换最后两个单词的位置</li>
+</ol>
+</div></article></div><div class="card"><article class="card-content article" role="article"><div class="article-meta is-size-7 is-uppercase level is-mobile"><div class="level-left"><span class="level-item"><time dateTime="2021-03-13T06:12:50.000Z" title="2021/3/13 14:12:50">2021-03-13</time>发表</span><span class="level-item"><time dateTime="2021-03-13T08:23:01.474Z" title="2021/3/13 16:23:01">2021-03-13</time>更新</span><span class="level-item"><a class="link-muted" href="/categories/linux/">linux</a></span><span class="level-item">6 分钟读完 (大约913个字)</span></div></div><p class="title is-3 is-size-4-mobile"><a class="link-muted" href="/2021/03/13/gzip-manual/">gzip操作手册</a></p><div class="content"><h2 id="gzip工具"><a href="#gzip工具" class="headerlink" title="gzip工具"></a>gzip工具</h2><p>gzip采用了最流行的压缩算法，可以让你缩小文件的大小，并且保留原始的文件模式，属主和时间戳。<br>使用gzip工具压缩的文件一般使用.gz的文件名后缀，并且gzip也可以用来解压缩文件。</p>
+<h2 id="命令格式以及说明"><a href="#命令格式以及说明" class="headerlink" title="命令格式以及说明"></a>命令格式以及说明</h2><p>通常的语法格式如下：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">gzip [可选项] ... [文件]...</span><br></pre></td></tr></table></figure>
+<p>gzip只能压缩单个文件，并为给定的文件创建一个压缩之后的文件。根据惯例，压缩之后的文件的命令一把使用<code>.gz</code>或者<code>.z</code>。<br>如果你想将多个文件或者目录压缩到一个文件中，首先你需要创建一个tar包，然后对这个tar包进行压缩。这样的文件一般会使用<code>.tar.gz</code>或者<code>.tgz</code>作为后缀来表明这个文件是使用了gzip压缩之后的tar包。<br>gzip最常用作压缩文本文件，tar包或者网页，尽量不要使用gzip去压缩图片，音频，pdf文档或者其他的二进制文件，因为他们已经被压缩过了。<br>gzip只能压缩常规文件，符号链接文件会被忽略。</p>
+<h2 id="使用gzip压缩文件"><a href="#使用gzip压缩文件" class="headerlink" title="使用gzip压缩文件"></a>使用gzip压缩文件</h2><ul>
+<li>不带任何参数的压缩<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">gzip 你的文件</span><br></pre></td></tr></table></figure>
+该命令将会创建一个<code>你的文件.gz</code>文件，然后删除原始文件。<br>默认情况下，gzip会保留原始文件的时间戳，模式，属主和文件名。</li>
+<li>保留原始文件<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">gzip -k 你的文件</span><br></pre></td></tr></table></figure>
+另外一种保留原始文件的方法是使用<code>-c</code>选项，告诉gzip将原始文件写入到标准输出，然后重定向到指定的文件<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">gzip -c 你的文件 &gt; 你的文件.gz</span><br></pre></td></tr></table></figure></li>
+<li>查看冗余信息<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">gzip -v 你的文件</span><br></pre></td></tr></table></figure>
+该命令将会输出压缩进度信息</li>
+<li>压缩多个文件<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">gzip 文件1 文件2 文件3</span><br></pre></td></tr></table></figure>
+该命令将会生成<code>文件1.gz</code>、<code>文件2.gz</code>、<code>文件3.gz</code>这3个文件。</li>
+<li>压缩目录<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">gzip -r 你的目录</span><br></pre></td></tr></table></figure>
+该命令会递归压缩你的目录下的所有文件，分别生成<code>.gz</code>文件。</li>
+<li>改变压缩等级<br>gzip允许我们指定文件的压缩等级，范围是1-9，而<code>-1</code>或者<code>--fast</code>则代表使用最小的压缩率以达到最快的压缩速度；而<code>-9</code>或者<code>--best</code>则代表使用最高的压缩率，相应的，也会有最慢的压缩速度。默认的压缩级别是6；<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">gzip -9 你的文件</span><br></pre></td></tr></table></figure>
+压缩是CPU密集型的任务，压缩等级越高，压缩过程越长。</li>
+<li>使用标准输入<br>为了从标准输入创建<code>.gz</code>文件，使用管道命令重定向到gzip。<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">mysqldump database_name | gzip -c &gt; database_name.sql.gz</span><br></pre></td></tr></table></figure>
+该命令将会把<code>mysqldump</code>的输出内容作为输入传递给gzip。</li>
+</ul>
+<h2 id="使用gzip解压缩"><a href="#使用gzip解压缩" class="headerlink" title="使用gzip解压缩"></a>使用gzip解压缩</h2><ul>
+<li>使用-d作为解压缩选项<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">gzip -d 你的文件.gz</span><br></pre></td></tr></table></figure>
+另一个可以用于解压缩的命令是gunzip，它可以算作是gzip -d的别名。<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">gunzip 你的文件.gz</span><br></pre></td></tr></table></figure></li>
+<li>保留原始压缩文件<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">gzip -dk 你的文件.gz</span><br></pre></td></tr></table></figure></li>
+<li>解压缩多个文件<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">gzip -d 你的文件1.gz 你的文件2.gz 你的文件3.gz</span><br></pre></td></tr></table></figure></li>
+<li>解压缩目录下的所有压缩文件<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">gzip -dr 你的目录</span><br></pre></td></tr></table></figure></li>
+<li>查看压缩文件的内容<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">gzip -l 你的文件</span><br></pre></td></tr></table></figure>
+使用<code>-v</code>可以得到更加详细的信息。</li>
+</ul>
+</div></article></div><div class="card"><article class="card-content article" role="article"><div class="article-meta is-size-7 is-uppercase level is-mobile"><div class="level-left"><span class="level-item"><time dateTime="2021-03-04T14:28:17.000Z" title="2021/3/4 22:28:17">2021-03-04</time>发表</span><span class="level-item"><time dateTime="2021-03-04T14:31:20.095Z" title="2021/3/4 22:31:20">2021-03-04</time>更新</span><span class="level-item"><a class="link-muted" href="/categories/linux/">linux</a></span><span class="level-item">3 分钟读完 (大约446个字)</span></div></div><p class="title is-3 is-size-4-mobile"><a class="link-muted" href="/2021/03/04/cron-manual/">linux下使用crontab工具设置定时任务</a></p><div class="content"><h2 id="使用crontab添加定时任务"><a href="#使用crontab添加定时任务" class="headerlink" title="使用crontab添加定时任务"></a>使用crontab添加定时任务</h2><p>crontab -e</p>
+<h2 id="cron的格式说明"><a href="#cron的格式说明" class="headerlink" title="cron的格式说明"></a>cron的格式说明</h2><p>分钟 小时 月中日 月份 周中日 你的自动化脚本<br>取值范围：<br>分钟：0-59<br>小时：0-23<br>月中日：1-31<br>月份：1-12<br>周中日：0-6</p>
+<h2 id="在指定的时间点调度"><a href="#在指定的时间点调度" class="headerlink" title="在指定的时间点调度"></a>在指定的时间点调度</h2><p>30 08 10 12 * /home/pengkai/myjob.sh<br>上面的调度器会在12月10号的上午8点30分执行myjob.sh脚本。<br>注意，上面最后一个位置使用了*号来表示一周中的每一天。因为已经指定了具体的月日，所以不必再限制那一天是星期几。</p>
+<h2 id="查看当前用户下的所有调度任务"><a href="#查看当前用户下的所有调度任务" class="headerlink" title="查看当前用户下的所有调度任务"></a>查看当前用户下的所有调度任务</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ crontab -l</span><br></pre></td></tr></table></figure>
+<p>或者以root用户查看其他用户的任务</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># crontab -u kyle -l</span></span><br></pre></td></tr></table></figure>
+<h2 id="每分钟执行一次调度"><a href="#每分钟执行一次调度" class="headerlink" title="每分钟执行一次调度"></a>每分钟执行一次调度</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">* * * * * 你的脚本</span><br></pre></td></tr></table></figure>
+<h2 id="一天执行两次"><a href="#一天执行两次" class="headerlink" title="一天执行两次"></a>一天执行两次</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">* 12,20 * * * 你的脚本</span><br></pre></td></tr></table></figure>
+<p>上面的命令会分别在中午12点晚上8点执行你的脚本</p>
+<h2 id="指定起止时间并按照固定间隔执行"><a href="#指定起止时间并按照固定间隔执行" class="headerlink" title="指定起止时间并按照固定间隔执行"></a>指定起止时间并按照固定间隔执行</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">08-20 * * * 你的脚本</span><br></pre></td></tr></table></figure>
+<p>上面的命令会从8点开始执行，然后间隔一个小时再次执行，最后一直到晚上8点截止。</p>
+<h2 id="只在工作日的工作时间内执行"><a href="#只在工作日的工作时间内执行" class="headerlink" title="只在工作日的工作时间内执行"></a>只在工作日的工作时间内执行</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">00 09-18 * * 1-5 你的脚本</span><br></pre></td></tr></table></figure>
+<p>从周一开始，每天从上午9点开始执行，然后每隔一个小时再次执行，最后一直到下午6点截止。如此往复到周五晚上6点停止执行。下周继续。</p>
+<h2 id="每隔10分钟执行一次"><a href="#每隔10分钟执行一次" class="headerlink" title="每隔10分钟执行一次"></a>每隔10分钟执行一次</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">*/10 * * * * 你的脚本</span><br></pre></td></tr></table></figure>
+<h2 id="使用特殊字符指定调度周期"><a href="#使用特殊字符指定调度周期" class="headerlink" title="使用特殊字符指定调度周期"></a>使用特殊字符指定调度周期</h2><p>cron支持的特殊字符<br>@yearly = 0 0 1 1 * ：每年的1月1日执行<br>@daily = 0 0 * * * ： 每天的0点执行<br>@monthly = 0 0 1 * * ：每个月的1号的0点执行<br>@hourly = 0 * * * * ：每个小时执行一次<br>@reboot = 计算器启动时执行</p>
+</div></article></div><div class="card"><article class="card-content article" role="article"><div class="article-meta is-size-7 is-uppercase level is-mobile"><div class="level-left"><span class="level-item"><time dateTime="2020-12-29T13:45:24.000Z" title="2020/12/29 21:45:24">2020-12-29</time>发表</span><span class="level-item"><time dateTime="2020-12-29T13:47:31.304Z" title="2020/12/29 21:47:31">2020-12-29</time>更新</span><span class="level-item"><a class="link-muted" href="/categories/linux/">linux</a></span><span class="level-item">几秒读完 (大约2个字)</span></div></div><p class="title is-3 is-size-4-mobile"><a class="link-muted" href="/2020/12/29/how-to-set-up-a-private-git-server-on-your-vps/">如何vps上搭建自己的git服务器</a></p><div class="content"><h2 id="介绍"><a href="#介绍" class="headerlink" title="介绍"></a>介绍</h2></div></article></div></div><div class="column column-left is-4-tablet is-4-desktop is-4-widescreen  order-1"><div class="card widget" data-type="profile"><div class="card-content"><nav class="level"><div class="level-item has-text-centered flex-shrink-1"><div><figure class="image is-128x128 mx-auto mb-2"><img class="avatar" src="/img/avatar.png" alt="Your name"></figure><p class="title is-size-4 is-block" style="line-height:inherit;">Your name</p><p class="is-size-6 is-block">Your title</p><p class="is-size-6 is-flex justify-content-center"><i class="fas fa-map-marker-alt mr-1"></i><span>Your location</span></p></div></div></nav><nav class="level is-mobile"><div class="level-item has-text-centered is-marginless"><div><p class="heading">文章</p><a href="/archives"><p class="title">69</p></a></div></div><div class="level-item has-text-centered is-marginless"><div><p class="heading">分类</p><a href="/categories"><p class="title">43</p></a></div></div><div class="level-item has-text-centered is-marginless"><div><p class="heading">标签</p><a href="/tags"><p class="title">83</p></a></div></div></nav><div class="level"><a class="level-item button is-primary is-rounded" href="https://github.com/ppoffice" target="_blank" rel="noopener">关注我</a></div><div class="level is-mobile is-multiline"><a class="level-item button is-transparent is-marginless" target="_blank" rel="noopener" title="Github" href="https://github.com/ppoffice"><i class="fab fa-github"></i></a><a class="level-item button is-transparent is-marginless" target="_blank" rel="noopener" title="Facebook" href="https://facebook.com"><i class="fab fa-facebook"></i></a><a class="level-item button is-transparent is-marginless" target="_blank" rel="noopener" title="Twitter" href="https://twitter.com"><i class="fab fa-twitter"></i></a><a class="level-item button is-transparent is-marginless" target="_blank" rel="noopener" title="Dribbble" href="https://dribbble.com"><i class="fab fa-dribbble"></i></a><a class="level-item button is-transparent is-marginless" target="_blank" rel="noopener" title="RSS" href="/"><i class="fas fa-rss"></i></a></div></div></div><!--!--><div class="card widget" data-type="links"><div class="card-content"><div class="menu"><h3 class="menu-label">链接</h3><ul class="menu-list"><li><a class="level is-mobile" href="https://hexo.io" target="_blank" rel="noopener"><span class="level-left"><span class="level-item">Hexo</span></span><span class="level-right"><span class="level-item tag">hexo.io</span></span></a></li><li><a class="level is-mobile" href="https://bulma.io" target="_blank" rel="noopener"><span class="level-left"><span class="level-item">Bulma</span></span><span class="level-right"><span class="level-item tag">bulma.io</span></span></a></li></ul></div></div></div><div class="card widget" data-type="categories"><div class="card-content"><div class="menu"><h3 class="menu-label">分类</h3><ul class="menu-list"><li><a class="level is-mobile" href="/categories/C/"><span class="level-start"><span class="level-item">C++</span></span><span class="level-end"><span class="level-item tag">2</span></span></a></li><li><a class="level is-mobile" href="/categories/centos/"><span class="level-start"><span class="level-item">centos</span></span><span class="level-end"><span class="level-item tag">1</span></span></a></li><li><a class="level is-mobile" href="/categories/cpp/"><span class="level-start"><span class="level-item">cpp</span></span><span class="level-end"><span class="level-item tag">2</span></span></a></li><li><a class="level is-mobile" href="/categories/debian/"><span class="level-start"><span class="level-item">debian</span></span><span class="level-end"><span class="level-item tag">2</span></span></a></li><li><a class="level is-mobile" href="/categories/docker/"><span class="level-start"><span class="level-item">docker</span></span><span class="level-end"><span class="level-item tag">1</span></span></a></li><li><a class="level is-mobile" href="/categories/elasticsearch/"><span class="level-start"><span class="level-item">elasticsearch</span></span><span class="level-end"><span class="level-item tag">1</span></span></a></li><li><a class="level is-mobile" href="/categories/gnome/"><span class="level-start"><span class="level-item">gnome</span></span><span class="level-end"><span class="level-item tag">1</span></span></a></li><li><a class="level is-mobile" href="/categories/hardware/"><span class="level-start"><span class="level-item">hardware</span></span><span class="level-end"><span class="level-item tag">1</span></span></a></li><li><a class="level is-mobile" href="/categories/idea/"><span class="level-start"><span class="level-item">idea</span></span><span class="level-end"><span class="level-item tag">1</span></span></a></li><li><a class="level is-mobile" href="/categories/it%E8%80%81%E9%BD%90/"><span class="level-start"><span class="level-item">it老齐</span></span><span class="level-end"><span class="level-item tag">1</span></span></a></li><li><a class="level is-mobile" href="/categories/java/"><span class="level-start"><span class="level-item">java</span></span><span class="level-end"><span class="level-item tag">4</span></span></a></li><li><a class="level is-mobile" href="/categories/javaweb/"><span class="level-start"><span class="level-item">javaweb</span></span><span class="level-end"><span class="level-item tag">1</span></span></a></li><li><a class="level is-mobile" href="/categories/java%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/"><span class="level-start"><span class="level-item">java学习笔记</span></span><span class="level-end"><span class="level-item tag">1</span></span></a></li><li><a class="level is-mobile" href="/categories/linux/"><span class="level-start"><span class="level-item">linux</span></span><span class="level-end"><span class="level-item tag">8</span></span></a></li><li><a class="level is-mobile" href="/categories/linux%E5%91%BD%E4%BB%A4/"><span class="level-start"><span class="level-item">linux命令</span></span><span class="level-end"><span class="level-item tag">1</span></span></a></li><li><a class="level is-mobile" href="/categories/maozedong/"><span class="level-start"><span class="level-item">maozedong</span></span><span class="level-end"><span class="level-item tag">1</span></span></a></li><li><a class="level is-mobile" href="/categories/nmap/"><span class="level-start"><span class="level-item">nmap</span></span><span class="level-end"><span class="level-item tag">1</span></span></a></li><li><a class="level is-mobile" href="/categories/notes/"><span class="level-start"><span class="level-item">notes</span></span><span class="level-end"><span class="level-item tag">1</span></span></a></li><li><a class="level is-mobile" href="/categories/php/"><span class="level-start"><span class="level-item">php</span></span><span class="level-end"><span class="level-item tag">1</span></span></a></li><li><a class="level is-mobile" href="/categories/postgresql/"><span class="level-start"><span class="level-item">postgresql</span></span><span class="level-end"><span class="level-item tag">2</span></span></a></li><li><a class="level is-mobile" href="/categories/raspberry-pi/"><span class="level-start"><span class="level-item">raspberry pi</span></span><span class="level-end"><span class="level-item tag">2</span></span></a></li><li><a class="level is-mobile" href="/categories/resource/"><span class="level-start"><span class="level-item">resource</span></span><span class="level-end"><span class="level-item tag">1</span></span></a></li><li><a class="level is-mobile" href="/categories/shell-script/"><span class="level-start"><span class="level-item">shell script</span></span><span class="level-end"><span class="level-item tag">1</span></span></a></li><li><a class="level is-mobile" href="/categories/spring-cloud/"><span class="level-start"><span class="level-item">spring cloud</span></span><span class="level-end"><span class="level-item tag">1</span></span></a></li><li><a class="level is-mobile" href="/categories/spring-framework/"><span class="level-start"><span class="level-item">spring framework</span></span><span class="level-end"><span class="level-item tag">2</span></span></a></li><li><a class="level is-mobile" href="/categories/spring%E5%8E%9F%E7%90%86/"><span class="level-start"><span class="level-item">spring原理</span></span><span class="level-end"><span class="level-item tag">1</span></span></a></li><li><a class="level is-mobile" href="/categories/spring%E6%A1%86%E6%9E%B6/"><span class="level-start"><span class="level-item">spring框架</span></span><span class="level-end"><span class="level-item tag">4</span></span></a></li><li><a class="level is-mobile" href="/categories/util/"><span class="level-start"><span class="level-item">util</span></span><span class="level-end"><span class="level-item tag">1</span></span></a></li><li><a class="level is-mobile" href="/categories/vim/"><span class="level-start"><span class="level-item">vim</span></span><span class="level-end"><span class="level-item tag">1</span></span></a></li><li><a class="level is-mobile" href="/categories/%E4%BA%BA%E7%94%9F/"><span class="level-start"><span class="level-item">人生</span></span><span class="level-end"><span class="level-item tag">1</span></span></a></li><li><a class="level is-mobile" href="/categories/%E4%BB%A3%E7%A0%81%E5%A4%A7%E5%85%A8/"><span class="level-start"><span class="level-item">代码大全</span></span><span class="level-end"><span class="level-item tag">1</span></span></a></li><li><a class="level is-mobile" href="/categories/%E5%A5%A5%E7%89%B9%E6%9B%BC/"><span class="level-start"><span class="level-item">奥特曼</span></span><span class="level-end"><span class="level-item tag">1</span></span></a></li><li><a class="level is-mobile" href="/categories/%E5%AD%97%E7%AC%A6%E4%B8%B2%E5%A4%84%E7%90%86/"><span class="level-start"><span class="level-item">字符串处理</span></span><span class="level-end"><span class="level-item tag">1</span></span></a></li><li><a class="level is-mobile" href="/categories/%E5%AE%B9%E5%99%A8%E6%8A%80%E6%9C%AF/"><span class="level-start"><span class="level-item">容器技术</span></span><span class="level-end"><span class="level-item tag">1</span></span></a></li><li><a class="level is-mobile" href="/categories/%E5%B7%A5%E5%85%B7/"><span class="level-start"><span class="level-item">工具</span></span><span class="level-end"><span class="level-item tag">2</span></span></a></li><li><a class="level is-mobile" href="/categories/%E5%BE%AE%E6%9C%8D%E5%8A%A1/"><span class="level-start"><span class="level-item">微服务</span></span><span class="level-end"><span class="level-item tag">1</span></span></a></li><li><a class="level is-mobile" href="/categories/%E6%95%B0%E6%8D%AE%E5%BA%93/"><span class="level-start"><span class="level-item">数据库</span></span><span class="level-end"><span class="level-item tag">2</span></span></a></li><li><a class="level is-mobile" href="/categories/%E6%96%87%E4%BB%B6%E5%85%B1%E4%BA%AB%E6%9C%8D%E5%8A%A1/"><span class="level-start"><span class="level-item">文件共享服务</span></span><span class="level-end"><span class="level-item tag">1</span></span></a></li><li><a class="level is-mobile" href="/categories/%E7%94%9F%E6%B6%AF-SSH%E8%BF%9E%E6%8E%A5%E7%9A%84%E5%BB%BA%E7%AB%8B%E6%96%B9%E5%BC%8F/"><span class="level-start"><span class="level-item">生涯 SSH连接的建立方式</span></span><span class="level-end"><span class="level-item tag">1</span></span></a></li><li><a class="level is-mobile" href="/categories/%E7%B3%BB%E7%BB%9F/"><span class="level-start"><span class="level-item">系统</span></span><span class="level-end"><span class="level-item tag">1</span></span></a></li><li><a class="level is-mobile" href="/categories/%E8%87%AA%E5%AD%A6/"><span class="level-start"><span class="level-item">自学</span></span><span class="level-end"><span class="level-item tag">1</span></span></a></li><li><a class="level is-mobile" href="/categories/%E8%BF%AA%E8%BF%A6/"><span class="level-start"><span class="level-item">迪迦</span></span><span class="level-end"><span class="level-item tag">1</span></span></a></li><li><a class="level is-mobile" href="/categories/%E9%9D%A2%E8%AF%95/"><span class="level-start"><span class="level-item">面试</span></span><span class="level-end"><span class="level-item tag">1</span></span></a></li></ul></div></div></div><div class="card widget" data-type="recent-posts"><div class="card-content"><h3 class="menu-label">最新文章</h3><article class="media"><div class="media-content"><p class="date"><time dateTime="2023-07-03T14:40:03.000Z">2023-07-03</time></p><p class="title"><a href="/2023/07/03/maozedong-quotes/">maozedong_quotes</a></p><p class="categories"><a href="/categories/maozedong/">maozedong</a></p></div></article><article class="media"><div class="media-content"><p class="date"><time dateTime="2023-04-17T12:44:51.822Z">2023-04-17</time></p><p class="title"><a href="/2023/04/17/docker-common-use-commands/"> </a></p></div></article><article class="media"><div class="media-content"><p class="date"><time dateTime="2022-02-22T11:35:19.000Z">2022-02-22</time></p><p class="title"><a href="/2022/02/22/idea-use-notes/">在idea中自定义注释模板</a></p><p class="categories"><a href="/categories/idea/">idea</a></p></div></article><article class="media"><div class="media-content"><p class="date"><time dateTime="2022-01-18T16:44:12.000Z">2022-01-19</time></p><p class="title"><a href="/2022/01/19/tool-resources/">工具资源</a></p><p class="categories"><a href="/categories/resource/">resource</a></p></div></article><article class="media"><div class="media-content"><p class="date"><time dateTime="2022-01-18T16:38:04.000Z">2022-01-19</time></p><p class="title"><a href="/2022/01/19/debian-10-china-repo/">debian10国内镜像</a></p><p class="categories"><a href="/categories/debian/">debian</a></p></div></article></div></div><div class="card widget" data-type="archives"><div class="card-content"><div class="menu"><h3 class="menu-label">归档</h3><ul class="menu-list"><li><a class="level is-mobile" href="/archives/2023/"><span class="level-start"><span class="level-item">2023</span></span><span class="level-end"><span class="level-item tag">2</span></span></a></li><li><a class="level is-mobile" href="/archives/2022/"><span class="level-start"><span class="level-item">2022</span></span><span class="level-end"><span class="level-item tag">12</span></span></a></li><li><a class="level is-mobile" href="/archives/2021/"><span class="level-start"><span class="level-item">2021</span></span><span class="level-end"><span class="level-item tag">53</span></span></a></li><li><a class="level is-mobile" href="/archives/2020/"><span class="level-start"><span class="level-item">2020</span></span><span class="level-end"><span class="level-item tag">2</span></span></a></li></ul></div></div></div><div class="card widget" data-type="tags"><div class="card-content"><div class="menu"><h3 class="menu-label">标签</h3><div class="field is-grouped is-grouped-multiline"><div class="control"><a class="tags has-addons" href="/tags/Contradiction-theory/"><span class="tag">Contradiction theory</span><span class="tag">1</span></a></div><div class="control"><a class="tags has-addons" href="/tags/Materialism/"><span class="tag">Materialism</span><span class="tag">1</span></a></div><div class="control"><a class="tags has-addons" href="/tags/annotation/"><span class="tag">annotation</span><span class="tag">1</span></a></div><div class="control"><a class="tags has-addons" href="/tags/apt/"><span class="tag">apt</span><span class="tag">1</span></a></div><div class="control"><a class="tags has-addons" href="/tags/archlinux/"><span class="tag">archlinux</span><span class="tag">1</span></a></div><div class="control"><a class="tags has-addons" href="/tags/aria2/"><span class="tag">aria2</span><span class="tag">1</span></a></div><div class="control"><a class="tags has-addons" href="/tags/authenticate/"><span class="tag">authenticate</span><span class="tag">1</span></a></div><div class="control"><a class="tags has-addons" href="/tags/aware/"><span class="tag">aware</span><span class="tag">1</span></a></div><div class="control"><a class="tags has-addons" href="/tags/bash/"><span class="tag">bash</span><span class="tag">1</span></a></div><div class="control"><a class="tags has-addons" href="/tags/bean/"><span class="tag">bean</span><span class="tag">2</span></a></div><div class="control"><a class="tags has-addons" href="/tags/cache/"><span class="tag">cache</span><span class="tag">1</span></a></div><div class="control"><a class="tags has-addons" href="/tags/comment/"><span class="tag">comment</span><span class="tag">1</span></a></div><div class="control"><a class="tags has-addons" href="/tags/cpp/"><span class="tag">cpp</span><span class="tag">1</span></a></div><div class="control"><a class="tags has-addons" href="/tags/crontab/"><span class="tag">crontab</span><span class="tag">1</span></a></div><div class="control"><a class="tags has-addons" href="/tags/curl/"><span class="tag">curl</span><span class="tag">1</span></a></div><div class="control"><a class="tags has-addons" href="/tags/design-pattern/"><span class="tag">design pattern</span><span class="tag">1</span></a></div><div class="control"><a class="tags has-addons" href="/tags/docker/"><span class="tag">docker</span><span class="tag">2</span></a></div><div class="control"><a class="tags has-addons" href="/tags/elasticsearch/"><span class="tag">elasticsearch</span><span class="tag">1</span></a></div><div class="control"><a class="tags has-addons" href="/tags/eureka/"><span class="tag">eureka</span><span class="tag">1</span></a></div><div class="control"><a class="tags has-addons" href="/tags/exception/"><span class="tag">exception</span><span class="tag">1</span></a></div><div class="control"><a class="tags has-addons" href="/tags/git/"><span class="tag">git</span><span class="tag">1</span></a></div><div class="control"><a class="tags has-addons" href="/tags/gradle/"><span class="tag">gradle</span><span class="tag">1</span></a></div><div class="control"><a class="tags has-addons" href="/tags/grep/"><span class="tag">grep</span><span class="tag">1</span></a></div><div class="control"><a class="tags has-addons" href="/tags/gzip/"><span class="tag">gzip</span><span class="tag">1</span></a></div><div class="control"><a class="tags has-addons" href="/tags/java/"><span class="tag">java</span><span class="tag">7</span></a></div><div class="control"><a class="tags has-addons" href="/tags/javaweb/"><span class="tag">javaweb</span><span class="tag">1</span></a></div><div class="control"><a class="tags has-addons" href="/tags/jenkins/"><span class="tag">jenkins</span><span class="tag">1</span></a></div><div class="control"><a class="tags has-addons" href="/tags/linux/"><span class="tag">linux</span><span class="tag">7</span></a></div><div class="control"><a class="tags has-addons" href="/tags/maven/"><span class="tag">maven</span><span class="tag">1</span></a></div><div class="control"><a class="tags has-addons" href="/tags/mirror/"><span class="tag">mirror</span><span class="tag">1</span></a></div><div class="control"><a class="tags has-addons" href="/tags/mybatis/"><span class="tag">mybatis</span><span class="tag">1</span></a></div><div class="control"><a class="tags has-addons" href="/tags/mysql/"><span class="tag">mysql</span><span class="tag">2</span></a></div><div class="control"><a class="tags has-addons" href="/tags/netcat/"><span class="tag">netcat</span><span class="tag">1</span></a></div><div class="control"><a class="tags has-addons" href="/tags/netty/"><span class="tag">netty</span><span class="tag">1</span></a></div><div class="control"><a class="tags has-addons" href="/tags/nmap/"><span class="tag">nmap</span><span class="tag">1</span></a></div><div class="control"><a class="tags has-addons" href="/tags/pdo/"><span class="tag">pdo</span><span class="tag">1</span></a></div><div class="control"><a class="tags has-addons" href="/tags/permission/"><span class="tag">permission</span><span class="tag">1</span></a></div><div class="control"><a class="tags has-addons" href="/tags/post-processor/"><span class="tag">post-processor</span><span class="tag">1</span></a></div><div class="control"><a class="tags has-addons" href="/tags/raspberry-pi/"><span class="tag">raspberry pi</span><span class="tag">1</span></a></div><div class="control"><a class="tags has-addons" href="/tags/redis/"><span class="tag">redis</span><span class="tag">1</span></a></div><div class="control"><a class="tags has-addons" href="/tags/resource/"><span class="tag">resource</span><span class="tag">1</span></a></div><div class="control"><a class="tags has-addons" href="/tags/samba/"><span class="tag">samba</span><span class="tag">1</span></a></div><div class="control"><a class="tags has-addons" href="/tags/sed/"><span class="tag">sed</span><span class="tag">1</span></a></div><div class="control"><a class="tags has-addons" href="/tags/server/"><span class="tag">server</span><span class="tag">1</span></a></div><div class="control"><a class="tags has-addons" href="/tags/shell/"><span class="tag">shell</span><span class="tag">1</span></a></div><div class="control"><a class="tags has-addons" href="/tags/shiro/"><span class="tag">shiro</span><span class="tag">1</span></a></div><div class="control"><a class="tags has-addons" href="/tags/shortcut/"><span class="tag">shortcut</span><span class="tag">1</span></a></div><div class="control"><a class="tags has-addons" href="/tags/software/"><span class="tag">software</span><span class="tag">1</span></a></div><div class="control"><a class="tags has-addons" href="/tags/spring/"><span class="tag">spring</span><span class="tag">3</span></a></div><div class="control"><a class="tags has-addons" href="/tags/springmvc/"><span class="tag">springmvc</span><span class="tag">2</span></a></div><div class="control"><a class="tags has-addons" href="/tags/ssh/"><span class="tag">ssh</span><span class="tag">2</span></a></div><div class="control"><a class="tags has-addons" href="/tags/study/"><span class="tag">study</span><span class="tag">1</span></a></div><div class="control"><a class="tags has-addons" href="/tags/tool/"><span class="tag">tool</span><span class="tag">1</span></a></div><div class="control"><a class="tags has-addons" href="/tags/util/"><span class="tag">util</span><span class="tag">1</span></a></div><div class="control"><a class="tags has-addons" href="/tags/vimrc/"><span class="tag">vimrc</span><span class="tag">1</span></a></div><div class="control"><a class="tags has-addons" href="/tags/vps/"><span class="tag">vps</span><span class="tag">1</span></a></div><div class="control"><a class="tags has-addons" href="/tags/web/"><span class="tag">web</span><span class="tag">1</span></a></div><div class="control"><a class="tags has-addons" href="/tags/windows/"><span class="tag">windows</span><span class="tag">2</span></a></div><div class="control"><a class="tags has-addons" href="/tags/wsl/"><span class="tag">wsl</span><span class="tag">1</span></a></div><div class="control"><a class="tags has-addons" href="/tags/%E4%B8%AA%E4%BA%BA%E6%84%9F%E6%82%9F/"><span class="tag">个人感悟</span><span class="tag">1</span></a></div><div class="control"><a class="tags has-addons" href="/tags/%E4%B8%AD%E6%96%87%E4%B9%B1%E7%A0%81/"><span class="tag">中文乱码</span><span class="tag">1</span></a></div><div class="control"><a class="tags has-addons" href="/tags/%E5%88%86%E5%B8%83%E5%BC%8F/"><span class="tag">分布式</span><span class="tag">1</span></a></div><div class="control"><a class="tags has-addons" href="/tags/%E5%9B%BD%E5%86%85%E6%BA%90/"><span class="tag">国内源</span><span class="tag">1</span></a></div><div class="control"><a class="tags has-addons" href="/tags/%E5%A5%A5%E7%89%B9%E6%9B%BC/"><span class="tag">奥特曼</span><span class="tag">1</span></a></div><div class="control"><a class="tags has-addons" href="/tags/%E5%B7%A5%E5%85%B7/"><span class="tag">工具</span><span class="tag">1</span></a></div><div class="control"><a class="tags has-addons" href="/tags/%E5%B8%B8%E7%94%A8/"><span class="tag">常用</span><span class="tag">1</span></a></div><div class="control"><a class="tags has-addons" href="/tags/%E5%BC%95%E7%94%A8/"><span class="tag">引用</span><span class="tag">1</span></a></div><div class="control"><a class="tags has-addons" href="/tags/%E5%BE%AE%E6%9C%8D%E5%8A%A1/"><span class="tag">微服务</span><span class="tag">1</span></a></div><div class="control"><a class="tags has-addons" href="/tags/%E6%8C%87%E9%92%88/"><span class="tag">指针</span><span class="tag">1</span></a></div><div class="control"><a class="tags has-addons" href="/tags/%E6%90%9C%E7%B4%A2%E5%BC%95%E6%93%8E/"><span class="tag">搜索引擎</span><span class="tag">1</span></a></div><div class="control"><a class="tags has-addons" href="/tags/%E6%A6%82%E5%BF%B5/"><span class="tag">概念</span><span class="tag">1</span></a></div><div class="control"><a class="tags has-addons" href="/tags/%E6%A8%A1%E5%BC%8F/"><span class="tag">模式</span><span class="tag">1</span></a></div><div class="control"><a class="tags has-addons" href="/tags/%E6%B1%87%E6%80%BB/"><span class="tag">汇总</span><span class="tag">1</span></a></div><div class="control"><a class="tags has-addons" href="/tags/%E6%BF%80%E6%B4%BB/"><span class="tag">激活</span><span class="tag">1</span></a></div><div class="control"><a class="tags has-addons" href="/tags/%E7%A1%AC%E4%BB%B6/"><span class="tag">硬件</span><span class="tag">1</span></a></div><div class="control"><a class="tags has-addons" href="/tags/%E7%A5%9E%E5%99%A8/"><span class="tag">神器</span><span class="tag">1</span></a></div><div class="control"><a class="tags has-addons" href="/tags/%E7%BC%93%E5%AD%98/"><span class="tag">缓存</span><span class="tag">1</span></a></div><div class="control"><a class="tags has-addons" href="/tags/%E7%BC%96%E7%A0%81/"><span class="tag">编码</span><span class="tag">1</span></a></div><div class="control"><a class="tags has-addons" href="/tags/%E8%BE%93%E5%87%BA/"><span class="tag">输出</span><span class="tag">1</span></a></div><div class="control"><a class="tags has-addons" href="/tags/%E8%BF%AA%E8%BF%A6/"><span class="tag">迪迦</span><span class="tag">1</span></a></div><div class="control"><a class="tags has-addons" href="/tags/%E9%97%AE%E9%A2%98%E4%BF%AE%E5%A4%8D/"><span class="tag">问题修复</span><span class="tag">1</span></a></div><div class="control"><a class="tags has-addons" href="/tags/%E9%9D%A2%E8%AF%95/"><span class="tag">面试</span><span class="tag">1</span></a></div><div class="control"><a class="tags has-addons" href="/tags/%E9%BB%98%E8%AE%A4%E6%96%87%E4%BB%B6%E7%AE%A1%E7%90%86%E5%99%A8/"><span class="tag">默认文件管理器</span><span class="tag">1</span></a></div></div></div></div></div><div class="card widget" data-type="subscribe-email"><div class="card-content"><div class="menu"><h3 class="menu-label">订阅更新</h3><form action="https://feedburner.google.com/fb/a/mailverify" method="post" target="popupwindow" onsubmit="window.open(&#039;https://feedburner.google.com/fb/a/mailverify?uri=&#039;,&#039;popupwindow&#039;,&#039;scrollbars=yes,width=550,height=520&#039;);return true"><input type="hidden" value="" name="uri"><input type="hidden" name="loc" value="en_US"><div class="field has-addons"><div class="control has-icons-left is-expanded"><input class="input" name="email" type="email" placeholder="Email"><span class="icon is-small is-left"><i class="fas fa-envelope"></i></span></div><div class="control"><input class="button" type="submit" value="订阅"></div></div></form></div></div></div><div class="card widget"><div class="card-content"><div class="notification is-danger">You need to set <code>client_id</code> and <code>slot_id</code> to show this AD unit. Please set it in <code>_config.yml</code>.</div></div></div><div class="card widget" data-type="subscribe-email"><div class="card-content"><div class="menu"><h3 class="menu-label">follow.it</h3><form action="" method="post" target="_blank"><div class="field has-addons"><div class="control has-icons-left is-expanded"><input class="input" name="email" type="email" placeholder="Email"><span class="icon is-small is-left"><i class="fas fa-envelope"></i></span></div><div class="control"><input class="button" type="submit" value="订阅"></div></div></form></div></div></div></div><!--!--></div></div></section><footer class="footer"><div class="container"><div class="level"><div class="level-start"><a class="footer-logo is-block mb-2" href="/"><img src="/img/logo.svg" alt="成长日记" height="28"></a><p class="is-size-7"><span>&copy; 2023 彭凯</span>  Powered by <a href="https://hexo.io/" target="_blank" rel="noopener">Hexo</a> &amp; <a href="https://github.com/ppoffice/hexo-theme-icarus" target="_blank" rel="noopener">Icarus</a></p><p class="is-size-7">© 2019</p></div><div class="level-end"><div class="field has-addons"><p class="control"><a class="button is-transparent is-large" target="_blank" rel="noopener" title="Creative Commons" href="https://creativecommons.org/"><i class="fab fa-creative-commons"></i></a></p><p class="control"><a class="button is-transparent is-large" target="_blank" rel="noopener" title="Attribution 4.0 International" href="https://creativecommons.org/licenses/by/4.0/"><i class="fab fa-creative-commons-by"></i></a></p><p class="control"><a class="button is-transparent is-large" target="_blank" rel="noopener" title="Download on GitHub" href="https://github.com/ppoffice/hexo-theme-icarus"><i class="fab fa-github"></i></a></p></div></div></div></div></footer><script src="https://cdn.jsdelivr.net/npm/jquery@3.3.1/dist/jquery.min.js"></script><script src="https://cdn.jsdelivr.net/npm/moment@2.22.2/min/moment-with-locales.min.js"></script><script src="https://cdn.jsdelivr.net/npm/clipboard@2.0.4/dist/clipboard.min.js" defer></script><script>moment.locale("zh-cn");</script><script>var IcarusThemeSettings = {
+            article: {
+                highlight: {
+                    clipboard: true,
+                    fold: 'unfolded'
+                }
+            }
+        };</script><script src="/js/column.js"></script><script src="/js/animation.js"></script><a id="back-to-top" title="回到顶端" href="javascript:;"><i class="fas fa-chevron-up"></i></a><script src="/js/back_to_top.js" defer></script><!--!--><!--!--><!--!--><script src="https://cdn.jsdelivr.net/npm/cookieconsent@3.1.1/build/cookieconsent.min.js" defer></script><script>window.addEventListener("load", () => {
+      window.cookieconsent.initialise({
+        type: "info",
+        theme: "edgeless",
+        static: false,
+        position: "bottom-left",
+        content: {
+          message: "此网站使用Cookie来改善您的体验。",
+          dismiss: "知道了！",
+          allow: "允许使用Cookie",
+          deny: "拒绝",
+          link: "了解更多",
+          policy: "Cookie政策",
+          href: "https://www.cookiesandyou.com/",
+        },
+        palette: {
+          popup: {
+            background: "#edeff5",
+            text: "#838391"
+          },
+          button: {
+            background: "#4b81e8"
+          },
+        },
+      });
+    });</script><script src="https://cdn.jsdelivr.net/npm/lightgallery@1.10.0/dist/js/lightgallery.min.js" defer></script><script src="https://cdn.jsdelivr.net/npm/justifiedGallery@3.8.1/dist/js/jquery.justifiedGallery.min.js" defer></script><script>window.addEventListener("load", () => {
+            if (typeof $.fn.lightGallery === 'function') {
+                $('.article').lightGallery({ selector: '.gallery-item' });
+            }
+            if (typeof $.fn.justifiedGallery === 'function') {
+                if ($('.justified-gallery > p > .gallery-item').length) {
+                    $('.justified-gallery > p > .gallery-item').unwrap();
+                }
+                $('.justified-gallery').justifiedGallery();
+            }
+        });</script><!--!--><!--!--><!--!--><!--!--><!--!--><script src="/js/main.js" defer></script><div class="searchbox"><div class="searchbox-container"><div class="searchbox-header"><div class="searchbox-input-container"><input class="searchbox-input" type="text" placeholder="想要查找什么..."></div><a class="searchbox-close" href="javascript:;">×</a></div><div class="searchbox-body"></div></div></div><script src="/js/insight.js" defer></script><script>document.addEventListener('DOMContentLoaded', function () {
+            loadInsight({"contentUrl":"/content.json"}, {"hint":"想要查找什么...","untitled":"(无标题)","posts":"文章","pages":"页面","categories":"分类","tags":"标签"});
+        });</script></body></html>
